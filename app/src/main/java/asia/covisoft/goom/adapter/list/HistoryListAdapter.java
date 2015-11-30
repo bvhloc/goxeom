@@ -1,4 +1,4 @@
-package asia.covisoft.goom.adapter;
+package asia.covisoft.goom.adapter.list;
 
 import android.content.Context;
 import android.view.LayoutInflater;

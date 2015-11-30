@@ -1,4 +1,4 @@
-package asia.covisoft.goom.adapter;
+package asia.covisoft.goom.adapter.list;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -12,22 +12,22 @@ import java.util.ArrayList;
 
 import asia.covisoft.goom.R;
 import asia.covisoft.goom.pojo.HistoryItem;
-import asia.covisoft.goom.pojo.LocationHistoryItem;
 
 /**
- * Created by Covisoft on 26/11/2015.
+ * Created by Covisoft on 23/11/2015.
  */
-public class LocationHistoryListAdapter extends ArrayAdapter<LocationHistoryItem> {
+public class RestaurantListAdapter extends ArrayAdapter<HistoryItem> {
 
     public Context context;
-    private ArrayList<LocationHistoryItem> model;
+    private ArrayList<HistoryItem> model;
 
-    private static final int resId = R.layout.list_item_location_history;
+    private static final int resId = R.layout.list_item_history;
 
     private static class ViewHolder {
 
-        TextView tvName;
+        TextView tvDatetime;
         TextView tvAddress;
+        ImageView imgvCanceled;
 
     }
 
@@ -36,7 +36,7 @@ public class LocationHistoryListAdapter extends ArrayAdapter<LocationHistoryItem
         return model.size();
     }
 
-    public LocationHistoryListAdapter(Context context, ArrayList<LocationHistoryItem> model) {
+    public RestaurantListAdapter(Context context, ArrayList<HistoryItem> model) {
         super(context, resId, model);
 
         this.context = context;
@@ -46,7 +46,7 @@ public class LocationHistoryListAdapter extends ArrayAdapter<LocationHistoryItem
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        LocationHistoryItem item = getItem(position);
+        HistoryItem item = getItem(position);
 
         final ViewHolder viewHolder;
         if (convertView == null) {
@@ -54,16 +54,22 @@ public class LocationHistoryListAdapter extends ArrayAdapter<LocationHistoryItem
             LayoutInflater inflater = LayoutInflater.from(getContext());
             convertView = inflater.inflate(resId, parent, false);
 
-            viewHolder.tvName = (TextView) convertView.findViewById(R.id.tvName);
+            viewHolder.tvDatetime = (TextView) convertView.findViewById(R.id.tvDatetime);
             viewHolder.tvAddress = (TextView) convertView.findViewById(R.id.tvAddress);
+            viewHolder.imgvCanceled = (ImageView) convertView.findViewById(R.id.imgvCanceled);
 
             convertView.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
 
-        viewHolder.tvName.setText(item.getName());
+        viewHolder.tvDatetime.setText(item.getDatetime());
         viewHolder.tvAddress.setText(item.getAddress());
+        if(!item.getStatus()){
+            viewHolder.imgvCanceled.setVisibility(View.VISIBLE);
+        }else {
+            viewHolder.imgvCanceled.setVisibility(View.GONE);
+        }
 
         return convertView;
     }

@@ -1,4 +1,4 @@
-package asia.covisoft.goom.adapter;
+package asia.covisoft.goom.adapter.page;
 
 import android.content.res.Resources;
 import android.support.v4.app.Fragment;
@@ -8,21 +8,18 @@ import android.util.SparseArray;
 import android.view.ViewGroup;
 
 import asia.covisoft.goom.R;
-import asia.covisoft.goom.fragment.history.HistoryFragment;
-import asia.covisoft.goom.fragment.order.OrderFragment;
-import asia.covisoft.goom.fragment.settings.SettingsFragment;
-import asia.covisoft.goom.fragment.wallet.WalletFragment;
+import asia.covisoft.goom.fragment.history.HistoryListFragment;
 
 /**
  * Created by Covisoft on 17/11/2015.
  */
-public class ViewPagerAdapter extends FragmentPagerAdapter {
+public class HistoryPagerAdapter extends FragmentPagerAdapter {
 
     private final Resources resources;
 
     SparseArray<Fragment> registeredFragments = new SparseArray<Fragment>();
 
-    public ViewPagerAdapter(final Resources resources, FragmentManager fm) {
+    public HistoryPagerAdapter(final Resources resources, FragmentManager fm) {
         super(fm);
         this.resources = resources;
     }
@@ -33,19 +30,11 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
         switch (position) {
             case 0:
                 // First Fragment of First Tab
-                result = new HistoryFragment();
+                result = new HistoryListFragment(false);
                 break;
             case 1:
                 // First Fragment of Second Tab
-                result = new OrderFragment();
-                break;
-            case 2:
-                // First Fragment of Third Tab
-                result = new WalletFragment();
-                break;
-            case 3:
-                // First Fragment of Fourth Tab
-                result = new SettingsFragment();
+                result = new HistoryListFragment(true);
                 break;
             default:
                 result = null;
@@ -57,20 +46,16 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return 4;
+        return 2;
     }
 
     @Override
     public CharSequence getPageTitle(final int position) {
         switch (position) {
             case 0:
-                return resources.getString(R.string.fragment_history_tab_title);
+                return resources.getString(R.string.fragment_history_inprocess);
             case 1:
-                return resources.getString(R.string.fragment_order_tab_title);
-            case 2:
-                return resources.getString(R.string.fragment_wallet_tab_title);
-            case 3:
-                return resources.getString(R.string.fragment_settings_tab_title);
+                return resources.getString(R.string.fragment_history_completed);
             default:
                 return null;
         }
