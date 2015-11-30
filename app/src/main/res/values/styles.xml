@@ -1,0 +1,38 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+
+        <item name="colorControlNormal">@color/mBlackDivider</item>
+        <!--<item name="colorControlActivated">@color/mBlackDivider</item>-->
+        <!--<item name="colorControlHighlight">@color/mBlackDivider</item>-->
+    </style>
+
+    <style name="MyCustomTabLayout" parent="Widget.Design.TabLayout">
+        <item name="tabIndicatorColor">#D32F2F</item>
+        <item name="tabIndicatorHeight">2dp</item>
+        <item name="tabPaddingStart">12dp</item>
+        <item name="tabPaddingEnd">12dp</item>
+        <item name="tabBackground">?attr/selectableItemBackground</item>
+        <item name="tabSelectedTextColor">#D32F2F</item>
+    </style>
+
+    <style name="Divider">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">?android:attr/listDivider</item>
+    </style>
+
+    <style name="BlackDivider">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">@color/mBlackDivider</item>
+    </style>
+
+    <style name="SmallGreenButton" parent="Widget.AppCompat.Button">
+        <item name="android:buttonStyle">?android:attr/buttonStyleSmall</item>
+        <item name="android:background">@drawable/bg_green_button</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+
+</resources>

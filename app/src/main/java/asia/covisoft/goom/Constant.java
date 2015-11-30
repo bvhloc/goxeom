@@ -1,0 +1,16 @@
+package asia.covisoft.goom;
+
+/**
+ * Created by Covisoft on 20/11/2015.
+ */
+public class Constant {
+
+    public static final String TAB_POSTION = "TAB_POSTION";
+
+    public static final String HISTORY_STATE = "HISTORY_STATE";
+
+    public static final String DRIVER_LAT = "DRIVER_LAT";
+    public static final String DRIVER_LNG = "DRIVER_LNG";
+
+    public static final int REQUEST_CODE_PICK_CONTACTS = 1000;
+}

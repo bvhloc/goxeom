@@ -1,0 +1,428 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/tab_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/mAppBackground"
+    android:clickable="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/fragment_order_courier_title"
+            android:textColor="@color/mBlackText"
+            android:textStyle="bold" />
+
+        <View style="@style/Divider" />
+
+        <ScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginStart="5dp"
+                    android:text="@string/fragment_order_courier_drivernearme"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/mBlackText"
+                    android:textStyle="bold" />
+
+                <fragment
+                    android:id="@+id/mMap"
+                    android:name="asia.covisoft.goom.view.WorkaroundMapFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="@string/fragment_history_detail_doubleclickmaptozoom"
+                    android:textColor="@color/mBlackText" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginStart="5dp"
+                    android:text="@string/fragment_order_courier_from"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/mBlackText"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:id="@+id/lnlPickFrom"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/view_touch_selector"
+                    android:clickable="true"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_margin="5dp"
+                        android:contentDescription="@string/fragment_settings_signup"
+                        android:src="@drawable/ic_location_transparent" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableEnd="@drawable/ic_forward"
+                            android:drawableRight="@drawable/ic_forward"
+                            android:text="@string/fragment_order_courier_pickalocation"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:textColor="@color/mBlackText" />
+
+                        <View
+                            style="@style/Divider"
+                            android:layout_marginEnd="5dp"
+                            android:layout_marginRight="5dp"
+                            android:background="@color/mBlackDivider" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/fragment_order_courier_streetbuildingname"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:textColor="@color/mHintText" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lnlDetailsFrom"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/view_touch_selector"
+                    android:clickable="true"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_margin="5dp"
+                        android:contentDescription="@string/fragment_settings_signup"
+                        android:src="@drawable/ic_paper" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/fragment_order_courier_locationdetails"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:textColor="@color/mBlackText" />
+
+                        <View
+                            style="@style/Divider"
+                            android:layout_marginEnd="5dp"
+                            android:layout_marginRight="5dp"
+                            android:background="@color/mBlackDivider" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/fragment_order_courier_housenofloorlandmark"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:textColor="@color/mHintText" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lnlContactFrom"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/view_touch_selector"
+                    android:clickable="true"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_margin="5dp"
+                        android:contentDescription="@string/fragment_settings_signup"
+                        android:src="@drawable/ic_user" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableEnd="@drawable/ic_forward"
+                            android:drawableRight="@drawable/ic_forward"
+                            android:text="@string/fragment_order_courier_contactperson"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:textColor="@color/mBlackText" />
+
+                        <View
+                            style="@style/Divider"
+                            android:layout_marginEnd="5dp"
+                            android:layout_marginRight="5dp"
+                            android:background="@color/mBlackDivider" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/fragment_order_courier_inputifyouarenotthesender"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:textColor="@color/mHintText" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginStart="5dp"
+                    android:text="@string/fragment_order_courier_to"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/mBlackText"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:id="@+id/lnlPickTo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/view_touch_selector"
+                    android:clickable="true"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_margin="5dp"
+                        android:contentDescription="@string/fragment_settings_signup"
+                        android:src="@drawable/ic_location_transparent" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableEnd="@drawable/ic_forward"
+                            android:drawableRight="@drawable/ic_forward"
+                            android:text="@string/fragment_order_courier_pickalocation"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:textColor="@color/mBlackText" />
+
+                        <View
+                            style="@style/Divider"
+                            android:layout_marginEnd="5dp"
+                            android:layout_marginRight="5dp"
+                            android:background="@color/mBlackDivider" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/fragment_order_courier_streetbuildingname"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:textColor="@color/mHintText" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lnlDetailsTo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/view_touch_selector"
+                    android:clickable="true"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_margin="5dp"
+                        android:contentDescription="@string/fragment_settings_signup"
+                        android:src="@drawable/ic_paper" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/fragment_order_courier_locationdetails"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:textColor="@color/mBlackText" />
+
+                        <View
+                            style="@style/Divider"
+                            android:layout_marginEnd="5dp"
+                            android:layout_marginRight="5dp"
+                            android:background="@color/mBlackDivider" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/fragment_order_courier_housenofloorlandmark"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:textColor="@color/mHintText" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lnlContactTo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/view_touch_selector"
+                    android:clickable="true"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_margin="5dp"
+                        android:contentDescription="@string/fragment_settings_signup"
+                        android:src="@drawable/ic_user" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableEnd="@drawable/ic_forward"
+                            android:drawableRight="@drawable/ic_forward"
+                            android:text="@string/fragment_order_courier_contactperson"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:textColor="@color/mBlackText" />
+
+                        <View
+                            style="@style/Divider"
+                            android:layout_marginEnd="5dp"
+                            android:layout_marginRight="5dp"
+                            android:background="@color/mBlackDivider" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/fragment_order_courier_inputifyouarenotthesender"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:textColor="@color/mHintText" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginStart="5dp"
+                    android:text="@string/fragment_order_courier_itemstodeliver"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/mBlackText"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:id="@+id/lnlItem"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/view_touch_selector"
+                    android:clickable="true"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_margin="5dp"
+                        android:contentDescription="@string/fragment_settings_signup"
+                        android:src="@drawable/ic_cart" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Items"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:textColor="@color/mBlackText" />
+
+                        <View
+                            style="@style/Divider"
+                            android:layout_marginEnd="5dp"
+                            android:layout_marginRight="5dp"
+                            android:background="@color/mBlackDivider" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btnNext"
+                    style="@style/SmallGreenButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/activity_vertical_margin"
+                    android:padding="5dp"
+                    android:text="@string/upcase_next" />
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </LinearLayout>
+
+</FrameLayout>

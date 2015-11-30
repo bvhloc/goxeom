@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="mAppBackground">#FFFFFF</color>
+    <color name="mGreen">#00b386</color>
+    <color name="mDarkGreen">#00805f</color>
+    <color name="mBlackText">#000000</color>
+    <color name="mHintText">#808080</color>
+    <color name="mBlueText">#1976D2</color>
+    <color name="mBlackDivider">#000000</color>
+
+    <color name="mSelector">#ddd</color>
+
+</resources>

@@ -1,0 +1,140 @@
+<resources>
+    <string name="app_name">GoOm</string>
+
+    <string name="google_maps_key">AIzaSyCELwb_6eoiOB4qX6rglQDnz0XTHFbiONU</string>
+
+    <string name="app_name_full">GOXEOM</string>
+
+    <string name="character_colon">:</string>
+
+    <string name="upcase_pick_your_service">PICK YOUR SERVICE</string>
+    <string name="upcase_submit">SUBMIT</string>
+    <string name="upcase_next">NEXT</string>
+    <string name="upcase_details">DETAILS</string>
+    <string name="upcase_payment">PAYMENT</string>
+    <string name="upcase_order">ORDER</string>
+    <string name="upcase_or">OR</string>
+    <string name="upcase_book">BOOK</string>
+    <string name="upcase_id">ID</string>
+
+    <string name="lowcase_your_location">Your Location</string>
+    <string name="lowcase_search">Search</string>
+    <string name="lowcase_total">Total</string>
+    <string name="lowcase_price">Price</string>
+    <string name="lowcase_payment">Payment</string>
+    <string name="lowcase_email">Email</string>
+    <string name="lowcase_name">Name</string>
+    <string name="lowcase_phone">Phone</string>
+    <string name="lowcase_password">Password</string>
+    <string name="lowcase_age">Age</string>
+    <string name="lowcase_gender">Gender</string>
+    <string name="lowcase_male">Male</string>
+    <string name="lowcase_female">Female</string>
+
+    <string name="fragment_settings_tab_title">Settings</string>
+    <string name="fragment_history_tab_title">History</string>
+    <string name="fragment_order_tab_title">Order</string>
+    <string name="fragment_wallet_tab_title">Wallet</string>
+
+    <string name="fragment_history_title">MY BOOKING HISTORY</string>
+    <string name="fragment_history_inprocess">INPROCESS</string>
+    <string name="fragment_history_completed">COMPLETED</string>
+
+    <string name="fragment_history_detail_title">MY BOOKING</string>
+    <string name="fragment_history_detail_ontheway">YOUR DRIVER ON THE WAY TO</string>
+    <string name="fragment_history_detail_doubleclickmaptozoom">Double click map to Zoom In</string>
+    <string name="fragment_history_detail_driverinformation">DRIVER INFORMATION</string>
+    <string name="fragment_history_detail_bookingdetails">BOOKING DETAILS</string>
+    <string name="fragment_history_detail_menu">Menu</string>
+    <string name="fragment_history_detail_button_sendsms">SEND SMS</string>
+    <string name="fragment_history_detail_button_call">CALL</string>
+    <string name="fragment_history_detail_button_cancelbooking">Cancel Booking</string>
+
+    <string name="fragment_wallet_title">MY WALLET</string>
+    <string name="fragment_wallet_text1">Welcome to GOXEOM credit - Your - in - app Wallet!</string>
+    <string name="fragment_wallet_text2">Here you can redeem vouchers, and go cashless</string>
+    <string name="fragment_wallet_text3">YOUR GOXEOM CREDIT 1.000.0... VND</string>
+    <string name="fragment_wallet_text4">Share your referral code \"148498484984\" to give your friends 50.000 VND credit for first time use GOXEOM. When they book, you will get 50.000 VND too! Keep spreading the GOXEOM love!</string>
+    <string name="fragment_wallet_hint_code">Voucher Code/Referral Code</string>
+    <string name="fragment_wallet_button_topup">TOP-UP</string>
+    <string name="fragment_wallet_button_share">SHARE</string>
+    <string name="fragment_wallet_button_ok">OK</string>
+
+    <string name="fragment_toup_title">TOP-UP</string>
+    <string name="fragment_toup_text1">If you want top-up your GOXEOM credit via bank transfer</string>
+    <string name="fragment_toup_text2">HERE IS HOW TO DO IT!</string>
+    <string name="fragment_toup_text_step1">1. Make online transfer to GOXEOM Account No: 5233498082 (Min: 100.000 VND)</string>
+    <string name="fragment_toup_text_step2">2. Fill in top Up Form bellow</string>
+    <string name="fragment_toup_text_step3">3. After me validate your Top Up, GOXEOM Credit will be automatically added to your in app wallet</string>
+    <string name="fragment_toup_bankaccount">Bank - Account</string>
+    <string name="fragment_toup_hint_bankaccountholdername">Bank Account Holder Name</string>
+    <string name="fragment_toup_hint_bankname">Bank Name</string>
+    <string name="fragment_toup_hint_accounttransfer">Amount Transfer</string>
+    <string name="fragment_toup_scratchcard">Scratch Card</string>
+    <string name="fragment_toup_hint_inputserialnumber">Input Serial Number</string>
+
+    <string name="fragment_settings_signup">Sign Up</string>
+    <string name="fragment_settings_termsofservice">Terms of Service</string>
+    <string name="fragment_settings_ratethisapp">Rate this app</string>
+    <string name="fragment_settings_callus">Call Us (GOXEOM Phone number)</string>
+
+    <string name="fragment_signup_alreadyaccount">Already Account?</string>
+    <string name="fragment_signup_loginnow">Login Now!</string>
+
+    <string name="fragment_verify_text1">An SMS with a verification code was sent to your phone</string>
+    <string name="fragment_vefify_didntreceiveansms">Didn\'t receive an SMS</string>
+    <string name="fragment_verify_resendsms">Resend SMS</string>
+    <string name="fragment_verify_hinh_verificationcode">Verification Code</string>
+
+    <string name="fragment_order_instantcourier">INSTANT COURIER</string>
+    <string name="fragment_order_food">FOOD</string>
+    <string name="fragment_order_transport">TRANSPORT</string>
+    <string name="fragment_order_shopping">SHOPPING</string>
+
+    <string name="fragment_order_courier_drivernearme">DRIVER NEAR ME</string>
+    <string name="fragment_order_courier_from">FROM</string>
+    <string name="fragment_order_courier_to">TO</string>
+    <string name="fragment_order_courier_pickalocation">Pick a Location</string>
+    <string name="fragment_order_courier_streetbuildingname">Street / Building Name</string>
+    <string name="fragment_order_courier_locationdetails">Location details</string>
+    <string name="fragment_order_courier_housenofloorlandmark">House No. / Floor / Landmard</string>
+    <string name="fragment_order_courier_contactperson">Contact person</string>
+    <string name="fragment_order_courier_inputifyouarenotthesender">Input if you are not the sender</string>
+    <string name="fragment_order_courier_itemstodeliver">ITEMS TO DELIVER</string>
+
+    <string name="fragment_order_courier_title">INSTANT COURIER</string>
+    <string name="fragment_order_picklocation_title">PICK LOCATION</string>
+    <string name="fragment_order_picklocation_button_openlocation">OPEN LOCATION</string>
+    <string name="fragment_order_picklocation_button_currentlocation">CURRENT LOCATION</string>
+    <string name="fragment_order_picklocation_myhistory">MY HISTORY</string>
+
+    <string name="fragment_order_confirm_title">CONFIRM</string>
+
+    <string name="list_item_location_history_name">Name:</string>
+    <string name="list_item_location_history_address">Address:</string>
+
+    <string name="fragment_order_transport_title">TRANSPORT</string>
+
+    <string name="fragment_order_made_title">BOOKING MADE</string>
+    <string name="fragment_order_made_text1">We will notify you when we find you a driver</string>
+    <string name="upcase_done">DONE</string>
+    <string name="fragment_order_made_bookingtime">Booking time:</string>
+    <string name="fragment_order_made_text2">DO YOU KNOW</string>
+    <string name="fragment_order_made_text3">All transport booking comes with free hair cover and masker</string>
+    <string name="fragment_order_made_button_cancelbooking">CANCEL BOOKING</string>
+    <string name="fragment_order_made_button_newbooking">NEW BOOKING</string>
+
+    <string name="fragment_order_pickdriver_title">DRIVER</string>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="fragment_order_shopping_title">SHOPPING</string>
+    <string name="fragment_order_shopping_shoplocationdetails">Shop Location details</string>
+    <string name="fragment_order_shopping_shopnamefloorlandmark">Shop Name. / Floor / Landmark</string>
+    <string name="fragment_order_shopping_itemstobuy">Items to Buy</string>
+    <string name="fragment_order_shopping_pleasestatequantily">Please state quantily</string>
+    <string name="fragment_order_shopping_estimatedcost">Estimated Cost</string>
+    <string name="fragment_order_pickcontact_title">PICK CONTACT PERSON</string>
+    <string name="fragment_order_pickcontact_addfromcontacts">ADD FROM CONTACTS</string>
+
+</resources>

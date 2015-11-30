@@ -1,0 +1,126 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/tab_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/mAppBackground"
+    android:clickable="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/fragment_order_pickcontact_title"
+            android:textColor="@color/mBlackText"
+            android:textStyle="bold" />
+
+        <View style="@style/Divider" />
+
+        <ScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin">
+
+                <TextView
+                    android:id="@+id/tvPickContact"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:drawableStart="@drawable/ic_contact"
+                    android:drawableLeft="@drawable/ic_contact"
+                    android:drawableRight="@drawable/ic_forward"
+                    android:drawableEnd="@drawable/ic_forward"
+                    android:drawablePadding="5dp"
+                    android:background="@drawable/view_touch_selector"
+                    android:layout_marginTop="@dimen/activity_vertical_margin"
+                    android:layout_marginBottom="@dimen/activity_vertical_margin"
+                    android:text="@string/fragment_order_pickcontact_addfromcontacts"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="#76b300" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:drawablePadding="5dp"
+                    android:background="@drawable/view_touch_selector"
+                    android:text="@string/upcase_or"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/mBlackText" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/view_touch_selector"
+                    android:clickable="true"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_margin="5dp"
+                        android:contentDescription="@string/lowcase_name"
+                        android:src="@drawable/ic_user" />
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/lowcase_name"
+                        android:id="@+id/edtName"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/view_touch_selector"
+                    android:clickable="true"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_margin="5dp"
+                        android:contentDescription="@string/lowcase_phone"
+                        android:src="@drawable/ic_call" />
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/lowcase_phone"
+                        android:id="@+id/edtPhone"
+                        android:inputType="phone" />
+
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btnDone"
+                    android:padding="5dp"
+                    style="@style/SmallGreenButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/activity_vertical_margin"
+                    android:text="@string/upcase_done" />
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </LinearLayout>
+
+</FrameLayout>

@@ -1,0 +1,210 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/tab_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/mAppBackground"
+    android:clickable="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/fragment_toup_title"
+            android:textColor="@color/mBlackText"
+            android:textStyle="bold" />
+
+        <View style="@style/Divider" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/activity_horizontal_margin">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="1"
+                    android:text="@string/app_name_full"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="@color/mDarkGreen"
+                    android:textSize="60sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="@dimen/activity_vertical_margin"
+                    android:layout_weight="1"
+                    android:text="@string/upcase_pick_your_service"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/fragment_wallet_text1"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textColor="@color/mBlackText" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="@dimen/activity_vertical_margin"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/fragment_wallet_text2"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textColor="@color/mBlackText" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/fragment_toup_text1"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textColor="@color/mBlackText" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="@dimen/activity_vertical_margin"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/fragment_toup_text2"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textColor="@color/mBlackText"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_marginBottom="@dimen/activity_vertical_margin"
+                    android:layout_weight="1"
+                    android:text="@string/fragment_toup_text_step1"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textColor="@color/mBlackText" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_marginBottom="@dimen/activity_vertical_margin"
+                    android:layout_weight="1"
+                    android:text="@string/fragment_toup_text_step2"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textColor="@color/mBlackText" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_marginBottom="@dimen/activity_vertical_margin"
+                    android:layout_weight="1"
+                    android:text="@string/fragment_toup_text_step3"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textColor="@color/mBlackText" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_marginBottom="@dimen/activity_vertical_margin"
+                    android:layout_weight="1"
+                    android:text="@string/fragment_toup_bankaccount"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textColor="@color/mBlackText"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:padding="3dp"
+                    android:id="@+id/edtBankHolderName"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_custom_edittext"
+                    android:hint="@string/fragment_toup_hint_bankaccountholdername" />
+
+                <EditText
+                    android:padding="3dp"
+                    android:id="@+id/edtBankName"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_custom_edittext"
+                    android:hint="@string/fragment_toup_hint_bankname" />
+
+                <EditText
+                    android:padding="3dp"
+                    android:id="@+id/edtAmountTransfer"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginBottom="@dimen/activity_vertical_margin"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_custom_edittext"
+                    android:hint="@string/fragment_toup_hint_accounttransfer" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_marginBottom="@dimen/activity_vertical_margin"
+                    android:layout_weight="1"
+                    android:text="@string/fragment_toup_scratchcard"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textColor="@color/mBlackText"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:padding="3dp"
+                    android:id="@+id/edtSerialNubmer"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginBottom="@dimen/activity_vertical_margin"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_custom_edittext"
+                    android:hint="@string/fragment_toup_hint_inputserialnumber" />
+
+                <Button
+                    android:id="@+id/btnSubmit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_green_button"
+                    android:text="@string/upcase_submit"
+                    android:textColor="#FFFFFF" />
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </LinearLayout>
+
+</FrameLayout>

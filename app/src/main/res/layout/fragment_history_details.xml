@@ -1,0 +1,271 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/tab_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/mAppBackground"
+    android:clickable="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/fragment_history_detail_title"
+            android:textColor="@color/mBlackText"
+            android:textStyle="bold" />
+
+        <View style="@style/Divider" />
+
+        <ScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/activity_vertical_margin"
+                    android:text="@string/fragment_history_detail_ontheway"
+                    android:textColor="@color/mBlackText" />
+
+                <TextView
+                    android:id="@+id/tvDestination"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="DESTINATION"
+                    android:textColor="@color/mBlueText" />
+
+                <TextView
+                    android:id="@+id/tvArriavalTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="@dimen/activity_vertical_margin"
+                    android:text="ARRIVAL TIME"
+                    android:textColor="@color/mBlackText" />
+
+                <fragment
+                    android:id="@+id/mMap"
+                    android:name="com.google.android.gms.maps.SupportMapFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="@string/fragment_history_detail_doubleclickmaptozoom"
+                    android:textColor="@color/mBlackText" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/activity_horizontal_margin"
+                    android:text="@string/fragment_history_detail_driverinformation"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/mBlackText"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/imgvDriver"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/circled_user" />
+
+                <TextView
+                    android:id="@+id/tvDriverName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="Driver name"
+                    android:textColor="@color/mBlackText" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/btnSms"
+                        style="@style/SmallGreenButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:text="@string/fragment_history_detail_button_sendsms" />
+
+                    <Button
+                        android:id="@+id/btnCall"
+                        style="@style/SmallGreenButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:text="@string/fragment_history_detail_button_call" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/activity_horizontal_margin"
+                    android:text="@string/fragment_history_detail_bookingdetails"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/mBlackText"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvDatetime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                    android:drawableLeft="@drawable/ic_clock"
+                    android:drawablePadding="10dp"
+                    android:drawableStart="@drawable/ic_clock"
+                    android:gravity="center"
+                    android:text="June 11th, 11:20..."
+                    android:textColor="@color/mBlackText" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                    android:drawableLeft="@drawable/ic_menu"
+                    android:drawablePadding="10dp"
+                    android:drawableStart="@drawable/ic_menu"
+                    android:gravity="center"
+                    android:text="@string/fragment_history_detail_menu"
+                    android:textColor="@color/mBlackText" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                    android:orientation="vertical"
+                    android:paddingLeft="@dimen/activity_horizontal_margin"
+                    android:paddingRight="@dimen/activity_horizontal_margin">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                        android:layout_marginRight="@dimen/activity_horizontal_margin"
+                        android:text="- Com ga"
+                        android:textColor="@color/mBlackText" />
+
+                </LinearLayout>
+
+                <View
+                    style="@style/BlackDivider"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:layout_marginRight="@dimen/activity_horizontal_margin" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                    android:orientation="vertical"
+                    android:paddingLeft="@dimen/activity_horizontal_margin"
+                    android:paddingRight="@dimen/activity_horizontal_margin">
+
+                    <TextView
+                        android:id="@+id/tvAddressFrom"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:drawableLeft="@drawable/ic_location_transparent"
+                        android:drawablePadding="10dp"
+                        android:drawableStart="@drawable/ic_location_transparent"
+                        android:gravity="center_vertical"
+                        android:text="150 Quang Trung, Go Vap, Ho Chi Minh, Phong 24, Lau 1, Toa nha Venus"
+                        android:textColor="@color/mBlackText" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/line_break" />
+
+                    <TextView
+                        android:id="@+id/tvAddressTo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:drawableLeft="@drawable/ic_location_transparent"
+                        android:drawablePadding="10dp"
+                        android:drawableStart="@drawable/ic_location_transparent"
+                        android:gravity="center_vertical"
+                        android:text="20 Dong Khoi, Quan 1, Ho Chi Minh, Phong 2, Tang 8, Toa nha Anna"
+                        android:textColor="@color/mBlackText" />
+
+                </LinearLayout>
+
+                <View
+                    style="@style/BlackDivider"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:layout_marginRight="@dimen/activity_horizontal_margin" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/activity_horizontal_margin"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableLeft="@drawable/ic_monney"
+                        android:drawablePadding="10dp"
+                        android:drawableStart="@drawable/ic_monney"
+                        android:gravity="center_vertical"
+                        android:text="@string/lowcase_total"
+                        android:textColor="@color/mBlackText" />
+
+                    <TextView
+                        android:id="@+id/tvTotal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="end|center_vertical"
+                        android:text="150.000 VND"
+                        android:textColor="@color/mBlackText" />
+
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btnCancel"
+                    android:padding="5dp"
+                    style="@style/SmallGreenButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/activity_vertical_margin"
+                    android:text="@string/fragment_history_detail_button_cancelbooking" />
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </LinearLayout>
+
+</FrameLayout>
