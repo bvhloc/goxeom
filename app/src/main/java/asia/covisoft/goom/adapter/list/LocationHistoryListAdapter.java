@@ -22,25 +22,25 @@ public class LocationHistoryListAdapter extends ArrayAdapter<LocationHistoryItem
     public Context context;
     private ArrayList<LocationHistoryItem> model;
 
-    private static final int resId = R.layout.list_item_location_history;
-
-    private static class ViewHolder {
-
-        TextView tvName;
-        TextView tvAddress;
-
-    }
-
     @Override
     public int getCount() {
         return model.size();
     }
+
+    private static final int resId = R.layout.list_item_location_history;
 
     public LocationHistoryListAdapter(Context context, ArrayList<LocationHistoryItem> model) {
         super(context, resId, model);
 
         this.context = context;
         this.model = model;
+    }
+
+    private class ViewHolder {
+
+        TextView tvName;
+        TextView tvAddress;
+
     }
 
     @Override

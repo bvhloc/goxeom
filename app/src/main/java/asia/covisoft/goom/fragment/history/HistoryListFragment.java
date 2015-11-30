@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 import asia.covisoft.goom.FragmentNavigator;
 import asia.covisoft.goom.R;
-import asia.covisoft.goom.adapter.HistoryListAdapter;
+import asia.covisoft.goom.adapter.list.HistoryListAdapter;
 import asia.covisoft.goom.backpress.RootFragment;
 import asia.covisoft.goom.pojo.HistoryItem;
 

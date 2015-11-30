@@ -20,6 +20,10 @@ import asia.covisoft.goom.backpress.OnBackPressListener;
 public class WorkaroundMapFragment extends SupportMapFragment implements OnBackPressListener{
     private OnTouchListener mListener;
 
+    public static WorkaroundMapFragment newInstance() {
+        return new WorkaroundMapFragment();
+    }
+
     @Override
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle savedInstance) {
         View layout = super.onCreateView(layoutInflater, viewGroup, savedInstance);

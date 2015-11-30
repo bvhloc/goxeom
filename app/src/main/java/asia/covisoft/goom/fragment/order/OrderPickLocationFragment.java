@@ -11,20 +11,14 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SearchView;
 
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.ArrayList;
 
-import asia.covisoft.goom.GPSTracker;
 import asia.covisoft.goom.R;
-import asia.covisoft.goom.adapter.LocationHistoryListAdapter;
+import asia.covisoft.goom.adapter.list.LocationHistoryListAdapter;
 import asia.covisoft.goom.backpress.RootFragment;
 import asia.covisoft.goom.pojo.LocationHistoryItem;
-import asia.covisoft.goom.view.WorkaroundMapFragment;
 
 /**
  * A simple {@link Fragment} subclass.

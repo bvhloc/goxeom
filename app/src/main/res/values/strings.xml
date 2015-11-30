@@ -136,5 +136,8 @@
     <string name="fragment_order_shopping_estimatedcost">Estimated Cost</string>
     <string name="fragment_order_pickcontact_title">PICK CONTACT PERSON</string>
     <string name="fragment_order_pickcontact_addfromcontacts">ADD FROM CONTACTS</string>
+    <string name="upcase_food">FOOD</string>
+    <string name="fragment_order_food_button_category">Category</string>
+    <string name="fragment_order_food_button_nearme">Near Me</string>
 
 </resources>

@@ -2,14 +2,12 @@ package asia.covisoft.goom.fragment.history;
 
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
-import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import asia.covisoft.goom.FragmentNavigator;
 import asia.covisoft.goom.R;
-import asia.covisoft.goom.adapter.HistoryPagerAdapter;
+import asia.covisoft.goom.adapter.page.HistoryPagerAdapter;
 import asia.covisoft.goom.backpress.RootFragment;
 import asia.covisoft.goom.view.NonSwipeableViewPager;
 

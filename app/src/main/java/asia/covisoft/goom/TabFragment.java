@@ -5,12 +5,11 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import asia.covisoft.goom.adapter.ViewPagerAdapter;
+import asia.covisoft.goom.adapter.page.ViewPagerAdapter;
 import asia.covisoft.goom.backpress.OnBackPressListener;
 
 /**

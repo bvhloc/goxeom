@@ -21,26 +21,26 @@ public class HistoryListAdapter extends ArrayAdapter<HistoryItem> {
     public Context context;
     private ArrayList<HistoryItem> model;
 
-    private static final int resId = R.layout.list_item_history;
-
-    private static class ViewHolder {
-
-        TextView tvDatetime;
-        TextView tvAddress;
-        ImageView imgvCanceled;
-
-    }
-
     @Override
     public int getCount() {
         return model.size();
     }
+
+    private static final int resId = R.layout.list_item_history;
 
     public HistoryListAdapter(Context context, ArrayList<HistoryItem> model) {
         super(context, resId, model);
 
         this.context = context;
         this.model = model;
+    }
+
+    private class ViewHolder {
+
+        TextView tvDatetime;
+        TextView tvAddress;
+        ImageView imgvCanceled;
+
     }
 
     @Override

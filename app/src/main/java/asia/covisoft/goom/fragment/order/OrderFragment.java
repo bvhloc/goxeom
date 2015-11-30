@@ -40,6 +40,13 @@ public class OrderFragment extends RootFragment {
                 FragmentNavigator.goTo(OrderFragment.this, new OrderTransportFragment());
             }
         });
+        rootView.findViewById(R.id.imgvFood).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                FragmentNavigator.goTo(OrderFragment.this, new OrderFoodFragment());
+            }
+        });
         rootView.findViewById(R.id.imgvShopping).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

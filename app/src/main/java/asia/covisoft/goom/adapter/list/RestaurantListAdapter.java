@@ -1,6 +1,8 @@
 package asia.covisoft.goom.adapter.list;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,45 +10,48 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 
 import asia.covisoft.goom.R;
-import asia.covisoft.goom.pojo.HistoryItem;
+import asia.covisoft.goom.pojo.RestaurantItem;
 
 /**
  * Created by Covisoft on 23/11/2015.
  */
-public class RestaurantListAdapter extends ArrayAdapter<HistoryItem> {
+public class RestaurantListAdapter extends ArrayAdapter<RestaurantItem> {
 
     public Context context;
-    private ArrayList<HistoryItem> model;
-
-    private static final int resId = R.layout.list_item_history;
-
-    private static class ViewHolder {
-
-        TextView tvDatetime;
-        TextView tvAddress;
-        ImageView imgvCanceled;
-
-    }
+    private ArrayList<RestaurantItem> model;
 
     @Override
     public int getCount() {
         return model.size();
     }
 
-    public RestaurantListAdapter(Context context, ArrayList<HistoryItem> model) {
+    private static final int resId = R.layout.grid_item_restaurant;
+
+    public RestaurantListAdapter(Context context, ArrayList<RestaurantItem> model) {
         super(context, resId, model);
 
         this.context = context;
         this.model = model;
     }
 
+    private class ViewHolder {
+
+        ImageView imgvAvatar;
+        TextView tvName;
+        TextView tvAddress;
+    }
+
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        HistoryItem item = getItem(position);
+        RestaurantItem item = getItem(position);
 
         final ViewHolder viewHolder;
         if (convertView == null) {
@@ -54,22 +59,21 @@ public class RestaurantListAdapter extends ArrayAdapter<HistoryItem> {
             LayoutInflater inflater = LayoutInflater.from(getContext());
             convertView = inflater.inflate(resId, parent, false);
 
-            viewHolder.tvDatetime = (TextView) convertView.findViewById(R.id.tvDatetime);
+            viewHolder.imgvAvatar = (ImageView) convertView.findViewById(R.id.imgvAvatar);
+            viewHolder.tvName = (TextView) convertView.findViewById(R.id.tvName);
             viewHolder.tvAddress = (TextView) convertView.findViewById(R.id.tvAddress);
-            viewHolder.imgvCanceled = (ImageView) convertView.findViewById(R.id.imgvCanceled);
+
 
             convertView.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
 
-        viewHolder.tvDatetime.setText(item.getDatetime());
+        viewHolder.tvName.setText(item.getName());
         viewHolder.tvAddress.setText(item.getAddress());
-        if(!item.getStatus()){
-            viewHolder.imgvCanceled.setVisibility(View.VISIBLE);
-        }else {
-            viewHolder.imgvCanceled.setVisibility(View.GONE);
-        }
+        Picasso.with(context)
+                .load("file:///android_asset/"+item.getImageUrl())
+                .into(viewHolder.imgvAvatar);
 
         return convertView;
     }

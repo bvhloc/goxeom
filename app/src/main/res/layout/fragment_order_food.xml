@@ -1,0 +1,113 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/tab_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/mAppBackground"
+    android:clickable="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/upcase_food"
+            android:textColor="@color/mBlackText"
+            android:textStyle="bold" />
+
+        <View style="@style/Divider" />
+
+        <asia.covisoft.goom.view.segmented.SegmentedRadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_marginBottom="8dp"
+            android:orientation="horizontal"
+            android:id="@+id/segment_text"
+            android:checkedButton="@+id/button_one"
+            android:weightSum="1">
+
+            <RadioButton android:id="@+id/rdbCategory"
+                android:layout_width="0dp"
+                android:layout_weight="0.5"
+                android:layout_height="wrap_content"
+                android:minWidth="40dip"
+                android:minHeight="33dip"
+                android:text="@string/fragment_order_food_button_category"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:button="@null"
+                android:gravity="center"
+                android:textColor="@color/mGreen"
+                android:checked="true"/>
+
+            <RadioButton android:id="@+id/rdbNearMe"
+                android:layout_width="0dp"
+                android:layout_weight="0.5"
+                android:layout_height="wrap_content"
+                android:minWidth="40dip"
+                android:minHeight="33dip"
+                android:text="@string/fragment_order_food_button_nearme"
+                android:button="@null"
+                android:gravity="center"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="@color/mGreen" />
+
+        </asia.covisoft.goom.view.segmented.SegmentedRadioGroup>
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:id="@+id/lvFoodType"
+            />
+
+        <LinearLayout
+            android:id="@+id/lnlNearMe"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/mSelector"
+                android:id="@+id/search_container">
+
+                <android.widget.SearchView
+                    android:layout_marginTop="8dp"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                    android:layout_marginBottom="8dp"
+                    android:queryHint="@string/lowcase_search"
+                    android:background="@drawable/bg_search_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="36dp"
+                    android:id="@+id/searchView"
+                    android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+
+            </FrameLayout>
+
+            <asia.covisoft.goom.view.HeaderGridView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/gvRestaurants"
+                android:columnWidth="180dp"
+                android:numColumns="auto_fit"
+                android:stretchMode="columnWidth"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</FrameLayout>
