@@ -139,5 +139,6 @@
     <string name="upcase_food">FOOD</string>
     <string name="fragment_order_food_button_category">Category</string>
     <string name="fragment_order_food_button_nearme">Near Me</string>
+    <string name="fragment_order_food_searchrestaurant">Search Restaurant</string>
 
 </resources>

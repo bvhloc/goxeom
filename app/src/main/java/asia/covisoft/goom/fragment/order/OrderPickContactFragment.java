@@ -24,9 +24,11 @@ import de.greenrobot.event.EventBus;
  */
 public class OrderPickContactFragment extends RootFragment {
 
+    private RootFragment mCotext;
 
-    public OrderPickContactFragment() {
+    public OrderPickContactFragment(RootFragment context) {
         // Required empty public constructor
+        this.mCotext = context;
     }
 
     private EditText edtName, edtPhone;
@@ -48,6 +50,9 @@ public class OrderPickContactFragment extends RootFragment {
             @Override
             public void onClick(View v) {
 
+//                ((OrderCourierFragment)mCotext).RESULT_CODE = 1;
+//                ((OrderCourierFragment)mCotext).RECEIVED_DATA.putString("haha", edtName.getText().toString());
+//                mCotext.onResume();
                 getActivity().onBackPressed();
             }
         });

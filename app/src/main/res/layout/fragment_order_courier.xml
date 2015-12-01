@@ -23,6 +23,29 @@
 
         <View style="@style/Divider" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
+            android:text="@string/fragment_order_courier_drivernearme"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/mBlackText"
+            android:textStyle="bold" />
+
+        <com.google.android.gms.maps.MapView
+            android:id="@+id/mapView"
+            android:layout_width="wrap_content"
+            android:layout_height="200dp"
+            android:clickable="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/fragment_history_detail_doubleclickmaptozoom"
+            android:textColor="@color/mBlackText" />
+
         <ScrollView
             android:id="@+id/scrollView"
             android:layout_width="match_parent"
@@ -32,29 +55,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginStart="5dp"
-                    android:text="@string/fragment_order_courier_drivernearme"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="@color/mBlackText"
-                    android:textStyle="bold" />
-
-                <fragment
-                    android:id="@+id/mMap"
-                    android:name="asia.covisoft.goom.view.WorkaroundMapFragment"
-                    android:layout_width="match_parent"
-                    android:layout_height="200dp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:text="@string/fragment_history_detail_doubleclickmaptozoom"
-                    android:textColor="@color/mBlackText" />
 
                 <TextView
                     android:layout_width="wrap_content"

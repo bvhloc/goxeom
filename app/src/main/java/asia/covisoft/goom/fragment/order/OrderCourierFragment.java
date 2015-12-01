@@ -1,15 +1,20 @@
 package asia.covisoft.goom.fragment.order;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ScrollView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapView;
+import com.google.android.gms.maps.MapsInitializer;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
@@ -19,7 +24,9 @@ import asia.covisoft.goom.FragmentNavigator;
 import asia.covisoft.goom.GPSTracker;
 import asia.covisoft.goom.R;
 import asia.covisoft.goom.backpress.RootFragment;
+import asia.covisoft.goom.view.CustomMapView;
 import asia.covisoft.goom.view.WorkaroundMapFragment;
+import asia.covisoft.goom.view.WorkaroundMapView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -32,6 +39,10 @@ public class OrderCourierFragment extends RootFragment {
     }
 
     private ScrollView scrollView;
+    private MapView mapView;
+
+    public int RESULT_CODE = 0;
+    public Bundle RECEIVED_DATA = new Bundle();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -40,6 +51,8 @@ public class OrderCourierFragment extends RootFragment {
         View rootView = inflater.inflate(R.layout.fragment_order_courier, container, false);
 
         scrollView = (ScrollView) rootView.findViewById(R.id.scrollView);
+        mapView = (MapView) rootView.findViewById(R.id.mapView);
+        mapView.onCreate(savedInstanceState);
         rootView.findViewById(R.id.lnlPickFrom).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -58,14 +71,14 @@ public class OrderCourierFragment extends RootFragment {
             @Override
             public void onClick(View v) {
 
-                FragmentNavigator.goTo(OrderCourierFragment.this, new OrderPickContactFragment());
+                FragmentNavigator.goTo(OrderCourierFragment.this, new OrderPickContactFragment(OrderCourierFragment.this));
             }
         });
         rootView.findViewById(R.id.lnlContactTo).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                FragmentNavigator.goTo(OrderCourierFragment.this, new OrderPickContactFragment());
+                FragmentNavigator.goTo(OrderCourierFragment.this, new OrderPickContactFragment(OrderCourierFragment.this));
             }
         });
         rootView.findViewById(R.id.btnNext).setOnClickListener(new View.OnClickListener() {
@@ -89,18 +102,33 @@ public class OrderCourierFragment extends RootFragment {
     }
 
     private void setUpMap() {
+
+        MapsInitializer.initialize(this.getActivity());
+
         // Do a null check to confirm that we have not already instantiated the map.
         if (mMap == null) {
             // Try to obtain the map from the SupportMapFragment.
-            mMap = ((WorkaroundMapFragment) getChildFragmentManager().findFragmentById(R.id.mMap))
+            mMap = mapView
                     .getMap();
-            ((WorkaroundMapFragment) getChildFragmentManager().findFragmentById(R.id.mMap)).setOnTouchListener(new WorkaroundMapFragment.OnTouchListener() {
-                @Override
-                public void onTouch() {
 
-                    scrollView.requestDisallowInterceptTouchEvent(true);
-                }
-            });
+//            mapView.setOnTouchListener(new View.OnTouchListener() {
+//                @Override
+//                public boolean onTouch(View v, MotionEvent event) {
+//                    switch (event.getAction()) {
+//                        case MotionEvent.ACTION_DOWN:
+//
+//                            Log.d("myDebug", "down");
+//
+//                            return true;
+//                        case MotionEvent.ACTION_UP:
+//
+//                            Log.d("myDebug", "up");
+//
+//                            return true;
+//                    }
+//                    return true;
+//                }
+//            });
             // Check if we were successful in obtaining the map.
             if (mMap != null) {
                 GPSTracker gpsTracker = new GPSTracker(this.getContext());
@@ -132,5 +160,31 @@ public class OrderCourierFragment extends RootFragment {
                 });
             }
         }
+    }
+
+    @Override
+    public void onResume() {
+
+//        if (RESULT_CODE == 1) {
+//
+//            Log.d("myDebug", RECEIVED_DATA.getString("haha"));
+//            RECEIVED_DATA.clear();
+//            RESULT_CODE = 0;
+//        }
+
+        mapView.onResume();
+        super.onResume();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        mapView.onDestroy();
+    }
+
+    @Override
+    public void onLowMemory() {
+        super.onLowMemory();
+        mapView.onLowMemory();
     }
 }

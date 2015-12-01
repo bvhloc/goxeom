@@ -89,7 +89,7 @@
                     android:layout_marginLeft="@dimen/activity_horizontal_margin"
                     android:layout_marginRight="@dimen/activity_horizontal_margin"
                     android:layout_marginBottom="8dp"
-                    android:queryHint="@string/lowcase_search"
+                    android:queryHint="@string/fragment_order_food_searchrestaurant"
                     android:background="@drawable/bg_search_view"
                     android:layout_width="match_parent"
                     android:layout_height="36dp"

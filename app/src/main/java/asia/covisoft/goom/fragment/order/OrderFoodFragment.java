@@ -8,8 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CompoundButton;
-import android.widget.EditText;
-import android.widget.GridView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RadioButton;
@@ -17,22 +15,21 @@ import android.widget.SearchView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.MapView;
+import com.google.android.gms.maps.MapsInitializer;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.ArrayList;
 
-import asia.covisoft.goom.FragmentNavigator;
 import asia.covisoft.goom.GPSTracker;
 import asia.covisoft.goom.R;
+import asia.covisoft.goom.adapter.list.FoodTypeListAdapter;
 import asia.covisoft.goom.adapter.list.RestaurantListAdapter;
 import asia.covisoft.goom.backpress.RootFragment;
+import asia.covisoft.goom.pojo.FoodTypeItem;
 import asia.covisoft.goom.pojo.RestaurantItem;
 import asia.covisoft.goom.view.HeaderGridView;
-import asia.covisoft.goom.view.WorkaroundMapFragment;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -67,14 +64,24 @@ public class OrderFoodFragment extends RootFragment {
             @Override
             public void onClick(View v) {
 
+                //click searchView
                 searchView.setIconified(false);
             }
         });
 
+        mapView = new MapView(getActivity());
+        mapView.setClickable(true);
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT, 400);
+        mapView.setLayoutParams(params);
+        mapView.onCreate(savedInstanceState);
+        MapsInitializer.initialize(this.getActivity());
+
         return rootView;
     }
 
-    private RestaurantListAdapter mAdapter;
+    private RestaurantListAdapter restaurantAdapter;
+    private FoodTypeListAdapter foodtypeAdapter;
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
@@ -106,38 +113,64 @@ public class OrderFoodFragment extends RootFragment {
             }
         });
 
+        foodtypeAdapter = new FoodTypeListAdapter(getActivity(), listDataSet());
+        lvFoodType.setAdapter(foodtypeAdapter);
+
 //        int pixel = getActivity().getWindowManager().getDefaultDisplay();
 
 //        LayoutInflater inflater = getActivity().getLayoutInflater();
 //        header = inflater.inflate(R.layout.map_header, null);
 //        gvRestarants.addHeaderView(header);
 
-        WorkaroundMapFragment mapFrag = WorkaroundMapFragment.newInstance();
-        View header = mapFrag.getView();
-        gvRestarants.addHeaderView(header);
+        gvRestarants.addHeaderView(mapView);
 
-        mAdapter = new RestaurantListAdapter(getActivity(), dataSet());
-        gvRestarants.setAdapter(mAdapter);
+        restaurantAdapter = new RestaurantListAdapter(getActivity(), gridDataSet());
+        gvRestarants.setAdapter(restaurantAdapter);
 
         setUpMap();
     }
 
+    private MapView mapView;
     private GoogleMap mMap;
-    private WorkaroundMapFragment mapFrag;
 
     private void setUpMap() {
         // Do a null check to confirm that we have not already instantiated the map.
         if (mMap == null) {
             // Try to obtain the map from the SupportMapFragment.
-            mMap = ((WorkaroundMapFragment) getChildFragmentManager().findFragmentById(R.id.mMap))
+            mMap = mapView
                     .getMap();
-            ((WorkaroundMapFragment) getChildFragmentManager().findFragmentById(R.id.mMap)).setOnTouchListener(new WorkaroundMapFragment.OnTouchListener() {
-                @Override
-                public void onTouch() {
-
-                    gvRestarants.requestDisallowInterceptTouchEvent(true);
-                }
-            });
+//            mapView.setOnTouchListener(new View.OnTouchListener() {
+//                @Override
+//                public boolean onTouch(View v, MotionEvent event) {
+//                    switch (event.getAction()) {
+//                        case MotionEvent.ACTION_DOWN:
+//
+//                            Log.d("myDebug", "down");
+//
+//                            return true;
+//                        case MotionEvent.ACTION_UP:
+//
+//                            Log.d("myDebug", "up");
+//
+//                            return true;
+//                    }
+//                    return false;
+//                }
+//            });
+//            mapView.setOnTouchListener(new WorkaroundMapView.OnTouchListener() {
+//                @Override
+//                public void onTouch() {
+//
+//                    gvRestarants.requestDisallowInterceptTouchEvent(false);
+//                }
+//            });
+//            ((WorkaroundMapFragment) getChildFragmentManager().findFragmentById(R.id.mMap)).setOnTouchListener(new WorkaroundMapFragment.OnTouchListener() {
+//                @Override
+//                public void onTouch() {
+//
+//                    gvRestarants.requestDisallowInterceptTouchEvent(true);
+//                }
+//            });
             // Check if we were successful in obtaining the map.
             if (mMap != null) {
                 GPSTracker gpsTracker = new GPSTracker(this.getContext());
@@ -151,8 +184,34 @@ public class OrderFoodFragment extends RootFragment {
         }
     }
 
+    @Override
+    public void onResume() {
+        mapView.onResume();
+        super.onResume();
+    }
 
-    private ArrayList<RestaurantItem> dataSet() {
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        mapView.onDestroy();
+    }
+
+    @Override
+    public void onLowMemory() {
+        super.onLowMemory();
+        mapView.onLowMemory();
+    }
+
+    private ArrayList<FoodTypeItem> listDataSet() {
+        ArrayList<FoodTypeItem> list = new ArrayList<>();
+        list.add(new FoodTypeItem("BEST-SELLER", "category/best.jpg"));
+        list.add(new FoodTypeItem("PHO", "category/pho.jpg"));
+        list.add(new FoodTypeItem("COM", "category/com.jpg"));
+        list.add(new FoodTypeItem("PIZZA", "category/pizza.jpg"));
+        return list;
+    }
+
+    private ArrayList<RestaurantItem> gridDataSet() {
         ArrayList<RestaurantItem> list = new ArrayList<>();
         list.add(new RestaurantItem("Cơm gà 3 ghiền", "96 Đặng Văn Ngữ, P4, Q3, HCM", "category/best.jpg"));
         list.add(new RestaurantItem("Cơm gà 3 ghiền", "96 Đặng Văn Ngữ, P4, Q3, HCM", "category/best.jpg"));
