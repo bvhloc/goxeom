@@ -91,7 +91,7 @@
     <string name="fragment_order_transport">TRANSPORT</string>
     <string name="fragment_order_shopping">SHOPPING</string>
 
-    <string name="fragment_order_courier_drivernearme">DRIVER NEAR ME</string>
+    <string name="upcase_drivernearme">DRIVER NEAR ME</string>
     <string name="fragment_order_courier_from">FROM</string>
     <string name="fragment_order_courier_to">TO</string>
     <string name="fragment_order_courier_pickalocation">Pick a Location</string>
@@ -151,5 +151,6 @@
     <string name="title_activity_order_pick_driver">OrderPickDriverActivity</string>
     <string name="title_activity_order_pick_location">OrderPickLocationActivity</string>
     <string name="title_activity_order_pick_contact">OrderPickContactActivity</string>
+    <string name="title_activity_order_courier">OrderCourierActivity</string>
 
 </resources>

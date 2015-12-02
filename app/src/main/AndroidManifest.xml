@@ -72,6 +72,10 @@
             android:name=".activity.order.OrderPickContactActivity"
             android:label="@string/title_activity_order_pick_contact" >
         </activity>
+        <activity
+            android:name=".activity.order.OrderCourierActivity"
+            android:label="@string/title_activity_order_courier" >
+        </activity>
     </application>
 
 </manifest>

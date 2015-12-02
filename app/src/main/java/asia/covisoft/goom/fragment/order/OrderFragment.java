@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import asia.covisoft.goom.ActivityAnim;
 import asia.covisoft.goom.FragmentNavigator;
 import asia.covisoft.goom.R;
+import asia.covisoft.goom.activity.order.OrderCourierActivity;
 import asia.covisoft.goom.activity.order.OrderFoodActivity;
 import asia.covisoft.goom.backpress.RootFragment;
 
@@ -33,7 +34,8 @@ public class OrderFragment extends RootFragment {
             @Override
             public void onClick(View v) {
 
-                FragmentNavigator.goTo(OrderFragment.this, new OrderCourierFragment());
+                startActivity(new Intent(getActivity(), OrderCourierActivity.class));
+                ActivityAnim.forward(getActivity());
             }
         });
         rootView.findViewById(R.id.imgvTransport).setOnClickListener(new View.OnClickListener() {

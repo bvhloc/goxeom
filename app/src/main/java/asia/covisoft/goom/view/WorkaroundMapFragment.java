@@ -17,7 +17,7 @@ import asia.covisoft.goom.backpress.OnBackPressListener;
 /**
  * Created by Covisoft on 24/11/2015.
  */
-public class WorkaroundMapFragment extends SupportMapFragment implements OnBackPressListener{
+public class WorkaroundMapFragment extends SupportMapFragment{
     private OnTouchListener mListener;
 
     @Override
@@ -60,11 +60,6 @@ public class WorkaroundMapFragment extends SupportMapFragment implements OnBackP
             }
             return super.dispatchTouchEvent(event);
         }
-    }
-
-    @Override
-    public boolean onBackPressed() {
-        return new BackPressImpl(this).onBackPressed();
     }
 }
 
