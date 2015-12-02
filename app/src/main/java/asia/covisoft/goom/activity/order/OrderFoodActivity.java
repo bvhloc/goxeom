@@ -1,12 +1,12 @@
-package asia.covisoft.goom.fragment.order;
+package asia.covisoft.goom.activity.order;
 
-
-import android.os.Bundle;
-import android.app.Fragment;
+import android.content.Context;
+import android.content.Intent;
 import android.support.v4.content.ContextCompat;
-import android.view.LayoutInflater;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -22,70 +22,29 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.ArrayList;
 
+import asia.covisoft.goom.ActivityAnim;
+import asia.covisoft.goom.Constant;
 import asia.covisoft.goom.GPSTracker;
 import asia.covisoft.goom.R;
 import asia.covisoft.goom.adapter.list.FoodTypeListAdapter;
 import asia.covisoft.goom.adapter.list.RestaurantListAdapter;
-import asia.covisoft.goom.backpress.RootFragment;
 import asia.covisoft.goom.pojo.FoodTypeItem;
 import asia.covisoft.goom.pojo.RestaurantItem;
 import asia.covisoft.goom.view.HeaderGridView;
 
-/**
- * A simple {@link Fragment} subclass.
- */
-public class OrderFoodFragment extends RootFragment {
+public class OrderFoodActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
-
-    public OrderFoodFragment() {
-        // Required empty public constructor
-    }
-
-    private RadioButton rdbCategory, rdbNearMe;
-    private ListView lvFoodType;
-    private HeaderGridView gvRestarants;
-    private LinearLayout lnlNearMe;
-    private SearchView searchView;
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View rootView = inflater.inflate(R.layout.fragment_order_food, container, false);
-
-        rdbCategory = (RadioButton) rootView.findViewById(R.id.rdbCategory);
-        rdbCategory.setTextColor(ContextCompat.getColor(getActivity(), R.color.mAppBackground));
-        rdbNearMe = (RadioButton) rootView.findViewById(R.id.rdbNearMe);
-        lvFoodType = (ListView) rootView.findViewById(R.id.lvFoodType);
-        lnlNearMe = (LinearLayout) rootView.findViewById(R.id.lnlNearMe);
-        gvRestarants = (HeaderGridView) rootView.findViewById(R.id.gvRestaurants);
-        searchView = (SearchView) rootView.findViewById(R.id.searchView);
-        rootView.findViewById(R.id.search_container).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                //click searchView
-                searchView.setIconified(false);
-            }
-        });
-
-        mapView = new MapView(getActivity());
-        mapView.setClickable(true);
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT, 400);
-        mapView.setLayoutParams(params);
-        mapView.onCreate(savedInstanceState);
-        MapsInitializer.initialize(this.getActivity());
-
-        return rootView;
-    }
+    private Context mContext;
 
     private RestaurantListAdapter restaurantAdapter;
     private FoodTypeListAdapter foodtypeAdapter;
 
     @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_order_food);
+        mContext = this;
+        initView();
 
         rdbCategory.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -95,26 +54,27 @@ public class OrderFoodFragment extends RootFragment {
 
                     //show Category
                     lvFoodType.setVisibility(View.VISIBLE);
-                    rdbCategory.setTextColor(ContextCompat.getColor(getActivity(), R.color.mAppBackground));
+                    rdbCategory.setTextColor(ContextCompat.getColor(mContext, R.color.mAppBackground));
 
                     //hide NearMe
                     lnlNearMe.setVisibility(View.GONE);
-                    rdbNearMe.setTextColor(ContextCompat.getColor(getActivity(), R.color.mGreen));
+                    rdbNearMe.setTextColor(ContextCompat.getColor(mContext, R.color.mGreen));
                 } else {
 
                     //hide Category
                     lvFoodType.setVisibility(View.GONE);
-                    rdbCategory.setTextColor(ContextCompat.getColor(getActivity(), R.color.mGreen));
+                    rdbCategory.setTextColor(ContextCompat.getColor(mContext, R.color.mGreen));
 
                     //show NearMe
                     lnlNearMe.setVisibility(View.VISIBLE);
-                    rdbNearMe.setTextColor(ContextCompat.getColor(getActivity(), R.color.mAppBackground));
+                    rdbNearMe.setTextColor(ContextCompat.getColor(mContext, R.color.mAppBackground));
                 }
             }
         });
 
-        foodtypeAdapter = new FoodTypeListAdapter(getActivity(), listDataSet());
+        foodtypeAdapter = new FoodTypeListAdapter(mContext, listDataSet());
         lvFoodType.setAdapter(foodtypeAdapter);
+        lvFoodType.setOnItemClickListener(this);
 
 //        int pixel = getActivity().getWindowManager().getDefaultDisplay();
 
@@ -122,12 +82,56 @@ public class OrderFoodFragment extends RootFragment {
 //        header = inflater.inflate(R.layout.map_header, null);
 //        gvRestarants.addHeaderView(header);
 
+        mapView = new MapView(mContext);
+        mapView.setClickable(true);
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT, 400);
+        mapView.setLayoutParams(params);
+        mapView.onCreate(savedInstanceState);
+        MapsInitializer.initialize(mContext);
+
         gvRestarants.addHeaderView(mapView);
 
-        restaurantAdapter = new RestaurantListAdapter(getActivity(), gridDataSet());
+        restaurantAdapter = new RestaurantListAdapter(mContext, gridDataSet());
         gvRestarants.setAdapter(restaurantAdapter);
 
+
+
         setUpMap();
+    }
+
+    private RadioButton rdbCategory, rdbNearMe;
+    private ListView lvFoodType;
+    private HeaderGridView gvRestarants;
+    private LinearLayout lnlNearMe;
+    private SearchView searchView;
+
+    private void initView(){
+
+        rdbCategory = (RadioButton) findViewById(R.id.rdbCategory);
+        rdbCategory.setTextColor(ContextCompat.getColor(mContext, R.color.mAppBackground));
+        rdbNearMe = (RadioButton) findViewById(R.id.rdbNearMe);
+        lvFoodType = (ListView) findViewById(R.id.lvFoodType);
+        lnlNearMe = (LinearLayout) findViewById(R.id.lnlNearMe);
+        gvRestarants = (HeaderGridView) findViewById(R.id.gvRestaurants);
+        searchView = (SearchView) findViewById(R.id.searchView);
+        findViewById(R.id.search_container).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                //click searchView
+                searchView.setIconified(false);
+            }
+        });
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+        Intent intent = new Intent(mContext, OrderFoodPickRestaurantActivity.class);
+        intent.putExtra(Constant.ORDER_FOOD_PICK_RESTAURANT_TITLE, foodtypeAdapter.getItem(position).getName());
+        startActivity(intent);
+        ActivityAnim.forward(this);
     }
 
     private MapView mapView;
@@ -173,7 +177,7 @@ public class OrderFoodFragment extends RootFragment {
 //            });
             // Check if we were successful in obtaining the map.
             if (mMap != null) {
-                GPSTracker gpsTracker = new GPSTracker(this.getContext());
+                GPSTracker gpsTracker = new GPSTracker(mContext);
                 double lat = gpsTracker.getLatitude();
                 double lng = gpsTracker.getLongitude();
                 LatLng currentLatLng = new LatLng(lat, lng);
@@ -227,5 +231,11 @@ public class OrderFoodFragment extends RootFragment {
         list.add(new RestaurantItem("Cơm gà 3 ghiền", "96 Đặng Văn Ngữ, P4, Q3, HCM", "category/best.jpg"));
         list.add(new RestaurantItem("Cơm gà 3 ghiền", "96 Đặng Văn Ngữ, P4, Q3, HCM", "category/best.jpg"));
         return list;
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        ActivityAnim.back(this);
     }
 }

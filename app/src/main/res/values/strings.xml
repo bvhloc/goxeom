@@ -140,5 +140,12 @@
     <string name="fragment_order_food_button_category">Category</string>
     <string name="fragment_order_food_button_nearme">Near Me</string>
     <string name="fragment_order_food_searchrestaurant">Search Restaurant</string>
+    <string name="title_activity_order_food_pick_restaurant">OrderFoodPickRestaurantActivity
+    </string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_order_food">OrderFoodActivity</string>
+    <string name="title_activity_order_made">OrderMadeActivity</string>
 
 </resources>

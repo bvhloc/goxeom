@@ -1,14 +1,17 @@
 package asia.covisoft.goom.fragment.order;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import asia.covisoft.goom.ActivityAnim;
 import asia.covisoft.goom.FragmentNavigator;
 import asia.covisoft.goom.R;
+import asia.covisoft.goom.activity.order.OrderMadeActivity;
 import asia.covisoft.goom.backpress.RootFragment;
 
 /**
@@ -32,7 +35,8 @@ public class OrderConfirmFragment extends RootFragment {
             @Override
             public void onClick(View v) {
 
-                FragmentNavigator.goTo(OrderConfirmFragment.this, new OrderMadeFragment());
+                startActivity(new Intent(getActivity(), OrderMadeActivity.class));
+                ActivityAnim.forward(getActivity());
             }
         });
 

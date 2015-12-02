@@ -1,0 +1,57 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/tab_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/mAppBackground"
+    android:clickable="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/upcase_food"
+            android:textColor="@color/mBlackText"
+            android:textStyle="bold" />
+
+        <View style="@style/Divider" />
+
+
+        <FrameLayout
+            android:id="@+id/search_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/mSelector">
+
+            <android.widget.SearchView
+                android:id="@+id/searchView"
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_search_view"
+                android:queryHint="@string/fragment_order_food_searchrestaurant"
+                android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+
+        </FrameLayout>
+
+        <asia.covisoft.goom.view.HeaderGridView
+            android:id="@+id/gvRestaurants"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:columnWidth="180dp"
+            android:numColumns="auto_fit"
+            android:stretchMode="columnWidth" />
+
+    </LinearLayout>
+
+</FrameLayout>
