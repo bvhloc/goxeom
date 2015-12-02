@@ -64,6 +64,10 @@
             android:name=".activity.order.OrderPickDriverActivity"
             android:label="@string/title_activity_order_pick_driver" >
         </activity>
+        <activity
+            android:name=".activity.order.OrderPickLocationActivity"
+            android:label="@string/title_activity_order_pick_location" >
+        </activity>
     </application>
 
 </manifest>

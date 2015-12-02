@@ -149,5 +149,6 @@
     <string name="title_activity_order_made">OrderMadeActivity</string>
     <string name="title_activity_order_confirm">OrderConfirmActivity</string>
     <string name="title_activity_order_pick_driver">OrderPickDriverActivity</string>
+    <string name="title_activity_order_pick_location">OrderPickLocationActivity</string>
 
 </resources>
