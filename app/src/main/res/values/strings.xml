@@ -92,8 +92,8 @@
     <string name="fragment_order_shopping">SHOPPING</string>
 
     <string name="upcase_drivernearme">DRIVER NEAR ME</string>
-    <string name="fragment_order_courier_from">FROM</string>
-    <string name="fragment_order_courier_to">TO</string>
+    <string name="upcase_from">FROM</string>
+    <string name="upcase_to">TO</string>
     <string name="fragment_order_courier_pickalocation">Pick a Location</string>
     <string name="fragment_order_courier_streetbuildingname">Street / Building Name</string>
     <string name="fragment_order_courier_locationdetails">Location details</string>
@@ -154,5 +154,16 @@
     <string name="title_activity_order_courier">OrderCourierActivity</string>
     <string name="title_activity_order_shopping">OrderShoppingActivity</string>
     <string name="title_activity_order_transport">OrderTransportActivity</string>
+    <string name="title_activity_order_food_pick_food">OrderFoodPickFoodActivity</string>
+    <string name="lowcase_order">Order</string>
+    <string name="upcase_estimatecost">ESTIMATE COST</string>
+    <string name="lowcase_addnote">Add Note</string>
+    <string name="title_activity_order_food_ordered">OrderFoodOrderedActivity</string>
+    <string name="activity_order_food_ordered_title">ORDERED</string>
+    <string name="upcase_foodcost">FOOD COST</string>
+    <string name="upcase_deliverycost">DELIVERY COST</string>
+    <string name="upcase_total">TOTAL</string>
+    <string name="upcase_bookingtime">BOOKING TIME</string>
+    <string name="activity_order_food_ordered_pickupnow">Pick up now!</string>
 
 </resources>

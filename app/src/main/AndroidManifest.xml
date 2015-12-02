@@ -55,17 +55,17 @@
         <activity
             android:name=".activity.order.OrderMadeActivity"
             android:label="@string/title_activity_order_made"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".activity.order.OrderConfirmActivity"
             android:label="@string/title_activity_order_confirm"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".activity.order.OrderPickDriverActivity"
             android:label="@string/title_activity_order_pick_driver"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".activity.order.OrderPickLocationActivity"
@@ -74,22 +74,30 @@
         <activity
             android:name=".activity.order.OrderPickContactActivity"
             android:label="@string/title_activity_order_pick_contact"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".activity.order.OrderCourierActivity"
             android:label="@string/title_activity_order_courier"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".activity.order.OrderShoppingActivity"
             android:label="@string/title_activity_order_shopping"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".activity.order.OrderTransportActivity"
             android:label="@string/title_activity_order_transport"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".activity.order.OrderFoodPickFoodActivity"
+            android:label="@string/title_activity_order_food_pick_food" >
+        </activity>
+        <activity
+            android:name=".activity.order.OrderFoodOrderedActivity"
+            android:label="@string/title_activity_order_food_ordered" >
         </activity>
     </application>
 

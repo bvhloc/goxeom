@@ -2,7 +2,6 @@ package asia.covisoft.goom.activity.order;
 
 import android.content.Context;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -13,12 +12,12 @@ import com.google.android.gms.maps.SupportMapFragment;
 
 import java.util.ArrayList;
 
-import asia.covisoft.goom.ActivityAnim;
+import asia.covisoft.goom.BaseActivity;
 import asia.covisoft.goom.R;
 import asia.covisoft.goom.adapter.list.LocationHistoryListAdapter;
 import asia.covisoft.goom.pojo.LocationHistoryItem;
 
-public class OrderPickLocationActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
+public class OrderPickLocationActivity extends BaseActivity implements AdapterView.OnItemClickListener {
 
     private Context mContext;
 
@@ -78,12 +77,6 @@ public class OrderPickLocationActivity extends AppCompatActivity implements Adap
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.add(R.id.tab_container, mapFragment);
         transaction.commit();
-    }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        ActivityAnim.back(mContext);
     }
 
     private ArrayList<LocationHistoryItem> dataSet(){

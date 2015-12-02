@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/black">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:id="@+id/imgvAvatar"
+        android:alpha="0.7"
+        android:scaleType="centerCrop"/>
+
+    <LinearLayout
+        android:padding="@dimen/activity_vertical_margin"
+        android:layout_gravity="bottom"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="1">
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageButton"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_location_transparent" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Banh Xeo 10 Xiem"
+                android:textColor="@color/mAppBackground"
+                android:textStyle="bold"
+                android:id="@+id/tvName" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="190 Nam Ky Khoi Nghia, Ward 6, District 3, HCM"
+                android:textColor="@color/mAppBackground"
+                android:textStyle="bold"
+                android:id="@+id/tvAddress" />
+
+        </LinearLayout>
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageButton2"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_call"
+            android:layout_gravity="bottom"/>
+    </LinearLayout>
+
+
+</FrameLayout>

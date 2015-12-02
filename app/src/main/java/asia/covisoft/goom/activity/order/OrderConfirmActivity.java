@@ -10,9 +10,10 @@ import android.view.MenuItem;
 import android.view.View;
 
 import asia.covisoft.goom.ActivityAnim;
+import asia.covisoft.goom.BaseActivity;
 import asia.covisoft.goom.R;
 
-public class OrderConfirmActivity extends AppCompatActivity {
+public class OrderConfirmActivity extends BaseActivity {
 
     private Context mContext;
 
@@ -27,14 +28,7 @@ public class OrderConfirmActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 startActivity(new Intent(mContext, OrderMadeActivity.class));
-                ActivityAnim.forward(mContext);
             }
         });
-    }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        ActivityAnim.back(mContext);
     }
 }

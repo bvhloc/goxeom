@@ -9,7 +9,7 @@
         android:layout_height="180dp"
         android:cropToPadding="true"
         android:id="@+id/imgvAvatar"
-        android:alpha="0.5"
+        android:alpha="0.7"
         android:scaleType="centerCrop"/>
 
     <LinearLayout

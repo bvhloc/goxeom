@@ -35,4 +35,9 @@
         <item name="android:textColor">#FFFFFF</item>
     </style>
 
+    <style name="CustomEditText" parent="Widget.AppCompat.EditText">
+        <item name="android:padding">3dp</item>
+        <item name="android:background">@drawable/bg_custom_edittext</item>
+    </style>
+
 </resources>

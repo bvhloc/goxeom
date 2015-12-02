@@ -22,7 +22,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.ArrayList;
 
-import asia.covisoft.goom.ActivityAnim;
+import asia.covisoft.goom.BaseActivity;
 import asia.covisoft.goom.Constant;
 import asia.covisoft.goom.GPSTracker;
 import asia.covisoft.goom.R;
@@ -32,7 +32,7 @@ import asia.covisoft.goom.pojo.FoodTypeItem;
 import asia.covisoft.goom.pojo.RestaurantItem;
 import asia.covisoft.goom.view.HeaderGridView;
 
-public class OrderFoodActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
+public class OrderFoodActivity extends BaseActivity {
 
     private Context mContext;
 
@@ -74,12 +74,12 @@ public class OrderFoodActivity extends AppCompatActivity implements AdapterView.
 
         foodtypeAdapter = new FoodTypeListAdapter(mContext, listDataSet());
         lvFoodType.setAdapter(foodtypeAdapter);
-        lvFoodType.setOnItemClickListener(this);
+        lvFoodType.setOnItemClickListener(lvFoodTypeListener);
 
 //        int pixel = getActivity().getWindowManager().getDefaultDisplay();
 
 //        LayoutInflater inflater = getActivity().getLayoutInflater();
-//        header = inflater.inflate(R.layout.map_header, null);
+//        header = inflater.inflate(R.layout.header_map, null);
 //        gvRestarants.addHeaderView(header);
 
         mapView = new MapView(mContext);
@@ -94,11 +94,30 @@ public class OrderFoodActivity extends AppCompatActivity implements AdapterView.
 
         restaurantAdapter = new RestaurantListAdapter(mContext, gridDataSet());
         gvRestarants.setAdapter(restaurantAdapter);
-
-
+        gvRestarants.setOnItemClickListener(gvRestaurantsListener);
 
         setUpMap();
     }
+
+    private AdapterView.OnItemClickListener lvFoodTypeListener = new AdapterView.OnItemClickListener() {
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+            Intent intent = new Intent(mContext, OrderFoodPickRestaurantActivity.class);
+            intent.putExtra(Constant.ORDER_FOOD_PICK_RESTAURANT_TITLE, foodtypeAdapter.getItem(position).getName());
+            startActivity(intent);
+        }
+    };
+
+    private AdapterView.OnItemClickListener gvRestaurantsListener = new AdapterView.OnItemClickListener() {
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+            Intent intent = new Intent(mContext, OrderFoodPickFoodActivity.class);
+            intent.putExtra("imageurl", restaurantAdapter.getItem(position).getImageUrl());
+            startActivity(intent);
+        }
+    };
 
     private RadioButton rdbCategory, rdbNearMe;
     private ListView lvFoodType;
@@ -123,15 +142,6 @@ public class OrderFoodActivity extends AppCompatActivity implements AdapterView.
                 searchView.setIconified(false);
             }
         });
-    }
-
-    @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-        Intent intent = new Intent(mContext, OrderFoodPickRestaurantActivity.class);
-        intent.putExtra(Constant.ORDER_FOOD_PICK_RESTAURANT_TITLE, foodtypeAdapter.getItem(position).getName());
-        startActivity(intent);
-        ActivityAnim.forward(this);
     }
 
     private MapView mapView;
@@ -231,11 +241,5 @@ public class OrderFoodActivity extends AppCompatActivity implements AdapterView.
         list.add(new RestaurantItem("Cơm gà 3 ghiền", "96 Đặng Văn Ngữ, P4, Q3, HCM", "category/best.jpg"));
         list.add(new RestaurantItem("Cơm gà 3 ghiền", "96 Đặng Văn Ngữ, P4, Q3, HCM", "category/best.jpg"));
         return list;
-    }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        ActivityAnim.back(this);
     }
 }

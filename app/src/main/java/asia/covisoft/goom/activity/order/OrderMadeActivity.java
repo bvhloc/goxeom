@@ -8,12 +8,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import asia.covisoft.goom.ActivityAnim;
+import asia.covisoft.goom.BaseActivity;
 import asia.covisoft.goom.Constant;
 import asia.covisoft.goom.MainActivity;
 import asia.covisoft.goom.R;
 
-public class OrderMadeActivity extends AppCompatActivity {
+public class OrderMadeActivity extends BaseActivity {
 
     private Context mContext;
 
@@ -41,11 +41,5 @@ public class OrderMadeActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-    }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        ActivityAnim.back(mContext);
     }
 }

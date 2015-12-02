@@ -61,7 +61,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:layout_marginStart="5dp"
-                    android:text="@string/fragment_order_courier_from"
+                    android:text="@string/upcase_from"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textColor="@color/mBlackText"
                     android:textStyle="bold" />
@@ -254,7 +254,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:layout_marginStart="5dp"
-                    android:text="@string/fragment_order_courier_to"
+                    android:text="@string/upcase_to"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textColor="@color/mBlackText"
                     android:textStyle="bold" />

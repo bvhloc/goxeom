@@ -1,25 +1,27 @@
 package asia.covisoft.goom.activity.order;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.SearchView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import asia.covisoft.goom.ActivityAnim;
+import asia.covisoft.goom.BaseActivity;
 import asia.covisoft.goom.Constant;
 import asia.covisoft.goom.R;
 import asia.covisoft.goom.adapter.list.RestaurantListAdapter;
 import asia.covisoft.goom.pojo.RestaurantItem;
 import asia.covisoft.goom.view.HeaderGridView;
 
-public class OrderFoodPickRestaurantActivity extends AppCompatActivity {
+public class OrderFoodPickRestaurantActivity extends BaseActivity implements AdapterView.OnItemClickListener {
 
     private Context mContext;
 
@@ -37,6 +39,16 @@ public class OrderFoodPickRestaurantActivity extends AppCompatActivity {
 
         restaurantAdapter = new RestaurantListAdapter(this, gridDataSet());
         gvRestarants.setAdapter(restaurantAdapter);
+
+        gvRestarants.setOnItemClickListener(this);
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+        Intent intent = new Intent(mContext, OrderFoodPickFoodActivity.class);
+        intent.putExtra("imageurl", restaurantAdapter.getItem(position).getImageUrl());
+        startActivity(intent);
     }
 
     private TextView tvTitle;
@@ -78,6 +90,5 @@ public class OrderFoodPickRestaurantActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        ActivityAnim.back(mContext);
     }
 }

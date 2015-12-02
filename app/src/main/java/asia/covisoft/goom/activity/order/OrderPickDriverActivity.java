@@ -14,12 +14,12 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-import asia.covisoft.goom.ActivityAnim;
+import asia.covisoft.goom.BaseActivity;
 import asia.covisoft.goom.Constant;
 import asia.covisoft.goom.R;
 import asia.covisoft.goom.view.WorkaroundMapFragment;
 
-public class OrderPickDriverActivity extends AppCompatActivity {
+public class OrderPickDriverActivity extends BaseActivity {
 
     private Context mContext;
 
@@ -67,11 +67,5 @@ public class OrderPickDriverActivity extends AppCompatActivity {
                 mMap.setMyLocationEnabled(true);
             }
         }
-    }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        ActivityAnim.back(mContext);
     }
 }

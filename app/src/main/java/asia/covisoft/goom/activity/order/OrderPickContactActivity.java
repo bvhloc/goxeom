@@ -13,13 +13,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 
-import asia.covisoft.goom.ActivityAnim;
+import asia.covisoft.goom.BaseActivity;
 import asia.covisoft.goom.Constant;
 import asia.covisoft.goom.ContactProvider;
 import asia.covisoft.goom.R;
 import asia.covisoft.goom.eventbus.ActivityResultEvent;
 
-public class OrderPickContactActivity extends AppCompatActivity {
+public class OrderPickContactActivity extends BaseActivity {
 
     private Context mContext;
 
@@ -64,11 +64,5 @@ public class OrderPickContactActivity extends AppCompatActivity {
             edtPhone.setText(new ContactProvider().getContactNumber(mContext, uriContact));
             edtPhone.clearFocus();
         }
-    }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        ActivityAnim.back(mContext);
     }
 }

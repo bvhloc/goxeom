@@ -4,8 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ScrollView;
 
@@ -18,12 +16,13 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import asia.covisoft.goom.ActivityAnim;
+import asia.covisoft.goom.BaseActivity;
 import asia.covisoft.goom.Constant;
 import asia.covisoft.goom.GPSTracker;
 import asia.covisoft.goom.R;
 import asia.covisoft.goom.view.WorkaroundMapFragment;
 
-public class OrderCourierActivity extends AppCompatActivity {
+public class OrderCourierActivity extends BaseActivity {
 
     private Context mContext;
 
@@ -47,7 +46,6 @@ public class OrderCourierActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 startActivity(new Intent(mContext, OrderPickLocationActivity.class));
-                ActivityAnim.forward(mContext);
             }
         });
         findViewById(R.id.lnlPickTo).setOnClickListener(new View.OnClickListener() {
@@ -55,7 +53,6 @@ public class OrderCourierActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 startActivity(new Intent(mContext, OrderPickLocationActivity.class));
-                ActivityAnim.forward(mContext);
             }
         });
         findViewById(R.id.lnlContactFrom).setOnClickListener(new View.OnClickListener() {
@@ -63,7 +60,6 @@ public class OrderCourierActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 startActivity(new Intent(mContext, OrderPickContactActivity.class));
-                ActivityAnim.forward(mContext);
             }
         });
         findViewById(R.id.lnlContactTo).setOnClickListener(new View.OnClickListener() {
@@ -71,7 +67,6 @@ public class OrderCourierActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 startActivity(new Intent(mContext, OrderPickContactActivity.class));
-                ActivityAnim.forward(mContext);
             }
         });
         findViewById(R.id.btnNext).setOnClickListener(new View.OnClickListener() {
@@ -79,7 +74,6 @@ public class OrderCourierActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 startActivity(new Intent(mContext, OrderConfirmActivity.class));
-                ActivityAnim.forward(mContext);
             }
         });
     }
@@ -136,11 +130,5 @@ public class OrderCourierActivity extends AppCompatActivity {
                 });
             }
         }
-    }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        ActivityAnim.back(mContext);
     }
 }

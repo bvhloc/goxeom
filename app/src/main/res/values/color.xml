@@ -7,6 +7,7 @@
     <color name="mBlackText">#000000</color>
     <color name="mHintText">#808080</color>
     <color name="mBlueText">#1976D2</color>
+    <color name="mIndigo">#303F9F</color>
     <color name="mBlackDivider">#000000</color>
 
     <color name="mSelector">#ddd</color>
