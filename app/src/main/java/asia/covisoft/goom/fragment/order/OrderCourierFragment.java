@@ -21,10 +21,12 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import asia.covisoft.goom.ActivityAnim;
+import asia.covisoft.goom.Constant;
 import asia.covisoft.goom.FragmentNavigator;
 import asia.covisoft.goom.GPSTracker;
 import asia.covisoft.goom.R;
 import asia.covisoft.goom.activity.order.OrderConfirmActivity;
+import asia.covisoft.goom.activity.order.OrderPickDriverActivity;
 import asia.covisoft.goom.backpress.RootFragment;
 import asia.covisoft.goom.view.CustomMapView;
 import asia.covisoft.goom.view.WorkaroundMapFragment;
@@ -155,8 +157,11 @@ public class OrderCourierFragment extends RootFragment {
                     @Override
                     public boolean onMarkerClick(Marker marker) {
 
-                        OrderPickDriverFragment fragment = OrderPickDriverFragment.newInstance(marker.getPosition().latitude, marker.getPosition().longitude);
-                        FragmentNavigator.goTo(OrderCourierFragment.this, fragment);
+                        Intent intent = new Intent(getActivity(), OrderPickDriverActivity.class);
+                        intent.putExtra(Constant.DRIVER_LAT, marker.getPosition().latitude);
+                        intent.putExtra(Constant.DRIVER_LNG, marker.getPosition().longitude);
+                        startActivity(intent);
+                        ActivityAnim.forward(getActivity());
 
                         return true;
                     }

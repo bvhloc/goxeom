@@ -60,6 +60,10 @@
             android:name=".activity.order.OrderConfirmActivity"
             android:label="@string/title_activity_order_confirm" >
         </activity>
+        <activity
+            android:name=".activity.order.OrderPickDriverActivity"
+            android:label="@string/title_activity_order_pick_driver" >
+        </activity>
     </application>
 
 </manifest>
