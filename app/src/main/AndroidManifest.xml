@@ -68,6 +68,10 @@
             android:name=".activity.order.OrderPickLocationActivity"
             android:label="@string/title_activity_order_pick_location" >
         </activity>
+        <activity
+            android:name=".activity.order.OrderPickContactActivity"
+            android:label="@string/title_activity_order_pick_contact" >
+        </activity>
     </application>
 
 </manifest>

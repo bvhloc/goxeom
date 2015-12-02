@@ -1,18 +1,11 @@
 package asia.covisoft.goom;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.database.Cursor;
-import android.net.Uri;
-import android.provider.ContactsContract;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 
 import asia.covisoft.goom.eventbus.ActivityResultEvent;
-import asia.covisoft.goom.fragment.order.OrderPickContactFragment;
 import de.greenrobot.event.EventBus;
 
 public class MainActivity extends AppCompatActivity {

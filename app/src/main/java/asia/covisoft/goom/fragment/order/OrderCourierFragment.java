@@ -26,6 +26,7 @@ import asia.covisoft.goom.FragmentNavigator;
 import asia.covisoft.goom.GPSTracker;
 import asia.covisoft.goom.R;
 import asia.covisoft.goom.activity.order.OrderConfirmActivity;
+import asia.covisoft.goom.activity.order.OrderPickContactActivity;
 import asia.covisoft.goom.activity.order.OrderPickDriverActivity;
 import asia.covisoft.goom.activity.order.OrderPickLocationActivity;
 import asia.covisoft.goom.backpress.RootFragment;
@@ -78,14 +79,16 @@ public class OrderCourierFragment extends RootFragment {
             @Override
             public void onClick(View v) {
 
-                FragmentNavigator.goTo(OrderCourierFragment.this, new OrderPickContactFragment(OrderCourierFragment.this));
+                startActivity(new Intent(getActivity(), OrderPickContactActivity.class));
+                ActivityAnim.forward(getActivity());
             }
         });
         rootView.findViewById(R.id.lnlContactTo).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                FragmentNavigator.goTo(OrderCourierFragment.this, new OrderPickContactFragment(OrderCourierFragment.this));
+                startActivity(new Intent(getActivity(), OrderPickContactActivity.class));
+                ActivityAnim.forward(getActivity());
             }
         });
         rootView.findViewById(R.id.btnNext).setOnClickListener(new View.OnClickListener() {
