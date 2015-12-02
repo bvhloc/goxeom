@@ -1,6 +1,7 @@
 package asia.covisoft.goom.fragment.order;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.view.LayoutInflater;
@@ -15,9 +16,11 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import asia.covisoft.goom.ActivityAnim;
 import asia.covisoft.goom.FragmentNavigator;
 import asia.covisoft.goom.GPSTracker;
 import asia.covisoft.goom.R;
+import asia.covisoft.goom.activity.order.OrderConfirmActivity;
 import asia.covisoft.goom.backpress.RootFragment;
 import asia.covisoft.goom.view.WorkaroundMapFragment;
 
@@ -58,7 +61,8 @@ public class OrderTransportFragment extends RootFragment {
             @Override
             public void onClick(View v) {
 
-                FragmentNavigator.goTo(OrderTransportFragment.this, new OrderConfirmFragment());
+                startActivity(new Intent(getActivity(), OrderConfirmActivity.class));
+                ActivityAnim.forward(getActivity());
             }
         });
 

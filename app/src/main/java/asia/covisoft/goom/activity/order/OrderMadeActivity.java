@@ -1,5 +1,6 @@
 package asia.covisoft.goom.activity.order;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,10 +15,13 @@ import asia.covisoft.goom.R;
 
 public class OrderMadeActivity extends AppCompatActivity {
 
+    private Context mContext;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_made);
+        mContext = this;
 
         findViewById(R.id.btnCancelBooking).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -42,6 +46,6 @@ public class OrderMadeActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        ActivityAnim.back(this);
+        ActivityAnim.back(mContext);
     }
 }

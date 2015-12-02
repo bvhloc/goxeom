@@ -1,5 +1,6 @@
 package asia.covisoft.goom.activity.order;
 
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -20,8 +21,7 @@ import asia.covisoft.goom.view.HeaderGridView;
 
 public class OrderFoodPickRestaurantActivity extends AppCompatActivity {
 
-
-
+    private Context mContext;
 
     private HeaderGridView gvRestarants;
     private RestaurantListAdapter restaurantAdapter;
@@ -30,6 +30,7 @@ public class OrderFoodPickRestaurantActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_food_pick_restaurant);
+        mContext = this;
         initView();
 
         tvTitle.setText(getIntent().getStringExtra(Constant.ORDER_FOOD_PICK_RESTAURANT_TITLE));
@@ -77,6 +78,6 @@ public class OrderFoodPickRestaurantActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        ActivityAnim.back(this);
+        ActivityAnim.back(mContext);
     }
 }

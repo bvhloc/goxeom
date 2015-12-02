@@ -8,13 +8,13 @@ import android.content.Context;
  */
 public class ActivityAnim {
 
-    public static void forward(Activity context){
+    public static void forward(Context context){
 
-        context.overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
+        ((Activity)context).overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
     }
 
-    public static void back(Activity context){
+    public static void back(Context context){
 
-        context.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
+        ((Activity)context).overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
     }
 }

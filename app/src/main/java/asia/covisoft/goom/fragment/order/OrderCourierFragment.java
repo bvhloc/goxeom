@@ -20,9 +20,11 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import asia.covisoft.goom.ActivityAnim;
 import asia.covisoft.goom.FragmentNavigator;
 import asia.covisoft.goom.GPSTracker;
 import asia.covisoft.goom.R;
+import asia.covisoft.goom.activity.order.OrderConfirmActivity;
 import asia.covisoft.goom.backpress.RootFragment;
 import asia.covisoft.goom.view.CustomMapView;
 import asia.covisoft.goom.view.WorkaroundMapFragment;
@@ -85,7 +87,8 @@ public class OrderCourierFragment extends RootFragment {
             @Override
             public void onClick(View v) {
 
-                FragmentNavigator.goTo(OrderCourierFragment.this, new OrderConfirmFragment());
+                startActivity(new Intent(getActivity(), OrderConfirmActivity.class));
+                ActivityAnim.forward(getActivity());
             }
         });
 

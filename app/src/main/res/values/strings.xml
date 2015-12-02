@@ -147,5 +147,6 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_order_food">OrderFoodActivity</string>
     <string name="title_activity_order_made">OrderMadeActivity</string>
+    <string name="title_activity_order_confirm">OrderConfirmActivity</string>
 
 </resources>

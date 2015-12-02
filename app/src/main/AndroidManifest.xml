@@ -56,6 +56,10 @@
             android:name=".activity.order.OrderMadeActivity"
             android:label="@string/title_activity_order_made" >
         </activity>
+        <activity
+            android:name=".activity.order.OrderConfirmActivity"
+            android:label="@string/title_activity_order_confirm" >
+        </activity>
     </application>
 
 </manifest>
