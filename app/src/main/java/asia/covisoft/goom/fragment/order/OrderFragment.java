@@ -11,6 +11,8 @@ import asia.covisoft.goom.FragmentNavigator;
 import asia.covisoft.goom.R;
 import asia.covisoft.goom.activity.order.OrderCourierActivity;
 import asia.covisoft.goom.activity.order.OrderFoodActivity;
+import asia.covisoft.goom.activity.order.OrderShoppingActivity;
+import asia.covisoft.goom.activity.order.OrderTransportActivity;
 import asia.covisoft.goom.backpress.RootFragment;
 
 public class OrderFragment extends RootFragment {
@@ -42,7 +44,8 @@ public class OrderFragment extends RootFragment {
             @Override
             public void onClick(View v) {
 
-                FragmentNavigator.goTo(OrderFragment.this, new OrderTransportFragment());
+                startActivity(new Intent(getActivity(), OrderTransportActivity.class));
+                ActivityAnim.forward(getActivity());
             }
         });
         rootView.findViewById(R.id.imgvFood).setOnClickListener(new View.OnClickListener() {
@@ -57,7 +60,8 @@ public class OrderFragment extends RootFragment {
             @Override
             public void onClick(View v) {
 
-                FragmentNavigator.goTo(OrderFragment.this, new OrderShoppingFragment());
+                startActivity(new Intent(getActivity(), OrderShoppingActivity.class));
+                ActivityAnim.forward(getActivity());
             }
         });
 

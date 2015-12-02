@@ -152,5 +152,7 @@
     <string name="title_activity_order_pick_location">OrderPickLocationActivity</string>
     <string name="title_activity_order_pick_contact">OrderPickContactActivity</string>
     <string name="title_activity_order_courier">OrderCourierActivity</string>
+    <string name="title_activity_order_shopping">OrderShoppingActivity</string>
+    <string name="title_activity_order_transport">OrderTransportActivity</string>
 
 </resources>

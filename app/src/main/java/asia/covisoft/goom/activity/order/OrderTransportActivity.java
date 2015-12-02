@@ -1,10 +1,12 @@
-package asia.covisoft.goom.fragment.order;
+package asia.covisoft.goom.activity.order;
 
-
+import android.content.Context;
 import android.content.Intent;
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.app.Fragment;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ScrollView;
@@ -18,78 +20,64 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import asia.covisoft.goom.ActivityAnim;
 import asia.covisoft.goom.Constant;
-import asia.covisoft.goom.FragmentNavigator;
 import asia.covisoft.goom.GPSTracker;
 import asia.covisoft.goom.R;
-import asia.covisoft.goom.activity.order.OrderConfirmActivity;
-import asia.covisoft.goom.activity.order.OrderPickDriverActivity;
-import asia.covisoft.goom.activity.order.OrderPickLocationActivity;
-import asia.covisoft.goom.backpress.RootFragment;
 import asia.covisoft.goom.view.WorkaroundMapFragment;
 
-/**
- * A simple {@link Fragment} subclass.
- */
-public class OrderShoppingFragment extends RootFragment {
+public class OrderTransportActivity extends AppCompatActivity {
 
+    private Context mContext;
 
-    public OrderShoppingFragment() {
-        // Required empty public constructor
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_order_transport);
+        mContext = this;
+        initView();
+
+        setUpMap();
     }
 
     private ScrollView scrollView;
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View rootView = inflater.inflate(R.layout.fragment_order_shopping, container, false);
+    private void initView(){
 
-        scrollView = (ScrollView) rootView.findViewById(R.id.scrollView);
-        rootView.findViewById(R.id.lnlPickFrom).setOnClickListener(new View.OnClickListener() {
+        scrollView = (ScrollView) findViewById(R.id.scrollView);
+        findViewById(R.id.lnlPickFrom).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                startActivity(new Intent(getActivity(), OrderPickLocationActivity.class));
-                ActivityAnim.forward(getActivity());
+                startActivity(new Intent(mContext, OrderPickLocationActivity.class));
+                ActivityAnim.forward(mContext);
             }
         });
-        rootView.findViewById(R.id.lnlPickTo).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.lnlPickTo).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                startActivity(new Intent(getActivity(), OrderPickLocationActivity.class));
-                ActivityAnim.forward(getActivity());
+                startActivity(new Intent(mContext, OrderPickLocationActivity.class));
+                ActivityAnim.forward(mContext);
             }
         });
-        rootView.findViewById(R.id.btnNext).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.btnNext).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                startActivity(new Intent(getActivity(), OrderConfirmActivity.class));
-                ActivityAnim.forward(getActivity());
+                startActivity(new Intent(mContext, OrderConfirmActivity.class));
+                ActivityAnim.forward(mContext);
             }
         });
-
-        return rootView;
     }
 
     private GoogleMap mMap;
-
-    @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-
-        setUpMap();
-    }
 
     private void setUpMap() {
         // Do a null check to confirm that we have not already instantiated the map.
         if (mMap == null) {
             // Try to obtain the map from the SupportMapFragment.
-            mMap = ((WorkaroundMapFragment) getChildFragmentManager().findFragmentById(R.id.mMap))
+            mMap = ((WorkaroundMapFragment) getSupportFragmentManager().findFragmentById(R.id.mMap))
                     .getMap();
-            ((WorkaroundMapFragment) getChildFragmentManager().findFragmentById(R.id.mMap)).setOnTouchListener(new WorkaroundMapFragment.OnTouchListener() {
+            ((WorkaroundMapFragment) getSupportFragmentManager().findFragmentById(R.id.mMap)).setOnTouchListener(new WorkaroundMapFragment.OnTouchListener() {
                 @Override
                 public void onTouch() {
 
@@ -98,7 +86,7 @@ public class OrderShoppingFragment extends RootFragment {
             });
             // Check if we were successful in obtaining the map.
             if (mMap != null) {
-                GPSTracker gpsTracker = new GPSTracker(this.getContext());
+                GPSTracker gpsTracker = new GPSTracker(mContext);
                 double lat = gpsTracker.getLatitude();
                 double lng = gpsTracker.getLongitude();
                 LatLng currentLatLng = new LatLng(lat, lng);
@@ -119,16 +107,22 @@ public class OrderShoppingFragment extends RootFragment {
                     @Override
                     public boolean onMarkerClick(Marker marker) {
 
-                        Intent intent = new Intent(getActivity(), OrderPickDriverActivity.class);
+                        Intent intent = new Intent(mContext, OrderPickDriverActivity.class);
                         intent.putExtra(Constant.DRIVER_LAT, marker.getPosition().latitude);
                         intent.putExtra(Constant.DRIVER_LNG, marker.getPosition().longitude);
                         startActivity(intent);
-                        ActivityAnim.forward(getActivity());
+                        ActivityAnim.forward(mContext);
 
                         return true;
                     }
                 });
             }
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        ActivityAnim.back(mContext);
     }
 }
