@@ -16,6 +16,21 @@
     <string name="upcase_or">OR</string>
     <string name="upcase_book">BOOK</string>
     <string name="upcase_id">ID</string>
+    <string name="upcase_from">FROM</string>
+    <string name="upcase_to">TO</string>
+    <string name="upcase_done">DONE</string>
+    <string name="upcase_drivernearme">DRIVER NEAR ME</string>
+    <string name="upcase_estimatecost">ESTIMATE COST</string>
+    <string name="upcase_foodcost">FOOD COST</string>
+    <string name="upcase_deliverycost">DELIVERY COST</string>
+    <string name="upcase_total">TOTAL</string>
+    <string name="upcase_bookingtime">BOOKING TIME</string>
+    <string name="upcase_food">FOOD</string>
+    <string name="upcase_sendsms">SEND SMS</string>
+    <string name="upcase_call">CALL</string>
+    <string name="upcase_driverinformation">DRIVER INFORMATION</string>
+    <string name="upcase_bookingdetails">BOOKING DETAILS</string>
+    <string name="upcase_cancelbooking">Cancel Booking</string>
 
     <string name="lowcase_your_location">Your Location</string>
     <string name="lowcase_search">Search</string>
@@ -30,25 +45,22 @@
     <string name="lowcase_gender">Gender</string>
     <string name="lowcase_male">Male</string>
     <string name="lowcase_female">Female</string>
+    <string name="lowcase_order">Order</string>
+    <string name="lowcase_addnote">Add Note</string>
+    <string name="lowcase_doubleclickmaptozoom">Double click map to Zoom In</string>
+    <string name="lowcase_menu">Menu</string>
 
-    <string name="fragment_settings_tab_title">Settings</string>
-    <string name="fragment_history_tab_title">History</string>
-    <string name="fragment_order_tab_title">Order</string>
-    <string name="fragment_wallet_tab_title">Wallet</string>
+    <string name="settings_tab_title">Settings</string>
+    <string name="history_tab_title">History</string>
+    <string name="order_tab_title">Order</string>
+    <string name="wallet_tab_title">Wallet</string>
 
     <string name="fragment_history_title">MY BOOKING HISTORY</string>
     <string name="fragment_history_inprocess">INPROCESS</string>
     <string name="fragment_history_completed">COMPLETED</string>
 
-    <string name="fragment_history_detail_title">MY BOOKING</string>
-    <string name="fragment_history_detail_ontheway">YOUR DRIVER ON THE WAY TO</string>
-    <string name="fragment_history_detail_doubleclickmaptozoom">Double click map to Zoom In</string>
-    <string name="fragment_history_detail_driverinformation">DRIVER INFORMATION</string>
-    <string name="fragment_history_detail_bookingdetails">BOOKING DETAILS</string>
-    <string name="fragment_history_detail_menu">Menu</string>
-    <string name="fragment_history_detail_button_sendsms">SEND SMS</string>
-    <string name="fragment_history_detail_button_call">CALL</string>
-    <string name="fragment_history_detail_button_cancelbooking">Cancel Booking</string>
+    <string name="activity_history_detail_title">MY BOOKING</string>
+    <string name="activity_history_detail_ontheway">YOUR DRIVER ON THE WAY TO</string>
 
     <string name="fragment_wallet_title">MY WALLET</string>
     <string name="fragment_wallet_text1">Welcome to GOXEOM credit - Your - in - app Wallet!</string>
@@ -91,80 +103,52 @@
     <string name="fragment_order_transport">TRANSPORT</string>
     <string name="fragment_order_shopping">SHOPPING</string>
 
-    <string name="upcase_drivernearme">DRIVER NEAR ME</string>
-    <string name="upcase_from">FROM</string>
-    <string name="upcase_to">TO</string>
-    <string name="fragment_order_courier_pickalocation">Pick a Location</string>
-    <string name="fragment_order_courier_streetbuildingname">Street / Building Name</string>
-    <string name="fragment_order_courier_locationdetails">Location details</string>
-    <string name="fragment_order_courier_housenofloorlandmark">House No. / Floor / Landmard</string>
-    <string name="fragment_order_courier_contactperson">Contact person</string>
-    <string name="fragment_order_courier_inputifyouarenotthesender">Input if you are not the sender</string>
-    <string name="fragment_order_courier_itemstodeliver">ITEMS TO DELIVER</string>
+    <string name="activity_order_courier_title">INSTANT COURIER</string>
+    <string name="activity_order_courier_pickalocation">Pick a Location</string>
+    <string name="activity_order_courier_streetbuildingname">Street / Building Name</string>
+    <string name="activity_order_courier_locationdetails">Location details</string>
+    <string name="activity_order_courier_housenofloorlandmark">House No. / Floor / Landmard</string>
+    <string name="activity_order_courier_contactperson">Contact person</string>
+    <string name="activity_order_courier_inputifyouarenotthesender">Input if you are not the sender</string>
+    <string name="activity_order_courier_itemstodeliver">ITEMS TO DELIVER</string>
 
-    <string name="fragment_order_courier_title">INSTANT COURIER</string>
-    <string name="fragment_order_picklocation_title">PICK LOCATION</string>
-    <string name="fragment_order_picklocation_button_openlocation">OPEN LOCATION</string>
-    <string name="fragment_order_picklocation_button_currentlocation">CURRENT LOCATION</string>
-    <string name="fragment_order_picklocation_myhistory">MY HISTORY</string>
+    <string name="activity_order_transport_title">TRANSPORT</string>
 
-    <string name="fragment_order_confirm_title">CONFIRM</string>
+    <string name="activity_order_shopping_title">SHOPPING</string>
+    <string name="activity_order_shopping_shoplocationdetails">Shop Location details</string>
+    <string name="activity_order_shopping_shopnamefloorlandmark">Shop Name. / Floor / Landmark</string>
+    <string name="activity_order_shopping_itemstobuy">Items to Buy</string>
+    <string name="activity_order_shopping_pleasestatequantily">Please state quantily</string>
+    <string name="activity_order_shopping_estimatedcost">Estimated Cost</string>
+
+    <string name="activity_order_food_button_category">Category</string>
+    <string name="activity_order_food_button_nearme">Near Me</string>
+    <string name="activity_order_food_searchrestaurant">Search Restaurant</string>
+
+    <string name="activity_order_pickcontact_title">PICK CONTACT PERSON</string>
+    <string name="activity_order_pickcontact_addfromcontacts">ADD FROM CONTACTS</string>
+
+    <string name="activity_order_pickdriver_title">DRIVER</string>
+
+    <string name="activity_order_picklocation_title">PICK LOCATION</string>
+    <string name="activity_order_picklocation_button_openlocation">OPEN LOCATION</string>
+    <string name="activity_order_picklocation_button_currentlocation">CURRENT LOCATION</string>
+    <string name="activity_order_picklocation_myhistory">MY HISTORY</string>
+
+    <string name="activity_order_confirm_title">CONFIRM</string>
+
+    <string name="activity_order_made_title">BOOKING MADE</string>
+    <string name="activity_order_made_text1">We will notify you when we find you a driver</string>
+    <string name="activity_order_made_bookingtime">Booking time:</string>
+    <string name="activity_order_made_text2">DO YOU KNOW</string>
+    <string name="activity_order_made_text3">All transport booking comes with free hair cover and masker</string>
+    <string name="activity_order_made_button_cancelbooking">CANCEL BOOKING</string>
+    <string name="activity_order_made_button_newbooking">NEW BOOKING</string>
+
+    <string name="activity_order_food_ordered_title">ORDERED</string>
+    <string name="activity_order_food_ordered_pickupnow">Pick up now!</string>
 
     <string name="list_item_location_history_name">Name:</string>
     <string name="list_item_location_history_address">Address:</string>
-
-    <string name="fragment_order_transport_title">TRANSPORT</string>
-
-    <string name="fragment_order_made_title">BOOKING MADE</string>
-    <string name="fragment_order_made_text1">We will notify you when we find you a driver</string>
-    <string name="upcase_done">DONE</string>
-    <string name="fragment_order_made_bookingtime">Booking time:</string>
-    <string name="fragment_order_made_text2">DO YOU KNOW</string>
-    <string name="fragment_order_made_text3">All transport booking comes with free hair cover and masker</string>
-    <string name="fragment_order_made_button_cancelbooking">CANCEL BOOKING</string>
-    <string name="fragment_order_made_button_newbooking">NEW BOOKING</string>
-
-    <string name="fragment_order_pickdriver_title">DRIVER</string>
-
-<!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="fragment_order_shopping_title">SHOPPING</string>
-    <string name="fragment_order_shopping_shoplocationdetails">Shop Location details</string>
-    <string name="fragment_order_shopping_shopnamefloorlandmark">Shop Name. / Floor / Landmark</string>
-    <string name="fragment_order_shopping_itemstobuy">Items to Buy</string>
-    <string name="fragment_order_shopping_pleasestatequantily">Please state quantily</string>
-    <string name="fragment_order_shopping_estimatedcost">Estimated Cost</string>
-    <string name="fragment_order_pickcontact_title">PICK CONTACT PERSON</string>
-    <string name="fragment_order_pickcontact_addfromcontacts">ADD FROM CONTACTS</string>
-    <string name="upcase_food">FOOD</string>
-    <string name="fragment_order_food_button_category">Category</string>
-    <string name="fragment_order_food_button_nearme">Near Me</string>
-    <string name="fragment_order_food_searchrestaurant">Search Restaurant</string>
-    <string name="title_activity_order_food_pick_restaurant">OrderFoodPickRestaurantActivity
-    </string>
-
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
-    <string name="title_activity_order_food">OrderFoodActivity</string>
-    <string name="title_activity_order_made">OrderMadeActivity</string>
-    <string name="title_activity_order_confirm">OrderConfirmActivity</string>
-    <string name="title_activity_order_pick_driver">OrderPickDriverActivity</string>
-    <string name="title_activity_order_pick_location">OrderPickLocationActivity</string>
-    <string name="title_activity_order_pick_contact">OrderPickContactActivity</string>
-    <string name="title_activity_order_courier">OrderCourierActivity</string>
-    <string name="title_activity_order_shopping">OrderShoppingActivity</string>
-    <string name="title_activity_order_transport">OrderTransportActivity</string>
-    <string name="title_activity_order_food_pick_food">OrderFoodPickFoodActivity</string>
-    <string name="lowcase_order">Order</string>
-    <string name="upcase_estimatecost">ESTIMATE COST</string>
-    <string name="lowcase_addnote">Add Note</string>
-    <string name="title_activity_order_food_ordered">OrderFoodOrderedActivity</string>
-    <string name="activity_order_food_ordered_title">ORDERED</string>
-    <string name="upcase_foodcost">FOOD COST</string>
-    <string name="upcase_deliverycost">DELIVERY COST</string>
-    <string name="upcase_total">TOTAL</string>
-    <string name="upcase_bookingtime">BOOKING TIME</string>
-    <string name="activity_order_food_ordered_pickupnow">Pick up now!</string>
-    <string name="title_activity_history_details">HistoryDetailsActivity</string>
 
 </resources>

@@ -64,13 +64,13 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
     public CharSequence getPageTitle(final int position) {
         switch (position) {
             case 0:
-                return resources.getString(R.string.fragment_history_tab_title);
+                return resources.getString(R.string.history_tab_title);
             case 1:
-                return resources.getString(R.string.fragment_order_tab_title);
+                return resources.getString(R.string.order_tab_title);
             case 2:
-                return resources.getString(R.string.fragment_wallet_tab_title);
+                return resources.getString(R.string.wallet_tab_title);
             case 3:
-                return resources.getString(R.string.fragment_settings_tab_title);
+                return resources.getString(R.string.settings_tab_title);
             default:
                 return null;
         }

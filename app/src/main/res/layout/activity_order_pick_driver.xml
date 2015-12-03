@@ -17,7 +17,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="@string/fragment_order_pickdriver_title"
+            android:text="@string/activity_order_pickdriver_title"
             android:textColor="@color/mBlackText"
             android:textStyle="bold" />
 
@@ -43,14 +43,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:text="@string/fragment_history_detail_doubleclickmaptozoom"
+                    android:text="@string/lowcase_doubleclickmaptozoom"
                     android:textColor="@color/mBlackText" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/activity_horizontal_margin"
-                    android:text="@string/fragment_history_detail_driverinformation"
+                    android:text="@string/upcase_driverinformation"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textColor="@color/mBlackText"
                     android:textStyle="bold" />

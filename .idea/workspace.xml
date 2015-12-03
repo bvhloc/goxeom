@@ -23,25 +23,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="623ead71-1fb5-4b86-9766-5777327f3755" name="Default" comment="">
-      <change type="DELETED" beforePath="D:\Loc\GoXeOm\app\src\main\java\asia\covisoft\goom\adapter\page\HistoryPagerAdapter.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Loc\GoXeOm\app\src\main\java\asia\covisoft\goom\fragment\history\HistoryDetailsFragment.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Loc\GoXeOm\app\src\main\java\asia\covisoft\goom\fragment\history\HistoryListFragment.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Loc\GoXeOm\app\src\main\res\layout\fragment_history_details.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\Loc\GoXeOm\app\src\main\res\layout\fragment_history_list.xml" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/fragment/history/HistoryFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/fragment/history/HistoryFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/activity/order/OrderFoodPickFoodActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/activity/order/OrderFoodPickFoodActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/fragment/order/OrderFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/fragment/order/OrderFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/fragment/settings/SettingsFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/fragment/settings/SettingsFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/fragment/settings/SettingsSignupFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/fragment/settings/SettingsSignupFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/fragment/settings/SettingsSignupVerifyFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/fragment/settings/SettingsSignupVerifyFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/fragment/wallet/WalletFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/fragment/wallet/WalletFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/fragment/wallet/WalletTopupFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/fragment/wallet/WalletTopupFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_history.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_history.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/activity/order/OrderFoodActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/activity/order/OrderFoodActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/adapter/page/ViewPagerAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/adapter/page/ViewPagerAdapter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_history_details.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_history_details.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_order_confirm.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_order_confirm.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_order_courier.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_order_courier.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_order_food.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_order_food.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_order_food_ordered.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_order_food_ordered.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_order_food_pick_restaurant.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_order_food_pick_restaurant.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_order_made.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_order_made.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_order_pick_contact.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_order_pick_contact.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_order_pick_driver.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_order_pick_driver.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_order_pick_location.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_order_pick_location.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_order_shopping.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_order_shopping.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_order_transport.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_order_transport.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MOVED" beforePath="D:\Loc\GoXeOm\app\src\main\java\asia\covisoft\goom\backpress\RootFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/backpress/BackFragment.java" />
     </list>
     <ignored path="GoXeOm.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -69,27 +67,25 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="HistoryFragment.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/fragment/history/HistoryFragment.java">
+      <file leaf-file-name="OrderFoodActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/activity/order/OrderFoodActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.64165103">
-              <caret line="64" column="92" selection-start-line="64" selection-start-column="92" selection-end-line="64" selection-end-column="92" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="4" column="48" selection-start-line="4" selection-start-column="48" selection-end-line="4" selection-end-column="48" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#1608#2638#0" expanded="true" />
+                <element signature="e#2637#2638#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="OrderFoodActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/activity/order/OrderFoodActivity.java">
+      <file leaf-file-name="strings.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="72" column="11" selection-start-line="48" selection-start-column="8" selection-end-line="72" selection-end-column="11" />
-              <folding>
-                <element signature="e#1657#2687#0" expanded="true" />
-                <element signature="e#2686#2687#0" expanded="true" />
-              </folding>
+            <state vertical-scroll-proportion="-2.6649747">
+              <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -1847,7 +1843,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/map_header.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/view/SingleScrollableHeaderGridView.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_order_food.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/pojo/FoodTypeItem.java" />
@@ -1866,7 +1861,6 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_order_shopping.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_order_transport.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/fragment/order/OrderFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/grid_item_restaurant.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/color.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
@@ -1881,7 +1875,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/activity/BaseActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/activity/order/OrderConfirmActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/activity/order/OrderCourierActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/activity/order/OrderFoodActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/activity/order/OrderFoodPickRestaurantActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/activity/order/OrderMadeActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/activity/order/OrderPickContactActivity.java" />
@@ -1898,6 +1891,9 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_history.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/adapter/page/ViewPagerAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/fragment/history/HistoryFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/activity/order/OrderFoodActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
       </list>
     </option>
   </component>
@@ -1953,6 +1949,24 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="app" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GoXeOm" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="values" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderTypeNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -2038,32 +2052,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="fragment" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GoXeOm" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="goom" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="activity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="order" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -2353,13 +2341,13 @@
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977462" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33451957" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33451957" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3131068" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32038835" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977462" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -2388,13 +2376,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$USER_HOME$/AppData/Local/Android/sdk/platforms/android-23/android.jar!/android/view/View.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/view/SingleScrollableHeaderGridView.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.24767226">
@@ -2442,27 +2423,27 @@
         <state vertical-scroll-proportion="0.46785715">
           <caret line="39" column="52" selection-start-line="39" selection-start-column="52" selection-end-line="39" selection-end-column="52" />
           <folding>
-            <element signature="e#754#795#0" expanded="true" />
-            <element signature="e#1763#1817#0" expanded="true" />
-            <element signature="e#2061#2096#0" expanded="true" />
-            <element signature="e#2130#2181#0" expanded="true" />
-            <element signature="e#2914#2949#0" expanded="true" />
-            <element signature="e#3213#3248#0" expanded="true" />
-            <element signature="e#3298#3333#0" expanded="true" />
-            <element signature="e#3627#3646#0" expanded="true" />
-            <element signature="e#4007#4029#0" expanded="true" />
-            <element signature="e#4390#4411#0" expanded="true" />
-            <element signature="e#4772#4796#0" expanded="true" />
-            <element signature="e#5405#5430#0" expanded="true" />
-            <element signature="e#5791#5816#0" expanded="true" />
-            <element signature="e#6177#6202#0" expanded="true" />
-            <element signature="e#6563#6588#0" expanded="true" />
-            <element signature="e#6955#6990#0" expanded="true" />
-            <element signature="e#7042#7077#0" expanded="true" />
-            <element signature="e#8908#8930#0" expanded="true" />
-            <element signature="e#9515#9539#0" expanded="true" />
-            <element signature="e#10336#10369#0" expanded="true" />
-            <element signature="e#10403#10424#0" expanded="true" />
+            <element signature="e#754#795#0" expanded="false" />
+            <element signature="e#1763#1801#0" expanded="false" />
+            <element signature="e#2045#2080#0" expanded="true" />
+            <element signature="e#2114#2148#0" expanded="false" />
+            <element signature="e#2881#2916#0" expanded="true" />
+            <element signature="e#3180#3215#0" expanded="true" />
+            <element signature="e#3265#3300#0" expanded="true" />
+            <element signature="e#3594#3613#0" expanded="true" />
+            <element signature="e#3974#3996#0" expanded="true" />
+            <element signature="e#4357#4378#0" expanded="true" />
+            <element signature="e#4739#4763#0" expanded="true" />
+            <element signature="e#5372#5397#0" expanded="true" />
+            <element signature="e#5758#5783#0" expanded="true" />
+            <element signature="e#6144#6169#0" expanded="true" />
+            <element signature="e#6530#6555#0" expanded="true" />
+            <element signature="e#6922#6957#0" expanded="true" />
+            <element signature="e#7009#7044#0" expanded="true" />
+            <element signature="e#8875#8897#0" expanded="true" />
+            <element signature="e#9482#9506#0" expanded="true" />
+            <element signature="e#10303#10336#0" expanded="true" />
+            <element signature="e#10370#10391#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2482,17 +2463,17 @@
         <state vertical-scroll-proportion="0.93214285">
           <caret line="102" column="0" selection-start-line="102" selection-start-column="0" selection-end-line="102" selection-end-column="0" />
           <folding>
-            <element signature="e#754#797#0" expanded="true" />
+            <element signature="e#754#797#0" expanded="false" />
             <element signature="e#1275#1310#0" expanded="true" />
             <element signature="e#1354#1389#0" expanded="true" />
             <element signature="e#1474#1498#0" expanded="true" />
             <element signature="e#2044#2079#0" expanded="true" />
             <element signature="e#2119#2154#0" expanded="true" />
-            <element signature="e#2688#2745#0" expanded="true" />
-            <element signature="e#3269#3329#0" expanded="true" />
+            <element signature="e#2688#2745#0" expanded="false" />
+            <element signature="e#3269#3329#0" expanded="false" />
             <element signature="e#3758#3793#0" expanded="true" />
             <element signature="e#3833#3868#0" expanded="true" />
-            <element signature="e#3894#3941#0" expanded="true" />
+            <element signature="e#3894#3941#0" expanded="false" />
             <element signature="e#4192#4227#0" expanded="true" />
             <element signature="e#4267#4302#0" expanded="true" />
           </folding>
@@ -2507,12 +2488,12 @@
         <state vertical-scroll-proportion="0.93214285">
           <caret line="126" column="0" selection-start-line="126" selection-start-column="0" selection-end-line="126" selection-end-column="0" />
           <folding>
-            <element signature="e#754#796#0" expanded="true" />
+            <element signature="e#754#796#0" expanded="false" />
             <element signature="e#1303#1338#0" expanded="true" />
             <element signature="e#1376#1411#0" expanded="true" />
             <element signature="e#2082#2115#0" expanded="true" />
             <element signature="e#2164#2197#0" expanded="true" />
-            <element signature="e#2231#2283#0" expanded="true" />
+            <element signature="e#2231#2283#0" expanded="false" />
             <element signature="e#2772#2791#0" expanded="true" />
             <element signature="e#3487#3509#0" expanded="true" />
             <element signature="e#3758#3780#0" expanded="true" />
@@ -2547,30 +2528,30 @@
         <state vertical-scroll-proportion="0.93214285">
           <caret line="372" column="0" selection-start-line="372" selection-start-column="0" selection-end-line="372" selection-end-column="0" />
           <folding>
-            <element signature="e#754#793#0" expanded="true" />
+            <element signature="e#754#793#0" expanded="false" />
             <element signature="e#1543#1572#0" expanded="true" />
-            <element signature="e#2255#2309#0" expanded="true" />
-            <element signature="e#2649#2670#0" expanded="false" />
-            <element signature="e#3526#3560#0" expanded="true" />
-            <element signature="e#4255#4301#0" expanded="true" />
-            <element signature="e#4939#4990#0" expanded="true" />
-            <element signature="e#5889#5923#0" expanded="true" />
-            <element signature="e#6459#6512#0" expanded="true" />
-            <element signature="e#7150#7205#0" expanded="true" />
-            <element signature="e#8051#8085#0" expanded="true" />
-            <element signature="e#8620#8664#0" expanded="true" />
-            <element signature="e#9302#9355#0" expanded="true" />
-            <element signature="e#10201#10235#0" expanded="true" />
-            <element signature="e#10772#10819#0" expanded="true" />
-            <element signature="e#11920#11939#0" expanded="false" />
-            <element signature="e#12793#12827#0" expanded="true" />
-            <element signature="e#13522#13568#0" expanded="true" />
-            <element signature="e#14206#14257#0" expanded="true" />
-            <element signature="e#15154#15188#0" expanded="true" />
-            <element signature="e#15724#15772#0" expanded="true" />
-            <element signature="e#16410#16463#0" expanded="true" />
-            <element signature="e#17020#17053#0" expanded="true" />
-            <element signature="e#17129#17150#0" expanded="true" />
+            <element signature="e#2255#2293#0" expanded="false" />
+            <element signature="e#2633#2654#0" expanded="false" />
+            <element signature="e#3510#3544#0" expanded="true" />
+            <element signature="e#4239#4285#0" expanded="false" />
+            <element signature="e#4923#4974#0" expanded="false" />
+            <element signature="e#5873#5907#0" expanded="true" />
+            <element signature="e#6443#6496#0" expanded="false" />
+            <element signature="e#7134#7189#0" expanded="false" />
+            <element signature="e#8035#8069#0" expanded="true" />
+            <element signature="e#8604#8648#0" expanded="false" />
+            <element signature="e#9286#9339#0" expanded="false" />
+            <element signature="e#10185#10219#0" expanded="true" />
+            <element signature="e#10756#10803#0" expanded="false" />
+            <element signature="e#11904#11923#0" expanded="false" />
+            <element signature="e#12777#12811#0" expanded="true" />
+            <element signature="e#13506#13552#0" expanded="false" />
+            <element signature="e#14190#14241#0" expanded="false" />
+            <element signature="e#15138#15172#0" expanded="true" />
+            <element signature="e#15708#15756#0" expanded="false" />
+            <element signature="e#16394#16447#0" expanded="false" />
+            <element signature="e#17004#17037#0" expanded="true" />
+            <element signature="e#17113#17134#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2583,22 +2564,22 @@
         <state vertical-scroll-proportion="0.93214285">
           <caret line="237" column="0" selection-start-line="237" selection-start-column="0" selection-end-line="237" selection-end-column="0" />
           <folding>
-            <element signature="e#754#794#0" expanded="true" />
+            <element signature="e#754#794#0" expanded="false" />
             <element signature="e#1544#1573#0" expanded="true" />
-            <element signature="e#2256#2310#0" expanded="true" />
-            <element signature="e#2650#2671#0" expanded="false" />
-            <element signature="e#3527#3561#0" expanded="true" />
-            <element signature="e#4256#4302#0" expanded="true" />
-            <element signature="e#4940#4991#0" expanded="true" />
-            <element signature="e#5890#5924#0" expanded="true" />
-            <element signature="e#6460#6508#0" expanded="true" />
-            <element signature="e#7146#7199#0" expanded="true" />
-            <element signature="e#7704#7723#0" expanded="false" />
-            <element signature="e#8577#8611#0" expanded="true" />
-            <element signature="e#9306#9352#0" expanded="true" />
-            <element signature="e#9990#10041#0" expanded="true" />
-            <element signature="e#10598#10631#0" expanded="true" />
-            <element signature="e#10707#10728#0" expanded="true" />
+            <element signature="e#2256#2294#0" expanded="false" />
+            <element signature="e#2634#2655#0" expanded="false" />
+            <element signature="e#3511#3545#0" expanded="true" />
+            <element signature="e#4240#4286#0" expanded="false" />
+            <element signature="e#4924#4975#0" expanded="false" />
+            <element signature="e#5874#5908#0" expanded="true" />
+            <element signature="e#6444#6492#0" expanded="false" />
+            <element signature="e#7130#7183#0" expanded="false" />
+            <element signature="e#7688#7707#0" expanded="false" />
+            <element signature="e#8561#8595#0" expanded="true" />
+            <element signature="e#9290#9336#0" expanded="false" />
+            <element signature="e#9974#10025#0" expanded="false" />
+            <element signature="e#10582#10615#0" expanded="true" />
+            <element signature="e#10691#10712#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2608,25 +2589,6 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="63" column="52" selection-start-line="63" selection-start-column="52" selection-end-line="63" selection-end-column="52" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33777776">
-          <caret line="21" column="16" selection-start-line="21" selection-start-column="16" selection-end-line="21" selection-end-column="16" />
-          <folding>
-            <element signature="e#954#972#0" expanded="true" />
-            <element signature="e#2010#2045#0" expanded="true" />
-            <element signature="e#2284#2319#0" expanded="true" />
-            <element signature="e#3126#3169#0" expanded="true" />
-            <element signature="e#3426#3436#0" expanded="true" />
-            <element signature="e#3568#3607#0" expanded="true" />
-            <element signature="e#3789#3829#0" expanded="true" />
-            <element signature="e#3944#3987#0" expanded="true" />
-            <element signature="e#4125#4167#0" expanded="true" />
-            <element signature="e#4372#4412#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2752,8 +2714,8 @@
         <state vertical-scroll-proportion="0.7291667">
           <caret line="160" column="31" selection-start-line="68" selection-start-column="16" selection-end-line="160" selection-end-column="31" />
           <folding>
-            <element signature="e#2648#2669#0" expanded="true" />
-            <element signature="e#10056#10075#0" expanded="true" />
+            <element signature="e#2632#2653#0" expanded="true" />
+            <element signature="e#10040#10059#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2766,19 +2728,19 @@
         <state vertical-scroll-proportion="0.53125">
           <caret line="166" column="40" selection-start-line="166" selection-start-column="40" selection-end-line="166" selection-end-column="40" />
           <folding>
-            <element signature="e#784#827#0" expanded="true" />
+            <element signature="e#784#827#0" expanded="false" />
             <element signature="e#1724#1749#0" expanded="true" />
             <element signature="e#2112#2141#0" expanded="true" />
             <element signature="e#2555#2577#0" expanded="true" />
             <element signature="e#4254#4276#0" expanded="true" />
             <element signature="e#5277#5311#0" expanded="true" />
-            <element signature="e#5910#5956#0" expanded="true" />
-            <element signature="e#6506#6557#0" expanded="true" />
+            <element signature="e#5910#5956#0" expanded="false" />
+            <element signature="e#6506#6557#0" expanded="false" />
             <element signature="e#7316#7350#0" expanded="true" />
-            <element signature="e#7806#7854#0" expanded="true" />
-            <element signature="e#8404#8457#0" expanded="true" />
+            <element signature="e#7806#7854#0" expanded="false" />
+            <element signature="e#8404#8457#0" expanded="false" />
             <element signature="e#8882#8910#0" expanded="true" />
-            <element signature="e#9215#9262#0" expanded="true" />
+            <element signature="e#9215#9262#0" expanded="false" />
             <element signature="e#9604#9625#0" expanded="true" />
           </folding>
         </state>
@@ -2901,28 +2863,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_history_details.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.5712469">
-          <caret line="65" column="0" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/activity/order/OrderFoodActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="72" column="11" selection-start-line="48" selection-start-column="8" selection-end-line="72" selection-end-column="11" />
-          <folding>
-            <element signature="e#1657#2687#0" expanded="true" />
-            <element signature="e#2686#2687#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_history.xml">
       <provider editor-type-id="android-designer">
         <state />
@@ -2936,11 +2876,56 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/fragment/history/HistoryFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.64165103">
-          <caret line="64" column="92" selection-start-line="64" selection-start-column="92" selection-end-line="64" selection-end-column="92" />
+        <state vertical-scroll-proportion="0.36772984">
+          <caret line="50" column="0" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="3.315197">
+          <caret line="93" column="67" selection-start-line="93" selection-start-column="67" selection-end-line="93" selection-end-column="67" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/activity/order/OrderFoodActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="4" column="48" selection-start-line="4" selection-start-column="48" selection-end-line="4" selection-end-column="48" />
+          <folding>
+            <element signature="e#1608#2638#0" expanded="true" />
+            <element signature="e#2637#2638#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_history_details.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5570866">
+          <caret line="83" column="48" selection-start-line="83" selection-start-column="48" selection-end-line="83" selection-end-column="48" />
+          <folding>
+            <element signature="e#3340#3374#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="android-dummy://D:\Loc\GoXeOm/app/Translations Editor">
+      <provider selected="true" editor-type-id="string-resource-editor">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.6649747">
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

@@ -44,64 +44,55 @@
         </activity>
         <activity
             android:name=".activity.order.OrderFoodPickRestaurantActivity"
-            android:label="@string/title_activity_order_food_pick_restaurant"
             android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".activity.order.OrderFoodActivity"
-            android:label="@string/title_activity_order_food"
             android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".activity.order.OrderMadeActivity"
-            android:label="@string/title_activity_order_made"
             android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".activity.order.OrderConfirmActivity"
-            android:label="@string/title_activity_order_confirm"
             android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".activity.order.OrderPickDriverActivity"
-            android:label="@string/title_activity_order_pick_driver"
             android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".activity.order.OrderPickLocationActivity"
-            android:label="@string/title_activity_order_pick_location" >
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".activity.order.OrderPickContactActivity"
-            android:label="@string/title_activity_order_pick_contact"
             android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".activity.order.OrderCourierActivity"
-            android:label="@string/title_activity_order_courier"
             android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".activity.order.OrderShoppingActivity"
-            android:label="@string/title_activity_order_shopping"
             android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".activity.order.OrderTransportActivity"
-            android:label="@string/title_activity_order_transport"
             android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".activity.order.OrderFoodPickFoodActivity"
-            android:label="@string/title_activity_order_food_pick_food" >
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".activity.order.OrderFoodOrderedActivity"
-            android:label="@string/title_activity_order_food_ordered" >
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".activity.history.HistoryDetailsActivity"
-            android:label="@string/title_activity_history_details" >
+            android:screenOrientation="portrait">
         </activity>
     </application>
 

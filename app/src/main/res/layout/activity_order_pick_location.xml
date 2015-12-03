@@ -17,7 +17,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="@string/fragment_order_picklocation_title"
+            android:text="@string/activity_order_picklocation_title"
             android:textColor="@color/mBlackText"
             android:textStyle="bold" />
 
@@ -61,7 +61,7 @@
                 android:layout_height="wrap_content"
                 android:minWidth="40dip"
                 android:minHeight="33dip"
-                android:text="@string/fragment_order_picklocation_button_openlocation"
+                android:text="@string/activity_order_picklocation_button_openlocation"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:button="@null"
                 android:gravity="center"
@@ -73,7 +73,7 @@
                 android:layout_height="wrap_content"
                 android:minWidth="40dip"
                 android:minHeight="33dip"
-                android:text="@string/fragment_order_picklocation_button_currentlocation"
+                android:text="@string/activity_order_picklocation_button_currentlocation"
                 android:button="@null"
                 android:gravity="center"
                 android:textAppearance="?android:attr/textAppearanceSmall"
@@ -86,7 +86,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/activity_horizontal_margin"
             android:layout_marginRight="@dimen/activity_horizontal_margin"
-            android:text="@string/fragment_order_picklocation_myhistory"
+            android:text="@string/activity_order_picklocation_myhistory"
             android:textColor="@color/mBlackText" />
 
         <ListView

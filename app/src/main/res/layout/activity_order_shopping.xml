@@ -17,7 +17,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="@string/fragment_order_shopping_title"
+            android:text="@string/activity_order_shopping_title"
             android:textColor="@color/mBlackText"
             android:textStyle="bold" />
 
@@ -53,7 +53,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:text="@string/fragment_history_detail_doubleclickmaptozoom"
+                    android:text="@string/lowcase_doubleclickmaptozoom"
                     android:textColor="@color/mBlackText" />
 
                 <TextView
@@ -93,7 +93,7 @@
                             android:layout_height="wrap_content"
                             android:drawableEnd="@drawable/ic_forward"
                             android:drawableRight="@drawable/ic_forward"
-                            android:text="@string/fragment_order_courier_pickalocation"
+                            android:text="@string/activity_order_courier_pickalocation"
                             android:textAppearance="?android:attr/textAppearanceMedium"
                             android:textColor="@color/mBlackText" />
 
@@ -106,7 +106,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="@string/fragment_order_courier_streetbuildingname"
+                            android:text="@string/activity_order_courier_streetbuildingname"
                             android:textAppearance="?android:attr/textAppearanceMedium"
                             android:textColor="@color/mHintText" />
 
@@ -139,7 +139,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="@string/fragment_order_shopping_shoplocationdetails"
+                            android:text="@string/activity_order_shopping_shoplocationdetails"
                             android:textAppearance="?android:attr/textAppearanceMedium"
                             android:textColor="@color/mBlackText" />
 
@@ -152,7 +152,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="@string/fragment_order_shopping_shopnamefloorlandmark"
+                            android:text="@string/activity_order_shopping_shopnamefloorlandmark"
                             android:textAppearance="?android:attr/textAppearanceMedium"
                             android:textColor="@color/mHintText" />
 
@@ -184,7 +184,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="@string/fragment_order_shopping_itemstobuy"
+                            android:text="@string/activity_order_shopping_itemstobuy"
                             android:textAppearance="?android:attr/textAppearanceMedium"
                             android:textColor="@color/mBlackText" />
 
@@ -197,7 +197,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="@string/fragment_order_shopping_pleasestatequantily"
+                            android:text="@string/activity_order_shopping_pleasestatequantily"
                             android:textAppearance="?android:attr/textAppearanceMedium"
                             android:textColor="@color/mHintText" />
 
@@ -229,7 +229,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="@string/fragment_order_shopping_estimatedcost"
+                            android:text="@string/activity_order_shopping_estimatedcost"
                             android:textAppearance="?android:attr/textAppearanceMedium"
                             android:textColor="@color/mBlackText" />
 
@@ -286,7 +286,7 @@
                             android:layout_height="wrap_content"
                             android:drawableEnd="@drawable/ic_forward"
                             android:drawableRight="@drawable/ic_forward"
-                            android:text="@string/fragment_order_courier_pickalocation"
+                            android:text="@string/activity_order_courier_pickalocation"
                             android:textAppearance="?android:attr/textAppearanceMedium"
                             android:textColor="@color/mBlackText" />
 
@@ -299,7 +299,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="@string/fragment_order_courier_streetbuildingname"
+                            android:text="@string/activity_order_courier_streetbuildingname"
                             android:textAppearance="?android:attr/textAppearanceMedium"
                             android:textColor="@color/mHintText" />
 
@@ -332,7 +332,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="@string/fragment_order_courier_locationdetails"
+                            android:text="@string/activity_order_courier_locationdetails"
                             android:textAppearance="?android:attr/textAppearanceMedium"
                             android:textColor="@color/mBlackText" />
 
@@ -345,7 +345,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="@string/fragment_order_courier_housenofloorlandmark"
+                            android:text="@string/activity_order_courier_housenofloorlandmark"
                             android:textAppearance="?android:attr/textAppearanceMedium"
                             android:textColor="@color/mHintText" />
 

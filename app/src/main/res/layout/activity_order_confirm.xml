@@ -17,7 +17,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="@string/fragment_order_confirm_title"
+            android:text="@string/activity_order_confirm_title"
             android:textColor="@color/mBlackText"
             android:textStyle="bold" />
 

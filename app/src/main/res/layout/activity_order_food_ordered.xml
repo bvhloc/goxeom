@@ -142,7 +142,7 @@
                     android:layout_height="wrap_content"
                     android:drawableEnd="@drawable/ic_forward"
                     android:drawableRight="@drawable/ic_forward"
-                    android:text="@string/fragment_order_courier_pickalocation"
+                    android:text="@string/activity_order_courier_pickalocation"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textColor="@color/mBlackText" />
 
@@ -155,7 +155,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/fragment_order_courier_streetbuildingname"
+                    android:text="@string/activity_order_courier_streetbuildingname"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textColor="@color/mHintText" />
 
@@ -188,7 +188,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/fragment_order_courier_locationdetails"
+                    android:text="@string/activity_order_courier_locationdetails"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textColor="@color/mBlackText" />
 
@@ -201,7 +201,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/fragment_order_courier_housenofloorlandmark"
+                    android:text="@string/activity_order_courier_housenofloorlandmark"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textColor="@color/mHintText" />
 

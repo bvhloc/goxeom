@@ -17,7 +17,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="@string/fragment_order_pickcontact_title"
+            android:text="@string/activity_order_pickcontact_title"
             android:textColor="@color/mBlackText"
             android:textStyle="bold" />
 
@@ -48,7 +48,7 @@
                     android:background="@drawable/view_touch_selector"
                     android:layout_marginTop="@dimen/activity_vertical_margin"
                     android:layout_marginBottom="@dimen/activity_vertical_margin"
-                    android:text="@string/fragment_order_pickcontact_addfromcontacts"
+                    android:text="@string/activity_order_pickcontact_addfromcontacts"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textColor="#76b300" />
 

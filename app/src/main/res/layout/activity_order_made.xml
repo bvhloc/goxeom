@@ -18,7 +18,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/activity_vertical_margin"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="@string/fragment_order_made_title"
+            android:text="@string/activity_order_made_title"
             android:textColor="@color/mDarkGreen"
             android:textStyle="bold" />
 
@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="@string/fragment_order_made_text1"
+            android:text="@string/activity_order_made_text1"
             android:gravity="center"
             android:textColor="@color/mBlackText" />
 
@@ -61,7 +61,7 @@
                 android:layout_marginRight="@dimen/activity_horizontal_margin"
                 android:layout_marginEnd="@dimen/activity_horizontal_margin"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="@string/fragment_order_made_bookingtime"
+                android:text="@string/activity_order_made_bookingtime"
                 android:textColor="@color/mBlackText" />
 
             <TextView
@@ -82,7 +82,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/activity_vertical_margin"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="@string/fragment_order_made_text2"
+            android:text="@string/activity_order_made_text2"
             android:textColor="@color/mBlackText" />
 
         <TextView
@@ -95,7 +95,7 @@
             android:layout_gravity="center_horizontal"
             android:gravity="center"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="@string/fragment_order_made_text3"
+            android:text="@string/activity_order_made_text3"
             android:textColor="@color/mBlackText" />
 
         <LinearLayout
@@ -113,7 +113,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="40dp"
                 android:layout_marginRight="40dp"
-                android:text="@string/fragment_order_made_button_cancelbooking" />
+                android:text="@string/activity_order_made_button_cancelbooking" />
 
             <Button
                 android:id="@+id/btnNewBooking"
@@ -122,7 +122,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="40dp"
                 android:layout_marginRight="40dp"
-                android:text="@string/fragment_order_made_button_newbooking" />
+                android:text="@string/activity_order_made_button_newbooking" />
 
         </LinearLayout>
 
