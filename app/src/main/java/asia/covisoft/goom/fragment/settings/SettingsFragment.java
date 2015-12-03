@@ -8,10 +8,10 @@ import android.widget.LinearLayout;
 
 import asia.covisoft.goom.FragmentNavigator;
 import asia.covisoft.goom.R;
-import asia.covisoft.goom.backpress.RootFragment;
+import asia.covisoft.goom.backpress.BackFragment;
 
 
-public class SettingsFragment extends RootFragment {
+public class SettingsFragment extends BackFragment {
 
 
     private LinearLayout lnlSignup, lnlTerms, lnlRate, lnlCall;

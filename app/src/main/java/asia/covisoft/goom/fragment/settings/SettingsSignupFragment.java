@@ -3,7 +3,6 @@ package asia.covisoft.goom.fragment.settings;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,12 +10,12 @@ import android.widget.Button;
 
 import asia.covisoft.goom.FragmentNavigator;
 import asia.covisoft.goom.R;
-import asia.covisoft.goom.backpress.RootFragment;
+import asia.covisoft.goom.backpress.BackFragment;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class SettingsSignupFragment extends RootFragment {
+public class SettingsSignupFragment extends BackFragment {
 
 
     public SettingsSignupFragment() {

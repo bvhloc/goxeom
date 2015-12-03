@@ -2,7 +2,6 @@ package asia.covisoft.goom.activity.order;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -51,8 +50,6 @@ public class OrderFoodPickFoodActivity extends BaseActivity {
             }
         });
     }
-
-    ;
 
     private void setupListHeader() {
 

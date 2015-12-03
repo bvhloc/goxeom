@@ -12,13 +12,12 @@ import android.widget.Button;
 import asia.covisoft.goom.Constant;
 import asia.covisoft.goom.MainActivity;
 import asia.covisoft.goom.R;
-import asia.covisoft.goom.backpress.OnBackPressListener;
-import asia.covisoft.goom.backpress.RootFragment;
+import asia.covisoft.goom.backpress.BackFragment;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class SettingsSignupVerifyFragment extends RootFragment {
+public class SettingsSignupVerifyFragment extends BackFragment {
 
 
     public SettingsSignupVerifyFragment() {

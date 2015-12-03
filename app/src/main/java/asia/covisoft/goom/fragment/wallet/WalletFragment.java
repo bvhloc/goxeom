@@ -10,12 +10,12 @@ import android.widget.Button;
 
 import asia.covisoft.goom.FragmentNavigator;
 import asia.covisoft.goom.R;
-import asia.covisoft.goom.backpress.RootFragment;
+import asia.covisoft.goom.backpress.BackFragment;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class WalletFragment extends RootFragment {
+public class WalletFragment extends BackFragment {
 
 
     public WalletFragment() {

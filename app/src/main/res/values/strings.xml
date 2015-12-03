@@ -165,5 +165,6 @@
     <string name="upcase_total">TOTAL</string>
     <string name="upcase_bookingtime">BOOKING TIME</string>
     <string name="activity_order_food_ordered_pickupnow">Pick up now!</string>
+    <string name="title_activity_history_details">HistoryDetailsActivity</string>
 
 </resources>

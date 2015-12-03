@@ -7,15 +7,14 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import asia.covisoft.goom.ActivityAnim;
-import asia.covisoft.goom.FragmentNavigator;
 import asia.covisoft.goom.R;
 import asia.covisoft.goom.activity.order.OrderCourierActivity;
 import asia.covisoft.goom.activity.order.OrderFoodActivity;
 import asia.covisoft.goom.activity.order.OrderShoppingActivity;
 import asia.covisoft.goom.activity.order.OrderTransportActivity;
-import asia.covisoft.goom.backpress.RootFragment;
+import asia.covisoft.goom.backpress.BackFragment;
 
-public class OrderFragment extends RootFragment {
+public class OrderFragment extends BackFragment {
 
     public OrderFragment() {
         // Required empty public constructor

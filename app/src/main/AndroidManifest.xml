@@ -99,6 +99,10 @@
             android:name=".activity.order.OrderFoodOrderedActivity"
             android:label="@string/title_activity_order_food_ordered" >
         </activity>
+        <activity
+            android:name=".activity.history.HistoryDetailsActivity"
+            android:label="@string/title_activity_history_details" >
+        </activity>
     </application>
 
 </manifest>
