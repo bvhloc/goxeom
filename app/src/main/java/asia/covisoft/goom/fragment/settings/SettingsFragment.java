@@ -1,5 +1,6 @@
 package asia.covisoft.goom.fragment.settings;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +9,8 @@ import android.widget.LinearLayout;
 
 import asia.covisoft.goom.FragmentNavigator;
 import asia.covisoft.goom.R;
+import asia.covisoft.goom.activity.settings.SettingsSignupActivity;
+import asia.covisoft.goom.activity.settings.SettingsSignupVerifyActivity;
 import asia.covisoft.goom.backpress.BackFragment;
 
 
@@ -39,7 +42,7 @@ public class SettingsFragment extends BackFragment {
             @Override
             public void onClick(View v) {
 
-                FragmentNavigator.goTo(SettingsFragment.this, new SettingsSignupFragment());
+                startActivity(new Intent(getActivity(), SettingsSignupActivity.class));
             }
         });
 

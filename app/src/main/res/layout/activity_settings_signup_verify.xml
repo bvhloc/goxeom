@@ -31,7 +31,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_margin="@dimen/activity_vertical_margin"
         android:gravity="center"
-        android:text="@string/fragment_verify_text1"
+        android:text="@string/activity_settings_signup_verify_text1"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <ScrollView
@@ -60,7 +60,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="numberDecimal"
-                    android:hint="@string/fragment_verify_hinh_verificationcode"
+                    android:hint="@string/activity_settings_signup_verify_hinh_verificationcode"
                     android:ems="10"
                     android:id="@+id/editText" />
 
@@ -80,7 +80,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:text="@string/fragment_vefify_didntreceiveansms"
+                android:text="@string/activity_settings_signup_vefify_didntreceiveansms"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textColor="@color/mBlackText" />
 
@@ -88,7 +88,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:text="@string/fragment_verify_resendsms"
+                android:text="@string/activity_settings_signup_verify_resendsms"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textColor="@color/mDarkGreen" />
 
