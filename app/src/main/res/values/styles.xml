@@ -35,9 +35,15 @@
         <item name="android:textColor">#FFFFFF</item>
     </style>
 
-    <style name="CustomEditText" parent="Widget.AppCompat.EditText">
+    <style name="CustomSquareEditText" parent="Widget.AppCompat.EditText">
         <item name="android:padding">3dp</item>
-        <item name="android:background">@drawable/bg_custom_edittext</item>
+        <item name="android:background">@drawable/bg_square_edittext</item>
+    </style>
+
+    <style name="CustomBlackUnderlineEditText" parent="Widget.AppCompat.EditText">
+        <item name="android:paddingBottom">4dp</item>
+        <item name="android:paddingLeft">1dp</item>
+        <item name="android:background">@drawable/bg_black_underline_edittext</item>
     </style>
 
 </resources>

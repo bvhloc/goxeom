@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/mAppBackground"
-    android:clickable="true">
+    android:clickable="true"
+    android:focusableInTouchMode="true">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -84,7 +85,7 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:gravity="center_vertical"
                         android:orientation="vertical">
 
@@ -132,22 +133,19 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:gravity="center_vertical"
                         android:orientation="vertical">
 
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/activity_order_shopping_shoplocationdetails"
-                            android:textAppearance="?android:attr/textAppearanceMedium"
-                            android:textColor="@color/mBlackText" />
-
-                        <View
-                            style="@style/Divider"
+                        <EditText
+                            style="@style/CustomBlackUnderlineEditText"
                             android:layout_marginEnd="5dp"
                             android:layout_marginRight="5dp"
-                            android:background="@color/mBlackDivider" />
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/activity_order_shopping_shoplocationdetails"
+                            android:textColorHint="@color/mBlackText"
+                            android:id="@+id/edtShopDetails" />
 
                         <TextView
                             android:layout_width="match_parent"
@@ -177,22 +175,19 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:gravity="center_vertical"
                         android:orientation="vertical">
 
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/activity_order_shopping_itemstobuy"
-                            android:textAppearance="?android:attr/textAppearanceMedium"
-                            android:textColor="@color/mBlackText" />
-
-                        <View
-                            style="@style/Divider"
+                        <EditText
+                            style="@style/CustomBlackUnderlineEditText"
                             android:layout_marginEnd="5dp"
                             android:layout_marginRight="5dp"
-                            android:background="@color/mBlackDivider" />
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/activity_order_shopping_itemstobuy"
+                            android:textColorHint="@color/mBlackText"
+                            android:id="@+id/edtItems" />
 
                         <TextView
                             android:layout_width="match_parent"
@@ -222,22 +217,19 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:gravity="center_vertical"
                         android:orientation="vertical">
 
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/activity_order_shopping_estimatedcost"
-                            android:textAppearance="?android:attr/textAppearanceMedium"
-                            android:textColor="@color/mBlackText" />
-
-                        <View
-                            style="@style/Divider"
+                        <EditText
+                            style="@style/CustomBlackUnderlineEditText"
                             android:layout_marginEnd="5dp"
                             android:layout_marginRight="5dp"
-                            android:background="@color/mBlackDivider" />
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/activity_order_shopping_estimatedcost"
+                            android:textColorHint="@color/mBlackText"
+                            android:id="@+id/edtCost" />
 
                         <TextView
                             android:layout_width="match_parent"
@@ -277,7 +269,7 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:gravity="center_vertical"
                         android:orientation="vertical">
 
@@ -325,22 +317,19 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:gravity="center_vertical"
                         android:orientation="vertical">
 
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/activity_order_courier_locationdetails"
-                            android:textAppearance="?android:attr/textAppearanceMedium"
-                            android:textColor="@color/mBlackText" />
-
-                        <View
-                            style="@style/Divider"
+                        <EditText
+                            style="@style/CustomBlackUnderlineEditText"
                             android:layout_marginEnd="5dp"
                             android:layout_marginRight="5dp"
-                            android:background="@color/mBlackDivider" />
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/activity_order_courier_locationdetails"
+                            android:textColorHint="@color/mBlackText"
+                            android:id="@+id/edtLocactionDetails" />
 
                         <TextView
                             android:layout_width="match_parent"

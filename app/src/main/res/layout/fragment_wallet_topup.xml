@@ -142,10 +142,10 @@
                     android:layout_marginRight="@dimen/activity_horizontal_margin"
                     android:layout_weight="1"
                     android:hint="@string/fragment_toup_hint_bankaccountholdername"
-                    style="@style/CustomEditText"/>
+                    style="@style/CustomSquareEditText"/>
 
                 <EditText
-                    style="@style/CustomEditText"
+                    style="@style/CustomSquareEditText"
                     android:id="@+id/edtBankName"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
@@ -156,7 +156,7 @@
                     android:hint="@string/fragment_toup_hint_bankname" />
 
                 <EditText
-                    style="@style/CustomEditText"
+                    style="@style/CustomSquareEditText"
                     android:id="@+id/edtAmountTransfer"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
@@ -177,7 +177,7 @@
                     android:textStyle="bold" />
 
                 <EditText
-                    style="@style/CustomEditText"
+                    style="@style/CustomSquareEditText"
                     android:id="@+id/edtSerialNubmer"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
