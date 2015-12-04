@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
             // withholding the previously created fragment from being created again
             // On orientation change, it will prevent fragment recreation
             // its necessary to reserving the fragment stack inside each tab
-            int tabPos = getIntent().getIntExtra(Constant.TAB_POSTION, 0);
+            int tabPos = getIntent().getIntExtra(Constant.TAB_POSTION, 1);
             initScreen(tabPos);
 
         } else {

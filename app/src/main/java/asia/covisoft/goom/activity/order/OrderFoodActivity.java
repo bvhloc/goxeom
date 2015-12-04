@@ -4,6 +4,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v4.content.ContextCompat;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.CompoundButton;
@@ -16,6 +19,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.MapsInitializer;
+import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
@@ -30,6 +34,7 @@ import asia.covisoft.goom.adapter.list.RestaurantListAdapter;
 import asia.covisoft.goom.pojo.FoodTypeItem;
 import asia.covisoft.goom.pojo.RestaurantItem;
 import asia.covisoft.goom.view.HeaderGridView;
+import asia.covisoft.goom.view.WorkaroundMapFragment;
 
 public class OrderFoodActivity extends BaseActivity {
 
@@ -75,11 +80,15 @@ public class OrderFoodActivity extends BaseActivity {
         lvFoodType.setAdapter(foodtypeAdapter);
         lvFoodType.setOnItemClickListener(lvFoodTypeListener);
 
-//        int pixel = getActivity().getWindowManager().getDefaultDisplay();
-
-//        LayoutInflater inflater = getActivity().getLayoutInflater();
-//        header = inflater.inflate(R.layout.header_map, null);
+//        LayoutInflater inflater = getLayoutInflater();
+//        View header = inflater.inflate(R.layout.header_map, null);
 //        gvRestarants.addHeaderView(header);
+//        mMap = ((WorkaroundMapFragment) header.findViewById(R.id.mMap))
+//                .getMap();
+
+//        WorkaroundMapFragment mapFrag = new WorkaroundMapFragment();
+//        View listHeaderView = mapFrag.getView();
+//        gvRestarants.addHeaderView(listHeaderView);
 
         mapView = new MapView(mContext);
         mapView.setClickable(true);
@@ -91,11 +100,20 @@ public class OrderFoodActivity extends BaseActivity {
 
         gvRestarants.addHeaderView(mapView);
 
+//        mapView.setOnTouchListener(new View.OnTouchListener() {
+//            @Override
+//            public boolean onTouch(View v, MotionEvent event) {
+//
+//                Log.d("myDebug", "");
+//                return true;
+//            }
+//        });
+
         restaurantAdapter = new RestaurantListAdapter(mContext, gridDataSet());
         gvRestarants.setAdapter(restaurantAdapter);
         gvRestarants.setOnItemClickListener(gvRestaurantsListener);
 
-        setUpMap();
+//        setUpMap();
     }
 
     private AdapterView.OnItemClickListener lvFoodTypeListener = new AdapterView.OnItemClickListener() {
@@ -124,7 +142,7 @@ public class OrderFoodActivity extends BaseActivity {
     private LinearLayout lnlNearMe;
     private SearchView searchView;
 
-    private void initView(){
+    private void initView() {
 
         rdbCategory = (RadioButton) findViewById(R.id.rdbCategory);
         rdbCategory.setTextColor(ContextCompat.getColor(mContext, R.color.mAppBackground));
@@ -150,8 +168,11 @@ public class OrderFoodActivity extends BaseActivity {
         // Do a null check to confirm that we have not already instantiated the map.
         if (mMap == null) {
             // Try to obtain the map from the SupportMapFragment.
+//            mMap = ((WorkaroundMapFragment) getSupportFragmentManager().findFragmentById(R.id.mMap))
+//                    .getMap();
             mMap = mapView
                     .getMap();
+
 //            mapView.setOnTouchListener(new View.OnTouchListener() {
 //                @Override
 //                public boolean onTouch(View v, MotionEvent event) {
