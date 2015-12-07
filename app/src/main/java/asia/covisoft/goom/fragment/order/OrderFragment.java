@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import asia.covisoft.goom.ActivityAnim;
 import asia.covisoft.goom.R;
 import asia.covisoft.goom.activity.order.OrderCourierActivity;
 import asia.covisoft.goom.activity.order.OrderFoodActivity;
@@ -36,7 +35,6 @@ public class OrderFragment extends BackFragment {
             public void onClick(View v) {
 
                 startActivity(new Intent(getActivity(), OrderCourierActivity.class));
-                ActivityAnim.forward(getActivity());
             }
         });
         rootView.findViewById(R.id.imgvTransport).setOnClickListener(new View.OnClickListener() {
@@ -44,7 +42,6 @@ public class OrderFragment extends BackFragment {
             public void onClick(View v) {
 
                 startActivity(new Intent(getActivity(), OrderTransportActivity.class));
-                ActivityAnim.forward(getActivity());
             }
         });
         rootView.findViewById(R.id.imgvFood).setOnClickListener(new View.OnClickListener() {
@@ -52,7 +49,6 @@ public class OrderFragment extends BackFragment {
             public void onClick(View v) {
 
                 startActivity(new Intent(getActivity(), OrderFoodActivity.class));
-                ActivityAnim.forward(getActivity());
             }
         });
         rootView.findViewById(R.id.imgvShopping).setOnClickListener(new View.OnClickListener() {
@@ -60,7 +56,6 @@ public class OrderFragment extends BackFragment {
             public void onClick(View v) {
 
                 startActivity(new Intent(getActivity(), OrderShoppingActivity.class));
-                ActivityAnim.forward(getActivity());
             }
         });
 

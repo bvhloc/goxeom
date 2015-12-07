@@ -165,6 +165,7 @@
                             android:text="35" />
 
                         <asia.covisoft.goom.view.segmented.SegmentedRadioGroup
+                            android:clickable="false"
                             android:layout_width="120dp"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal"
@@ -172,7 +173,7 @@
                             android:checkedButton="@+id/button_one"
                             android:weightSum="1">
 
-                            <RadioButton android:id="@+id/btnOpenLocation"
+                            <RadioButton android:id="@+id/rdbMale"
                                 android:layout_width="0dp"
                                 android:layout_weight="0.5"
                                 android:layout_height="wrap_content"
@@ -180,9 +181,10 @@
                                 android:textAppearance="?android:attr/textAppearanceSmall"
                                 android:button="@null"
                                 android:gravity="center"
-                                android:textColor="@color/mGreen" />
+                                android:textColor="@color/mGreen"
+                                android:enabled="false"/>
 
-                            <RadioButton android:id="@+id/btnCurrentLocation"
+                            <RadioButton android:id="@+id/rdbFemale"
                                 android:layout_width="0dp"
                                 android:layout_weight="0.5"
                                 android:layout_height="wrap_content"
@@ -190,7 +192,8 @@
                                 android:button="@null"
                                 android:gravity="center"
                                 android:textAppearance="?android:attr/textAppearanceSmall"
-                                android:textColor="@color/mGreen" />
+                                android:textColor="@color/mGreen"
+                                android:enabled="false"/>
 
                         </asia.covisoft.goom.view.segmented.SegmentedRadioGroup>
 

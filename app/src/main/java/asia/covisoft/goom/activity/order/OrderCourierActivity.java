@@ -2,7 +2,6 @@ package asia.covisoft.goom.activity.order;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ScrollView;
@@ -15,7 +14,6 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-import asia.covisoft.goom.ActivityAnim;
 import asia.covisoft.goom.BaseActivity;
 import asia.covisoft.goom.Constant;
 import asia.covisoft.goom.GPSTracker;
@@ -123,7 +121,6 @@ public class OrderCourierActivity extends BaseActivity {
                         intent.putExtra(Constant.DRIVER_LAT, marker.getPosition().latitude);
                         intent.putExtra(Constant.DRIVER_LNG, marker.getPosition().longitude);
                         startActivity(intent);
-                        ActivityAnim.forward(mContext);
 
                         return true;
                     }
