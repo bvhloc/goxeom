@@ -23,7 +23,7 @@
 
         <View style="@style/Divider" />
 
-        <asia.covisoft.goom.view.segmented.SegmentedRadioGroup
+        <asia.covisoft.goom.customview.segmented.SegmentedRadioGroup
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -60,7 +60,7 @@
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="@color/mGreen" />
 
-        </asia.covisoft.goom.view.segmented.SegmentedRadioGroup>
+        </asia.covisoft.goom.customview.segmented.SegmentedRadioGroup>
 
         <ListView
             android:layout_width="match_parent"
@@ -98,7 +98,7 @@
 
             </FrameLayout>
 
-            <asia.covisoft.goom.view.HeaderGridView
+            <asia.covisoft.goom.customview.HeaderGridView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/gvRestaurants"

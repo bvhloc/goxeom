@@ -1,12 +1,14 @@
-package asia.covisoft.goom;
+package asia.covisoft.goom.base;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
+import asia.covisoft.goom.R;
+
 /**
  * Created by Covisoft on 02/12/2015.
  */
-public class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

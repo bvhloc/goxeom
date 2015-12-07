@@ -9,7 +9,7 @@ import android.widget.ListView;
 import java.util.ArrayList;
 
 import asia.covisoft.goom.R;
-import asia.covisoft.goom.BaseActivity;
+import asia.covisoft.goom.base.BaseActivity;
 import asia.covisoft.goom.adapter.list.FoodListAdapter;
 import asia.covisoft.goom.pojo.FoodItem;
 

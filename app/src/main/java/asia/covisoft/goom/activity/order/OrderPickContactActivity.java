@@ -1,23 +1,17 @@
 package asia.covisoft.goom.activity.order;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.provider.ContactsContract;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 
-import asia.covisoft.goom.BaseActivity;
+import asia.covisoft.goom.base.BaseActivity;
 import asia.covisoft.goom.Constant;
 import asia.covisoft.goom.ContactProvider;
 import asia.covisoft.goom.R;
-import asia.covisoft.goom.eventbus.ActivityResultEvent;
 
 public class OrderPickContactActivity extends BaseActivity {
 

@@ -4,9 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v4.content.ContextCompat;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.CompoundButton;
@@ -18,14 +16,12 @@ import android.widget.SearchView;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
-import com.google.android.gms.maps.MapsInitializer;
-import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.ArrayList;
 
-import asia.covisoft.goom.BaseActivity;
+import asia.covisoft.goom.base.BaseActivity;
 import asia.covisoft.goom.Constant;
 import asia.covisoft.goom.GPSTracker;
 import asia.covisoft.goom.R;
@@ -33,8 +29,8 @@ import asia.covisoft.goom.adapter.list.FoodTypeListAdapter;
 import asia.covisoft.goom.adapter.list.RestaurantListAdapter;
 import asia.covisoft.goom.pojo.FoodTypeItem;
 import asia.covisoft.goom.pojo.RestaurantItem;
-import asia.covisoft.goom.view.HeaderGridView;
-import asia.covisoft.goom.view.WorkaroundMapFragment;
+import asia.covisoft.goom.customview.HeaderGridView;
+import asia.covisoft.goom.customview.WorkaroundMapFragment;
 
 public class OrderFoodActivity extends BaseActivity {
 
@@ -80,40 +76,15 @@ public class OrderFoodActivity extends BaseActivity {
         lvFoodType.setAdapter(foodtypeAdapter);
         lvFoodType.setOnItemClickListener(lvFoodTypeListener);
 
-//        LayoutInflater inflater = getLayoutInflater();
-//        View header = inflater.inflate(R.layout.header_map, null);
-//        gvRestarants.addHeaderView(header);
-//        mMap = ((WorkaroundMapFragment) header.findViewById(R.id.mMap))
-//                .getMap();
-
-//        WorkaroundMapFragment mapFrag = new WorkaroundMapFragment();
-//        View listHeaderView = mapFrag.getView();
-//        gvRestarants.addHeaderView(listHeaderView);
-
-        mapView = new MapView(mContext);
-        mapView.setClickable(true);
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT, 400);
-        mapView.setLayoutParams(params);
-        mapView.onCreate(savedInstanceState);
-        MapsInitializer.initialize(mContext);
-
-        gvRestarants.addHeaderView(mapView);
-
-//        mapView.setOnTouchListener(new View.OnTouchListener() {
-//            @Override
-//            public boolean onTouch(View v, MotionEvent event) {
-//
-//                Log.d("myDebug", "");
-//                return true;
-//            }
-//        });
+        LayoutInflater inflater = getLayoutInflater();
+        View header = inflater.inflate(R.layout.header_map, null);
+        gvRestarants.addHeaderView(header);
 
         restaurantAdapter = new RestaurantListAdapter(mContext, gridDataSet());
         gvRestarants.setAdapter(restaurantAdapter);
         gvRestarants.setOnItemClickListener(gvRestaurantsListener);
 
-//        setUpMap();
+        setUpMap();
     }
 
     private AdapterView.OnItemClickListener lvFoodTypeListener = new AdapterView.OnItemClickListener() {
@@ -131,7 +102,9 @@ public class OrderFoodActivity extends BaseActivity {
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
             Intent intent = new Intent(mContext, OrderFoodPickFoodActivity.class);
-            intent.putExtra("imageurl", restaurantAdapter.getItem(position).getImageUrl());
+            intent.putExtra("name", restaurantAdapter.getItem(position - gvRestarants.getNumColumns()).getName());
+            intent.putExtra("address", restaurantAdapter.getItem(position - gvRestarants.getNumColumns()).getAddress());
+            intent.putExtra("imageurl", restaurantAdapter.getItem(position - gvRestarants.getNumColumns()).getImageUrl());
             startActivity(intent);
         }
     };
@@ -161,50 +134,21 @@ public class OrderFoodActivity extends BaseActivity {
         });
     }
 
-    private MapView mapView;
     private GoogleMap mMap;
 
     private void setUpMap() {
         // Do a null check to confirm that we have not already instantiated the map.
         if (mMap == null) {
             // Try to obtain the map from the SupportMapFragment.
-//            mMap = ((WorkaroundMapFragment) getSupportFragmentManager().findFragmentById(R.id.mMap))
-//                    .getMap();
-            mMap = mapView
+            mMap = ((WorkaroundMapFragment) getSupportFragmentManager().findFragmentById(R.id.mMap))
                     .getMap();
+            ((WorkaroundMapFragment) getSupportFragmentManager().findFragmentById(R.id.mMap)).setOnTouchListener(new WorkaroundMapFragment.OnTouchListener() {
+                @Override
+                public void onTouch() {
 
-//            mapView.setOnTouchListener(new View.OnTouchListener() {
-//                @Override
-//                public boolean onTouch(View v, MotionEvent event) {
-//                    switch (event.getAction()) {
-//                        case MotionEvent.ACTION_DOWN:
-//
-//                            Log.d("myDebug", "down");
-//
-//                            return true;
-//                        case MotionEvent.ACTION_UP:
-//
-//                            Log.d("myDebug", "up");
-//
-//                            return true;
-//                    }
-//                    return false;
-//                }
-//            });
-//            mapView.setOnTouchListener(new WorkaroundMapView.OnTouchListener() {
-//                @Override
-//                public void onTouch() {
-//
-//                    gvRestarants.requestDisallowInterceptTouchEvent(false);
-//                }
-//            });
-//            ((WorkaroundMapFragment) getChildFragmentManager().findFragmentById(R.id.mMap)).setOnTouchListener(new WorkaroundMapFragment.OnTouchListener() {
-//                @Override
-//                public void onTouch() {
-//
-//                    gvRestarants.requestDisallowInterceptTouchEvent(true);
-//                }
-//            });
+                    gvRestarants.requestDisallowInterceptTouchEvent(true);
+                }
+            });
             // Check if we were successful in obtaining the map.
             if (mMap != null) {
                 GPSTracker gpsTracker = new GPSTracker(mContext);
@@ -218,23 +162,23 @@ public class OrderFoodActivity extends BaseActivity {
         }
     }
 
-    @Override
-    public void onResume() {
-        mapView.onResume();
-        super.onResume();
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        mapView.onDestroy();
-    }
-
-    @Override
-    public void onLowMemory() {
-        super.onLowMemory();
-        mapView.onLowMemory();
-    }
+//    @Override
+//    public void onResume() {
+//        mapView.onResume();
+//        super.onResume();
+//    }
+//
+//    @Override
+//    public void onDestroy() {
+//        super.onDestroy();
+//        mapView.onDestroy();
+//    }
+//
+//    @Override
+//    public void onLowMemory() {
+//        super.onLowMemory();
+//        mapView.onLowMemory();
+//    }
 
     private ArrayList<FoodTypeItem> listDataSet() {
         ArrayList<FoodTypeItem> list = new ArrayList<>();
@@ -248,18 +192,15 @@ public class OrderFoodActivity extends BaseActivity {
     private ArrayList<RestaurantItem> gridDataSet() {
         ArrayList<RestaurantItem> list = new ArrayList<>();
         list.add(new RestaurantItem("Cơm gà 3 ghiền", "96 Đặng Văn Ngữ, P4, Q3, HCM", "category/best.jpg"));
-        list.add(new RestaurantItem("Cơm gà 3 ghiền", "96 Đặng Văn Ngữ, P4, Q3, HCM", "category/best.jpg"));
-        list.add(new RestaurantItem("Cơm gà 3 ghiền", "96 Đặng Văn Ngữ, P4, Q3, HCM", "category/best.jpg"));
-        list.add(new RestaurantItem("Cơm gà 3 ghiền", "96 Đặng Văn Ngữ, P4, Q3, HCM", "category/best.jpg"));
-        list.add(new RestaurantItem("Cơm gà 3 ghiền", "96 Đặng Văn Ngữ, P4, Q3, HCM", "category/best.jpg"));
-        list.add(new RestaurantItem("Cơm gà 3 ghiền", "96 Đặng Văn Ngữ, P4, Q3, HCM", "category/best.jpg"));
-        list.add(new RestaurantItem("Cơm gà 3 ghiền", "96 Đặng Văn Ngữ, P4, Q3, HCM", "category/best.jpg"));
-        list.add(new RestaurantItem("Cơm gà 3 ghiền", "96 Đặng Văn Ngữ, P4, Q3, HCM", "category/best.jpg"));
-        list.add(new RestaurantItem("Cơm gà 3 ghiền", "96 Đặng Văn Ngữ, P4, Q3, HCM", "category/best.jpg"));
-        list.add(new RestaurantItem("Cơm gà 3 ghiền", "96 Đặng Văn Ngữ, P4, Q3, HCM", "category/best.jpg"));
-        list.add(new RestaurantItem("Cơm gà 3 ghiền", "96 Đặng Văn Ngữ, P4, Q3, HCM", "category/best.jpg"));
-        list.add(new RestaurantItem("Cơm gà 3 ghiền", "96 Đặng Văn Ngữ, P4, Q3, HCM", "category/best.jpg"));
-        list.add(new RestaurantItem("Cơm gà 3 ghiền", "96 Đặng Văn Ngữ, P4, Q3, HCM", "category/best.jpg"));
+        list.add(new RestaurantItem("Bánh Xèo A Phủ", "121 Nguyễn Văn Nghi, 7, Gò Vấp, Hồ Chí Minh", "menu/banhxeo.jpg"));
+        list.add(new RestaurantItem("Chả Giò Bà Rịa", "78 Tân Sơn Nhì, Tân Phú, Hồ Chí Minh", "menu/chagio.jpg"));
+        list.add(new RestaurantItem("Cơm Tấm Cây Khế 3", "32 Cây Trâm, 9, Gò Vấp, Hồ Chí Minh", "menu/comtam.jpg"));
+        list.add(new RestaurantItem("Gỏi Cuốn Cô Huệ", "57 Châu Văn Liêm, 14, 5, Hồ Chí Minh", "menu/goicuon.jpg"));
+        list.add(new RestaurantItem("Nem Nướng Đà Lạt", "69 Vạn Kiếp, phường 3, Bình Thạnh, Hồ Chí Minh", "menu/nemnuong.jpg"));
+        list.add(new RestaurantItem("Phở Quê Hương", "1223 Phan Văn Trị, 10, Gò Vấp, Hồ Chí Minh", "category/pho.jpg"));
+        list.add(new RestaurantItem("Cơm Tấm Thuận Kiều", "17 Út Tịch, 4, Hồ Chí Minh", "category/com.jpg"));
+        list.add(new RestaurantItem("Pizza Hut", "264 Nguyễn Trãi, 8, 5, Hồ Chí Minh", "category/pizza.jpg"));
+        list.add(new RestaurantItem("Cơm Tấm Cali", "82 Nguyễn Văn Trỗi, 8, Phú Nhuận, Hồ Chí Minh", "menu/comtam.jpg"));
         return list;
     }
 }

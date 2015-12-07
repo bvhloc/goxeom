@@ -1,10 +1,9 @@
-package asia.covisoft.goom.view;
+package asia.covisoft.goom.customview;
 
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.GridView;
 
 /**
  * Created by Covisoft on 01/12/2015.

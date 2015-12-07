@@ -1,4 +1,4 @@
-package asia.covisoft.goom.view;
+package asia.covisoft.goom.customview;
 /*
  * Copyright (C) 2013 The Android Open Source Project
  *

@@ -2,10 +2,7 @@ package asia.covisoft.goom.activity.order;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ScrollView;
 
@@ -16,11 +13,11 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-import asia.covisoft.goom.BaseActivity;
+import asia.covisoft.goom.base.BaseActivity;
 import asia.covisoft.goom.Constant;
 import asia.covisoft.goom.GPSTracker;
 import asia.covisoft.goom.R;
-import asia.covisoft.goom.view.WorkaroundMapFragment;
+import asia.covisoft.goom.customview.WorkaroundMapFragment;
 
 public class OrderShoppingActivity extends BaseActivity {
 

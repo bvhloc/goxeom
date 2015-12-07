@@ -1,4 +1,4 @@
-package asia.covisoft.goom.view;
+package asia.covisoft.goom.customview;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -6,9 +6,7 @@ import android.util.Log;
 import android.view.MotionEvent;
 
 import com.google.android.gms.maps.GoogleMapOptions;
-import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.MapView;
-import com.google.android.gms.maps.SupportMapFragment;
 
 /**
  * Created by Covisoft on 01/12/2015.

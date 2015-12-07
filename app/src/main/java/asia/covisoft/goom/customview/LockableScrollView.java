@@ -1,4 +1,4 @@
-package asia.covisoft.goom.view;
+package asia.covisoft.goom.customview;
 
 import android.content.Context;
 import android.util.AttributeSet;

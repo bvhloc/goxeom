@@ -2,15 +2,11 @@ package asia.covisoft.goom.activity.order;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 
-import asia.covisoft.goom.BaseActivity;
+import asia.covisoft.goom.base.BaseActivity;
 import asia.covisoft.goom.Constant;
-import asia.covisoft.goom.MainActivity;
 import asia.covisoft.goom.R;
 
 public class OrderMadeActivity extends BaseActivity {

@@ -12,7 +12,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 
 import java.util.ArrayList;
 
-import asia.covisoft.goom.BaseActivity;
+import asia.covisoft.goom.base.BaseActivity;
 import asia.covisoft.goom.R;
 import asia.covisoft.goom.adapter.list.LocationHistoryListAdapter;
 import asia.covisoft.goom.pojo.LocationHistoryItem;

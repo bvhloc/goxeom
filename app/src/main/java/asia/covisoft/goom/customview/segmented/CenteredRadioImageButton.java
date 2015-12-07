@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package asia.covisoft.goom.view.segmented;
+package asia.covisoft.goom.customview.segmented;
 
 import android.content.Context;
 import android.content.res.TypedArray;

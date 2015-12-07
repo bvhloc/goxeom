@@ -18,7 +18,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="RESTAURANT_NAME"
+            android:text="@string/lowcase_menu"
             android:textColor="@color/mBlackText"
             android:textStyle="bold" />
 

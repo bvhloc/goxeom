@@ -46,7 +46,7 @@
 
                 <fragment
                     android:id="@+id/mMap"
-                    android:name="asia.covisoft.goom.view.WorkaroundMapFragment"
+                    android:name="asia.covisoft.goom.customview.WorkaroundMapFragment"
                     android:layout_width="match_parent"
                     android:layout_height="200dp" />
 

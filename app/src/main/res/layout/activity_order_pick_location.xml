@@ -43,7 +43,7 @@
 
         </FrameLayout>
 
-        <asia.covisoft.goom.view.segmented.SegmentedRadioGroup
+        <asia.covisoft.goom.customview.segmented.SegmentedRadioGroup
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -79,7 +79,7 @@
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="@color/mGreen" />
 
-        </asia.covisoft.goom.view.segmented.SegmentedRadioGroup>
+        </asia.covisoft.goom.customview.segmented.SegmentedRadioGroup>
 
         <TextView
             android:layout_width="wrap_content"

@@ -1,28 +1,22 @@
 package asia.covisoft.goom.activity.history;
 
 import android.content.Context;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-import asia.covisoft.goom.BaseActivity;
+import asia.covisoft.goom.base.BaseActivity;
 import asia.covisoft.goom.Constant;
 import asia.covisoft.goom.GPSTracker;
 import asia.covisoft.goom.R;
-import asia.covisoft.goom.view.WorkaroundMapFragment;
+import asia.covisoft.goom.customview.WorkaroundMapFragment;
 
 public class HistoryDetailsActivity extends BaseActivity {
 

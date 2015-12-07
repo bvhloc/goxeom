@@ -44,7 +44,7 @@
 
         </FrameLayout>
 
-        <asia.covisoft.goom.view.HeaderGridView
+        <asia.covisoft.goom.customview.HeaderGridView
             android:id="@+id/gvRestaurants"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

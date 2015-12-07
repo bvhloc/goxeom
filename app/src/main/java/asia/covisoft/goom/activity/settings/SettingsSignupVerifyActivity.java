@@ -1,16 +1,12 @@
 package asia.covisoft.goom.activity.settings;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
-import asia.covisoft.goom.BaseActivity;
+import asia.covisoft.goom.base.BaseActivity;
 import asia.covisoft.goom.Constant;
-import asia.covisoft.goom.MainActivity;
 import asia.covisoft.goom.R;
 
 public class SettingsSignupVerifyActivity extends BaseActivity {

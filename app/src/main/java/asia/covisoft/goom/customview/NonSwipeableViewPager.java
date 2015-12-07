@@ -1,4 +1,4 @@
-package asia.covisoft.goom.view;
+package asia.covisoft.goom.customview;
 
 /**
  * Created by Covisoft on 20/11/2015.

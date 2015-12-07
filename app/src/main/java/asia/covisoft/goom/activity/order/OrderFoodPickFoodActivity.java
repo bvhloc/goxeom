@@ -7,12 +7,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-import asia.covisoft.goom.BaseActivity;
+import asia.covisoft.goom.base.BaseActivity;
 import asia.covisoft.goom.R;
 import asia.covisoft.goom.adapter.list.FoodListAdapter;
 import asia.covisoft.goom.pojo.FoodItem;
@@ -56,6 +57,8 @@ public class OrderFoodPickFoodActivity extends BaseActivity {
         LayoutInflater inflater = getLayoutInflater();
         View header = inflater.inflate(R.layout.header_restaurant, null);
 
+        ((TextView)header.findViewById(R.id.tvName)).setText(getIntent().getStringExtra("name"));
+        ((TextView)header.findViewById(R.id.tvAddress)).setText(getIntent().getStringExtra("address"));
         ImageView imgvAvatar = (ImageView) header.findViewById(R.id.imgvAvatar);
         Picasso.with(mContext)
                 .load("file:///android_asset/" + getIntent().getStringExtra("imageurl"))

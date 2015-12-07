@@ -11,10 +11,10 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-import asia.covisoft.goom.BaseActivity;
+import asia.covisoft.goom.base.BaseActivity;
 import asia.covisoft.goom.Constant;
 import asia.covisoft.goom.R;
-import asia.covisoft.goom.view.WorkaroundMapFragment;
+import asia.covisoft.goom.customview.WorkaroundMapFragment;
 
 public class OrderPickDriverActivity extends BaseActivity {
 

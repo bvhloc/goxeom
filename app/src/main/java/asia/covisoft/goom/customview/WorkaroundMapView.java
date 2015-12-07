@@ -1,18 +1,10 @@
-package asia.covisoft.goom.view;
+package asia.covisoft.goom.customview;
 
 import android.content.Context;
-import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.MotionEvent;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
 import com.google.android.gms.maps.MapView;
-import com.google.android.gms.maps.SupportMapFragment;
-
-import asia.covisoft.goom.backpress.BackPressImpl;
-import asia.covisoft.goom.backpress.OnBackPressListener;
 
 /**
  * Created by Covisoft on 24/11/2015.

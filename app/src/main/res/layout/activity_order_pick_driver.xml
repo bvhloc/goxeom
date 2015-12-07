@@ -35,7 +35,7 @@
 
                 <fragment
                     android:id="@+id/mMap"
-                    android:name="asia.covisoft.goom.view.WorkaroundMapFragment"
+                    android:name="asia.covisoft.goom.customview.WorkaroundMapFragment"
                     android:layout_width="match_parent"
                     android:layout_height="200dp" />
 
@@ -164,7 +164,7 @@
                             android:textAppearance="?android:attr/textAppearanceSmall"
                             android:text="35" />
 
-                        <asia.covisoft.goom.view.segmented.SegmentedRadioGroup
+                        <asia.covisoft.goom.customview.segmented.SegmentedRadioGroup
                             android:clickable="false"
                             android:layout_width="120dp"
                             android:layout_height="wrap_content"
@@ -195,7 +195,7 @@
                                 android:textColor="@color/mGreen"
                                 android:enabled="false"/>
 
-                        </asia.covisoft.goom.view.segmented.SegmentedRadioGroup>
+                        </asia.covisoft.goom.customview.segmented.SegmentedRadioGroup>
 
                     </LinearLayout>
 
