@@ -1,131 +1,140 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/tab_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/mAppBackground"
     android:clickable="true">
 
-    <LinearLayout
+    <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@android:color/white"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="@dimen/activity_vertical_margin"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="@string/activity_order_made_title"
-            android:textColor="@color/mDarkGreen"
-            android:textStyle="bold" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="@string/activity_order_made_text1"
-            android:gravity="center"
-            android:textColor="@color/mBlackText" />
-
-        <ImageView
-            android:layout_marginTop="@dimen/activity_vertical_margin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:src="@drawable/booking_ok"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="@dimen/activity_vertical_margin"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="@string/upcase_done"
-            android:textColor="@android:color/holo_red_dark"
-            android:textStyle="bold" />
+        tools:ignore="UselessParent">
 
         <LinearLayout
-            android:orientation="horizontal"
-            android:layout_gravity="center_horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginRight="@dimen/activity_horizontal_margin"
-                android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:text="@string/activity_order_made_title"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="@color/mDarkGreen"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                android:text="@string/activity_order_made_text1"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="@string/activity_order_made_bookingtime"
+                android:textColor="@color/mBlackText" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:src="@drawable/booking_ok" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:text="@string/upcase_done"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="@android:color/holo_red_dark"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                    android:text="@string/activity_order_made_bookingtime"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textColor="@color/mBlackText" />
+
+                <TextView
+                    android:id="@+id/tvTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="NOW"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textColor="@color/mDarkGreen"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:text="@string/activity_order_made_text2"
+                android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="@color/mBlackText" />
 
             <TextView
-                android:id="@+id/tvTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="@dimen/activity_vertical_margin"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:gravity="center"
+                android:paddingBottom="@dimen/activity_vertical_margin"
+                android:text="@string/activity_order_made_text3"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="NOW"
-                android:textStyle="bold"
-                android:textColor="@color/mDarkGreen" />
+                android:textColor="@color/mBlackText" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:orientation="horizontal"
+                android:paddingTop="@dimen/activity_vertical_margin">
+
+                <Button
+                    android:id="@+id/btnCancelBooking"
+                    style="@style/SmallGreenButton"
+                    android:layout_width="90dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginRight="40dp"
+                    android:text="@string/activity_order_made_button_cancelbooking" />
+
+                <Button
+                    android:id="@+id/btnNewBooking"
+                    style="@style/SmallGreenButton"
+                    android:layout_width="90dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginRight="40dp"
+                    android:text="@string/activity_order_made_button_newbooking" />
+
+            </LinearLayout>
 
         </LinearLayout>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="@dimen/activity_vertical_margin"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="@string/activity_order_made_text2"
-            android:textColor="@color/mBlackText" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/activity_horizontal_margin"
-            android:layout_marginRight="@dimen/activity_horizontal_margin"
-            android:layout_marginBottom="@dimen/activity_vertical_margin"
-            android:paddingBottom="@dimen/activity_vertical_margin"
-            android:layout_gravity="center_horizontal"
-            android:gravity="center"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="@string/activity_order_made_text3"
-            android:textColor="@color/mBlackText" />
-
-        <LinearLayout
-            android:layout_marginTop="@dimen/activity_vertical_margin"
-            android:paddingTop="@dimen/activity_vertical_margin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/btnCancelBooking"
-                style="@style/SmallGreenButton"
-                android:layout_width="90dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="40dp"
-                android:layout_marginRight="40dp"
-                android:text="@string/activity_order_made_button_cancelbooking" />
-
-            <Button
-                android:id="@+id/btnNewBooking"
-                style="@style/SmallGreenButton"
-                android:layout_width="90dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="40dp"
-                android:layout_marginRight="40dp"
-                android:text="@string/activity_order_made_button_newbooking" />
-
-        </LinearLayout>
-
-    </LinearLayout>
+    </ScrollView>
 
 </FrameLayout>

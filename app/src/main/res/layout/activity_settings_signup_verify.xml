@@ -1,11 +1,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/tab_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:id="@+id/tab_container"
     android:background="@color/mAppBackground"
     android:clickable="true"
+    android:orientation="vertical"
     android:paddingTop="@dimen/activity_vertical_margin">
 
     <TextView
@@ -18,51 +18,51 @@
         android:textSize="60sp"
         android:textStyle="bold" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="@string/upcase_pick_your_service"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_margin="@dimen/activity_vertical_margin"
-        android:gravity="center"
-        android:text="@string/activity_settings_signup_verify_text1"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="@dimen/activity_vertical_margin">
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/upcase_pick_your_service"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="@dimen/activity_vertical_margin"
+                android:gravity="center"
+                android:text="@string/activity_settings_signup_verify_text1"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+
             <LinearLayout
-                android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
+                android:orientation="horizontal"
                 android:padding="@dimen/activity_horizontal_margin">
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_verify"/>
+                    android:src="@drawable/ic_verify" />
 
                 <EditText
+                    android:id="@+id/editText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="numberDecimal"
-                    android:hint="@string/activity_settings_signup_verify_hinh_verificationcode"
                     android:ems="10"
-                    android:id="@+id/editText" />
+                    android:hint="@string/activity_settings_signup_verify_hinh_verificationcode"
+                    android:inputType="numberDecimal" />
 
             </LinearLayout>
 

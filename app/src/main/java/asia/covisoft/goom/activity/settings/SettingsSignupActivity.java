@@ -21,16 +21,20 @@ public class SettingsSignupActivity extends BaseActivity {
         initView();
     }
 
-    private Button btnSignup;
-
     private void initView(){
 
-        btnSignup = (Button) findViewById(R.id.btnSignup);
-        btnSignup.setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.btnSignup).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 startActivity(new Intent(mContext, SettingsSignupVerifyActivity.class));
+            }
+        });
+        findViewById(R.id.tvLogin).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                startActivity(new Intent(mContext, SettingsLoginActivity.class));
             }
         });
     }

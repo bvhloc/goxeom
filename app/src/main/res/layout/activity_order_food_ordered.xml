@@ -25,73 +25,73 @@
         <View style="@style/Divider" />
 
         <LinearLayout
-            android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:weightSum="1"
             android:background="@color/mBlueText"
-            android:padding="5dp">
+            android:orientation="horizontal"
+            android:padding="5dp"
+            android:weightSum="1">
 
             <LinearLayout
-                android:layout_gravity="center"
-                android:orientation="vertical"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="@string/upcase_foodcost"
-                    android:textStyle="bold"
-                    android:textColor="@color/mAppBackground"/>
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/mAppBackground"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="@string/upcase_deliverycost"
-                    android:textStyle="bold"
-                    android:textColor="@color/mAppBackground"/>
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/mAppBackground"
+                    android:textStyle="bold" />
 
                 <TextView
-                    android:layout_marginTop="5dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_marginTop="5dp"
                     android:text="@string/upcase_total"
-                    android:textStyle="bold"
-                    android:textColor="@color/mAppBackground"/>
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/mAppBackground"
+                    android:textStyle="bold" />
 
             </LinearLayout>
 
             <LinearLayout
-                android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="end">
+                android:gravity="end"
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="50.000 VND"
-                    android:textColor="@color/mAppBackground"/>
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/mAppBackground" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="0 VND"
-                    android:textColor="@color/mAppBackground"/>
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/mAppBackground" />
 
                 <TextView
-                    android:layout_marginTop="5dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_marginTop="5dp"
                     android:text="50.000 VND"
-                    android:textColor="@color/mAppBackground"/>
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/mAppBackground" />
 
             </LinearLayout>
 
@@ -108,12 +108,16 @@
             android:textStyle="bold" />
 
         <ListView
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:id="@+id/lvFood"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
             android:layout_weight="0.7"
-            android:id="@+id/lvFood"
+            android:background="@drawable/bg_square_edittext"
             android:divider="@color/mBlackDivider"
-            android:dividerHeight="1px"/>
+            android:dividerHeight="1px" />
 
         <LinearLayout
             android:id="@+id/lnlPick"
@@ -221,18 +225,18 @@
 
 
         <CheckBox
+            android:id="@+id/checkBox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/activity_order_food_ordered_pickupnow"
-            android:id="@+id/checkBox" />
+            android:text="@string/activity_order_food_ordered_pickupnow" />
 
         <Button
-            android:layout_gravity="center"
             android:id="@+id/btnNext"
-            android:padding="5dp"
             style="@style/SmallGreenButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:padding="5dp"
             android:text="@string/upcase_next" />
 
     </LinearLayout>

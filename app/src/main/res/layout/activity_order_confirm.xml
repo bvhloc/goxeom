@@ -21,164 +21,182 @@
             android:textColor="@color/mBlackText"
             android:textStyle="bold" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/activity_vertical_margin"
-            android:layout_marginLeft="@dimen/activity_horizontal_margin"
-            android:layout_marginStart="@dimen/activity_horizontal_margin"
-            android:layout_marginBottom="0dp"
-            android:text="@string/upcase_details"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="@color/mBlackText"
-            android:textStyle="bold" />
+        <View style="@style/Divider" />
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/activity_horizontal_margin"
-            android:layout_marginRight="@dimen/activity_horizontal_margin"
-            android:orientation="vertical"
-            android:paddingLeft="@dimen/activity_horizontal_margin"
-            android:paddingRight="@dimen/activity_horizontal_margin">
-
-            <TextView
-                android:id="@+id/tvAddressFrom"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:drawableLeft="@drawable/ic_location_transparent"
-                android:drawablePadding="10dp"
-                android:drawableStart="@drawable/ic_location_transparent"
-                android:gravity="center_vertical"
-                android:text="150 Quang Trung, Go Vap, Ho Chi Minh, Phong 24, Lau 1, Toa nha Venus"
-                android:textColor="@color/mBlackText" />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/line_break" />
-
-            <TextView
-                android:id="@+id/tvAddressTo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:drawableLeft="@drawable/ic_location_transparent"
-                android:drawablePadding="10dp"
-                android:drawableStart="@drawable/ic_location_transparent"
-                android:gravity="center_vertical"
-                android:text="20 Dong Khoi, Quan 1, Ho Chi Minh, Phong 2, Tang 8, Toa nha Anna"
-                android:textColor="@color/mBlackText" />
-
-        </LinearLayout>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/activity_vertical_margin"
-            android:layout_marginLeft="@dimen/activity_horizontal_margin"
-            android:layout_marginStart="@dimen/activity_horizontal_margin"
-            android:layout_marginBottom="0dp"
-            android:text="@string/upcase_payment"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="@color/mBlackText"
-            android:textStyle="bold" />
-
-        <LinearLayout
-            android:padding="5dp"
+        <ScrollView
+            android:id="@+id/scrollView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/activity_horizontal_margin"
-            android:layout_marginRight="@dimen/activity_horizontal_margin"
-            android:orientation="horizontal">
+            android:layout_height="match_parent">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawableLeft="@drawable/ic_price"
-                android:drawablePadding="10dp"
-                android:drawableStart="@drawable/ic_price"
-                android:gravity="center_vertical"
-                android:text="@string/lowcase_price"
-                android:textColor="@color/mBlackText" />
-
-            <TextView
-                android:id="@+id/tvPrice"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="end|center_vertical"
-                android:text="250.000 VND"
-                android:textColor="@color/mBlackText" />
+                android:orientation="vertical">
 
-        </LinearLayout>
-        <LinearLayout
-            android:padding="5dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/activity_horizontal_margin"
-            android:layout_marginRight="@dimen/activity_horizontal_margin"
-            android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="0dp"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:layout_marginStart="@dimen/activity_horizontal_margin"
+                    android:layout_marginTop="@dimen/activity_vertical_margin"
+                    android:text="@string/upcase_details"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/mBlackText"
+                    android:textStyle="bold" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawableLeft="@drawable/ic_total"
-                android:drawablePadding="10dp"
-                android:drawableStart="@drawable/ic_total"
-                android:gravity="center_vertical"
-                android:text="@string/lowcase_total"
-                android:textColor="@color/mBlackText" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                    android:orientation="vertical"
+                    android:paddingLeft="@dimen/activity_horizontal_margin"
+                    android:paddingRight="@dimen/activity_horizontal_margin">
 
-            <TextView
-                android:id="@+id/tvTotal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="end|center_vertical"
-                android:text="250.000 VND"
-                android:textColor="@color/mBlackText" />
+                    <TextView
+                        android:id="@+id/tvAddressFrom"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:drawableLeft="@drawable/ic_location_transparent"
+                        android:drawablePadding="10dp"
+                        android:drawableStart="@drawable/ic_location_transparent"
+                        android:gravity="center_vertical"
+                        android:text="150 Quang Trung, Go Vap, Ho Chi Minh, Phong 24, Lau 1, Toa nha Venus"
+                        android:textColor="@color/mBlackText" />
 
-        </LinearLayout>
-        <LinearLayout
-            android:padding="5dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/activity_horizontal_margin"
-            android:layout_marginRight="@dimen/activity_horizontal_margin"
-            android:orientation="horizontal">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/line_break" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawableLeft="@drawable/ic_payment"
-                android:drawablePadding="10dp"
-                android:drawableStart="@drawable/ic_payment"
-                android:gravity="center_vertical"
-                android:text="@string/lowcase_payment"
-                android:textColor="@color/mBlackText" />
+                    <TextView
+                        android:id="@+id/tvAddressTo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:drawableLeft="@drawable/ic_location_transparent"
+                        android:drawablePadding="10dp"
+                        android:drawableStart="@drawable/ic_location_transparent"
+                        android:gravity="center_vertical"
+                        android:text="20 Dong Khoi, Quan 1, Ho Chi Minh, Phong 2, Tang 8, Toa nha Anna"
+                        android:textColor="@color/mBlackText" />
 
-            <TextView
-                android:id="@+id/tvPayment"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:drawableRight="@drawable/arrow_bottom"
-                android:drawablePadding="10dp"
-                android:drawableEnd="@drawable/arrow_bottom"
-                android:gravity="end|center_vertical"
-                android:text="Cash"
-                android:textColor="@color/mBlackText" />
+                </LinearLayout>
 
-        </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="0dp"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:layout_marginStart="@dimen/activity_horizontal_margin"
+                    android:layout_marginTop="@dimen/activity_vertical_margin"
+                    android:text="@string/upcase_payment"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/mBlackText"
+                    android:textStyle="bold" />
 
-        <Button
-            android:id="@+id/btnOrder"
-            android:padding="5dp"
-            style="@style/SmallGreenButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_margin="@dimen/activity_vertical_margin"
-            android:text="@string/upcase_order" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                    android:orientation="horizontal"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableLeft="@drawable/ic_price"
+                        android:drawablePadding="10dp"
+                        android:drawableStart="@drawable/ic_price"
+                        android:gravity="center_vertical"
+                        android:text="@string/lowcase_price"
+                        android:textColor="@color/mBlackText" />
+
+                    <TextView
+                        android:id="@+id/tvPrice"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="end|center_vertical"
+                        android:text="250.000 VND"
+                        android:textColor="@color/mBlackText" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                    android:orientation="horizontal"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableLeft="@drawable/ic_total"
+                        android:drawablePadding="10dp"
+                        android:drawableStart="@drawable/ic_total"
+                        android:gravity="center_vertical"
+                        android:text="@string/lowcase_total"
+                        android:textColor="@color/mBlackText" />
+
+                    <TextView
+                        android:id="@+id/tvTotal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="end|center_vertical"
+                        android:text="250.000 VND"
+                        android:textColor="@color/mBlackText" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                    android:orientation="horizontal"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableLeft="@drawable/ic_payment"
+                        android:drawablePadding="10dp"
+                        android:drawableStart="@drawable/ic_payment"
+                        android:gravity="center_vertical"
+                        android:text="@string/lowcase_payment"
+                        android:textColor="@color/mBlackText" />
+
+                    <TextView
+                        android:id="@+id/tvPayment"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableEnd="@drawable/arrow_bottom"
+                        android:drawablePadding="10dp"
+                        android:drawableRight="@drawable/arrow_bottom"
+                        android:gravity="end|center_vertical"
+                        android:text="Cash"
+                        android:textColor="@color/mBlackText" />
+
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btnOrder"
+                    style="@style/SmallGreenButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/activity_vertical_margin"
+                    android:padding="5dp"
+                    android:text="@string/upcase_order" />
+
+            </LinearLayout>
+
+        </ScrollView>
 
     </LinearLayout>
 
