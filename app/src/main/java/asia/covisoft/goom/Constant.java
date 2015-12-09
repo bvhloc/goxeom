@@ -1,9 +1,6 @@
 package asia.covisoft.goom;
 
-/**
- * Created by Covisoft on 20/11/2015.
- */
-public class Constant {
+public interface Constant {
 
     public static final String TAB_POSTION = "TAB_POSTION";
 

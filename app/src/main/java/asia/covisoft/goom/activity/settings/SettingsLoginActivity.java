@@ -2,34 +2,79 @@ package asia.covisoft.goom.activity.settings;
 
 import android.content.Context;
 import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.InputType;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
 
 import asia.covisoft.goom.R;
+import asia.covisoft.goom.base.BaseActivity;
+import asia.covisoft.goom.helper.Encoder;
 
-public class SettingsLoginActivity extends AppCompatActivity {
+public class SettingsLoginActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings_login);
+        initView();
 
-        String url = "http://192.168.0.20:90/webservice/login.php?username=john&password=Saltro45";
-        JsonParseAsyncTask asyncTask = new JsonParseAsyncTask(this);
-        asyncTask.execute(url);
+        setupStaticData();
+
+//        String url = "http://192.168.0.20:90/webservice/login.php?username=CoviTester1&password=CoviTester";
+//        JsonParseAsyncTask asyncTask = new JsonParseAsyncTask(this);
+//        asyncTask.execute(url);
+    }
+
+    private EditText edtUsername, edtPassword;
+    private CheckBox chkShowPassword;
+    private Button btnLogin;
+
+    private void initView() {
+
+        edtUsername = (EditText) findViewById(R.id.edtUsername);
+        edtPassword = (EditText) findViewById(R.id.edtPassword);
+        chkShowPassword = (CheckBox) findViewById(R.id.chkShowPassword);
+        chkShowPassword.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+                if (isChecked) {
+                    edtPassword.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                } else {
+                    edtPassword.setInputType(129);
+                }
+            }
+        });
+        btnLogin = (Button) findViewById(R.id.btnLogin);
+        btnLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                edtPassword.setText(Encoder.encrypt("hihi", edtUsername.getText().toString()));
+
+                try {
+                    Log.d("myDebug", Encoder.decrypt("hihi", edtPassword.getText().toString()));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 
     private class JsonParseAsyncTask extends AsyncTask<String, Void, String> {
@@ -45,8 +90,8 @@ public class SettingsLoginActivity extends AppCompatActivity {
         @Override
         protected void onPreExecute() {
 
-            progressBar = (ProgressBar) findViewById(R.id.progressBar);
-            progressBar.setVisibility(View.VISIBLE);
+//            progressBar = (ProgressBar) findViewById(R.id.progressBar);
+//            progressBar.setVisibility(View.VISIBLE);
 
             super.onPreExecute();
         }
@@ -60,12 +105,10 @@ public class SettingsLoginActivity extends AppCompatActivity {
                 Response response = new OkHttpClient().newCall(request).execute();
                 json = response.body().string();
 
-                Log.d("myDebug", json);
-
                 JSONObject jsonRootObject = new JSONObject(json);
 
-                JSONArray jsonArray = jsonRootObject.optJSONArray("data");
-
+//                JSONArray jsonArray = jsonRootObject.optJSONArray("data");
+//
 //                //Iterate the jsonArray and print the info of JSONObjects
 //                for (int i = 0; i < jsonArray.length(); i++) {
 //
@@ -76,11 +119,13 @@ public class SettingsLoginActivity extends AppCompatActivity {
 //                    Log.d("myDebug", email);
 //                }
 
-                JSONObject jsonObject = jsonArray.optJSONObject(0);
+                JSONObject loginObject = jsonRootObject.optJSONObject("login");
 
-                String email = jsonObject.optString("email");
+                int value = loginObject.optInt("Value");
+                if (value == 1) {
 
-                Log.d("myDebug", email);
+                    Log.d("myDebug", loginObject.optString("Type"));
+                }
 
             } catch (IOException | JSONException e) {
                 e.printStackTrace();
@@ -93,7 +138,7 @@ public class SettingsLoginActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String aVoid) {
 
-            progressBar.setVisibility(View.INVISIBLE);
+//            progressBar.setVisibility(View.INVISIBLE);
 
             Log.d("myDebug", aVoid);
 
@@ -101,4 +146,9 @@ public class SettingsLoginActivity extends AppCompatActivity {
         }
     }
 
+    private void setupStaticData() {
+
+        edtUsername.setText("CoviTester1");
+        edtPassword.setText("CoviTester");
+    }
 }

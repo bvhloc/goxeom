@@ -157,5 +157,8 @@
     <string name="title_activity_settings_signup_verify">SettingsSignupVerifyActivity</string>
     <string name="lowcase_items">Items</string>
     <string name="title_activity_settings_login">SettingsLoginActivity</string>
+    <string name="upcase_login">LOGIN</string>
+    <string name="lowcase_username">Username</string>
+    <string name="lowcase_showpassword">Show Password</string>
 
 </resources>

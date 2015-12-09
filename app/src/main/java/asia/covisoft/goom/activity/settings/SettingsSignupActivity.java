@@ -35,6 +35,7 @@ public class SettingsSignupActivity extends BaseActivity {
             public void onClick(View v) {
 
                 startActivity(new Intent(mContext, SettingsLoginActivity.class));
+                SettingsSignupActivity.this.finish();
             }
         });
     }
