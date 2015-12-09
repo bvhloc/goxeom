@@ -7,10 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
-import asia.covisoft.goom.FragmentNavigator;
 import asia.covisoft.goom.R;
 import asia.covisoft.goom.activity.settings.SettingsSignupActivity;
-import asia.covisoft.goom.activity.settings.SettingsSignupVerifyActivity;
 import asia.covisoft.goom.backpress.BackFragment;
 
 

@@ -1,7 +1,9 @@
-package asia.covisoft.goom;
+package asia.covisoft.goom.helper;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+
+import asia.covisoft.goom.R;
 
 /**
  * Created by Covisoft on 19/11/2015.

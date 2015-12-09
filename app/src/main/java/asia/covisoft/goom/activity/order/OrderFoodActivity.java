@@ -15,7 +15,6 @@ import android.widget.SearchView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
@@ -23,7 +22,7 @@ import java.util.ArrayList;
 
 import asia.covisoft.goom.base.BaseActivity;
 import asia.covisoft.goom.Constant;
-import asia.covisoft.goom.GPSTracker;
+import asia.covisoft.goom.helper.GPSTracker;
 import asia.covisoft.goom.R;
 import asia.covisoft.goom.adapter.list.FoodTypeListAdapter;
 import asia.covisoft.goom.adapter.list.RestaurantListAdapter;
