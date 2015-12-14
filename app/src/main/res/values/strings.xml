@@ -30,7 +30,7 @@
     <string name="upcase_call">CALL</string>
     <string name="upcase_driverinformation">DRIVER INFORMATION</string>
     <string name="upcase_bookingdetails">BOOKING DETAILS</string>
-    <string name="upcase_cancelbooking">Cancel Booking</string>
+    <string name="upcase_login">LOGIN</string>
 
     <string name="lowcase_your_location">Your Location</string>
     <string name="lowcase_search">Search</string>
@@ -49,6 +49,10 @@
     <string name="lowcase_addnote">Add Note</string>
     <string name="lowcase_doubleclickmaptozoom">Double click map to Zoom In</string>
     <string name="lowcase_menu">Menu</string>
+    <string name="lowcase_items">Items</string>
+    <string name="lowcase_username">Username</string>
+    <string name="lowcase_showpassword">Show Password</string>
+    <string name="lowcase_cancelbooking">Cancel Booking</string>
 
     <string name="settings_tab_title">Settings</string>
     <string name="history_tab_title">History</string>
@@ -150,15 +154,5 @@
 
     <string name="list_item_location_history_name">Name:</string>
     <string name="list_item_location_history_address">Address:</string>
-    <string name="title_activity_settings_signup">SettingsSignupActivity</string>
-
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
-    <string name="title_activity_settings_signup_verify">SettingsSignupVerifyActivity</string>
-    <string name="lowcase_items">Items</string>
-    <string name="title_activity_settings_login">SettingsLoginActivity</string>
-    <string name="upcase_login">LOGIN</string>
-    <string name="lowcase_username">Username</string>
-    <string name="lowcase_showpassword">Show Password</string>
 
 </resources>

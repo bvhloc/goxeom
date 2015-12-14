@@ -5,9 +5,6 @@ import android.support.v7.app.AppCompatActivity;
 
 import asia.covisoft.goom.R;
 
-/**
- * Created by Covisoft on 02/12/2015.
- */
 public abstract class BaseActivity extends AppCompatActivity {
 
     @Override

@@ -11,7 +11,6 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
@@ -21,6 +20,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 import asia.covisoft.goom.R;
 import asia.covisoft.goom.base.BaseActivity;
@@ -66,13 +66,8 @@ public class SettingsLoginActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
 
-                edtPassword.setText(Encoder.encrypt("hihi", edtUsername.getText().toString()));
+                edtPassword.setText(Encoder.encryptByMD5(edtUsername.getText().toString()));
 
-                try {
-                    Log.d("myDebug", Encoder.decrypt("hihi", edtPassword.getText().toString()));
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
             }
         });
     }
@@ -102,7 +97,9 @@ public class SettingsLoginActivity extends BaseActivity {
             String urlString = params[0];
             try {
                 Request request = new Request.Builder().url(urlString).build();
-                Response response = new OkHttpClient().newCall(request).execute();
+                OkHttpClient okHttpClient = new OkHttpClient();
+                okHttpClient.setConnectTimeout(20, TimeUnit.SECONDS);
+                Response response = okHttpClient.newCall(request).execute();
                 json = response.body().string();
 
                 JSONObject jsonRootObject = new JSONObject(json);
