@@ -1,6 +1,6 @@
 package asia.covisoft.goom;
 
-public class Constant {
+public abstract class Constant {
 
     public static final String TAB_POSTION = "TAB_POSTION";
 

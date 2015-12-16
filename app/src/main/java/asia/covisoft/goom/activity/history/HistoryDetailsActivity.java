@@ -17,28 +17,33 @@ import asia.covisoft.goom.Constant;
 import asia.covisoft.goom.helper.GPSTracker;
 import asia.covisoft.goom.R;
 import asia.covisoft.goom.customview.WorkaroundMapFragment;
+import asia.covisoft.goom.mvp.presenter.HistoryDetailsPresenter;
+import asia.covisoft.goom.mvp.view.HistoryDetailsView;
 
-public class HistoryDetailsActivity extends BaseActivity {
+public class HistoryDetailsActivity extends BaseActivity implements HistoryDetailsView {
 
     private Context mContext;
+    private HistoryDetailsPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history_details);
         mContext = this;
+        presenter = new HistoryDetailsPresenter(this);
         initView();
 
-        setupTitle();
+        boolean HISTORY_STATE = getIntent().getBooleanExtra(Constant.HISTORY_STATE, true);
+        presenter.setupTitle(HISTORY_STATE);
 
-        setUpMap();
+        presenter.setupMap();
     }
 
     private ScrollView scrollView;
     private TextView tvTitle;
-    private Button btnCancel;
 
-    private void initView(){
+    @Override
+    public void initView() {
 
         scrollView = (ScrollView) findViewById(R.id.scrollView);
         tvTitle = (TextView) findViewById(R.id.tvTitle);
@@ -51,17 +56,17 @@ public class HistoryDetailsActivity extends BaseActivity {
         });
     }
 
-    private void setupTitle(){
+    @Override
+    public void setTitle(String title) {
 
-        boolean HISTORY_STATE = getIntent().getBooleanExtra(Constant.HISTORY_STATE, true);
-        String newTitle = HISTORY_STATE ? getString(R.string.fragment_history_completed) : getString(R.string.fragment_history_inprocess);
-        newTitle = tvTitle.getText() + " - " + newTitle;
-        tvTitle.setText(newTitle);
+        title = tvTitle.getText() + " - " + title;
+        tvTitle.setText(title);
     }
 
     private GoogleMap mMap;
+    @Override
+    public void onMapReady(LatLng currentLatLng) {
 
-    private void setUpMap() {
         // Do a null check to confirm that we have not already instantiated the map.
         if (mMap == null) {
             // Try to obtain the map from the SupportMapFragment.
@@ -76,8 +81,7 @@ public class HistoryDetailsActivity extends BaseActivity {
             });
             // Check if we were successful in obtaining the map.
             if (mMap != null) {
-                GPSTracker gpsTracker = new GPSTracker(mContext);
-                LatLng currentLatLng = new LatLng(gpsTracker.getLatitude(), gpsTracker.getLongitude());
+
                 mMap.addMarker(new MarkerOptions().position(currentLatLng).title(getString(R.string.lowcase_your_location)));
                 mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng, 14));
                 mMap.setMyLocationEnabled(true);
