@@ -14,28 +14,32 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import asia.covisoft.goom.base.BaseActivity;
+import asia.covisoft.goom.mvp.presenter.OrderShoppingPresenter;
+import asia.covisoft.goom.mvp.view.OrderShoppingView;
 import asia.covisoft.goom.utils.Constant;
-import asia.covisoft.goom.helper.GPSTracker;
 import asia.covisoft.goom.R;
 import asia.covisoft.goom.customview.WorkaroundMapFragment;
 
-public class OrderShoppingActivity extends BaseActivity {
+public class OrderShoppingActivity extends BaseActivity implements OrderShoppingView{
 
     private Context mContext;
+    private OrderShoppingPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_shopping);
         mContext = this;
+        presenter = new OrderShoppingPresenter(this);
         initView();
 
-        setUpMap();
+        presenter.setupMap();
     }
 
     private ScrollView scrollView;
 
-    private void initView(){
+    @Override
+    public void initView() {
 
         scrollView = (ScrollView) findViewById(R.id.scrollView);
         findViewById(R.id.lnlPickFrom).setOnClickListener(new View.OnClickListener() {
@@ -62,9 +66,9 @@ public class OrderShoppingActivity extends BaseActivity {
     }
 
     private GoogleMap mMap;
+    @Override
+    public void onMapReady(LatLng currentLatLng) {
 
-    private void setUpMap() {
-        // Do a null check to confirm that we have not already instantiated the map.
         if (mMap == null) {
             // Try to obtain the map from the SupportMapFragment.
             mMap = ((WorkaroundMapFragment) getSupportFragmentManager().findFragmentById(R.id.mMap))
@@ -78,10 +82,8 @@ public class OrderShoppingActivity extends BaseActivity {
             });
             // Check if we were successful in obtaining the map.
             if (mMap != null) {
-                GPSTracker gpsTracker = new GPSTracker(mContext);
-                double lat = gpsTracker.getLatitude();
-                double lng = gpsTracker.getLongitude();
-                LatLng currentLatLng = new LatLng(lat, lng);
+                double lat = currentLatLng.latitude;
+                double lng = currentLatLng.longitude;
                 mMap.addMarker(new MarkerOptions().position(currentLatLng).title(getString(R.string.lowcase_your_location)));
                 mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng, 14));
                 mMap.setMyLocationEnabled(true);
@@ -111,8 +113,6 @@ public class OrderShoppingActivity extends BaseActivity {
         }
     }
 
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-    }
+
+
 }
