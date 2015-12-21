@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.Button;
 
 import asia.covisoft.goom.base.BaseActivity;
-import asia.covisoft.goom.Constant;
+import asia.covisoft.goom.utils.Constant;
 import asia.covisoft.goom.R;
 
 public class SettingsSignupVerifyActivity extends BaseActivity {

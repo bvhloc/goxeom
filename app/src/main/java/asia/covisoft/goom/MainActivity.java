@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import asia.covisoft.goom.eventbus.ActivityResultEvent;
+import asia.covisoft.goom.utils.Constant;
 import de.greenrobot.event.EventBus;
 
 public class MainActivity extends AppCompatActivity {

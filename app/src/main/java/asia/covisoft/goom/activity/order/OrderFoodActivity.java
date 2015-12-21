@@ -21,7 +21,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import java.util.ArrayList;
 
 import asia.covisoft.goom.base.BaseActivity;
-import asia.covisoft.goom.Constant;
+import asia.covisoft.goom.utils.Constant;
 import asia.covisoft.goom.helper.GPSTracker;
 import asia.covisoft.goom.R;
 import asia.covisoft.goom.adapter.list.FoodTypeListAdapter;

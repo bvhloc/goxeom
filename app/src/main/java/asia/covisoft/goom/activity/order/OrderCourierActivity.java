@@ -8,35 +8,37 @@ import android.widget.ScrollView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapsInitializer;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import asia.covisoft.goom.base.BaseActivity;
-import asia.covisoft.goom.Constant;
-import asia.covisoft.goom.helper.GPSTracker;
+import asia.covisoft.goom.utils.Constant;
 import asia.covisoft.goom.R;
 import asia.covisoft.goom.customview.WorkaroundMapFragment;
+import asia.covisoft.goom.mvp.presenter.OrderCourierPresenter;
+import asia.covisoft.goom.mvp.view.OrderCourierView;
 
-public class OrderCourierActivity extends BaseActivity {
+public class OrderCourierActivity extends BaseActivity implements OrderCourierView {
 
     private Context mContext;
+    private OrderCourierPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_courier);
         mContext = this;
+        presenter = new OrderCourierPresenter(this);
         initView();
 
-        setUpMap();
+        presenter.setupMap();
     }
 
     private ScrollView scrollView;
-
-    private void initView(){
+    @Override
+    public void initView() {
 
         scrollView = (ScrollView) findViewById(R.id.scrollView);
         findViewById(R.id.lnlPickFrom).setOnClickListener(new View.OnClickListener() {
@@ -77,10 +79,10 @@ public class OrderCourierActivity extends BaseActivity {
     }
 
     private GoogleMap mMap;
+    @Override
+    public void onMapReady(LatLng currentLatLng) {
 
-    private void setUpMap() {
-
-        MapsInitializer.initialize(mContext);
+//        MapsInitializer.initialize(mContext);
 
         // Do a null check to confirm that we have not already instantiated the map.
         if (mMap == null) {
@@ -96,10 +98,8 @@ public class OrderCourierActivity extends BaseActivity {
             });
             // Check if we were successful in obtaining the map.
             if (mMap != null) {
-                GPSTracker gpsTracker = new GPSTracker(mContext);
-                double lat = gpsTracker.getLatitude();
-                double lng = gpsTracker.getLongitude();
-                LatLng currentLatLng = new LatLng(lat, lng);
+                double lat = currentLatLng.latitude;
+                double lng = currentLatLng.longitude;
                 mMap.addMarker(new MarkerOptions().position(currentLatLng).title(getString(R.string.lowcase_your_location)));
                 mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng, 14));
                 mMap.setMyLocationEnabled(true);

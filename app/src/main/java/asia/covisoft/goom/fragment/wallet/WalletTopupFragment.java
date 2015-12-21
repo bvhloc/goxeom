@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import asia.covisoft.goom.Constant;
+import asia.covisoft.goom.utils.Constant;
 import asia.covisoft.goom.MainActivity;
 import asia.covisoft.goom.R;
 import asia.covisoft.goom.backpress.BackFragment;

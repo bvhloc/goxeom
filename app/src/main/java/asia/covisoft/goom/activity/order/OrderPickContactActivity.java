@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.EditText;
 
 import asia.covisoft.goom.base.BaseActivity;
-import asia.covisoft.goom.Constant;
+import asia.covisoft.goom.utils.Constant;
 import asia.covisoft.goom.helper.ContactProvider;
 import asia.covisoft.goom.R;
 

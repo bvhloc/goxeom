@@ -11,7 +11,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import asia.covisoft.goom.base.BaseActivity;
-import asia.covisoft.goom.Constant;
+import asia.covisoft.goom.utils.Constant;
 import asia.covisoft.goom.R;
 import asia.covisoft.goom.adapter.list.RestaurantListAdapter;
 import asia.covisoft.goom.pojo.RestaurantItem;

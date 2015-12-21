@@ -14,7 +14,7 @@ import android.widget.RadioButton;
 
 import java.util.ArrayList;
 
-import asia.covisoft.goom.Constant;
+import asia.covisoft.goom.utils.Constant;
 import asia.covisoft.goom.R;
 import asia.covisoft.goom.activity.history.HistoryDetailsActivity;
 import asia.covisoft.goom.adapter.list.HistoryListAdapter;

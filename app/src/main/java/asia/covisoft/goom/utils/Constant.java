@@ -1,4 +1,4 @@
-package asia.covisoft.goom;
+package asia.covisoft.goom.utils;
 
 public abstract class Constant {
 

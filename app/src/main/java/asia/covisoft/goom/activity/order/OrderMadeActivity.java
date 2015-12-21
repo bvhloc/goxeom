@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import asia.covisoft.goom.base.BaseActivity;
-import asia.covisoft.goom.Constant;
+import asia.covisoft.goom.utils.Constant;
 import asia.covisoft.goom.R;
 
 public class OrderMadeActivity extends BaseActivity {
