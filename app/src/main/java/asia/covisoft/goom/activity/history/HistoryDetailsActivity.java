@@ -31,7 +31,7 @@ public class HistoryDetailsActivity extends BaseActivity implements HistoryDetai
         presenter = new HistoryDetailsPresenter(this);
         initView();
 
-        presenter.setupTitle();
+        presenter.setupTitle(getIntent().getExtras());
 
         presenter.setupMap();
     }

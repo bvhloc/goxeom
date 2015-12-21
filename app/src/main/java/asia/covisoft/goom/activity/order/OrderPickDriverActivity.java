@@ -31,7 +31,7 @@ public class OrderPickDriverActivity extends BaseActivity implements OrderPickDr
         presenter = new OrderPickDriverPresenter(this);
         initView();
 
-        presenter.setupMap();
+        presenter.setupMap(getIntent().getExtras());
     }
 
     private ScrollView scrollView;

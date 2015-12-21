@@ -1,5 +1,6 @@
 package asia.covisoft.goom.activity.order;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v4.content.ContextCompat;
@@ -21,8 +22,9 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import java.util.ArrayList;
 
 import asia.covisoft.goom.base.BaseActivity;
+import asia.covisoft.goom.mvp.presenter.OrderFoodPresenter;
+import asia.covisoft.goom.mvp.view.OrderFoodView;
 import asia.covisoft.goom.utils.Constant;
-import asia.covisoft.goom.helper.GPSTracker;
 import asia.covisoft.goom.R;
 import asia.covisoft.goom.adapter.list.FoodTypeListAdapter;
 import asia.covisoft.goom.adapter.list.RestaurantListAdapter;
@@ -31,9 +33,10 @@ import asia.covisoft.goom.pojo.RestaurantItem;
 import asia.covisoft.goom.customview.HeaderGridView;
 import asia.covisoft.goom.customview.WorkaroundMapFragment;
 
-public class OrderFoodActivity extends BaseActivity {
+public class OrderFoodActivity extends BaseActivity implements OrderFoodView {
 
     private Context mContext;
+    private OrderFoodPresenter presenter;
 
     private RestaurantListAdapter restaurantAdapter;
     private FoodTypeListAdapter foodtypeAdapter;
@@ -43,6 +46,7 @@ public class OrderFoodActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_food);
         mContext = this;
+        presenter = new OrderFoodPresenter(this);
         initView();
 
         rdbCategory.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -76,6 +80,7 @@ public class OrderFoodActivity extends BaseActivity {
         lvFoodType.setOnItemClickListener(lvFoodTypeListener);
 
         LayoutInflater inflater = getLayoutInflater();
+        @SuppressLint("InflateParams")
         View header = inflater.inflate(R.layout.header_map, null);
         gvRestarants.addHeaderView(header);
 
@@ -83,7 +88,7 @@ public class OrderFoodActivity extends BaseActivity {
         gvRestarants.setAdapter(restaurantAdapter);
         gvRestarants.setOnItemClickListener(gvRestaurantsListener);
 
-        setUpMap();
+        presenter.setupMap();
     }
 
     private AdapterView.OnItemClickListener lvFoodTypeListener = new AdapterView.OnItemClickListener() {
@@ -114,7 +119,8 @@ public class OrderFoodActivity extends BaseActivity {
     private LinearLayout lnlNearMe;
     private SearchView searchView;
 
-    private void initView() {
+    @Override
+    public void initView() {
 
         rdbCategory = (RadioButton) findViewById(R.id.rdbCategory);
         rdbCategory.setTextColor(ContextCompat.getColor(mContext, R.color.mAppBackground));
@@ -135,7 +141,9 @@ public class OrderFoodActivity extends BaseActivity {
 
     private GoogleMap mMap;
 
-    private void setUpMap() {
+    @Override
+    public void onMapReady(LatLng currentLatLng) {
+
         // Do a null check to confirm that we have not already instantiated the map.
         if (mMap == null) {
             // Try to obtain the map from the SupportMapFragment.
@@ -150,10 +158,6 @@ public class OrderFoodActivity extends BaseActivity {
             });
             // Check if we were successful in obtaining the map.
             if (mMap != null) {
-                GPSTracker gpsTracker = new GPSTracker(mContext);
-                double lat = gpsTracker.getLatitude();
-                double lng = gpsTracker.getLongitude();
-                LatLng currentLatLng = new LatLng(lat, lng);
                 mMap.addMarker(new MarkerOptions().position(currentLatLng).title(getString(R.string.lowcase_your_location)));
                 mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng, 14));
                 mMap.setMyLocationEnabled(true);

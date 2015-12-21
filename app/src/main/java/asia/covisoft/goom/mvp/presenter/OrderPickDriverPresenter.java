@@ -2,6 +2,7 @@ package asia.covisoft.goom.mvp.presenter;
 
 import android.app.Activity;
 import android.content.Context;
+import android.os.Bundle;
 
 import com.google.android.gms.maps.model.LatLng;
 
@@ -21,9 +22,9 @@ public class OrderPickDriverPresenter {
         this.context = (Context) view;
     }
 
-    public void setupMap() {
+    public void setupMap(Bundle extras) {
 
-        LatLng driverLatLng = ((Activity)context).getIntent().getParcelableExtra(Constant.DRIVER_LATLNG);
+        LatLng driverLatLng = extras.getParcelable(Constant.DRIVER_LATLNG);
         view.onMapReady(driverLatLng);
     }
 }

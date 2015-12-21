@@ -2,6 +2,8 @@ package asia.covisoft.goom.mvp.presenter;
 
 import android.app.Activity;
 import android.content.Context;
+import android.os.Bundle;
+
 import com.google.android.gms.maps.model.LatLng;
 
 import asia.covisoft.goom.R;
@@ -19,9 +21,9 @@ public class HistoryDetailsPresenter {
         this.context = (Context) view;
     }
 
-    public void setupTitle(){
+    public void setupTitle(Bundle extras){
 
-        boolean HISTORY_STATE = ((Activity)context).getIntent().getBooleanExtra(Constant.HISTORY_STATE, true);
+        boolean HISTORY_STATE = extras.getBoolean(Constant.HISTORY_STATE, true);
         String newTitle = HISTORY_STATE ? context.getString(R.string.fragment_history_completed) : context.getString(R.string.fragment_history_inprocess);
         view.setTitle(newTitle);
     }
