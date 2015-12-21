@@ -16,11 +16,14 @@ import java.util.ArrayList;
 import asia.covisoft.goom.base.BaseActivity;
 import asia.covisoft.goom.R;
 import asia.covisoft.goom.adapter.list.FoodListAdapter;
+import asia.covisoft.goom.mvp.presenter.OrderFoodPickFoodPresenter;
+import asia.covisoft.goom.mvp.view.OrderFoodPickFoodView;
 import asia.covisoft.goom.pojo.FoodItem;
 
-public class OrderFoodPickFoodActivity extends BaseActivity {
+public class OrderFoodPickFoodActivity extends BaseActivity implements OrderFoodPickFoodView {
 
     private Context mContext;
+    private OrderFoodPickFoodPresenter presenter;
 
     private FoodListAdapter mAdapter;
 
@@ -29,9 +32,10 @@ public class OrderFoodPickFoodActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_food_pick_food);
         mContext = this;
+        presenter = new OrderFoodPickFoodPresenter(this);
         initView();
 
-        setupListHeader();
+        presenter.setupListHeader(getIntent().getExtras());
 
         mAdapter = new FoodListAdapter(mContext, dataSet());
         lvFood.setAdapter(mAdapter);
@@ -39,7 +43,8 @@ public class OrderFoodPickFoodActivity extends BaseActivity {
 
     private ListView lvFood;
 
-    private void initView() {
+    @Override
+    public void initView() {
 
         lvFood = (ListView) findViewById(R.id.lvFood);
         findViewById(R.id.btnOrder).setOnClickListener(new View.OnClickListener() {
@@ -52,17 +57,8 @@ public class OrderFoodPickFoodActivity extends BaseActivity {
         });
     }
 
-    private void setupListHeader() {
-
-        LayoutInflater inflater = getLayoutInflater();
-        View header = inflater.inflate(R.layout.header_restaurant, null);
-
-        ((TextView)header.findViewById(R.id.tvName)).setText(getIntent().getStringExtra("name"));
-        ((TextView)header.findViewById(R.id.tvAddress)).setText(getIntent().getStringExtra("address"));
-        ImageView imgvAvatar = (ImageView) header.findViewById(R.id.imgvAvatar);
-        Picasso.with(mContext)
-                .load("file:///android_asset/" + getIntent().getStringExtra("imageurl"))
-                .into(imgvAvatar);
+    @Override
+    public void initListHeader(View header) {
 
         lvFood.addHeaderView(header);
     }
