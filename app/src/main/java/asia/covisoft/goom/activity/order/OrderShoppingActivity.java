@@ -102,8 +102,7 @@ public class OrderShoppingActivity extends BaseActivity implements OrderShopping
                     public boolean onMarkerClick(Marker marker) {
 
                         Intent intent = new Intent(mContext, OrderPickDriverActivity.class);
-                        intent.putExtra(Constant.DRIVER_LAT, marker.getPosition().latitude);
-                        intent.putExtra(Constant.DRIVER_LNG, marker.getPosition().longitude);
+                        intent.putExtra(Constant.DRIVER_LATLNG, marker.getPosition());
                         startActivity(intent);
 
                         return true;

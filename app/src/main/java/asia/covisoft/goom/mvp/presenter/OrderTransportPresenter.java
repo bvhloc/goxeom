@@ -1,5 +1,6 @@
 package asia.covisoft.goom.mvp.presenter;
 
+import android.app.Activity;
 import android.content.Context;
 
 import com.google.android.gms.maps.model.LatLng;
@@ -16,7 +17,6 @@ public class OrderTransportPresenter {
         this.view = view;
         this.context = (Context) view;
     }
-
 
     public void setupMap() {
 

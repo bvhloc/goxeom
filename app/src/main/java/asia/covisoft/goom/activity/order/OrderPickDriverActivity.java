@@ -12,21 +12,32 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import asia.covisoft.goom.base.BaseActivity;
+import asia.covisoft.goom.mvp.presenter.OrderPickDriverPresenter;
+import asia.covisoft.goom.mvp.view.OrderPickDriverView;
 import asia.covisoft.goom.utils.Constant;
 import asia.covisoft.goom.R;
 import asia.covisoft.goom.customview.WorkaroundMapFragment;
 
-public class OrderPickDriverActivity extends BaseActivity {
+public class OrderPickDriverActivity extends BaseActivity implements OrderPickDriverView {
 
     private Context mContext;
-
-    private ScrollView scrollView;
+    private OrderPickDriverPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_pick_driver);
         mContext = this;
+        presenter = new OrderPickDriverPresenter(this);
+        initView();
+
+        presenter.setupMap();
+    }
+
+    private ScrollView scrollView;
+
+    @Override
+    public void initView() {
 
         scrollView = (ScrollView) findViewById(R.id.scrollView);
         findViewById(R.id.btnBook).setOnClickListener(new View.OnClickListener() {
@@ -36,15 +47,13 @@ public class OrderPickDriverActivity extends BaseActivity {
                 onBackPressed();
             }
         });
-
-        Bundle extra = getIntent().getExtras();
-        setUpMap(extra.getDouble(Constant.DRIVER_LAT), extra.getDouble(Constant.DRIVER_LNG));
     }
 
     private GoogleMap mMap;
 
-    private void setUpMap(double lat, double lng) {
-        // Do a null check to confirm that we have not already instantiated the map.
+    @Override
+    public void onMapReady(LatLng driverLatLng) {
+
         if (mMap == null) {
             // Try to obtain the map from the SupportMapFragment.
             mMap = ((WorkaroundMapFragment) getSupportFragmentManager().findFragmentById(R.id.mMap))
@@ -58,9 +67,8 @@ public class OrderPickDriverActivity extends BaseActivity {
             });
             // Check if we were successful in obtaining the map.
             if (mMap != null) {
-                LatLng diverLatLng = new LatLng(lat, lng);
-                mMap.addMarker(new MarkerOptions().position(diverLatLng).icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_location)));
-                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(diverLatLng, 14));
+                mMap.addMarker(new MarkerOptions().position(driverLatLng).icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_location)));
+                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(driverLatLng, 14));
                 mMap.setMyLocationEnabled(true);
             }
         }

@@ -1,11 +1,13 @@
 package asia.covisoft.goom.mvp.presenter;
 
+import android.app.Activity;
 import android.content.Context;
 import com.google.android.gms.maps.model.LatLng;
 
 import asia.covisoft.goom.R;
 import asia.covisoft.goom.helper.GPSTracker;
 import asia.covisoft.goom.mvp.view.HistoryDetailsView;
+import asia.covisoft.goom.utils.Constant;
 
 public class HistoryDetailsPresenter {
 
@@ -17,8 +19,9 @@ public class HistoryDetailsPresenter {
         this.context = (Context) view;
     }
 
-    public void setupTitle(boolean HISTORY_STATE){
+    public void setupTitle(){
 
+        boolean HISTORY_STATE = ((Activity)context).getIntent().getBooleanExtra(Constant.HISTORY_STATE, true);
         String newTitle = HISTORY_STATE ? context.getString(R.string.fragment_history_completed) : context.getString(R.string.fragment_history_inprocess);
         view.setTitle(newTitle);
     }

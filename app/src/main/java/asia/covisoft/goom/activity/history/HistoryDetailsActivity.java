@@ -31,8 +31,7 @@ public class HistoryDetailsActivity extends BaseActivity implements HistoryDetai
         presenter = new HistoryDetailsPresenter(this);
         initView();
 
-        boolean HISTORY_STATE = getIntent().getBooleanExtra(Constant.HISTORY_STATE, true);
-        presenter.setupTitle(HISTORY_STATE);
+        presenter.setupTitle();
 
         presenter.setupMap();
     }
