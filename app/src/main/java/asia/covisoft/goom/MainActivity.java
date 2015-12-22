@@ -30,7 +30,6 @@ public class MainActivity extends AppCompatActivity {
             // and getting the reference
             tabFragment = (TabFragment) getSupportFragmentManager().getFragments().get(0);
         }
-
     }
 
     private void initScreen(int tabPos) {
