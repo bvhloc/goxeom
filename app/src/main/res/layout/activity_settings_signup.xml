@@ -55,11 +55,19 @@
                         android:contentDescription="@string/lowcase_email"
                         android:src="@drawable/ic_email" />
 
-                    <EditText
-                        android:singleLine="true"
+                    <android.support.design.widget.TextInputLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="@string/lowcase_email" />
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:id="@+id/edtEmail"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/lowcase_email"
+                            android:singleLine="true"
+                            android:inputType="textEmailAddress" />
+
+                    </android.support.design.widget.TextInputLayout>
 
                 </LinearLayout>
 
@@ -74,14 +82,21 @@
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:layout_margin="5dp"
-                        android:contentDescription="@string/lowcase_name"
+                        android:contentDescription="@string/lowcase_username"
                         android:src="@drawable/ic_user" />
 
-                    <EditText
-                        android:singleLine="true"
+                    <android.support.design.widget.TextInputLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="@string/lowcase_name" />
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:id="@+id/edtUsername"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/lowcase_username"
+                            android:singleLine="true" />
+
+                    </android.support.design.widget.TextInputLayout>
 
                 </LinearLayout>
 
@@ -91,6 +106,7 @@
                     android:background="@drawable/view_touch_selector"
                     android:clickable="true"
                     android:orientation="horizontal">
+
 
                     <ImageView
                         android:layout_width="40dp"
@@ -99,11 +115,20 @@
                         android:contentDescription="@string/lowcase_phone"
                         android:src="@drawable/ic_call" />
 
-                    <EditText
-                        android:singleLine="true"
+
+                    <android.support.design.widget.TextInputLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="@string/lowcase_phone" />
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:id="@+id/edtPhone"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/lowcase_phone"
+                            android:singleLine="true"
+                            android:inputType="phone" />
+
+                    </android.support.design.widget.TextInputLayout>
 
                 </LinearLayout>
 
@@ -121,11 +146,52 @@
                         android:contentDescription="@string/lowcase_password"
                         android:src="@drawable/ic_password" />
 
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
                     <EditText
-                        android:singleLine="true"
+                        android:id="@+id/edtPassword"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="@string/lowcase_password" />
+                        android:hint="@string/lowcase_password"
+                        android:singleLine="true"
+                        android:inputType="textPassword" />
+
+                    </android.support.design.widget.TextInputLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lnlConfirm"
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/view_touch_selector"
+                    android:clickable="true"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_margin="5dp"
+                        android:contentDescription="@string/lowcase_password"
+                        android:src="@drawable/ic_password" />
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:id="@+id/edtConfirm"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/lowcase_confirm"
+                            android:singleLine="true"
+                            android:src="@drawable/ic_password"
+                            android:inputType="textPassword"/>
+
+                    </android.support.design.widget.TextInputLayout>
 
                 </LinearLayout>
 

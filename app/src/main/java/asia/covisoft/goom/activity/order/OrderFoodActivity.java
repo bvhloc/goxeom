@@ -119,8 +119,7 @@ public class OrderFoodActivity extends BaseActivity implements OrderFoodView {
     private LinearLayout lnlNearMe;
     private SearchView searchView;
 
-    @Override
-    public void initView() {
+    private void initView() {
 
         rdbCategory = (RadioButton) findViewById(R.id.rdbCategory);
         rdbCategory.setTextColor(ContextCompat.getColor(mContext, R.color.mAppBackground));

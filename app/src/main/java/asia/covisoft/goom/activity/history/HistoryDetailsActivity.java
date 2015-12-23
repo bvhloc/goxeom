@@ -39,8 +39,7 @@ public class HistoryDetailsActivity extends BaseActivity implements HistoryDetai
     private ScrollView scrollView;
     private TextView tvTitle;
 
-    @Override
-    public void initView() {
+    private void initView() {
 
         scrollView = (ScrollView) findViewById(R.id.scrollView);
         tvTitle = (TextView) findViewById(R.id.tvTitle);

@@ -36,8 +36,7 @@ public class OrderPickDriverActivity extends BaseActivity implements OrderPickDr
 
     private ScrollView scrollView;
 
-    @Override
-    public void initView() {
+    private void initView() {
 
         scrollView = (ScrollView) findViewById(R.id.scrollView);
         findViewById(R.id.btnBook).setOnClickListener(new View.OnClickListener() {

@@ -43,8 +43,7 @@ public class OrderFoodPickFoodActivity extends BaseActivity implements OrderFood
 
     private ListView lvFood;
 
-    @Override
-    public void initView() {
+    private void initView() {
 
         lvFood = (ListView) findViewById(R.id.lvFood);
         findViewById(R.id.btnOrder).setOnClickListener(new View.OnClickListener() {

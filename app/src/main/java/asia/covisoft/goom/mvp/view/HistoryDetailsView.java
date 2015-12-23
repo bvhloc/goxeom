@@ -7,7 +7,6 @@ import com.google.android.gms.maps.model.LatLng;
  */
 public interface HistoryDetailsView {
 
-    void initView();
     void setTitle(String title);
     void onMapReady(LatLng currentLatLng);
 }

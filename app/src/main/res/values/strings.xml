@@ -154,5 +154,23 @@
 
     <string name="list_item_location_history_name">Name:</string>
     <string name="list_item_location_history_address">Address:</string>
+    <string name="lowcase_confirm">Confirm</string>
+    <string name="activity_settings_signup_error_phone_length">Phone number length mustn\'t be more than 11</string>
+    <string name="activity_settings_signup_error_confirm">Please check your password confirmation carefully</string>
+    <string name="lowcase_ok">Ok</string>
+    <string name="activity_settings_signup_dialog_success">Sign Up Successfully</string>
+    <string name="activity_settings_signup_error_email_empty">Please insert email address</string>
+    <string name="activity_settings_signup_error_phone_empty">Please insert phone number</string>
+    <string name="activity_settings_signup_error_username_empty">Please insert username</string>
+    <string name="activity_settings_signup_error_username_exist">This username is already exist</string>
+    <string name="activity_settings_signup_error_email_exist">This email is already exist</string>
+    <string name="activity_settings_signup_error_phone_exist">This phone number is already exist</string>
+    <string name="dialog_loading">Loading...</string>
+    <string name="activity_settings_signup_error_password_empty">Please insert password</string>
+    <string name="activity_settings_signup_error_confirm_empty">Please confirm your password</string>
+    <string name="dialog_connection_fail">Connection is not responding, please try again</string>
+    <string name="activity_settings_login_dialog_success">Login Successfully</string>
+    <string name="activity_settings_login_error_wrongpassword">Wrong password</string>
+    <string name="activity_settings_login_error_username_notexist">This username isn\'t exist</string>
 
 </resources>

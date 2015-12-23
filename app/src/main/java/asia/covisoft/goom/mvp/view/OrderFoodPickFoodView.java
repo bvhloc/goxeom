@@ -7,6 +7,5 @@ import android.view.View;
  */
 public interface OrderFoodPickFoodView {
 
-    void initView();
     void initListHeader(View header);
 }

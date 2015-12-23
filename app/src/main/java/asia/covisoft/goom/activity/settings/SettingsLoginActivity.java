@@ -1,55 +1,51 @@
 package asia.covisoft.goom.activity.settings;
 
+import android.app.AlertDialog;
 import android.content.Context;
-import android.os.AsyncTask;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
-import android.widget.ProgressBar;
-
-import com.squareup.okhttp.OkHttpClient;
-import com.squareup.okhttp.Request;
-import com.squareup.okhttp.Response;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.IOException;
-import java.util.concurrent.TimeUnit;
+import android.widget.TextView;
 
 import asia.covisoft.goom.R;
 import asia.covisoft.goom.base.BaseActivity;
-import asia.covisoft.goom.helper.Encoder;
+import asia.covisoft.goom.mvp.model.SettingsLoginModel;
+import asia.covisoft.goom.mvp.presenter.SettingsLoginPresenter;
+import asia.covisoft.goom.mvp.view.SettingsLoginView;
+import asia.covisoft.goom.utils.Constant;
 
-public class SettingsLoginActivity extends BaseActivity {
+public class SettingsLoginActivity extends BaseActivity implements SettingsLoginView {
+
+    private Context mContext;
+    private SettingsLoginModel model;
+    private SettingsLoginPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings_login);
+        mContext = this;
+        presenter = new SettingsLoginPresenter(this);
+        model = new SettingsLoginModel();
+
         initView();
-
-        setupStaticData();
-
-//        String url = "http://192.168.0.20:90/webservice/login.php?username=CoviTester1&password=CoviTester";
-//        JsonParseAsyncTask asyncTask = new JsonParseAsyncTask(this);
-//        asyncTask.execute(url);
     }
 
     private EditText edtUsername, edtPassword;
-    private CheckBox chkShowPassword;
-    private Button btnLogin;
+    private TextView tvError;
 
     private void initView() {
 
         edtUsername = (EditText) findViewById(R.id.edtUsername);
         edtPassword = (EditText) findViewById(R.id.edtPassword);
-        chkShowPassword = (CheckBox) findViewById(R.id.chkShowPassword);
+        tvError = (TextView) findViewById(R.id.tvError);
+        CheckBox chkShowPassword = (CheckBox) findViewById(R.id.chkShowPassword);
         chkShowPassword.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -61,91 +57,90 @@ public class SettingsLoginActivity extends BaseActivity {
                 }
             }
         });
-        btnLogin = (Button) findViewById(R.id.btnLogin);
+        Button btnLogin = (Button) findViewById(R.id.btnLogin);
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                edtPassword.setText(Encoder.encryptByMD5(edtUsername.getText().toString()));
-
+                btnLoginOnClick();
             }
         });
     }
 
-    private class JsonParseAsyncTask extends AsyncTask<String, Void, String> {
+    private void btnLoginOnClick() {
 
-        private Context mContext;
-        private ProgressBar progressBar;
+        if (validInput()) {
 
-        public JsonParseAsyncTask(Context context) {
-
-            this.mContext = context;
-        }
-
-        @Override
-        protected void onPreExecute() {
-
-//            progressBar = (ProgressBar) findViewById(R.id.progressBar);
-//            progressBar.setVisibility(View.VISIBLE);
-
-            super.onPreExecute();
-        }
-
-        @Override
-        protected String doInBackground(String... params) {
-            String json = null;
-            String urlString = params[0];
-            try {
-                Request request = new Request.Builder().url(urlString).build();
-                OkHttpClient okHttpClient = new OkHttpClient();
-                okHttpClient.setConnectTimeout(20, TimeUnit.SECONDS);
-                Response response = okHttpClient.newCall(request).execute();
-                json = response.body().string();
-
-                JSONObject jsonRootObject = new JSONObject(json);
-
-//                JSONArray jsonArray = jsonRootObject.optJSONArray("data");
-//
-//                //Iterate the jsonArray and print the info of JSONObjects
-//                for (int i = 0; i < jsonArray.length(); i++) {
-//
-//                    JSONObject jsonObject = jsonArray.getJSONObject(i);
-//
-//                    String email = jsonObject.optString("email");
-//
-//                    Log.d("myDebug", email);
-//                }
-
-                JSONObject loginObject = jsonRootObject.optJSONObject("login");
-
-                int value = loginObject.optInt("Value");
-                if (value == 1) {
-
-                    Log.d("myDebug", loginObject.optString("Type"));
-                }
-
-            } catch (IOException | JSONException e) {
-                e.printStackTrace();
-            }
-
-            return json;
-        }
-
-
-        @Override
-        protected void onPostExecute(String aVoid) {
-
-//            progressBar.setVisibility(View.INVISIBLE);
-
-            Log.d("myDebug", aVoid);
-
-            super.onPostExecute(aVoid);
+            presenter.login(model);
         }
     }
 
-    private void setupStaticData() {
+    private boolean validInput() {
 
-        edtUsername.setText("CoviTester1");
-        edtPassword.setText("CoviTester");
+        model.username = edtUsername.getText().toString();
+        model.password = edtPassword.getText().toString();
+        if (model.username.isEmpty()) {
+
+            tvError.setText(getString(R.string.activity_settings_signup_error_username_empty));
+            edtUsername.requestFocus();
+            return false;
+        }
+        if (model.password.isEmpty()) {
+
+            tvError.setText(getString(R.string.activity_settings_signup_error_password_empty));
+            edtPassword.requestFocus();
+            return false;
+        }
+
+        return true;
+    }
+
+    @Override
+    public void onLogin(SettingsLoginModel model) {
+
+        switch (model.loginResult) {
+
+            case 1:
+
+                new AlertDialog.Builder(mContext)
+                        .setMessage(getString(R.string.activity_settings_login_dialog_success))
+                        .setNeutralButton(getString(R.string.lowcase_ok), new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                                Intent intent = getBaseContext().getPackageManager()
+                                        .getLaunchIntentForPackage(getBaseContext().getPackageName());
+                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                intent.putExtra(Constant.TAB_POSTION, 3);
+                                startActivity(intent);
+
+                            }
+                        }).show();
+
+                break;
+            case 2:
+
+                String extendMessage = "";
+                if (model.failCount >= 2) {
+                    extendMessage = ", login fail " + model.failCount + " times";
+                }
+                tvError.setText(getString(R.string.activity_settings_login_error_wrongpassword) + extendMessage);
+
+                break;
+            case 3:
+
+                tvError.setText(getString(R.string.activity_settings_login_error_username_notexist));
+
+                break;
+        }
+    }
+
+    @Override
+    public void onConnectionFail() {
+
+        new AlertDialog.Builder(mContext)
+                .setMessage(getString(R.string.dialog_connection_fail))
+                .setNeutralButton(getString(R.string.lowcase_ok), null)
+                .show();
     }
 }

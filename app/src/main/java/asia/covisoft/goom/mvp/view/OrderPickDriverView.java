@@ -7,6 +7,5 @@ import com.google.android.gms.maps.model.LatLng;
  */
 public interface OrderPickDriverView {
 
-    void initView();
     void onMapReady(LatLng currentLatLng);
 }

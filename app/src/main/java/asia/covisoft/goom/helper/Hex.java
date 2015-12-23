@@ -1,11 +1,11 @@
-package asia.covisoft.goom.utils;
+package asia.covisoft.goom.helper;
 
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 
 public class Hex {
 
-    public static String fromString(String str) {
+    public String fromString(String str) {
 
         byte[] bytes = new byte[0];
         try {
@@ -24,7 +24,7 @@ public class Hex {
         return hexString;
     }
 
-    public static String toString(String hex) {
+    public String toString(String hex) {
 
         byte[] bytes = new BigInteger(hex, 16).toByteArray();
         String str = "";

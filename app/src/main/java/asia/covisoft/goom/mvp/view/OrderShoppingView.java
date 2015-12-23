@@ -7,6 +7,5 @@ import com.google.android.gms.maps.model.LatLng;
  */
 public interface OrderShoppingView {
 
-    void initView();
     void onMapReady(LatLng currentLatLng);
 }

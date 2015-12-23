@@ -38,8 +38,7 @@ public class OrderShoppingActivity extends BaseActivity implements OrderShopping
 
     private ScrollView scrollView;
 
-    @Override
-    public void initView() {
+    private void initView() {
 
         scrollView = (ScrollView) findViewById(R.id.scrollView);
         findViewById(R.id.lnlPickFrom).setOnClickListener(new View.OnClickListener() {
