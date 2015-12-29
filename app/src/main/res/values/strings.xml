@@ -7,6 +7,11 @@
 
     <string name="character_colon">:</string>
 
+    <string name="dialog_loading">Loading…</string>
+    <string name="dialog_connection_fail">Connection is not responding, please try again</string>
+
+    <string name="snackbar_nodrivernearby">No driver near by</string>
+
     <string name="upcase_pick_your_service">PICK YOUR SERVICE</string>
     <string name="upcase_submit">SUBMIT</string>
     <string name="upcase_next">NEXT</string>
@@ -31,6 +36,9 @@
     <string name="upcase_driverinformation">DRIVER INFORMATION</string>
     <string name="upcase_bookingdetails">BOOKING DETAILS</string>
     <string name="upcase_login">LOGIN</string>
+
+    <string name="lowcase_confirm">Confirm</string>
+    <string name="lowcase_ok">Ok</string>
 
     <string name="lowcase_your_location">Your Location</string>
     <string name="lowcase_search">Search</string>
@@ -69,7 +77,7 @@
     <string name="fragment_wallet_title">MY WALLET</string>
     <string name="fragment_wallet_text1">Welcome to GOXEOM credit - Your - in - app Wallet!</string>
     <string name="fragment_wallet_text2">Here you can redeem vouchers, and go cashless</string>
-    <string name="fragment_wallet_text3">YOUR GOXEOM CREDIT 1.000.0... VND</string>
+    <string name="fragment_wallet_text3">YOUR GOXEOM CREDIT 1.000.0… VND</string>
     <string name="fragment_wallet_text4">Share your referral code \"148498484984\" to give your friends 50.000 VND credit for first time use GOXEOM. When they book, you will get 50.000 VND too! Keep spreading the GOXEOM love!</string>
     <string name="fragment_wallet_hint_code">Voucher Code/Referral Code</string>
     <string name="fragment_wallet_button_topup">TOP-UP</string>
@@ -154,10 +162,10 @@
 
     <string name="list_item_location_history_name">Name:</string>
     <string name="list_item_location_history_address">Address:</string>
-    <string name="lowcase_confirm">Confirm</string>
+
     <string name="activity_settings_signup_error_phone_length">Phone number length mustn\'t be more than 11</string>
     <string name="activity_settings_signup_error_confirm">Please check your password confirmation carefully</string>
-    <string name="lowcase_ok">Ok</string>
+
     <string name="activity_settings_signup_dialog_success">Sign Up Successfully</string>
     <string name="activity_settings_signup_error_email_empty">Please insert email address</string>
     <string name="activity_settings_signup_error_phone_empty">Please insert phone number</string>
@@ -165,10 +173,9 @@
     <string name="activity_settings_signup_error_username_exist">This username is already exist</string>
     <string name="activity_settings_signup_error_email_exist">This email is already exist</string>
     <string name="activity_settings_signup_error_phone_exist">This phone number is already exist</string>
-    <string name="dialog_loading">Loading...</string>
     <string name="activity_settings_signup_error_password_empty">Please insert password</string>
     <string name="activity_settings_signup_error_confirm_empty">Please confirm your password</string>
-    <string name="dialog_connection_fail">Connection is not responding, please try again</string>
+
     <string name="activity_settings_login_dialog_success">Login Successfully</string>
     <string name="activity_settings_login_error_wrongpassword">Wrong password</string>
     <string name="activity_settings_login_error_username_notexist">This username isn\'t exist</string>

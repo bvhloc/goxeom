@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ScrollView;
+import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -11,12 +12,12 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import asia.covisoft.goom.R;
 import asia.covisoft.goom.base.BaseActivity;
+import asia.covisoft.goom.customview.WorkaroundMapFragment;
+import asia.covisoft.goom.mvp.model.OrderPickDriverModel;
 import asia.covisoft.goom.mvp.presenter.OrderPickDriverPresenter;
 import asia.covisoft.goom.mvp.view.OrderPickDriverView;
-import asia.covisoft.goom.utils.Constant;
-import asia.covisoft.goom.R;
-import asia.covisoft.goom.customview.WorkaroundMapFragment;
 
 public class OrderPickDriverActivity extends BaseActivity implements OrderPickDriverView {
 
@@ -31,13 +32,19 @@ public class OrderPickDriverActivity extends BaseActivity implements OrderPickDr
         presenter = new OrderPickDriverPresenter(this);
         initView();
 
-        presenter.setupMap(getIntent().getExtras());
+        Bundle extras = getIntent().getExtras();
+        presenter.setupMap(extras);
+        presenter.getDiverInfo(extras);
     }
 
     private ScrollView scrollView;
+    private TextView tvId, tvName, tvAge;
 
     private void initView() {
 
+        tvId = (TextView) findViewById(R.id.tvId);
+        tvName = (TextView) findViewById(R.id.tvName);
+        tvAge = (TextView) findViewById(R.id.tvAge);
         scrollView = (ScrollView) findViewById(R.id.scrollView);
         findViewById(R.id.btnBook).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,5 +78,13 @@ public class OrderPickDriverActivity extends BaseActivity implements OrderPickDr
                 mMap.setMyLocationEnabled(true);
             }
         }
+    }
+
+    @Override
+    public void setDriverInfo(OrderPickDriverModel model) {
+
+        tvId.setText(model.getId());
+        tvName.setText(model.getName());
+        tvAge.setText(model.getAge()+"");
     }
 }

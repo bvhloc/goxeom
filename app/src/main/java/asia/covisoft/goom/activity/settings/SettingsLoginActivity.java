@@ -77,15 +77,15 @@ public class SettingsLoginActivity extends BaseActivity implements SettingsLogin
 
     private boolean validInput() {
 
-        model.username = edtUsername.getText().toString();
-        model.password = edtPassword.getText().toString();
-        if (model.username.isEmpty()) {
+        model.setUsername(edtUsername.getText().toString());
+        model.setPassword(edtPassword.getText().toString());
+        if (model.getUsername().isEmpty()) {
 
             tvError.setText(getString(R.string.activity_settings_signup_error_username_empty));
             edtUsername.requestFocus();
             return false;
         }
-        if (model.password.isEmpty()) {
+        if (model.getPassword().isEmpty()) {
 
             tvError.setText(getString(R.string.activity_settings_signup_error_password_empty));
             edtPassword.requestFocus();
@@ -98,7 +98,7 @@ public class SettingsLoginActivity extends BaseActivity implements SettingsLogin
     @Override
     public void onLogin(SettingsLoginModel model) {
 
-        switch (model.loginResult) {
+        switch (model.getLoginResult()) {
 
             case 1:
 
@@ -121,8 +121,8 @@ public class SettingsLoginActivity extends BaseActivity implements SettingsLogin
             case 2:
 
                 String extendMessage = "";
-                if (model.failCount >= 2) {
-                    extendMessage = ", login fail " + model.failCount + " times";
+                if (model.getFailCount() >= 2) {
+                    extendMessage = ", login fail " + model.getFailCount() + " times";
                 }
                 tvError.setText(getString(R.string.activity_settings_login_error_wrongpassword) + extendMessage);
 

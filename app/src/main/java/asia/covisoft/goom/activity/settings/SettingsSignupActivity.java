@@ -90,47 +90,47 @@ public class SettingsSignupActivity extends BaseActivity implements SettingsSign
 
     private boolean validInput() {
 
-        model.email = edtEmail.getText().toString();
-        model.phone = edtPhone.getText().toString();
-        model.username = edtUsername.getText().toString();
-        model.password = edtPassword.getText().toString();
-        model.confirm = edtConfirm.getText().toString();
+        model.setEmail(edtEmail.getText().toString());
+        model.setPhone(edtPhone.getText().toString());
+        model.setUsername(edtUsername.getText().toString());
+        model.setPassword(edtPassword.getText().toString());
+        model.setConfirm(edtConfirm.getText().toString());
 
-        if (model.email.isEmpty()) {
+        if (model.getEmail().isEmpty()) {
 
             edtEmail.setError(getString(R.string.activity_settings_signup_error_email_empty));
             edtEmail.requestFocus();
             return false;
         }
-        if (model.phone.length() > 11) {
+        if (model.getPhone().length() > 11) {
             edtPhone.setError(getString(R.string.activity_settings_signup_error_phone_empty));
             edtPhone.requestFocus();
             return false;
         }
-        if (model.phone.length() > 11) {
+        if (model.getPhone().length() > 11) {
             edtPhone.setError(getString(R.string.activity_settings_signup_error_phone_length));
             edtPhone.requestFocus();
             return false;
         }
-        if (model.username.isEmpty()) {
+        if (model.getUsername().isEmpty()) {
 
             edtUsername.setError(getString(R.string.activity_settings_signup_error_username_empty));
             edtUsername.requestFocus();
             return false;
         }
-        if (model.password.isEmpty()) {
+        if (model.getPassword().isEmpty()) {
 
             edtPassword.setError(getString(R.string.activity_settings_signup_error_password_empty));
             edtPassword.requestFocus();
             return false;
         }
-        if (model.confirm.isEmpty()) {
+        if (model.getConfirm().isEmpty()) {
 
             edtConfirm.setError(getString(R.string.activity_settings_signup_error_confirm_empty));
             edtConfirm.requestFocus();
             return false;
         }
-        if (!model.password.equals(model.confirm)) {
+        if (!model.getPassword().equals(model.getConfirm())) {
             edtConfirm.setError(getString(R.string.activity_settings_signup_error_confirm));
             edtConfirm.requestFocus();
             return false;

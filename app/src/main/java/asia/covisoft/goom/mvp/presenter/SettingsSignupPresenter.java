@@ -72,6 +72,6 @@ public class SettingsSignupPresenter {
                     view.onSignup(result);
             }
 
-        }.execute(model.username, model.password, model.email, model.phone);
+        }.execute(model.getUsername(), model.getPassword(), model.getEmail(), model.getPhone());
     }
 }

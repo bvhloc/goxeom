@@ -147,22 +147,25 @@
                         android:layout_marginStart="@dimen/activity_horizontal_margin">
 
                         <TextView
+                            android:id="@+id/tvId"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAppearance="?android:attr/textAppearanceSmall"
-                            android:text="123456"/>
+                            android:text=""/>
 
                         <TextView
+                            android:id="@+id/tvName"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAppearance="?android:attr/textAppearanceSmall"
-                            android:text="Lê Văn Đậu" />
+                            android:text="" />
 
                         <TextView
+                            android:id="@+id/tvAge"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAppearance="?android:attr/textAppearanceSmall"
-                            android:text="35" />
+                            android:text="" />
 
                         <asia.covisoft.goom.customview.segmented.SegmentedRadioGroup
                             android:clickable="false"

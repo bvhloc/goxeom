@@ -1,6 +1,5 @@
 package asia.covisoft.goom.mvp.presenter;
 
-import android.app.Activity;
 import android.content.Context;
 
 import com.google.android.gms.maps.model.LatLng;

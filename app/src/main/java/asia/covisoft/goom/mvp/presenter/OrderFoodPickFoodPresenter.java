@@ -8,17 +8,11 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.google.android.gms.maps.model.LatLng;
 import com.squareup.picasso.Picasso;
 
 import asia.covisoft.goom.R;
-import asia.covisoft.goom.helper.GPSTracker;
-import asia.covisoft.goom.mvp.view.OrderCourierView;
 import asia.covisoft.goom.mvp.view.OrderFoodPickFoodView;
 
-/**
- * Created by Covisoft on 21/12/2015.
- */
 public class OrderFoodPickFoodPresenter {
 
     private OrderFoodPickFoodView view;

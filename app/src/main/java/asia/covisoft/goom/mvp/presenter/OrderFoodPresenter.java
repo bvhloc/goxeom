@@ -7,9 +7,6 @@ import com.google.android.gms.maps.model.LatLng;
 import asia.covisoft.goom.helper.GPSTracker;
 import asia.covisoft.goom.mvp.view.OrderFoodView;
 
-/**
- * Created by Covisoft on 21/12/2015.
- */
 public class OrderFoodPresenter {
 
     private OrderFoodView view;

@@ -47,16 +47,17 @@ public class SettingsLoginPresenter {
                         "&pass=" + new MD5().encrypt(params[1])
                         + "&lat=0&long=0";
                 try {
+//                    Log.d("sdb", URL);
                     String json = new NetworkClient().getJsonFromUrl(URL);
 
                     JSONObject jsonRootObject = new JSONObject(json);
 
                     JSONObject loginObject = jsonRootObject.optJSONObject("login");
 
-                    model.loginResult = loginObject.optInt("Value");
-                    if (model.loginResult == 2) {
+                    model.setLoginResult(loginObject.optInt("Value"));
+                    if (model.getLoginResult() == 2) {
 
-                        model.failCount = loginObject.optInt("False");
+                        model.setFailCount(loginObject.optInt("False"));
                     }
 
                     result = true;
@@ -79,6 +80,6 @@ public class SettingsLoginPresenter {
                     view.onLogin(model);
             }
 
-        }.execute(model.username, model.password);
+        }.execute(model.getUsername(), model.getPassword());
     }
 }
