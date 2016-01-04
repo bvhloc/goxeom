@@ -53,9 +53,9 @@ public class OrderCourierPresenter {
             @Override
             protected List<LoadcourierRoot.Loadcourier> doInBackground(Double... params) {
 
-                final String URL = Constant.HOST+
-                        "loadcourier.php?lat="+params[0]+
-                        "&long="+params[1];
+                String URL = Constant.HOST +
+                        "loadcourier.php?lat=" + params[0] +
+                        "&long=" + params[1];
                 try {
                     String json = new NetworkClient().getJsonFromUrl(URL);
 
@@ -65,8 +65,8 @@ public class OrderCourierPresenter {
 
                 } catch (IOException e) {
                     e.printStackTrace();
-                }catch (JsonSyntaxException e){
-                    return new ArrayList<LoadcourierRoot.Loadcourier>();
+                } catch (JsonSyntaxException e) {
+                    return new ArrayList<>();
                 }
 
                 return null;

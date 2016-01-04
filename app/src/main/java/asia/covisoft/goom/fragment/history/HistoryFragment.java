@@ -14,15 +14,18 @@ import android.widget.RadioButton;
 
 import java.util.ArrayList;
 
-import asia.covisoft.goom.utils.Constant;
 import asia.covisoft.goom.R;
 import asia.covisoft.goom.activity.history.HistoryDetailsActivity;
 import asia.covisoft.goom.adapter.list.HistoryListAdapter;
 import asia.covisoft.goom.backpress.BackFragment;
+import asia.covisoft.goom.mvp.model.HistoryModel;
+import asia.covisoft.goom.mvp.presenter.HistoryPresenter;
+import asia.covisoft.goom.mvp.view.HistoryView;
 import asia.covisoft.goom.pojo.HistoryItem;
+import asia.covisoft.goom.utils.Constant;
 
 
-public class HistoryFragment extends BackFragment {
+public class HistoryFragment extends BackFragment implements HistoryView{
 
     public HistoryFragment() {
         // Required empty public constructor
@@ -48,19 +51,15 @@ public class HistoryFragment extends BackFragment {
     private Context mContext;
 
     private HistoryListAdapter inprocessAdapter, completedAdapter;
+    @SuppressWarnings("FieldCanBeLocal")
+    private HistoryPresenter presenter;
+    @SuppressWarnings("FieldCanBeLocal")
+    private HistoryModel model;
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mContext = getActivity();
-
-        inprocessAdapter = new HistoryListAdapter(mContext, dataSet1());
-        lvInprocess.setAdapter(inprocessAdapter);
-        lvInprocess.setOnItemClickListener(inprocessListener);
-
-        completedAdapter = new HistoryListAdapter(mContext, dataSet2());
-        lvCompleted.setAdapter(completedAdapter);
-        lvCompleted.setOnItemClickListener(completedListener);
 
         rdbInprocess.setTextColor(ContextCompat.getColor(mContext, R.color.mAppBackground));
         rdbInprocess.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -88,99 +87,120 @@ public class HistoryFragment extends BackFragment {
                 }
             }
         });
+
+        presenter = new HistoryPresenter(this);
+        model = new HistoryModel();
+
+        lvInprocess.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                startActivity(new Intent(mContext, HistoryDetailsActivity.class).putExtra(Constant.HISTORY_STATE, false));
+            }
+        });
+        lvCompleted.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                startActivity(new Intent(mContext, HistoryDetailsActivity.class).putExtra(Constant.HISTORY_STATE, true));
+            }
+        });
+
+        presenter.getHistory(model);
     }
 
-    private AdapterView.OnItemClickListener inprocessListener = new AdapterView.OnItemClickListener() {
-        @Override
-        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-            startActivity(new Intent(mContext, HistoryDetailsActivity.class).putExtra(Constant.HISTORY_STATE, false));
-        }
-    };
-    private AdapterView.OnItemClickListener completedListener = new AdapterView.OnItemClickListener() {
-        @Override
-        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+    @Override
+    public void onInprocessListReady(ArrayList<HistoryItem> historyItems) {
 
-            startActivity(new Intent(mContext, HistoryDetailsActivity.class).putExtra(Constant.HISTORY_STATE, true));
-        }
-    };
+        inprocessAdapter = new HistoryListAdapter(mContext, historyItems);
+        lvInprocess.setAdapter(inprocessAdapter);
 
-    private ArrayList<HistoryItem> dataSet1() {
-        ArrayList<HistoryItem> dataSet = new ArrayList<>();
-        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
-        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
-        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
-        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
-        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
-        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
-        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
-        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
-        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
-        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
-        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
-        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
-        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
-        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
-        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
-        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
-        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
-        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
-        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
-        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
-        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
-        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
-        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
-        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
-        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
-        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
-        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
-        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
-        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
-        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
-        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
-        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
-        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
-        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
-        return dataSet;
     }
 
-    private ArrayList<HistoryItem> dataSet2() {
-        ArrayList<HistoryItem> dataSet = new ArrayList<>();
-        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", false));
-        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
-        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
-        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
-        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
-        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
-        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", false));
-        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
-        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
-        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
-        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
-        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
-        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
-        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
-        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
-        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
-        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
-        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
-        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
-        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
-        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
-        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
-        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
-        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
-        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
-        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
-        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
-        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
-        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
-        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
-        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
-        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
-        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
-        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
-        return dataSet;
+    @Override
+    public void onCompletedListReady(ArrayList<HistoryItem> historyItems) {
+
+        completedAdapter = new HistoryListAdapter(mContext, historyItems);
+        lvCompleted.setAdapter(completedAdapter);
     }
+
+//    private ArrayList<HistoryItem> dataSet1() {
+//        ArrayList<HistoryItem> dataSet = new ArrayList<>();
+//        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
+//        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
+//        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
+//        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
+//        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
+//        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
+//        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
+//        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
+//        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
+//        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
+//        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
+//        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
+//        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
+//        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
+//        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
+//        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
+//        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
+//        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
+//        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
+//        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
+//        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
+//        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
+//        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
+//        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
+//        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
+//        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
+//        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
+//        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
+//        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
+//        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
+//        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
+//        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
+//        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
+//        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
+//        return dataSet;
+//    }
+//
+//    private ArrayList<HistoryItem> dataSet2() {
+//        ArrayList<HistoryItem> dataSet = new ArrayList<>();
+//        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", false));
+//        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
+//        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
+//        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
+//        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
+//        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
+//        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", false));
+//        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
+//        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
+//        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
+//        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
+//        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
+//        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
+//        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
+//        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
+//        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
+//        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
+//        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
+//        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
+//        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
+//        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
+//        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
+//        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
+//        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
+//        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
+//        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
+//        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
+//        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
+//        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
+//        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
+//        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
+//        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
+//        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
+//        dataSet.add(new HistoryItem("Sep 3rd, 2015 - 18:05", "20, Trường Chinh, Tân Bình, HCM", true));
+//        return dataSet;
+//    }
 
 }
