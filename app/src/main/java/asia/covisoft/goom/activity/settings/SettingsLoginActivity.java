@@ -109,12 +109,9 @@ public class SettingsLoginActivity extends BaseActivity implements SettingsLogin
             case LOGIN_SUCCESS:
 
                 SharedPreferences loginPreferences = getSharedPreferences(Preferences.LOGIN_PREFERENCES, MODE_PRIVATE);
-
-
-//                loginPreferences.edit().putString(Preferences.LOGIN_PREFERENCES_TOKEN, model.getToken()).apply();
                 loginPreferences.edit()
-                        .putString(Preferences.LOGIN_PREFERENCES_TOKEN, "O9GJzRwlZrvDrmLOLBRA")
-                        .apply();//TODO remove testing code
+                        .putString(Preferences.LOGIN_PREFERENCES_TOKEN, model.getToken())
+                        .apply();
 
                 new AlertDialog.Builder(mContext)
                         .setMessage(getString(R.string.activity_settings_login_dialog_success))

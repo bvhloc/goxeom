@@ -186,5 +186,19 @@
 
 <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="lowcase_profile">Profile</string>
+    <string name="title_activity_settings_profile">SettingsProfileActivity</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="activity_settings_profile_logoutaccount">Logout Account</string>
+    <string name="upcase_update">UPDATE</string>
+    <string name="activity_settings_profile_currentpassword">Current Password</string>
+    <string name="activity_settings_profile_newpassword">New Password</string>
+    <string name="activity_settings_profile_confirmpassword">Confirm Password</string>
+    <string name="lowcase_fullname">Fullname</string>
+    <string name="dialog_logout">Are you logging out?</string>
+    <string name="lowcase_yes">Yes</string>
+    <string name="lowcase_no">No</string>
 
 </resources>

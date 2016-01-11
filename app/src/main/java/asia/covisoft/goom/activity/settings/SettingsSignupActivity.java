@@ -60,7 +60,7 @@ public class SettingsSignupActivity extends BaseActivity implements SettingsSign
             @Override
             public void afterTextChanged(Editable s) {
 
-                if(!s.toString().isEmpty()){
+                if (!s.toString().isEmpty()) {
 
                     findViewById(R.id.lnlConfirm).setVisibility(View.VISIBLE);
                 }
@@ -182,10 +182,9 @@ public class SettingsSignupActivity extends BaseActivity implements SettingsSign
     public void onTokenReady(String token) {
 
         SharedPreferences loginPreferences = getSharedPreferences(Preferences.LOGIN_PREFERENCES, MODE_PRIVATE);
-//                loginPreferences.edit().putString(Preferences.LOGIN_PREFERENCES_TOKEN, model.getToken()).apply();
         loginPreferences.edit()
-                .putString(Preferences.LOGIN_PREFERENCES_TOKEN, "O9GJzRwlZrvDrmLOLBRA")
-                .apply();//TODO remove testing code
+                .putString(Preferences.LOGIN_PREFERENCES_TOKEN, token)
+                .apply();
 
         new AlertDialog.Builder(mContext)
                 .setMessage(getString(R.string.activity_settings_signup_dialog_success))

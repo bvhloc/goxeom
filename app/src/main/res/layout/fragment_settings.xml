@@ -77,6 +77,44 @@
 
                     </LinearLayout>
 
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lnlProfile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/view_touch_selector"
+                    android:clickable="true"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_margin="5dp"
+                        android:contentDescription="@string/fragment_settings_signup"
+                        android:src="@drawable/ic_user" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableEnd="@drawable/ic_forward"
+                            android:drawableRight="@drawable/ic_forward"
+                            android:textColor="@color/mBlackText"
+                            android:text="@string/lowcase_profile"
+                            android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+                        <View style="@style/Divider"
+                            android:background="@color/mBlackDivider"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginEnd="5dp"/>
+
+                    </LinearLayout>
 
                 </LinearLayout>
 

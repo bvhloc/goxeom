@@ -1,6 +1,7 @@
 package asia.covisoft.goom.mvp.presenter;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.support.v4.app.Fragment;
 
@@ -17,6 +18,7 @@ import asia.covisoft.goom.mvp.view.HistoryView;
 import asia.covisoft.goom.pojo.HistoryItem;
 import asia.covisoft.goom.pojo.gson.LoadhistoryRoot;
 import asia.covisoft.goom.utils.Constant;
+import asia.covisoft.goom.utils.Preferences;
 
 public class HistoryPresenter {
 
@@ -29,12 +31,19 @@ public class HistoryPresenter {
     }
 
     public void getHistory(final HistoryModel model) {
+
+        SharedPreferences loginPreferences = context.getSharedPreferences(Preferences.LOGIN_PREFERENCES, Context.MODE_PRIVATE);
+        final String token = loginPreferences.getString(Preferences.LOGIN_PREFERENCES_TOKEN, "");
+
         new AsyncTask<String, Void, Boolean>() {
             @Override
             protected Boolean doInBackground(String... params) {
 
+
+//                String URL = Constant.HOST +
+//                        "loadhistory.php?token="+token;//TODO active this code
                 String URL = Constant.HOST +
-                        "loadhistory.php?token=O9GJzRwlZrvDrmLOLBRA";
+                        "loadhistory.php?token=O9GJzRwlZrvDrmLOLBRA";//TODO remove this testing code
                 try {
                     String json = new NetworkClient().getJsonFromUrl(URL);
 

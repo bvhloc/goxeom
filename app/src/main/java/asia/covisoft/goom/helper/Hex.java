@@ -26,6 +26,9 @@ public class Hex {
 
     public String toString(String hex) {
 
+        if(hex.equals(""))
+            return "";
+
         byte[] bytes = new BigInteger(hex, 16).toByteArray();
         String str = "";
         try {
