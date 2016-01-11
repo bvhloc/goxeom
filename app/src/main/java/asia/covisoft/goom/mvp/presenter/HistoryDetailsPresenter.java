@@ -23,7 +23,7 @@ public class HistoryDetailsPresenter {
     public void setupTitle(Bundle extras){
 
         boolean HISTORY_STATE = extras.getBoolean(Constant.HISTORY_STATE, true);
-        String newTitle = HISTORY_STATE ? context.getString(R.string.fragment_history_completed) : context.getString(R.string.fragment_history_inprocess);
+        String newTitle = HISTORY_STATE ? context.getString(R.string.upcase_completed) : context.getString(R.string.upcase_inprocess);
         view.setTitle(newTitle);
     }
 

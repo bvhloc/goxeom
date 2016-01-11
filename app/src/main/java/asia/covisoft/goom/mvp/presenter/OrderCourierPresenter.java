@@ -3,6 +3,7 @@ package asia.covisoft.goom.mvp.presenter;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
+import android.util.Log;
 
 import com.google.android.gms.maps.model.LatLng;
 import com.google.gson.Gson;
@@ -18,6 +19,7 @@ import asia.covisoft.goom.helper.NetworkClient;
 import asia.covisoft.goom.mvp.view.OrderCourierView;
 import asia.covisoft.goom.pojo.gson.LoadcourierRoot;
 import asia.covisoft.goom.utils.Constant;
+import asia.covisoft.goom.utils.Preferences;
 
 public class OrderCourierPresenter {
 
@@ -53,9 +55,13 @@ public class OrderCourierPresenter {
             @Override
             protected List<LoadcourierRoot.Loadcourier> doInBackground(Double... params) {
 
+                String token = context.getSharedPreferences(Preferences.LOGIN_PREFERENCES, Context.MODE_PRIVATE)
+                        .getString(Preferences.LOGIN_PREFERENCES_TOKEN, "");
                 String URL = Constant.HOST +
-                        "loadcourier.php?lat=" + params[0] +
+                        "loadcourier.php?token=" + token +
+                        "&lat=" + params[0] +
                         "&long=" + params[1];
+                Log.d("sdb", URL);
                 try {
                     String json = new NetworkClient().getJsonFromUrl(URL);
 

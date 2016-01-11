@@ -9,6 +9,7 @@ public class SettingsLoginModel {
     private String password;
     private int loginResult;
     private int failCount;
+    private String token;
 
     public String getUsername() {
         return username;
@@ -40,5 +41,13 @@ public class SettingsLoginModel {
 
     public void setFailCount(int failCount) {
         this.failCount = failCount;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 }

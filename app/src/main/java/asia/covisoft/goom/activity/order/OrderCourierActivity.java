@@ -23,11 +23,13 @@ import java.util.List;
 import asia.covisoft.goom.R;
 import asia.covisoft.goom.base.BaseActivity;
 import asia.covisoft.goom.customview.WorkaroundMapFragment;
+import asia.covisoft.goom.helper.DatetimeHelper;
 import asia.covisoft.goom.helper.Hex;
 import asia.covisoft.goom.mvp.presenter.OrderCourierPresenter;
 import asia.covisoft.goom.mvp.view.OrderCourierView;
 import asia.covisoft.goom.pojo.gson.LoadcourierRoot;
 import asia.covisoft.goom.utils.Constant;
+import asia.covisoft.goom.utils.DatetimeFormat;
 
 public class OrderCourierActivity extends BaseActivity implements OrderCourierView, GoogleMap.OnMarkerClickListener {
 
@@ -158,11 +160,17 @@ public class OrderCourierActivity extends BaseActivity implements OrderCourierVi
         LoadcourierRoot.Loadcourier driver = driverHashMap.get(marker);
 
         Intent intent = new Intent(mContext, OrderPickDriverActivity.class);
+
         intent.putExtra(Constant.DRIVER_ID, driver.getDriverId());
+
         intent.putExtra(Constant.DRIVER_NAME, new Hex().toString(driver.getFullName()));
-        int driverAge = Calendar.getInstance().get(Calendar.YEAR) - Integer.valueOf(driver.getBirthDay().substring(0, 4));
+
+        Calendar birthCalendar = new DatetimeHelper().getCalendar(driver.getBirthDay(), DatetimeFormat.SERVER_DATE_FORMAT);
+        int driverAge = Calendar.getInstance().get(Calendar.YEAR) - birthCalendar.get(Calendar.YEAR);
         intent.putExtra(Constant.DRIVER_AGE, driverAge);
+
         intent.putExtra(Constant.DRIVER_LATLNG, marker.getPosition());
+
         startActivity(intent);
 
         return true;
