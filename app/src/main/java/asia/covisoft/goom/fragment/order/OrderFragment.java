@@ -57,9 +57,6 @@ public class OrderFragment extends BackFragment {
             @Override
             public void onClick(View v) {
 
-                if (token.equals(""))
-                    showDialogLogin();
-                else
                     startActivity(new Intent(getActivity(), OrderTransportActivity.class));
             }
         });
@@ -67,9 +64,6 @@ public class OrderFragment extends BackFragment {
             @Override
             public void onClick(View v) {
 
-                if (token.equals(""))
-                    showDialogLogin();
-                else
                     startActivity(new Intent(getActivity(), OrderFoodActivity.class));
             }
         });
@@ -77,9 +71,6 @@ public class OrderFragment extends BackFragment {
             @Override
             public void onClick(View v) {
 
-                if (token.equals(""))
-                    showDialogLogin();
-                else
                     startActivity(new Intent(getActivity(), OrderShoppingActivity.class));
             }
         });

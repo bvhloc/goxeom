@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 
 import asia.covisoft.goom.R;
 import asia.covisoft.goom.activity.settings.SettingsLoginActivity;
+import asia.covisoft.goom.activity.settings.SettingsSignupActivity;
 import asia.covisoft.goom.utils.Preferences;
 
 /**
@@ -40,6 +41,13 @@ public class HistoryFragment extends Fragment {
             public void onClick(View v) {
 
                 startActivity(new Intent(mContext, SettingsLoginActivity.class));
+            }
+        });
+        rootView.findViewById(R.id.tvSignUp).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                startActivity(new Intent(mContext, SettingsSignupActivity.class));
             }
         });
 

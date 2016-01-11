@@ -5,14 +5,32 @@
     android:id="@+id/tab_container"
     android:background="@color/mAppBackground">
 
-    <Button
-        android:id="@+id/btnLogin"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_margin="@dimen/activity_horizontal_margin"
-        android:background="@drawable/bg_green_button"
-        android:text="@string/upcase_login"
-        android:textColor="#FFFFFF" />
+        android:orientation="vertical"
+        android:layout_gravity="center">
+
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/activity_horizontal_margin"
+            android:background="@drawable/bg_green_button"
+            android:text="@string/upcase_login"
+            android:textColor="#FFFFFF" />
+
+        <TextView
+            android:id="@+id/tvSignUp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/lowcase_signup"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/mDarkGreen" />
+
+    </LinearLayout>
+
+
 
 </FrameLayout>

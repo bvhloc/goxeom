@@ -4,19 +4,22 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 
-import asia.covisoft.goom.base.BaseActivity;
 import asia.covisoft.goom.R;
+import asia.covisoft.goom.base.BaseActivity;
 import asia.covisoft.goom.mvp.model.SettingsSignupModel;
 import asia.covisoft.goom.mvp.presenter.SettingsSignupPresenter;
 import asia.covisoft.goom.mvp.view.SettingsSignupView;
 import asia.covisoft.goom.utils.Constant;
+import asia.covisoft.goom.utils.Preferences;
 
+@SuppressWarnings("FieldCanBeLocal")
 public class SettingsSignupActivity extends BaseActivity implements SettingsSignupView {
 
     private Context mContext;
@@ -139,48 +142,65 @@ public class SettingsSignupActivity extends BaseActivity implements SettingsSign
         return true;
     }
 
+    private final int SIGN_UP_SUCCESS = 1;
+    private final int USERNAME_EXIST = 2;
+    private final int EMAIL_EXIST = 3;
+    private final int PHONE_EXIST = 4;
+
     @Override
     public void onSignup(int result) {
 
         switch (result) {
 
-            case 1:
+            case SIGN_UP_SUCCESS:
 
-                new AlertDialog.Builder(mContext)
-                        .setMessage(getString(R.string.activity_settings_signup_dialog_success))
-                        .setNeutralButton(getString(R.string.lowcase_ok), new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-
-                                Intent intent = getBaseContext().getPackageManager()
-                                        .getLaunchIntentForPackage(getBaseContext().getPackageName());
-                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                intent.putExtra(Constant.TAB_POSTION, 3);
-                                startActivity(intent);
-
-                            }
-                        }).show();
+                presenter.loginForToken(model);
 
                 break;
-            case 2:
+            case USERNAME_EXIST:
 
                 edtUsername.setError(getString(R.string.activity_settings_signup_error_username_exist));
                 edtUsername.requestFocus();
 
                 break;
-            case 3:
+            case EMAIL_EXIST:
 
                 edtEmail.setError(getString(R.string.activity_settings_signup_error_email_exist));
                 edtEmail.requestFocus();
 
                 break;
-            case 4:
+            case PHONE_EXIST:
 
                 edtPhone.setError(getString(R.string.activity_settings_signup_error_phone_exist));
                 edtPhone.requestFocus();
 
                 break;
         }
+    }
+
+    @Override
+    public void onTokenReady(String token) {
+
+        SharedPreferences loginPreferences = getSharedPreferences(Preferences.LOGIN_PREFERENCES, MODE_PRIVATE);
+//                loginPreferences.edit().putString(Preferences.LOGIN_PREFERENCES_TOKEN, model.getToken()).apply();
+        loginPreferences.edit()
+                .putString(Preferences.LOGIN_PREFERENCES_TOKEN, "O9GJzRwlZrvDrmLOLBRA")
+                .apply();//TODO remove testing code
+
+        new AlertDialog.Builder(mContext)
+                .setMessage(getString(R.string.activity_settings_signup_dialog_success))
+                .setNeutralButton(getString(R.string.lowcase_ok), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        Intent intent = getBaseContext().getPackageManager()
+                                .getLaunchIntentForPackage(getBaseContext().getPackageName());
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        intent.putExtra(Constant.TAB_POSTION, 2);
+                        startActivity(intent);
+
+                    }
+                }).show();
     }
 
     @Override
