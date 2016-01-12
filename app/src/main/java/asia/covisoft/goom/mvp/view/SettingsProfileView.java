@@ -6,4 +6,5 @@ public interface SettingsProfileView {
 
     void onConnectionFail();
     void onInfoLoaded(SettingsProfileModel model);
+    void onInfoUpdate(Integer result);
 }

@@ -69,7 +69,7 @@ public class HistoryPresenter {
                     return false;
                 }
 
-                return null;
+                return false;
             }
 
             @Override

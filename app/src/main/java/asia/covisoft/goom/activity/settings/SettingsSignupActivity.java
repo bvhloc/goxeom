@@ -105,7 +105,7 @@ public class SettingsSignupActivity extends BaseActivity implements SettingsSign
             edtEmail.requestFocus();
             return false;
         }
-        if (model.getPhone().length() > 11) {
+        if (model.getPhone().isEmpty()) {
             edtPhone.setError(getString(R.string.activity_settings_signup_error_phone_empty));
             edtPhone.requestFocus();
             return false;

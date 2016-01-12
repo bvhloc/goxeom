@@ -185,9 +185,7 @@
     <string name="lowcase_cancel">Cancel</string>
 
 <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="lowcase_profile">Profile</string>
-    <string name="title_activity_settings_profile">SettingsProfileActivity</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
@@ -200,5 +198,9 @@
     <string name="dialog_logout">Are you logging out?</string>
     <string name="lowcase_yes">Yes</string>
     <string name="lowcase_no">No</string>
+    <string name="lowcase_save">Save</string>
+    <string name="lowcase_birthday">Birthday</string>
+    <string name="toast_updatesuccess">Update successfully</string>
+    <string name="activity_settings_profile_error_birthday_empty">Please insert birthday</string>
 
 </resources>
