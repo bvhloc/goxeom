@@ -38,6 +38,7 @@
     <string name="upcase_login">LOGIN</string>
     <string name="upcase_inprocess">INPROCESS</string>
     <string name="upcase_completed">COMPLETED</string>
+    <string name="upcase_uselocation">USE LOCATION</string>
 
     <string name="lowcase_confirm">Confirm</string>
     <string name="lowcase_ok">Ok</string>
@@ -202,5 +203,13 @@
     <string name="lowcase_birthday">Birthday</string>
     <string name="toast_updatesuccess">Update successfully</string>
     <string name="activity_settings_profile_error_birthday_empty">Please insert birthday</string>
+    <string name="lowcase_changepassword">Change Password</string>
+    <string name="activity_settings_profile_error_current_password_empty">Please insert current password</string>
+    <string name="activity_settings_profile_error_new_password_empty">Please insert new password</string>
+    <string name="activity_settings_profile_error_confirm_empty">Please confirm new password</string>
+    <string name="activity_settings_profile_error_current_password_wrong">Wrong password</string>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

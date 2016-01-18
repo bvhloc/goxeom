@@ -1,20 +1,20 @@
 package asia.covisoft.goom.activity.order;
 
 import android.content.Context;
-import android.support.v4.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.CompoundButton;
 import android.widget.ListView;
+import android.widget.RadioButton;
 import android.widget.SearchView;
-
-import com.google.android.gms.maps.SupportMapFragment;
 
 import java.util.ArrayList;
 
-import asia.covisoft.goom.base.BaseActivity;
 import asia.covisoft.goom.R;
 import asia.covisoft.goom.adapter.list.LocationHistoryListAdapter;
+import asia.covisoft.goom.base.BaseActivity;
+import asia.covisoft.goom.fragment.order.OrderPickMapFragment;
 import asia.covisoft.goom.pojo.LocationHistoryItem;
 
 public class OrderPickLocationActivity extends BaseActivity implements AdapterView.OnItemClickListener {
@@ -43,8 +43,9 @@ public class OrderPickLocationActivity extends BaseActivity implements AdapterVi
 
     private SearchView searchView;
     private ListView lvLocationHistory;
+    private View floMap;
 
-    private void initView(){
+    private void initView() {
 
         searchView = (SearchView) findViewById(R.id.searchView);
         findViewById(R.id.search_container).setOnClickListener(new View.OnClickListener() {
@@ -54,32 +55,36 @@ public class OrderPickLocationActivity extends BaseActivity implements AdapterVi
                 searchView.setIconified(false);
             }
         });
-        findViewById(R.id.btnOpenLocation).setOnClickListener(new View.OnClickListener() {
+        ((RadioButton)findViewById(R.id.btnOpenLocation)).setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onClick(View v) {
-
-                openMap();
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    buttonView.setChecked(false);
+                    openMap();
+                }
             }
         });
-        findViewById(R.id.btnCurrentLocation).setOnClickListener(new View.OnClickListener() {
+        ((RadioButton)findViewById(R.id.btnCurrentLocation)).setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onClick(View v) {
-
-                openMap();
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    buttonView.setChecked(false);
+                    openMap();
+                }
             }
         });
         lvLocationHistory = (ListView) findViewById(R.id.lvLocationHistory);
     }
 
-    private void openMap(){
+    private void openMap() {
 
-        SupportMapFragment mapFragment = new SupportMapFragment();
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.add(R.id.tab_container, mapFragment);
-        transaction.commit();
+        getSupportFragmentManager().beginTransaction()
+                .add(R.id.tab_container, new OrderPickMapFragment())
+                .addToBackStack(null)
+                .commit();
     }
 
-    private ArrayList<LocationHistoryItem> dataSet(){
+    private ArrayList<LocationHistoryItem> dataSet() {
         ArrayList<LocationHistoryItem> list = new ArrayList<>();
         list.add(new LocationHistoryItem("Toa nha 8", "To Ky - Q.12 - Ho Chi Minh"));
         list.add(new LocationHistoryItem("Toa nha 8", "To Ky - Q.12 - Ho Chi Minh"));

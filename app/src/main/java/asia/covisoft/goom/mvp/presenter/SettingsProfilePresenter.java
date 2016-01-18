@@ -16,6 +16,7 @@ import java.util.Calendar;
 import asia.covisoft.goom.R;
 import asia.covisoft.goom.helper.DatetimeHelper;
 import asia.covisoft.goom.helper.Hex;
+import asia.covisoft.goom.helper.MD5;
 import asia.covisoft.goom.helper.NetworkClient;
 import asia.covisoft.goom.mvp.model.SettingsProfileModel;
 import asia.covisoft.goom.mvp.view.SettingsProfileView;
@@ -103,16 +104,16 @@ public class SettingsProfilePresenter {
             @Override
             protected Integer doInBackground(Void... params) {
 
-                model.newPassword = model.password;
-
                 String fullname = new Hex().fromString(model.newFullname);
                 Calendar birthCal = new DatetimeHelper().getCalendar(model.newBirthday, DatetimeFormat.APP_DATE_FORMAT);
                 String birthday = new DatetimeHelper().getString(birthCal, DatetimeFormat.SERVER_DATE_FORMAT);
 
+                String password = new MD5().encrypt(model.newPassword);
+
                 String URL = Constant.HOST +
                         "updateinfo.php?token=" + token +
                         "&fullname=" + fullname +
-                        "&pass=" + model.newPassword +
+                        "&pass=" + password +
                         "&email=" + model.newEmail +
                         "&phonenumber=" + model.newPhone +
                         "&birthday=" + birthday +

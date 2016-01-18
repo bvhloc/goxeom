@@ -1,5 +1,6 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/tab_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -24,58 +25,62 @@
         <View style="@style/Divider" />
 
         <FrameLayout
+            android:id="@+id/search_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/mSelector"
-            android:id="@+id/search_container">
+            android:background="@color/mSelector">
 
             <android.widget.SearchView
-                android:layout_marginTop="8dp"
-                android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                android:layout_marginRight="@dimen/activity_horizontal_margin"
-                android:layout_marginBottom="8dp"
-                android:queryHint="@string/lowcase_search"
-                android:background="@drawable/bg_search_view"
+                android:id="@+id/searchView"
                 android:layout_width="match_parent"
                 android:layout_height="36dp"
-                android:id="@+id/searchView"
-                android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_search_view"
+                android:queryHint="@string/lowcase_search"
+                android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
 
         </FrameLayout>
 
         <asia.covisoft.goom.customview.segmented.SegmentedRadioGroup
+            android:id="@+id/segment_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
             android:layout_marginLeft="@dimen/activity_horizontal_margin"
             android:layout_marginRight="@dimen/activity_horizontal_margin"
-            android:layout_marginBottom="8dp"
-            android:orientation="horizontal"
-            android:id="@+id/segment_text"
+            android:layout_marginTop="8dp"
             android:checkedButton="@+id/button_one"
+            android:orientation="horizontal"
             android:weightSum="1">
 
-            <RadioButton android:id="@+id/btnOpenLocation"
+            <RadioButton
+                android:focusable="false"
+                android:id="@+id/btnOpenLocation"
                 android:layout_width="0dp"
-                android:layout_weight="0.5"
                 android:layout_height="wrap_content"
-                android:minWidth="40dip"
+                android:layout_weight="0.5"
+                android:button="@null"
+                android:gravity="center"
                 android:minHeight="33dip"
+                android:minWidth="40dip"
                 android:text="@string/activity_order_picklocation_button_openlocation"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:button="@null"
-                android:gravity="center"
                 android:textColor="@color/mGreen" />
 
-            <RadioButton android:id="@+id/btnCurrentLocation"
+            <RadioButton
+                android:focusable="false"
+                android:id="@+id/btnCurrentLocation"
                 android:layout_width="0dp"
-                android:layout_weight="0.5"
                 android:layout_height="wrap_content"
-                android:minWidth="40dip"
-                android:minHeight="33dip"
-                android:text="@string/activity_order_picklocation_button_currentlocation"
+                android:layout_weight="0.5"
                 android:button="@null"
                 android:gravity="center"
+                android:minHeight="33dip"
+                android:minWidth="40dip"
+                android:text="@string/activity_order_picklocation_button_currentlocation"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="@color/mGreen" />
 
@@ -90,12 +95,12 @@
             android:textColor="@color/mBlackText" />
 
         <ListView
+            android:id="@+id/lvLocationHistory"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="8dp"
             android:layout_marginLeft="@dimen/activity_horizontal_margin"
             android:layout_marginRight="@dimen/activity_horizontal_margin"
-            android:id="@+id/lvLocationHistory" />
+            android:layout_marginTop="8dp" />
 
     </LinearLayout>
 

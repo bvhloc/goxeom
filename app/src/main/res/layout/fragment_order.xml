@@ -7,6 +7,7 @@
     android:clickable="true">
 
     <LinearLayout
+        android:background="@color/mAppBackground"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -52,7 +53,6 @@
                     android:layout_height="70dp"
                     android:id="@+id/imgvCourier"
                     android:src="@drawable/main_courier"
-                    android:background="@drawable/view_touch_selector"
                     android:contentDescription="@string/fragment_order_instantcourier"/>
 
                 <TextView
@@ -69,7 +69,6 @@
                     android:layout_height="70dp"
                     android:id="@+id/imgvFood"
                     android:src="@drawable/main_food"
-                    android:background="@drawable/view_touch_selector"
                     android:contentDescription="@string/fragment_order_food" />
 
                 <TextView
@@ -94,7 +93,6 @@
                     android:layout_height="70dp"
                     android:id="@+id/imgvTransport"
                     android:src="@drawable/main_transport"
-                    android:background="@drawable/view_touch_selector"
                     android:contentDescription="@string/fragment_order_transport" />
 
                 <TextView
@@ -111,7 +109,6 @@
                     android:layout_height="70dp"
                     android:id="@+id/imgvShopping"
                     android:src="@drawable/main_shopping"
-                    android:background="@drawable/view_touch_selector"
                     android:contentDescription="@string/fragment_order_shopping" />
 
                 <TextView

@@ -12,6 +12,8 @@ import android.os.Bundle;
 import android.os.IBinder;
 import android.util.Log;
 
+import com.google.android.gms.maps.model.LatLng;
+
 import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
@@ -157,6 +159,15 @@ public class GPSTracker  extends Service implements LocationListener {
         return longitude;
     }
 
+    /**
+     * GPSTracker latlng getter and setter
+     * @return latlng
+     */
+
+    public LatLng getLatLng(){
+
+        return new LatLng(getLatitude(), getLongitude());
+    }
     /**
      * GPSTracker isGPSTrackingEnabled getter.
      * Check GPS/wifi is enabled

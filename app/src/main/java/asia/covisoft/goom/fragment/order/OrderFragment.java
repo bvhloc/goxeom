@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import asia.covisoft.goom.R;
 import asia.covisoft.goom.activity.order.OrderCourierActivity;
@@ -18,6 +19,7 @@ import asia.covisoft.goom.activity.order.OrderTransportActivity;
 import asia.covisoft.goom.activity.settings.SettingsLoginActivity;
 import asia.covisoft.goom.activity.settings.SettingsSignupActivity;
 import asia.covisoft.goom.backpress.BackFragment;
+import asia.covisoft.goom.helper.ViewHelper;
 import asia.covisoft.goom.utils.Preferences;
 
 public class OrderFragment extends BackFragment {
@@ -43,7 +45,10 @@ public class OrderFragment extends BackFragment {
 
         SharedPreferences loginPreferences = mContext.getSharedPreferences(Preferences.LOGIN_PREFERENCES, Context.MODE_PRIVATE);
         final String token = loginPreferences.getString(Preferences.LOGIN_PREFERENCES_TOKEN, "");
-        rootView.findViewById(R.id.imgvCourier).setOnClickListener(new View.OnClickListener() {
+        ImageView imgvCourier = (ImageView) rootView.findViewById(R.id.imgvCourier);
+        ViewHelper.addTouch(imgvCourier);
+
+        imgvCourier.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -53,25 +58,31 @@ public class OrderFragment extends BackFragment {
                     startActivity(new Intent(getActivity(), OrderCourierActivity.class));
             }
         });
-        rootView.findViewById(R.id.imgvTransport).setOnClickListener(new View.OnClickListener() {
+        ImageView imgvTransport = (ImageView) rootView.findViewById(R.id.imgvTransport);
+        ViewHelper.addTouch(imgvTransport);
+        imgvTransport.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                    startActivity(new Intent(getActivity(), OrderTransportActivity.class));
+                startActivity(new Intent(getActivity(), OrderTransportActivity.class));
             }
         });
-        rootView.findViewById(R.id.imgvFood).setOnClickListener(new View.OnClickListener() {
+        ImageView imgvFood = (ImageView) rootView.findViewById(R.id.imgvFood);
+        ViewHelper.addTouch(imgvFood);
+        imgvFood.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                    startActivity(new Intent(getActivity(), OrderFoodActivity.class));
+                startActivity(new Intent(getActivity(), OrderFoodActivity.class));
             }
         });
-        rootView.findViewById(R.id.imgvShopping).setOnClickListener(new View.OnClickListener() {
+        ImageView imgvShopping = (ImageView) rootView.findViewById(R.id.imgvShopping);
+        ViewHelper.addTouch(imgvShopping);
+        imgvShopping.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                    startActivity(new Intent(getActivity(), OrderShoppingActivity.class));
+                startActivity(new Intent(getActivity(), OrderShoppingActivity.class));
             }
         });
 

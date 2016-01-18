@@ -4,5 +4,4 @@ public interface SettingsSignupView {
 
     void onConnectionFail();
     void onSignup(int result);
-    void onTokenReady(String token);
 }

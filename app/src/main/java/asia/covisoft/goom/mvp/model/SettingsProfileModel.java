@@ -15,6 +15,7 @@ public class SettingsProfileModel {
     public String newBirthday;
 
     public String password;
+    public String currentPassword;
     public String newPassword;
     public String confirmPassword;
 }

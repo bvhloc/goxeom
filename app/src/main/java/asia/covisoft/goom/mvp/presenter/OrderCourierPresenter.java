@@ -5,7 +5,6 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import com.google.android.gms.maps.model.LatLng;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 
@@ -31,15 +30,6 @@ public class OrderCourierPresenter {
         this.context = (Context) view;
     }
 
-
-    public void setupMap() {
-
-        GPSTracker gpsTracker = new GPSTracker(context);
-        LatLng currentLatLng = new LatLng(gpsTracker.getLatitude(), gpsTracker.getLongitude());
-
-        view.onMapReady(currentLatLng);
-    }
-
     private ProgressDialog progressDialog;
 
     public void getDriver() {
@@ -59,8 +49,8 @@ public class OrderCourierPresenter {
                         .getString(Preferences.LOGIN_PREFERENCES_TOKEN, "");
                 String URL = Constant.HOST +
                         "loadcourier.php?token=" + token +
-                        "&lat=" + params[0] +
-                        "&long=" + params[1];
+                        "&latitude=" + params[0] +
+                        "&longitude=" + params[1];
                 Log.d("sdb", URL);
                 try {
                     String json = new NetworkClient().getJsonFromUrl(URL);

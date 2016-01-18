@@ -16,10 +16,12 @@ import android.widget.TextView;
 
 import asia.covisoft.goom.R;
 import asia.covisoft.goom.base.BaseActivity;
+import asia.covisoft.goom.helper.SystemHelper;
 import asia.covisoft.goom.mvp.model.SettingsLoginModel;
 import asia.covisoft.goom.mvp.presenter.SettingsLoginPresenter;
 import asia.covisoft.goom.mvp.view.SettingsLoginView;
 import asia.covisoft.goom.utils.Constant;
+import asia.covisoft.goom.utils.Extras;
 import asia.covisoft.goom.utils.Preferences;
 
 @SuppressWarnings("FieldCanBeLocal")
@@ -46,7 +48,7 @@ public class SettingsLoginActivity extends BaseActivity implements SettingsLogin
     private void initView() {
 
         edtUsername = (EditText) findViewById(R.id.edtUsername);
-        edtPassword = (EditText) findViewById(R.id.edtPassword);
+        edtPassword = (EditText) findViewById(R.id.edtCurrentPassword);
         tvError = (TextView) findViewById(R.id.tvError);
         CheckBox chkShowPassword = (CheckBox) findViewById(R.id.chkShowPassword);
         chkShowPassword.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -72,6 +74,7 @@ public class SettingsLoginActivity extends BaseActivity implements SettingsLogin
 
     private void btnLoginOnClick() {
 
+        new SystemHelper().hideKeyboard(this);
         if (validInput()) {
 
             presenter.login(model);
@@ -110,6 +113,8 @@ public class SettingsLoginActivity extends BaseActivity implements SettingsLogin
 
                 SharedPreferences loginPreferences = getSharedPreferences(Preferences.LOGIN_PREFERENCES, MODE_PRIVATE);
                 loginPreferences.edit()
+                        .putString(Preferences.LOGIN_PREFERENCES_USERNAME, model.getUsername())
+                        .putString(Preferences.LOGIN_PREFERENCES_PASSWORD, model.getPassword())
                         .putString(Preferences.LOGIN_PREFERENCES_TOKEN, model.getToken())
                         .apply();
 
@@ -123,6 +128,7 @@ public class SettingsLoginActivity extends BaseActivity implements SettingsLogin
                                         .getLaunchIntentForPackage(getBaseContext().getPackageName());
                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                 intent.putExtra(Constant.TAB_POSTION, 3);
+                                intent.putExtra(Extras.IS_LOGIN, true);
                                 startActivity(intent);
 
                             }

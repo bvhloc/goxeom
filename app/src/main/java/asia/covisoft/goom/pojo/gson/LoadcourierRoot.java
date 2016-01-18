@@ -53,6 +53,9 @@ public class LoadcourierRoot {
         @SerializedName("rating")
         @Expose
         private String rating;
+        @SerializedName("view")
+        @Expose
+        private String view;
         @SerializedName("email")
         @Expose
         private String email;
@@ -62,12 +65,12 @@ public class LoadcourierRoot {
         @SerializedName("avatar_image")
         @Expose
         private String avatarImage;
-        @SerializedName("lat")
+        @SerializedName("latitude")
         @Expose
-        private String lat;
-        @SerializedName("long")
+        private String latitude;
+        @SerializedName("longitude")
         @Expose
-        private String _long;
+        private String longitude;
         @SerializedName("token")
         @Expose
         private String token;
@@ -204,6 +207,24 @@ public class LoadcourierRoot {
         /**
          *
          * @return
+         * The view
+         */
+        public String getView() {
+            return view;
+        }
+
+        /**
+         *
+         * @param view
+         * The view
+         */
+        public void setView(String view) {
+            this.view = view;
+        }
+
+        /**
+         *
+         * @return
          * The email
          */
         public String getEmail() {
@@ -258,37 +279,37 @@ public class LoadcourierRoot {
         /**
          *
          * @return
-         * The lat
+         * The latitude
          */
-        public String getLat() {
-            return lat;
+        public String getLatitude() {
+            return latitude;
         }
 
         /**
          *
-         * @param lat
-         * The lat
+         * @param latitude
+         * The latitude
          */
-        public void setLat(String lat) {
-            this.lat = lat;
+        public void setLatitude(String latitude) {
+            this.latitude = latitude;
         }
 
         /**
          *
          * @return
-         * The _long
+         * The longitude
          */
-        public String getLong() {
-            return _long;
+        public String getLongitude() {
+            return longitude;
         }
 
         /**
          *
-         * @param _long
-         * The long
+         * @param longitude
+         * The longitude
          */
-        public void setLong(String _long) {
-            this._long = _long;
+        public void setLongitude(String longitude) {
+            this.longitude = longitude;
         }
 
         /**

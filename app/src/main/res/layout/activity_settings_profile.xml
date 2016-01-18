@@ -1,4 +1,5 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/tab_container"
     android:layout_width="match_parent"
@@ -44,19 +45,19 @@
 
 
                 <ImageButton
+                    android:id="@+id/imgvAvatar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/imgvAvatar"
                     android:layout_gravity="center_horizontal"
-                    android:src="@drawable/circled_user"/>
+                    android:src="@drawable/circled_user" />
 
                 <TextView
+                    android:id="@+id/tvUsername"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="Username"
-                    android:id="@+id/tvUsername"
                     android:layout_gravity="center_horizontal"
+                    android:text="Username"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textColor="@color/mDarkGreen"
                     tools:ignore="HardcodedText" />
 
@@ -73,7 +74,6 @@
                         android:singleLine="true" />
 
                 </android.support.design.widget.TextInputLayout>
-
 
                 <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
@@ -115,113 +115,134 @@
 
                 </android.support.design.widget.TextInputLayout>
 
-                <LinearLayout
+                <TextView
+                    android:id="@+id/tvChangePassword"
+                    android:background="@drawable/view_touch_selector"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/lowcase_changepassword"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/mDarkGreen"
+                    tools:ignore="RtlHardcoded"
+                    android:drawableRight="@android:drawable/arrow_down_float"
+                    android:drawablePadding="@dimen/activity_horizontal_margin"/>
+
+                <com.github.aakira.expandablelayout.ExpandableRelativeLayout
+                    android:id="@+id/elChangePassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:visibility="gone">
+                    app:ael_duration="500"
+                    app:ael_expanded="false"
+                    app:ael_interpolator="bounce">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/view_touch_selector"
-                        android:clickable="true"
-                        android:orientation="horizontal">
+                        android:orientation="vertical">
 
-                        <ImageView
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:layout_margin="5dp"
-                            android:contentDescription="@string/lowcase_password"
-                            android:src="@drawable/ic_password" />
-
-                        <android.support.design.widget.TextInputLayout
+                        <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/view_touch_selector"
+                            android:clickable="true"
+                            android:orientation="horizontal">
 
-                            <EditText
-                                android:id="@+id/edtPassword"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:hint="@string/activity_settings_profile_currentpassword"
-                                android:inputType="textPassword"
-                                android:singleLine="true" />
-
-                        </android.support.design.widget.TextInputLayout>
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/view_touch_selector"
-                        android:clickable="true"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:layout_margin="5dp"
-                            android:contentDescription="@string/lowcase_password"
-                            android:src="@drawable/ic_password" />
-
-                        <android.support.design.widget.TextInputLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-
-                            <EditText
-                                android:id="@+id/edtNewPassword"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:hint="@string/activity_settings_profile_newpassword"
-                                android:inputType="textPassword"
-                                android:singleLine="true" />
-
-                        </android.support.design.widget.TextInputLayout>
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/view_touch_selector"
-                        android:clickable="true"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:layout_margin="5dp"
-                            android:contentDescription="@string/lowcase_password"
-                            android:src="@drawable/ic_password" />
-
-                        <android.support.design.widget.TextInputLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-
-                            <EditText
-                                android:id="@+id/edtConfirmPassword"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:hint="@string/activity_settings_profile_confirmpassword"
-                                android:inputType="textPassword"
-                                android:singleLine="true"
+                            <ImageView
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_margin="5dp"
+                                android:contentDescription="@string/lowcase_password"
                                 android:src="@drawable/ic_password" />
 
-                        </android.support.design.widget.TextInputLayout>
+                            <android.support.design.widget.TextInputLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <EditText
+                                    android:id="@+id/edtCurrentPassword"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:hint="@string/activity_settings_profile_currentpassword"
+                                    android:inputType="textPassword"
+                                    android:singleLine="true" />
+
+                            </android.support.design.widget.TextInputLayout>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/view_touch_selector"
+                            android:clickable="true"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_margin="5dp"
+                                android:contentDescription="@string/lowcase_password"
+                                android:src="@drawable/ic_password" />
+
+                            <android.support.design.widget.TextInputLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <EditText
+                                    android:id="@+id/edtNewPassword"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:hint="@string/activity_settings_profile_newpassword"
+                                    android:inputType="textPassword"
+                                    android:singleLine="true" />
+
+                            </android.support.design.widget.TextInputLayout>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/view_touch_selector"
+                            android:clickable="true"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_margin="5dp"
+                                android:contentDescription="@string/lowcase_password"
+                                android:src="@drawable/ic_password" />
+
+                            <android.support.design.widget.TextInputLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <EditText
+                                    android:id="@+id/edtConfirmPassword"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:hint="@string/activity_settings_profile_confirmpassword"
+                                    android:inputType="textPassword"
+                                    android:singleLine="true"
+                                    android:src="@drawable/ic_password" />
+
+                            </android.support.design.widget.TextInputLayout>
+
+                        </LinearLayout>
 
                     </LinearLayout>
 
-                </LinearLayout>
+                </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
 
                 <Button
                     android:id="@+id/btnUpdate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="@dimen/activity_horizontal_margin"
                     android:layout_marginLeft="@dimen/activity_horizontal_margin"
                     android:layout_marginRight="@dimen/activity_horizontal_margin"
+                    android:layout_marginTop="@dimen/activity_horizontal_margin"
                     android:background="@drawable/bg_green_button"
                     android:text="@string/upcase_update"
                     android:textColor="#FFFFFF" />
@@ -231,10 +252,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="@dimen/activity_vertical_margin"
                     android:text="@string/activity_settings_profile_logoutaccount"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="@color/mDarkGreen"
-                    android:layout_marginBottom="@dimen/activity_vertical_margin"/>
+                    android:textColor="@color/mDarkGreen" />
 
             </LinearLayout>
 

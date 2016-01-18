@@ -11,6 +11,8 @@ import android.widget.ScrollView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapsInitializer;
+import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
@@ -24,6 +26,7 @@ import asia.covisoft.goom.R;
 import asia.covisoft.goom.base.BaseActivity;
 import asia.covisoft.goom.customview.WorkaroundMapFragment;
 import asia.covisoft.goom.helper.DatetimeHelper;
+import asia.covisoft.goom.helper.GPSTracker;
 import asia.covisoft.goom.helper.Hex;
 import asia.covisoft.goom.mvp.presenter.OrderCourierPresenter;
 import asia.covisoft.goom.mvp.view.OrderCourierView;
@@ -31,7 +34,7 @@ import asia.covisoft.goom.pojo.gson.LoadcourierRoot;
 import asia.covisoft.goom.utils.Constant;
 import asia.covisoft.goom.utils.DatetimeFormat;
 
-public class OrderCourierActivity extends BaseActivity implements OrderCourierView, GoogleMap.OnMarkerClickListener {
+public class OrderCourierActivity extends BaseActivity implements OrderCourierView, GoogleMap.OnMarkerClickListener, OnMapReadyCallback {
 
     private Context mContext;
     private OrderCourierPresenter presenter;
@@ -44,8 +47,7 @@ public class OrderCourierActivity extends BaseActivity implements OrderCourierVi
         presenter = new OrderCourierPresenter(this);
         initView();
 
-        presenter.setupMap();
-        presenter.getDriver();
+        initMap();
     }
 
     private ScrollView scrollView;
@@ -90,66 +92,19 @@ public class OrderCourierActivity extends BaseActivity implements OrderCourierVi
         });
     }
 
-    private GoogleMap mMap;
+    private void initMap() {
 
-    @Override
-    public void onMapReady(LatLng currentLatLng) {
+        MapsInitializer.initialize(mContext);
 
-//        MapsInitializer.initialize(mContext);
+        WorkaroundMapFragment mapFragment = (WorkaroundMapFragment) getSupportFragmentManager().findFragmentById(R.id.mMap);
+        mapFragment.setOnTouchListener(new WorkaroundMapFragment.OnTouchListener() {
+            @Override
+            public void onTouch() {
 
-        // Do a null check to confirm that we have not already instantiated the map.
-        if (mMap == null) {
-            // Try to obtain the map from the SupportMapFragment.
-            mMap = ((WorkaroundMapFragment) getSupportFragmentManager().findFragmentById(R.id.mMap))
-                    .getMap();
-            ((WorkaroundMapFragment) getSupportFragmentManager().findFragmentById(R.id.mMap)).setOnTouchListener(new WorkaroundMapFragment.OnTouchListener() {
-                @Override
-                public void onTouch() {
-
-                    scrollView.requestDisallowInterceptTouchEvent(true);
-                }
-            });
-            // Check if we were successful in obtaining the map.
-            if (mMap != null) {
-                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng, 14));
-                mMap.setMyLocationEnabled(true);
-
-                mMap.setOnMarkerClickListener(this);
+                scrollView.requestDisallowInterceptTouchEvent(true);
             }
-        }
-    }
-
-    @Override
-    public void onDriverReady(List<LoadcourierRoot.Loadcourier> drivers) {
-
-        if (drivers.isEmpty()) {
-            Snackbar.make(findViewById(R.id.tab_container), getString(R.string.snackbar_nodrivernearby), Snackbar.LENGTH_LONG).show();
-        } else {
-            driverHashMap = new HashMap<>();
-            for (LoadcourierRoot.Loadcourier driver : drivers) {
-
-                String driverFullName = new Hex().toString(driver.getFullName());
-                LatLng driverLatLng = new LatLng(Double.valueOf(driver.getLat()), Double.valueOf(driver.getLong()));
-                Marker marker = mMap.addMarker(new MarkerOptions().title(driverFullName).position(driverLatLng).icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_location)));
-
-                driverHashMap.put(marker, driver);
-            }
-        }
-    }
-
-    @Override
-    public void onConnectionFail() {
-
-        new AlertDialog.Builder(mContext)
-                .setMessage(getString(R.string.dialog_connection_fail))
-                .setNeutralButton(getString(R.string.lowcase_ok), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-                        onBackPressed();
-                    }
-                })
-                .show();
+        });
+        mapFragment.getMapAsync(this);
     }
 
     private HashMap<Marker, LoadcourierRoot.Loadcourier> driverHashMap;
@@ -174,5 +129,60 @@ public class OrderCourierActivity extends BaseActivity implements OrderCourierVi
         startActivity(intent);
 
         return true;
+    }
+
+    private GoogleMap mMap;
+
+    @SuppressWarnings("ResourceType")
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+
+        mMap = googleMap;
+        // Check if we were successful in obtaining the map.
+        if (mMap != null) {
+
+            GPSTracker gpsTracker = new GPSTracker(mContext);
+            LatLng currentLatLng = new LatLng(gpsTracker.getLatitude(), gpsTracker.getLongitude());
+
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng, 14));
+            mMap.setMyLocationEnabled(true);
+
+            mMap.setOnMarkerClickListener(this);
+
+            presenter.getDriver();
+        }
+    }
+
+    @Override
+    public void onDriverReady(List<LoadcourierRoot.Loadcourier> drivers) {
+
+        if (drivers.isEmpty()) {
+            Snackbar.make(findViewById(R.id.tab_container), getString(R.string.snackbar_nodrivernearby), Snackbar.LENGTH_LONG).show();
+        } else {
+            driverHashMap = new HashMap<>();
+            for (LoadcourierRoot.Loadcourier driver : drivers) {
+
+                String driverFullName = new Hex().toString(driver.getFullName());
+                LatLng driverLatLng = new LatLng(Double.valueOf(driver.getLatitude()), Double.valueOf(driver.getLongitude()));
+                Marker marker = mMap.addMarker(new MarkerOptions().title(driverFullName).position(driverLatLng).icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_location)));
+
+                driverHashMap.put(marker, driver);
+            }
+        }
+    }
+
+    @Override
+    public void onConnectionFail() {
+
+        new AlertDialog.Builder(mContext)
+                .setMessage(getString(R.string.dialog_connection_fail))
+                .setNeutralButton(getString(R.string.lowcase_ok), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        onBackPressed();
+                    }
+                })
+                .show();
     }
 }

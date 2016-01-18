@@ -26,6 +26,8 @@ public class SettingsSignupActivity extends BaseActivity implements SettingsSign
     private SettingsSignupModel model;
     private SettingsSignupPresenter presenter;
 
+    private SharedPreferences loginPreferences;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +36,7 @@ public class SettingsSignupActivity extends BaseActivity implements SettingsSign
         presenter = new SettingsSignupPresenter(this);
         model = new SettingsSignupModel();
 
+        loginPreferences = getSharedPreferences(Preferences.LOGIN_PREFERENCES, MODE_PRIVATE);
         initView();
     }
 
@@ -44,7 +47,7 @@ public class SettingsSignupActivity extends BaseActivity implements SettingsSign
         edtEmail = (EditText) findViewById(R.id.edtEmail);
         edtUsername = (EditText) findViewById(R.id.edtUsername);
         edtPhone = (EditText) findViewById(R.id.edtPhone);
-        edtPassword = (EditText) findViewById(R.id.edtPassword);
+        edtPassword = (EditText) findViewById(R.id.edtCurrentPassword);
         edtConfirm = (EditText) findViewById(R.id.edtConfirm);
         edtPassword.addTextChangedListener(new TextWatcher() {
             @Override
@@ -154,7 +157,25 @@ public class SettingsSignupActivity extends BaseActivity implements SettingsSign
 
             case SIGN_UP_SUCCESS:
 
-                presenter.loginForToken(model);
+                loginPreferences.edit()
+                        .putString(Preferences.LOGIN_PREFERENCES_USERNAME, model.getUsername())
+                        .putString(Preferences.LOGIN_PREFERENCES_PASSWORD, model.getPassword())
+                        .apply();
+
+                new AlertDialog.Builder(mContext)
+                        .setMessage(getString(R.string.activity_settings_signup_dialog_success))
+                        .setNeutralButton(getString(R.string.lowcase_ok), new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                                Intent intent = getBaseContext().getPackageManager()
+                                        .getLaunchIntentForPackage(getBaseContext().getPackageName());
+                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                intent.putExtra(Constant.TAB_POSTION, 2);
+                                startActivity(intent);
+
+                            }
+                        }).show();
 
                 break;
             case USERNAME_EXIST:
@@ -176,30 +197,6 @@ public class SettingsSignupActivity extends BaseActivity implements SettingsSign
 
                 break;
         }
-    }
-
-    @Override
-    public void onTokenReady(String token) {
-
-        SharedPreferences loginPreferences = getSharedPreferences(Preferences.LOGIN_PREFERENCES, MODE_PRIVATE);
-        loginPreferences.edit()
-                .putString(Preferences.LOGIN_PREFERENCES_TOKEN, token)
-                .apply();
-
-        new AlertDialog.Builder(mContext)
-                .setMessage(getString(R.string.activity_settings_signup_dialog_success))
-                .setNeutralButton(getString(R.string.lowcase_ok), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-                        Intent intent = getBaseContext().getPackageManager()
-                                .getLaunchIntentForPackage(getBaseContext().getPackageName());
-                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        intent.putExtra(Constant.TAB_POSTION, 2);
-                        startActivity(intent);
-
-                    }
-                }).show();
     }
 
     @Override

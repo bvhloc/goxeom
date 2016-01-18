@@ -1,0 +1,111 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="asia.covisoft.goom.fragment.order.OrderPickMapFragment">
+
+    <fragment
+        android:id="@+id/mMap"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.5"
+            android:orientation="vertical"
+            android:weightSum="1">
+
+            <android.support.percent.PercentRelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.88"
+                android:orientation="vertical"
+                tools:ignore="NestedWeights">
+
+                <!--suppress AndroidDomInspection -->
+                <android.support.percent.PercentRelativeLayout
+                    android:id="@+id/pickBox"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/addressBox"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/bg_pick_box"
+                    android:clickable="true"
+                    android:padding="5dp"
+                    app:layout_widthPercent="70%"
+                    tools:ignore="NestedWeights">
+
+                    <TextView
+                        android:id="@+id/textView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/upcase_uselocation"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textColor="@android:color/white" />
+
+                    <!--suppress AndroidDomInspection -->
+                    <ImageView
+                        android:id="@+id/imgvArrow"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/ic_arrow_right"
+                        app:layout_heightPercent="9%"
+                        app:layout_widthPercent="10%"
+                        tools:ignore="ContentDescription,RtlHardcoded" />
+
+                </android.support.percent.PercentRelativeLayout>
+
+                <!--suppress AndroidDomInspection -->
+                <FrameLayout
+                    android:id="@+id/addressBox"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="@dimen/activity_vertical_margin"
+                    android:background="@drawable/bg_address_box"
+                    android:padding="5dp"
+                    app:layout_widthPercent="70%">
+
+                    <ProgressBar
+                        android:id="@+id/pbAddress"
+                        style="?android:attr/progressBarStyleSmall"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center" />
+
+                    <TextView
+                        android:id="@+id/tvAddress"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Address"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:textColor="@color/mBlackText"
+                        tools:ignore="HardcodedText"
+                        android:layout_gravity="center_vertical" />
+
+                </FrameLayout>
+
+            </android.support.percent.PercentRelativeLayout>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="0.12"
+                android:src="@drawable/ic_marker"
+                tools:ignore="ContentDescription" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</FrameLayout>
