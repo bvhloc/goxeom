@@ -33,7 +33,7 @@ public class HistoryPresenter {
     public void getHistory(final HistoryModel model) {
 
         SharedPreferences loginPreferences = context.getSharedPreferences(Preferences.LOGIN_PREFERENCES, Context.MODE_PRIVATE);
-        final String token = loginPreferences.getString(Preferences.LOGIN_PREFERENCES_TOKEN, "");
+        final String token = loginPreferences.getString(Preferences.LOGIN_PREFERENCES_USER_TOKEN, "");
 
         new AsyncTask<String, Void, Boolean>() {
             @Override

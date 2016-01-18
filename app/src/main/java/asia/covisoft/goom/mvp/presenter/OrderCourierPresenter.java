@@ -46,7 +46,7 @@ public class OrderCourierPresenter {
             protected List<LoadcourierRoot.Loadcourier> doInBackground(Double... params) {
 
                 String token = context.getSharedPreferences(Preferences.LOGIN_PREFERENCES, Context.MODE_PRIVATE)
-                        .getString(Preferences.LOGIN_PREFERENCES_TOKEN, "");
+                        .getString(Preferences.LOGIN_PREFERENCES_USER_TOKEN, "");
                 String URL = Constant.HOST +
                         "loadcourier.php?token=" + token +
                         "&latitude=" + params[0] +

@@ -115,7 +115,7 @@ public class SettingsLoginActivity extends BaseActivity implements SettingsLogin
                 loginPreferences.edit()
                         .putString(Preferences.LOGIN_PREFERENCES_USERNAME, model.getUsername())
                         .putString(Preferences.LOGIN_PREFERENCES_PASSWORD, model.getPassword())
-                        .putString(Preferences.LOGIN_PREFERENCES_TOKEN, model.getToken())
+                        .putString(Preferences.LOGIN_PREFERENCES_USER_TOKEN, model.getToken())
                         .apply();
 
                 new AlertDialog.Builder(mContext)

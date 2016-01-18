@@ -10,4 +10,10 @@ public class GoOm extends Application {
 
 //        Log.d("myDebug", "appStart");
     }
+
+    @Override
+    public void onLowMemory() {
+        super.onLowMemory();
+        System.gc();
+    }
 }

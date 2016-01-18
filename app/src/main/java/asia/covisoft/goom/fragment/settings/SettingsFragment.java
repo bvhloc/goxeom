@@ -65,7 +65,7 @@ public class SettingsFragment extends BackFragment {
         super.onViewCreated(view, savedInstanceState);
 
         SharedPreferences loginPreferences = getContext().getSharedPreferences(Preferences.LOGIN_PREFERENCES, Context.MODE_PRIVATE);
-        String token = loginPreferences.getString(Preferences.LOGIN_PREFERENCES_TOKEN, "");
+        String token = loginPreferences.getString(Preferences.LOGIN_PREFERENCES_USER_TOKEN, "");
         if (!token.equals("")) {
             lnlSignup.setVisibility(View.GONE);
             lnlProfile.setVisibility(View.VISIBLE);

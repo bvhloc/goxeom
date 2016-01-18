@@ -4,12 +4,9 @@ import android.graphics.Rect;
 import android.view.MotionEvent;
 import android.view.View;
 
-/**
- * Created by Covisoft on 18/01/2016.
- */
 public class ViewHelper {
 
-    private static float TOUCH_ALPHA = (float) 0.7;
+    private static float TOUCH_ALPHA = (float) 0.5;
 
     private static Rect rect;
 

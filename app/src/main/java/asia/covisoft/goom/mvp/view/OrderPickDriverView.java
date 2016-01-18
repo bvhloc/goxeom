@@ -1,7 +1,5 @@
 package asia.covisoft.goom.mvp.view;
 
-import com.google.android.gms.maps.model.LatLng;
-
 import asia.covisoft.goom.mvp.model.OrderPickDriverModel;
 
 /**
@@ -9,6 +7,5 @@ import asia.covisoft.goom.mvp.model.OrderPickDriverModel;
  */
 public interface OrderPickDriverView {
 
-    void onMapReady(LatLng currentLatLng);
     void setDriverInfo(OrderPickDriverModel model);
 }

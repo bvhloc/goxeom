@@ -93,7 +93,7 @@ public class SettingsProfileActivity extends BaseActivity implements SettingsPro
         model = new SettingsProfileModel();
 
         loginPreferences = getSharedPreferences(Preferences.LOGIN_PREFERENCES, MODE_PRIVATE);
-        token = loginPreferences.getString(Preferences.LOGIN_PREFERENCES_TOKEN, "");
+        token = loginPreferences.getString(Preferences.LOGIN_PREFERENCES_USER_TOKEN, "");
         presenter.loadInfo(token);
     }
 
@@ -248,7 +248,7 @@ public class SettingsProfileActivity extends BaseActivity implements SettingsPro
                         loginPreferences.edit()
                                 .putString(Preferences.LOGIN_PREFERENCES_USERNAME, "")
                                 .putString(Preferences.LOGIN_PREFERENCES_PASSWORD, "")
-                                .putString(Preferences.LOGIN_PREFERENCES_TOKEN, "")
+                                .putString(Preferences.LOGIN_PREFERENCES_USER_TOKEN, "")
                                 .apply();
 
                         Intent intent = getBaseContext().getPackageManager()

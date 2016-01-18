@@ -20,6 +20,7 @@ import asia.covisoft.goom.utils.Constant;
 import asia.covisoft.goom.helper.GPSTracker;
 import asia.covisoft.goom.R;
 import asia.covisoft.goom.customview.WorkaroundMapFragment;
+import asia.covisoft.goom.utils.Extras;
 
 public class OrderTransportActivity extends BaseActivity implements OrderTransportView {
 
@@ -105,7 +106,7 @@ public class OrderTransportActivity extends BaseActivity implements OrderTranspo
                     public boolean onMarkerClick(Marker marker) {
 
                         Intent intent = new Intent(mContext, OrderPickDriverActivity.class);
-                        intent.putExtra(Constant.DRIVER_LATLNG, marker.getPosition());
+                        intent.putExtra(Extras.DRIVER_LATLNG, marker.getPosition());
                         startActivity(intent);
 
                         return true;

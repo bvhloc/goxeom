@@ -3,11 +3,9 @@ package asia.covisoft.goom.mvp.presenter;
 import android.content.Context;
 import android.os.Bundle;
 
-import com.google.android.gms.maps.model.LatLng;
-
 import asia.covisoft.goom.mvp.model.OrderPickDriverModel;
 import asia.covisoft.goom.mvp.view.OrderPickDriverView;
-import asia.covisoft.goom.utils.Constant;
+import asia.covisoft.goom.utils.Extras;
 
 public class OrderPickDriverPresenter {
 
@@ -19,19 +17,14 @@ public class OrderPickDriverPresenter {
         this.context = (Context) view;
     }
 
-    public void setupMap(Bundle extras) {
-
-        LatLng driverLatLng = extras.getParcelable(Constant.DRIVER_LATLNG);
-        view.onMapReady(driverLatLng);
-    }
-
     public void getDiverInfo(Bundle extras) {
 
         OrderPickDriverModel model = new OrderPickDriverModel();
 
-        model.setId(extras.getString(Constant.DRIVER_ID, ""));
-        model.setName(extras.getString(Constant.DRIVER_NAME, ""));
-        model.setAge(extras.getInt(Constant.DRIVER_AGE, 0));
+        model.id = extras.getString(Extras.DRIVER_ID, "");
+        model.name = extras.getString(Extras.DRIVER_NAME, "");
+        model.age = extras.getInt(Extras.DRIVER_AGE, 0);
+        model.token = extras.getString(Extras.DRIVER_TOKEN, "");
 
         view.setDriverInfo(model);
     }

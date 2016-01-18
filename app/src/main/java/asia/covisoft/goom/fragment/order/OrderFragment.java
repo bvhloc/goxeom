@@ -44,7 +44,7 @@ public class OrderFragment extends BackFragment {
         mContext = getContext();
 
         SharedPreferences loginPreferences = mContext.getSharedPreferences(Preferences.LOGIN_PREFERENCES, Context.MODE_PRIVATE);
-        final String token = loginPreferences.getString(Preferences.LOGIN_PREFERENCES_TOKEN, "");
+        final String token = loginPreferences.getString(Preferences.LOGIN_PREFERENCES_USER_TOKEN, "");
         ImageView imgvCourier = (ImageView) rootView.findViewById(R.id.imgvCourier);
         ViewHelper.addTouch(imgvCourier);
 

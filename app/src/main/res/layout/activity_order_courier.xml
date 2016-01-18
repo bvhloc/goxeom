@@ -1,5 +1,6 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/tab_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -57,6 +58,30 @@
                     android:text="@string/lowcase_doubleclickmaptozoom"
                     android:textColor="@color/mBlackText" />
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:paddingRight="@dimen/activity_vertical_margin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/colon_driver"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textColor="@color/mBlackText"
+                        tools:ignore="RtlHardcoded,RtlSymmetry" />
+
+                    <TextView
+                        android:id="@+id/tvDriverName"
+                        android:text="@string/lowcase_nopickeddriver"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textColor="@color/mDarkGreen" />
+
+                </LinearLayout>
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -90,6 +115,7 @@
                         android:orientation="vertical">
 
                         <TextView
+                            android:id="@+id/tvAddressFrom"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:drawableEnd="@drawable/ic_forward"
@@ -182,6 +208,7 @@
                         android:orientation="vertical">
 
                         <TextView
+                            android:id="@+id/tvContactFrom"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:drawableEnd="@drawable/ic_forward"
@@ -240,6 +267,7 @@
                         android:orientation="vertical">
 
                         <TextView
+                            android:id="@+id/tvAddressTo"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:drawableEnd="@drawable/ic_forward"
@@ -331,6 +359,7 @@
                         android:orientation="vertical">
 
                         <TextView
+                            android:id="@+id/tvContactTo"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:drawableEnd="@drawable/ic_forward"

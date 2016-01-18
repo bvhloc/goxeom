@@ -59,7 +59,7 @@ public class HistoryFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         SharedPreferences loginPreferences = mContext.getSharedPreferences(Preferences.LOGIN_PREFERENCES, Context.MODE_PRIVATE);
-        String token = loginPreferences.getString(Preferences.LOGIN_PREFERENCES_TOKEN, "");
+        String token = loginPreferences.getString(Preferences.LOGIN_PREFERENCES_USER_TOKEN, "");
         if(!token.equals("")){
 
             FragmentTransaction transaction = getChildFragmentManager().beginTransaction();

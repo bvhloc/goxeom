@@ -43,7 +43,6 @@ public class OrderPickLocationActivity extends BaseActivity implements AdapterVi
 
     private SearchView searchView;
     private ListView lvLocationHistory;
-    private View floMap;
 
     private void initView() {
 

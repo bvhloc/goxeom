@@ -139,7 +139,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                 progressDialog.dismiss();
                 if (!token.equals("")) {
                     loginPreferences.edit()
-                            .putString(Preferences.LOGIN_PREFERENCES_TOKEN, token)
+                            .putString(Preferences.LOGIN_PREFERENCES_USER_TOKEN, token)
                             .apply();
                 }
                 int tabPos = getIntent().getIntExtra(Constant.TAB_POSTION, 1);

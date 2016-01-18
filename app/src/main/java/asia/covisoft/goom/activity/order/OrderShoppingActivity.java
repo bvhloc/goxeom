@@ -19,6 +19,7 @@ import asia.covisoft.goom.mvp.view.OrderShoppingView;
 import asia.covisoft.goom.utils.Constant;
 import asia.covisoft.goom.R;
 import asia.covisoft.goom.customview.WorkaroundMapFragment;
+import asia.covisoft.goom.utils.Extras;
 
 public class OrderShoppingActivity extends BaseActivity implements OrderShoppingView{
 
@@ -101,7 +102,7 @@ public class OrderShoppingActivity extends BaseActivity implements OrderShopping
                     public boolean onMarkerClick(Marker marker) {
 
                         Intent intent = new Intent(mContext, OrderPickDriverActivity.class);
-                        intent.putExtra(Constant.DRIVER_LATLNG, marker.getPosition());
+                        intent.putExtra(Extras.DRIVER_LATLNG, marker.getPosition());
                         startActivity(intent);
 
                         return true;

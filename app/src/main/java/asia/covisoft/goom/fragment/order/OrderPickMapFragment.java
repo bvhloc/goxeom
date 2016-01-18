@@ -1,7 +1,9 @@
 package asia.covisoft.goom.fragment.order;
 
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -22,11 +24,12 @@ import com.google.android.gms.maps.model.LatLng;
 import asia.covisoft.goom.R;
 import asia.covisoft.goom.helper.GPSTracker;
 import asia.covisoft.goom.helper.GeoHelper;
+import asia.covisoft.goom.utils.Extras;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class OrderPickMapFragment extends Fragment implements OnMapReadyCallback {
+public class OrderPickMapFragment extends Fragment implements OnMapReadyCallback, View.OnClickListener {
 
 
     public OrderPickMapFragment() {
@@ -44,16 +47,19 @@ public class OrderPickMapFragment extends Fragment implements OnMapReadyCallback
 
         tvAddress = (TextView) rootView.findViewById(R.id.tvAddress);
         pbAddress = (ProgressBar) rootView.findViewById(R.id.pbAddress);
+        rootView.findViewById(R.id.pickBox).setOnClickListener(this);
 
         return rootView;
     }
 
     private Context mContext;
+    private Activity mActivity;
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mContext = this.getContext();
+        mContext = getContext();
+        mActivity = getActivity();
 
         initMap();
     }
@@ -65,16 +71,19 @@ public class OrderPickMapFragment extends Fragment implements OnMapReadyCallback
 
     }
 
+    private LatLng currentLatLng;
+
     @SuppressWarnings("ResourceType")
     @Override
     public void onMapReady(GoogleMap googleMap) {
 
-        LatLng currentLatLng = new GPSTracker(mContext).getLatLng();
+        currentLatLng = new GPSTracker(mContext).getLatLng();
         googleMap.setOnCameraChangeListener(new GoogleMap.OnCameraChangeListener() {
             @Override
             public void onCameraChange(CameraPosition cameraPosition) {
 
-                setAddress(cameraPosition.target);
+                currentLatLng = cameraPosition.target;
+                setAddress(currentLatLng);
             }
         });
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng, 14));
@@ -107,5 +116,19 @@ public class OrderPickMapFragment extends Fragment implements OnMapReadyCallback
                 tvAddress.setText(address);
             }
         }.execute();
+    }
+
+    @Override
+    public void onClick(View v) {
+
+        String address = tvAddress.getText().toString().trim();
+        if(!address.isEmpty()){
+
+            Intent data = new Intent();
+            data.putExtra(Extras.RECEIVED_ADDRESS, address);
+            data.putExtra(Extras.RECEIVED_LATLNG, currentLatLng);
+            mActivity.setResult(Activity.RESULT_OK, data);
+            mActivity.finish();
+        }
     }
 }
