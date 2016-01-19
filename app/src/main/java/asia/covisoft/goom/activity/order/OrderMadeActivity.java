@@ -31,11 +31,16 @@ public class OrderMadeActivity extends BaseActivity {
             public void onClick(View v) {
 
                 Intent intent = getBaseContext().getPackageManager()
-                        .getLaunchIntentForPackage( getBaseContext().getPackageName() );
+                        .getLaunchIntentForPackage(getBaseContext().getPackageName());
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 intent.putExtra(Constant.TAB_POSTION, 1);
                 startActivity(intent);
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        //disable backPress
     }
 }

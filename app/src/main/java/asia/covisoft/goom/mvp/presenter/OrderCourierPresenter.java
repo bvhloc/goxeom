@@ -8,6 +8,9 @@ import android.util.Log;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,10 +18,10 @@ import java.util.List;
 import asia.covisoft.goom.R;
 import asia.covisoft.goom.helper.GPSTracker;
 import asia.covisoft.goom.helper.NetworkClient;
+import asia.covisoft.goom.mvp.model.OrderCourierModel;
 import asia.covisoft.goom.mvp.view.OrderCourierView;
 import asia.covisoft.goom.pojo.gson.LoadcourierRoot;
 import asia.covisoft.goom.utils.Constant;
-import asia.covisoft.goom.utils.Preferences;
 
 public class OrderCourierPresenter {
 
@@ -32,7 +35,7 @@ public class OrderCourierPresenter {
 
     private ProgressDialog progressDialog;
 
-    public void getDriver() {
+    public void getDriver(final String token) {
         GPSTracker gpsTracker = new GPSTracker(context);
         new AsyncTask<Double, Void, List<LoadcourierRoot.Loadcourier>>() {
 
@@ -45,8 +48,6 @@ public class OrderCourierPresenter {
             @Override
             protected List<LoadcourierRoot.Loadcourier> doInBackground(Double... params) {
 
-                String token = context.getSharedPreferences(Preferences.LOGIN_PREFERENCES, Context.MODE_PRIVATE)
-                        .getString(Preferences.LOGIN_PREFERENCES_USER_TOKEN, "");
                 String URL = Constant.HOST +
                         "loadcourier.php?token=" + token +
                         "&latitude=" + params[0] +
@@ -81,5 +82,56 @@ public class OrderCourierPresenter {
             }
 
         }.execute(gpsTracker.getLatitude(), gpsTracker.getLongitude());
+    }
+
+    public void getCost(final OrderCourierModel model) {
+        new AsyncTask<Void, Void, String>() {
+
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+                progressDialog = ProgressDialog.show(context, "", context.getString(R.string.dialog_loading));
+            }
+
+            @Override
+            protected String doInBackground(Void... params) {
+
+                String URL = Constant.HOST +
+                        "getcost.php?token=" + model.userToken +
+                        "&type=C&fromlat=" + model.latFrom +
+                        "&fromlong=" + model.lngFrom +
+                        "&tolat=" + model.latTo +
+                        "&tolong=" + model.lngTo +
+                        "&itemcost=0";
+                Log.d("sdb", URL);
+                try {
+                    String json = new NetworkClient().getJsonFromUrl(URL);
+
+                    JSONObject rootObject = new JSONObject(json);
+
+                    model.cost = rootObject.optString("getcost");
+
+                    return model.cost;
+
+                } catch (JSONException | IOException e) {
+                    e.printStackTrace();
+                }
+
+                return "";
+            }
+
+            @Override
+            protected void onPostExecute(String cost) {
+                super.onPostExecute(cost);
+
+                progressDialog.dismiss();
+                if (cost.isEmpty())
+                    view.onConnectionFail();
+                else {
+                    view.onCostResult(model);
+                }
+            }
+
+        }.execute();
     }
 }

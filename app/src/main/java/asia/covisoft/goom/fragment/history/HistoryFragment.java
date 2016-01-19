@@ -14,12 +14,13 @@ import android.view.ViewGroup;
 import asia.covisoft.goom.R;
 import asia.covisoft.goom.activity.settings.SettingsLoginActivity;
 import asia.covisoft.goom.activity.settings.SettingsSignupActivity;
+import asia.covisoft.goom.backpress.BackFragment;
 import asia.covisoft.goom.utils.Preferences;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class HistoryFragment extends Fragment {
+public class HistoryFragment extends BackFragment {
 
 
     public HistoryFragment() {

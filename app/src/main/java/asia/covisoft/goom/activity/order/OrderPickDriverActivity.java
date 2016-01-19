@@ -99,8 +99,8 @@ public class OrderPickDriverActivity extends BaseActivity implements OrderPickDr
     public void onClick(View v) {
 
         Intent data = new Intent();
-        data.putExtra(Extras.RECEIVED_DRIVER_NAME, model.name);
-        data.putExtra(Extras.RECEIVED_DRIVER_TOKEN, model.token);
+        data.putExtra(Extras.PICKED_DRIVER_NAME, model.name);
+        data.putExtra(Extras.PICKED_DRIVER_TOKEN, model.token);
         setResult(RESULT_OK, data);
         finish();
     }

@@ -125,8 +125,8 @@ public class OrderPickMapFragment extends Fragment implements OnMapReadyCallback
         if(!address.isEmpty()){
 
             Intent data = new Intent();
-            data.putExtra(Extras.RECEIVED_ADDRESS, address);
-            data.putExtra(Extras.RECEIVED_LATLNG, currentLatLng);
+            data.putExtra(Extras.PICKED_ADDRESS, address);
+            data.putExtra(Extras.PICKED_LATLNG, currentLatLng);
             mActivity.setResult(Activity.RESULT_OK, data);
             mActivity.finish();
         }

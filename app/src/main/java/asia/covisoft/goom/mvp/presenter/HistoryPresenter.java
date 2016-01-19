@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
@@ -40,10 +41,9 @@ public class HistoryPresenter {
             protected Boolean doInBackground(String... params) {
 
 
-//                String URL = Constant.HOST +
-//                        "loadhistory.php?token="+token;//TODO active this code
                 String URL = Constant.HOST +
-                        "loadhistory.php?token=O9GJzRwlZrvDrmLOLBRA";//TODO remove this testing code
+                        "loadhistory.php?token=" + token;//TODO active this code
+                Log.d("sdb", URL);
                 try {
                     String json = new NetworkClient().getJsonFromUrl(URL);
 
@@ -52,6 +52,12 @@ public class HistoryPresenter {
                     List<LoadhistoryRoot.Loadhistory.Inprocess> inprocessList = root.getLoadhistory().getInprocess();
                     ArrayList<HistoryItem> inprocessItems = new ArrayList<>();
                     inprocessItems.addAll(inprocessList);
+
+//                    model.setInprocessList(inprocessItems);//TODO active this code
+
+                    //TODO remove this testing code
+                    List<LoadhistoryRoot.Loadhistory.Waiting> waitingList = root.getLoadhistory().getWaiting();
+                    inprocessItems.addAll(waitingList);
                     model.setInprocessList(inprocessItems);
 
                     List<LoadhistoryRoot.Loadhistory.Success> successList = root.getLoadhistory().getSuccess();

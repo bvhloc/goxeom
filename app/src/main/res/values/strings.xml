@@ -213,5 +213,12 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="colon_driver">Driver:</string>
     <string name="lowcase_nopickeddriver">No Picked Driver</string>
+    <string name="snackbar_pickdriver">Please pick a driver</string>
+    <string name="snackbar_picklocationfrom">Please pick sending location</string>
+    <string name="snackbar_picklocationto">Please pick receiving location</string>
+    <string name="snackbar_inputcontactfrom">Please input sending contact</string>
+    <string name="snackbar_inputcontactto">Please input receiving contact</string>
+    <string name="error_itemsempty">Please input items info</string>
+    <string name="money_unit">VNĐ</string>
 
 </resources>
