@@ -229,6 +229,9 @@ public class SettingsProfileActivity extends BaseActivity implements SettingsPro
                 edtConfirmPassword.requestFocus();
                 return false;
             }
+
+            model.newPassword = new MD5().encrypt(model.newPassword);
+
         }else {
             model.newPassword = model.password;
         }

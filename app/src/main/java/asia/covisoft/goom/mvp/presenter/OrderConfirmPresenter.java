@@ -47,10 +47,12 @@ public class OrderConfirmPresenter {
             @Override
             protected JSONObject doInBackground(Void... params) {
 
-                String addressFrom = new Hex().fromString(model.addressFrom);
-                String addressTo = new Hex().fromString(model.addressTo);
-                String contactNameFrom = new Hex().fromString(model.contactNameFrom);
-                String contactNameTo = new Hex().fromString(model.contactNameTo);
+                Hex hex = new Hex();
+                String addressFrom = hex.fromString(model.addressFrom);
+                String addressTo = hex.fromString(model.addressTo);
+                String contactNameFrom = hex.fromString(model.contactNameFrom);
+                String contactNameTo = hex.fromString(model.contactNameTo);
+                String items = hex.fromString(model.items);
 
                 String URL = Constant.HOST +
                         "setcourier.php?usertoken=" + model.userToken +
@@ -67,7 +69,7 @@ public class OrderConfirmPresenter {
                         "&contactphonefrom=" + model.contactPhoneFrom +
                         "&contactnameto=" + contactNameTo +
                         "&contactphoneto=" + model.contactPhoneTo +
-                        "&iteminfo=" + model.items +
+                        "&iteminfo=" + items +
                         "&cost=" + model.cost;
                 Log.d("sdb", URL);
                 try {
