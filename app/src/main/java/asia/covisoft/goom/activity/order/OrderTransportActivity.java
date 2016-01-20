@@ -33,7 +33,7 @@ import asia.covisoft.goom.helper.Hex;
 import asia.covisoft.goom.mvp.model.OrderTransportModel;
 import asia.covisoft.goom.mvp.presenter.OrderTransportPresenter;
 import asia.covisoft.goom.mvp.view.OrderTransportView;
-import asia.covisoft.goom.pojo.gson.LoadtransportRoot;
+import asia.covisoft.goom.pojo.gson.LoadtransportRoot.Loadtransport;
 import asia.covisoft.goom.utils.DatetimeFormat;
 import asia.covisoft.goom.utils.Extras;
 import asia.covisoft.goom.utils.Preferences;
@@ -130,13 +130,13 @@ public class OrderTransportActivity extends BaseActivity implements OrderTranspo
     }
 
     @Override
-    public void onDriverReady(List<LoadtransportRoot.Loadtransport> drivers) {
+    public void onDriverReady(List<Loadtransport> drivers) {
 
         if (drivers.isEmpty()) {
             Snackbar.make(findViewById(R.id.tab_container), getString(R.string.snackbar_nodrivernearby), Snackbar.LENGTH_LONG).show();
         } else {
             driverHashMap = new HashMap<>();
-            for (LoadtransportRoot.Loadtransport driver : drivers) {
+            for (Loadtransport driver : drivers) {
 
                 String driverFullName = new Hex().toString(driver.getFullName());
                 LatLng driverLatLng = new LatLng(Double.valueOf(driver.getLatitude()), Double.valueOf(driver.getLongitude()));
@@ -147,12 +147,12 @@ public class OrderTransportActivity extends BaseActivity implements OrderTranspo
         }
     }
 
-    private HashMap<Marker, LoadtransportRoot.Loadtransport> driverHashMap;
+    private HashMap<Marker, Loadtransport> driverHashMap;
 
     @Override
     public boolean onMarkerClick(Marker marker) {
 
-        LoadtransportRoot.Loadtransport driver = driverHashMap.get(marker);
+        Loadtransport driver = driverHashMap.get(marker);
 
         Intent intent = new Intent(mContext, OrderPickDriverActivity.class);
 

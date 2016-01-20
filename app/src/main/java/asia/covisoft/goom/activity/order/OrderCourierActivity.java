@@ -36,7 +36,7 @@ import asia.covisoft.goom.mvp.presenter.OrderCourierPresenter;
 import asia.covisoft.goom.mvp.presenter.SettingsProfilePresenter;
 import asia.covisoft.goom.mvp.view.OrderCourierView;
 import asia.covisoft.goom.mvp.view.SettingsProfileView;
-import asia.covisoft.goom.pojo.gson.LoadcourierRoot;
+import asia.covisoft.goom.pojo.gson.LoadcourierRoot.Loadcourier;
 import asia.covisoft.goom.utils.DatetimeFormat;
 import asia.covisoft.goom.utils.Extras;
 import asia.covisoft.goom.utils.Preferences;
@@ -162,13 +162,13 @@ public class OrderCourierActivity extends BaseActivity implements OrderCourierVi
     }
 
     @Override
-    public void onDriverReady(List<LoadcourierRoot.Loadcourier> drivers) {
+    public void onDriverReady(List<Loadcourier> drivers) {
 
         if (drivers.isEmpty()) {
             Snackbar.make(findViewById(R.id.tab_container), getString(R.string.snackbar_nodrivernearby), Snackbar.LENGTH_LONG).show();
         } else {
             driverHashMap = new HashMap<>();
-            for (LoadcourierRoot.Loadcourier driver : drivers) {
+            for (Loadcourier driver : drivers) {
 
                 String driverFullName = new Hex().toString(driver.getFullName());
                 LatLng driverLatLng = new LatLng(Double.valueOf(driver.getLatitude()), Double.valueOf(driver.getLongitude()));
@@ -181,12 +181,12 @@ public class OrderCourierActivity extends BaseActivity implements OrderCourierVi
         setupUI();
     }
 
-    private HashMap<Marker, LoadcourierRoot.Loadcourier> driverHashMap;
+    private HashMap<Marker, Loadcourier> driverHashMap;
 
     @Override
     public boolean onMarkerClick(Marker marker) {
 
-        LoadcourierRoot.Loadcourier driver = driverHashMap.get(marker);
+        Loadcourier driver = driverHashMap.get(marker);
 
         Intent intent = new Intent(mContext, OrderPickDriverActivity.class);
 

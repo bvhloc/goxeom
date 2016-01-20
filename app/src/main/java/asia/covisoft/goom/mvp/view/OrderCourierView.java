@@ -2,10 +2,9 @@ package asia.covisoft.goom.mvp.view;
 
 import java.util.List;
 
-import asia.covisoft.goom.pojo.gson.LoadcourierRoot;
-
+import asia.covisoft.goom.pojo.gson.LoadcourierRoot.Loadcourier;
 
 public interface OrderCourierView extends OrderView {
 
-    void onDriverReady(List<LoadcourierRoot.Loadcourier> drivers);
+    void onDriverReady(List<Loadcourier> drivers);
 }

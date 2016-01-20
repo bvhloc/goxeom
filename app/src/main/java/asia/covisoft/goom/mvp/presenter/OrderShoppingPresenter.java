@@ -16,6 +16,7 @@ import asia.covisoft.goom.R;
 import asia.covisoft.goom.helper.NetworkClient;
 import asia.covisoft.goom.mvp.view.OrderShoppingView;
 import asia.covisoft.goom.pojo.gson.LoadshoppingRoot;
+import asia.covisoft.goom.pojo.gson.LoadshoppingRoot.Loadshopping;
 import asia.covisoft.goom.utils.Constant;
 
 public class OrderShoppingPresenter {
@@ -31,7 +32,7 @@ public class OrderShoppingPresenter {
     private ProgressDialog progressDialog;
 
     public void getDriver(final String token, final double lat, final double lng) {
-        new AsyncTask<Void, Void, List<LoadshoppingRoot.Loadshopping>>() {
+        new AsyncTask<Void, Void, List<Loadshopping>>() {
 
             @Override
             protected void onPreExecute() {
@@ -40,7 +41,7 @@ public class OrderShoppingPresenter {
             }
 
             @Override
-            protected List<LoadshoppingRoot.Loadshopping> doInBackground(Void... params) {
+            protected List<Loadshopping> doInBackground(Void... params) {
 
                 String URL = Constant.HOST +
                         "loadshopping.php?token=" + token +
@@ -64,7 +65,7 @@ public class OrderShoppingPresenter {
             }
 
             @Override
-            protected void onPostExecute(List<LoadshoppingRoot.Loadshopping> drivers) {
+            protected void onPostExecute(List<Loadshopping> drivers) {
                 super.onPostExecute(drivers);
 
                 progressDialog.dismiss();

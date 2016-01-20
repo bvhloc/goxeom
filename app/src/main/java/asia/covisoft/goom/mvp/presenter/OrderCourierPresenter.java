@@ -17,6 +17,7 @@ import asia.covisoft.goom.helper.NetworkClient;
 import asia.covisoft.goom.mvp.model.OrderPresenter;
 import asia.covisoft.goom.mvp.view.OrderCourierView;
 import asia.covisoft.goom.pojo.gson.LoadcourierRoot;
+import asia.covisoft.goom.pojo.gson.LoadcourierRoot.Loadcourier;
 import asia.covisoft.goom.utils.Constant;
 
 public class OrderCourierPresenter extends OrderPresenter {
@@ -33,7 +34,7 @@ public class OrderCourierPresenter extends OrderPresenter {
     private ProgressDialog progressDialog;
 
     public void getDriver(final String token, final double lat, final  double lng) {
-        new AsyncTask<Void, Void, List<LoadcourierRoot.Loadcourier>>() {
+        new AsyncTask<Void, Void, List<Loadcourier>>() {
 
             @Override
             protected void onPreExecute() {
@@ -42,7 +43,7 @@ public class OrderCourierPresenter extends OrderPresenter {
             }
 
             @Override
-            protected List<LoadcourierRoot.Loadcourier> doInBackground(Void... params) {
+            protected List<Loadcourier> doInBackground(Void... params) {
 
                 String URL = Constant.HOST +
                         "loadcourier.php?token=" + token +
@@ -66,7 +67,7 @@ public class OrderCourierPresenter extends OrderPresenter {
             }
 
             @Override
-            protected void onPostExecute(List<LoadcourierRoot.Loadcourier> drivers) {
+            protected void onPostExecute(List<Loadcourier> drivers) {
                 super.onPostExecute(drivers);
 
                 progressDialog.dismiss();
