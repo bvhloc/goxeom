@@ -221,5 +221,6 @@
     <string name="error_itemsempty">Please input items info</string>
     <string name="money_unit">VNĐ</string>
     <string name="dialog_cancelbooking">Cancel this booking?</string>
+    <string name="error_costempty">Please input cost</string>
 
 </resources>

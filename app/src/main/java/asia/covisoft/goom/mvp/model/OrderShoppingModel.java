@@ -11,12 +11,8 @@ public class OrderShoppingModel implements Serializable {
     public double latTo;
     public double lngFrom;
     public double lngTo;
-    public String detailsFrom;
-    public String detailsTo;
-    public String contactNameFrom;
-    public String contactNameTo;
-    public String contactPhoneFrom;
-    public String contactPhoneTo;
+    public String shopDetails;
+    public String locationDetails;
     public String items;
     public String driverName;
     public String driverToken;

@@ -14,17 +14,19 @@ import java.util.List;
 
 import asia.covisoft.goom.R;
 import asia.covisoft.goom.helper.NetworkClient;
+import asia.covisoft.goom.mvp.model.OrderPresenter;
 import asia.covisoft.goom.mvp.view.OrderShoppingView;
 import asia.covisoft.goom.pojo.gson.LoadshoppingRoot;
 import asia.covisoft.goom.pojo.gson.LoadshoppingRoot.Loadshopping;
 import asia.covisoft.goom.utils.Constant;
 
-public class OrderShoppingPresenter {
+public class OrderShoppingPresenter extends OrderPresenter {
 
     private OrderShoppingView view;
     private Context context;
 
     public OrderShoppingPresenter(OrderShoppingView view) {
+        super(view);
         this.view = view;
         this.context = (Context) view;
     }
@@ -77,5 +79,10 @@ public class OrderShoppingPresenter {
             }
 
         }.execute();
+    }
+
+    @Override
+    public void getCost(String userToken, double latFrom, double lngFrom, double latTo, double lngTo, double cost) {
+        super.getCost(userToken, latFrom, lngFrom, latTo, lngTo, cost);
     }
 }

@@ -1,12 +1,16 @@
 package asia.covisoft.goom.activity.order;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ScrollView;
+import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -38,30 +42,43 @@ import asia.covisoft.goom.utils.RequestCodes;
 public class OrderShoppingActivity extends BaseActivity implements OrderShoppingView, OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
 
     private ScrollView scrollView;
+    private TextView tvDriverName,
+            tvAddressFrom, tvAddressTo;
+    private EditText edtItems, edtCost,
+            edtShopDetails, edtLocationDetails;
 
     private void initView() {
         setContentView(R.layout.activity_order_shopping);
 
         scrollView = (ScrollView) findViewById(R.id.scrollView);
+        tvDriverName = (TextView) findViewById(R.id.tvDriverName);
+        tvAddressFrom = (TextView) findViewById(R.id.tvAddressFrom);
+        tvAddressTo = (TextView) findViewById(R.id.tvAddressTo);
+        edtItems = (EditText) findViewById(R.id.edtItems);
+        edtCost = (EditText) findViewById(R.id.edtCost);
+        edtShopDetails = (EditText) findViewById(R.id.edtShopDetails);
+        edtLocationDetails = (EditText) findViewById(R.id.edtLocationDetails);
         findViewById(R.id.lnlPickFrom).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                startActivity(new Intent(mContext, OrderPickLocationActivity.class));
+                startActivityForResult(new Intent(mContext, OrderPickLocationActivity.class),
+                        RequestCodes.PICK_LOCATION_FROM);
             }
         });
         findViewById(R.id.lnlPickTo).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                startActivity(new Intent(mContext, OrderPickLocationActivity.class));
+                startActivityForResult(new Intent(mContext, OrderPickLocationActivity.class),
+                        RequestCodes.PICK_LOCATION_TO);
             }
         });
         findViewById(R.id.btnNext).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                startActivity(new Intent(mContext, OrderConfirmActivity.class));
+                btnNextClicked();
             }
         });
     }
@@ -165,11 +182,113 @@ public class OrderShoppingActivity extends BaseActivity implements OrderShopping
 
     @Override
     public void onConnectionFail() {
+        new AlertDialog.Builder(mContext)
+                .setMessage(getString(R.string.dialog_connection_fail))
+                .setNeutralButton(getString(R.string.lowcase_ok), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
 
+                        onBackPressed();
+                    }
+                })
+                .show();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK) {
+            LatLng receivedLatLng;
+            switch (requestCode) {
+                case RequestCodes.PICK_DRIVER:
+
+                    model.driverName = data.getStringExtra(Extras.PICKED_DRIVER_NAME);
+                    model.driverToken = data.getStringExtra(Extras.PICKED_DRIVER_TOKEN);
+
+                    tvDriverName.setText(model.driverName);
+                    tvDriverName.setError(null);
+
+                    break;
+                case RequestCodes.PICK_LOCATION_FROM:
+
+                    receivedLatLng = data.getParcelableExtra(Extras.PICKED_LATLNG);
+                    model.latFrom = receivedLatLng.latitude;
+                    model.lngFrom = receivedLatLng.longitude;
+                    model.addressFrom = data.getStringExtra(Extras.PICKED_ADDRESS);
+
+                    tvAddressFrom.setText(model.addressFrom);
+                    tvAddressFrom.setError(null);
+
+                    break;
+                case RequestCodes.PICK_LOCATION_TO:
+
+                    receivedLatLng = data.getParcelableExtra(Extras.PICKED_LATLNG);
+                    model.latTo = receivedLatLng.latitude;
+                    model.lngTo = receivedLatLng.longitude;
+                    model.addressTo = data.getStringExtra(Extras.PICKED_ADDRESS);
+
+                    tvAddressTo.setText(model.addressTo);
+                    tvAddressTo.setError(null);
+
+                    break;
+            }
+        }
+    }
+
+    private void btnNextClicked() {
+
+        if (validInput()) {
+            presenter.getCost(model.userToken, model.latFrom, model.lngFrom, model.latTo, model.lngTo, Double.parseDouble(model.cost));
+        }
     }
 
     @Override
     public void onCostResult(String cost) {
 
+        model.cost = cost;
+
+        Intent intent = new Intent(mContext, OrderConfirmActivity.class);
+        intent.putExtra(Extras.BOOKING_TYPE, OrderConfirmActivity.BOOK_TYPE_SHOPPING);
+        intent.putExtra(Extras.BOOKING_INFO, model);
+        startActivity(intent);
+    }
+
+    private boolean validInput() {
+
+        model.shopDetails = edtShopDetails.getText().toString().trim();
+        model.locationDetails = edtLocationDetails.getText().toString().trim();
+        model.items = edtItems.getText().toString().trim();
+        model.cost = edtCost.getText().toString().trim();
+
+        if (model.driverToken == null || model.driverToken.isEmpty()) {
+            Snackbar.make(findViewById(R.id.tab_container), getString(R.string.snackbar_pickdriver), Snackbar.LENGTH_SHORT)
+                    .show();
+            tvDriverName.setError("");
+            return false;
+        }
+        if (model.latFrom == 0 || model.lngFrom == 0) {
+
+            Snackbar.make(findViewById(R.id.tab_container), getString(R.string.snackbar_picklocationfrom), Snackbar.LENGTH_SHORT)
+                    .show();
+            tvAddressFrom.setError("");
+            return false;
+        }
+        if (model.latTo == 0 || model.lngTo == 0) {
+
+            Snackbar.make(findViewById(R.id.tab_container), getString(R.string.snackbar_picklocationto), Snackbar.LENGTH_SHORT)
+                    .show();
+            tvAddressTo.setError("");
+            return false;
+        }
+        if (model.items.isEmpty()) {
+            edtItems.setError(getText(R.string.error_itemsempty));
+            return false;
+        }
+        if (model.cost.isEmpty()) {
+            edtCost.setError(getText(R.string.error_costempty));
+            return false;
+        }
+
+        return true;
     }
 }

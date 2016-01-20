@@ -14,6 +14,7 @@ import asia.covisoft.goom.R;
 import asia.covisoft.goom.helper.Hex;
 import asia.covisoft.goom.helper.NetworkClient;
 import asia.covisoft.goom.mvp.model.OrderCourierModel;
+import asia.covisoft.goom.mvp.model.OrderShoppingModel;
 import asia.covisoft.goom.mvp.model.OrderTransportModel;
 import asia.covisoft.goom.mvp.view.OrderConfirmView;
 import asia.covisoft.goom.utils.Constant;
@@ -143,6 +144,81 @@ public class OrderConfirmPresenter {
                         "&transportto=" + addressTo +
                         "&transporttolat=" + model.latTo +
                         "&transporttolong=" + model.lngTo +
+                        "&cost=" + model.cost;
+                Log.d("sdb", URL);
+                try {
+                    String json = new NetworkClient().getJsonFromUrl(URL);
+
+                    JSONObject result = new JSONObject(json);
+
+                    return result;
+
+                } catch (JSONException | IOException e) {
+                    e.printStackTrace();
+                }
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(JSONObject result) {
+                super.onPostExecute(result);
+
+                progressDialog.dismiss();
+                if (result == null)
+                    view.onConnectionFail();
+                else {
+                    int resultValue = result.optInt("setcourier");
+                    switch (resultValue) {
+                        case RESULT_BOOKING_SUCCESS:
+                            String bookingId = result.optString("id");
+                            view.onBookingMade(bookingId);
+                            break;
+                        case RESULT_DRIVER_UNAVAIBLE:
+                            break;
+                        case RESULT_ACCOUNT_OUT_OF_MONEY:
+                            break;
+                        case RESULT_BOOKING_FAIL:
+                            break;
+                    }
+                }
+            }
+
+        }.execute();
+    }
+
+    public void bookShopping(final OrderShoppingModel model) {
+        new AsyncTask<Void, Void, JSONObject>() {
+
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+                progressDialog = ProgressDialog.show(context, "", context.getString(R.string.dialog_loading));
+            }
+
+            @SuppressWarnings("UnnecessaryLocalVariable")
+            @Override
+            protected JSONObject doInBackground(Void... params) {
+
+                Hex hex = new Hex();
+                String addressFrom = hex.fromString(model.addressFrom);
+                String addressTo = hex.fromString(model.addressTo);
+                String detailsFrom = hex.fromString(model.shopDetails);
+                String detailsTo = hex.fromString(model.locationDetails);
+                String items = hex.fromString(model.items);
+
+                String URL = Constant.HOST +
+                        "setshopping.php?usertoken=" + model.userToken +
+                        "&drivertoken=" + model.driverToken +
+                        "&shoppingfrom=" + addressFrom +
+                        "&shoppingfromdetail=" + detailsFrom +
+                        "&shoppingfromlat=" + model.latFrom +
+                        "&shoppingfromlong=" + model.lngFrom +
+                        "&shoppingto=" + addressTo +
+                        "&shoppingtodetail=" + detailsTo +
+                        "&shoppingtolat=" + model.latTo +
+                        "&shoppingtolong=" + model.lngTo +
+                        "&type=buy" +
+                        "&iteminfo=" + items +
                         "&cost=" + model.cost;
                 Log.d("sdb", URL);
                 try {
