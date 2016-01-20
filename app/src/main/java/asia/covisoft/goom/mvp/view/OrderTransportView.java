@@ -1,11 +1,11 @@
 package asia.covisoft.goom.mvp.view;
 
-import com.google.android.gms.maps.model.LatLng;
+import java.util.List;
 
-/**
- * Created by Covisoft on 21/12/2015.
- */
+import asia.covisoft.goom.pojo.gson.LoadtransportRoot;
+
 public interface OrderTransportView {
 
-    void onMapReady(LatLng currentLatLng);
+    void onConnectionFail();
+    void onDriverReady(List<LoadtransportRoot.Loadtransport> drivers);
 }

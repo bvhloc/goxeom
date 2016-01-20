@@ -16,7 +16,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import asia.covisoft.goom.R;
-import asia.covisoft.goom.helper.GPSTracker;
 import asia.covisoft.goom.helper.NetworkClient;
 import asia.covisoft.goom.mvp.model.OrderCourierModel;
 import asia.covisoft.goom.mvp.view.OrderCourierView;
@@ -35,9 +34,8 @@ public class OrderCourierPresenter {
 
     private ProgressDialog progressDialog;
 
-    public void getDriver(final String token) {
-        GPSTracker gpsTracker = new GPSTracker(context);
-        new AsyncTask<Double, Void, List<LoadcourierRoot.Loadcourier>>() {
+    public void getDriver(final String token, final double lat, final  double lng) {
+        new AsyncTask<Void, Void, List<LoadcourierRoot.Loadcourier>>() {
 
             @Override
             protected void onPreExecute() {
@@ -46,12 +44,12 @@ public class OrderCourierPresenter {
             }
 
             @Override
-            protected List<LoadcourierRoot.Loadcourier> doInBackground(Double... params) {
+            protected List<LoadcourierRoot.Loadcourier> doInBackground(Void... params) {
 
                 String URL = Constant.HOST +
                         "loadcourier.php?token=" + token +
-                        "&latitude=" + params[0] +
-                        "&longitude=" + params[1];
+                        "&latitude=" + lat +
+                        "&longitude=" + lng;
                 Log.d("sdb", URL);
                 try {
                     String json = new NetworkClient().getJsonFromUrl(URL);
@@ -81,7 +79,7 @@ public class OrderCourierPresenter {
                 }
             }
 
-        }.execute(gpsTracker.getLatitude(), gpsTracker.getLongitude());
+        }.execute();
     }
 
     public void getCost(final OrderCourierModel model) {

@@ -24,6 +24,7 @@ public class OrderPickDriverPresenter {
         model.id = extras.getString(Extras.DRIVER_ID, "");
         model.name = extras.getString(Extras.DRIVER_NAME, "");
         model.age = extras.getInt(Extras.DRIVER_AGE, 0);
+        model.gender = extras.getString(Extras.DRIVER_GENDER, "male");
         model.token = extras.getString(Extras.DRIVER_TOKEN, "");
 
         view.setDriverInfo(model);

@@ -6,31 +6,27 @@ import com.google.gson.annotations.SerializedName;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LoadcourierRoot {
+public class LoadtransportRoot {
 
-    @SerializedName("loadcourier")
+    @SerializedName("loadtransport")
     @Expose
-    private List<Loadcourier> loadcourier = new ArrayList<Loadcourier>();
+    private List<Loadtransport> loadtransport = new ArrayList<Loadtransport>();
 
     /**
-     *
-     * @return
-     * The loadcourier
+     * @return The loadtransport
      */
-    public List<Loadcourier> getLoadcourier() {
-        return loadcourier;
+    public List<Loadtransport> getLoadtransport() {
+        return loadtransport;
     }
 
     /**
-     *
-     * @param loadcourier
-     * The loadcourier
+     * @param loadtransport The loadtransport
      */
-    public void setLoadcourier(List<Loadcourier> loadcourier) {
-        this.loadcourier = loadcourier;
+    public void setLoadtransport(List<Loadtransport> loadtransport) {
+        this.loadtransport = loadtransport;
     }
 
-    public class Loadcourier {
+    public class Loadtransport {
 
         @SerializedName("driver_id")
         @Expose
@@ -82,288 +78,224 @@ public class LoadcourierRoot {
         private String loginFault;
 
         /**
-         *
-         * @return
-         * The driverId
+         * @return The driverId
          */
         public String getDriverId() {
             return driverId;
         }
 
         /**
-         *
-         * @param driverId
-         * The driver_id
+         * @param driverId The driver_id
          */
         public void setDriverId(String driverId) {
             this.driverId = driverId;
         }
 
         /**
-         *
-         * @return
-         * The driverName
+         * @return The driverName
          */
         public String getDriverName() {
             return driverName;
         }
 
         /**
-         *
-         * @param driverName
-         * The driver_name
+         * @param driverName The driver_name
          */
         public void setDriverName(String driverName) {
             this.driverName = driverName;
         }
 
         /**
-         *
-         * @return
-         * The fullName
+         * @return The fullName
          */
         public String getFullName() {
             return fullName;
         }
 
         /**
-         *
-         * @param fullName
-         * The full_name
+         * @param fullName The full_name
          */
         public void setFullName(String fullName) {
             this.fullName = fullName;
         }
 
         /**
-         *
-         * @return
-         * The birthDay
+         * @return The birthDay
          */
         public String getBirthDay() {
             return birthDay;
         }
 
         /**
-         *
-         * @param birthDay
-         * The birth_day
+         * @param birthDay The birth_day
          */
         public void setBirthDay(String birthDay) {
             this.birthDay = birthDay;
         }
 
         /**
-         *
-         * @return
-         * The passWord
+         * @return The passWord
          */
         public String getPassWord() {
             return passWord;
         }
 
         /**
-         *
-         * @param passWord
-         * The pass_word
+         * @param passWord The pass_word
          */
         public void setPassWord(String passWord) {
             this.passWord = passWord;
         }
 
         /**
-         *
-         * @return
-         * The status
+         * @return The status
          */
         public String getStatus() {
             return status;
         }
 
         /**
-         *
-         * @param status
-         * The status
+         * @param status The status
          */
         public void setStatus(String status) {
             this.status = status;
         }
 
         /**
-         *
-         * @return
-         * The gender
+         * @return The gender
          */
         public String getGender() {
             return gender;
         }
 
         /**
-         *
-         * @param gender
-         * The gender
+         * @param gender The gender
          */
         public void setGender(String gender) {
             this.gender = gender;
         }
 
         /**
-         *
-         * @return
-         * The rating
+         * @return The rating
          */
         public String getRating() {
             return rating;
         }
 
         /**
-         *
-         * @param rating
-         * The rating
+         * @param rating The rating
          */
         public void setRating(String rating) {
             this.rating = rating;
         }
 
         /**
-         *
-         * @return
-         * The view
+         * @return The view
          */
         public String getView() {
             return view;
         }
 
         /**
-         *
-         * @param view
-         * The view
+         * @param view The view
          */
         public void setView(String view) {
             this.view = view;
         }
 
         /**
-         *
-         * @return
-         * The email
+         * @return The email
          */
         public String getEmail() {
             return email;
         }
 
         /**
-         *
-         * @param email
-         * The email
+         * @param email The email
          */
         public void setEmail(String email) {
             this.email = email;
         }
 
         /**
-         *
-         * @return
-         * The phoneNumber
+         * @return The phoneNumber
          */
         public String getPhoneNumber() {
             return phoneNumber;
         }
 
         /**
-         *
-         * @param phoneNumber
-         * The phone_number
+         * @param phoneNumber The phone_number
          */
         public void setPhoneNumber(String phoneNumber) {
             this.phoneNumber = phoneNumber;
         }
 
         /**
-         *
-         * @return
-         * The avatarImage
+         * @return The avatarImage
          */
         public String getAvatarImage() {
             return avatarImage;
         }
 
         /**
-         *
-         * @param avatarImage
-         * The avatar_image
+         * @param avatarImage The avatar_image
          */
         public void setAvatarImage(String avatarImage) {
             this.avatarImage = avatarImage;
         }
 
         /**
-         *
-         * @return
-         * The latitude
+         * @return The latitude
          */
         public String getLatitude() {
             return latitude;
         }
 
         /**
-         *
-         * @param latitude
-         * The latitude
+         * @param latitude The latitude
          */
         public void setLatitude(String latitude) {
             this.latitude = latitude;
         }
 
         /**
-         *
-         * @return
-         * The longitude
+         * @return The longitude
          */
         public String getLongitude() {
             return longitude;
         }
 
         /**
-         *
-         * @param longitude
-         * The longitude
+         * @param longitude The longitude
          */
         public void setLongitude(String longitude) {
             this.longitude = longitude;
         }
 
         /**
-         *
-         * @return
-         * The token
+         * @return The token
          */
         public String getToken() {
             return token;
         }
 
         /**
-         *
-         * @param token
-         * The token
+         * @param token The token
          */
         public void setToken(String token) {
             this.token = token;
         }
 
         /**
-         *
-         * @return
-         * The loginFault
+         * @return The loginFault
          */
         public String getLoginFault() {
             return loginFault;
         }
 
         /**
-         *
-         * @param loginFault
-         * The login_fault
+         * @param loginFault The login_fault
          */
         public void setLoginFault(String loginFault) {
             this.loginFault = loginFault;

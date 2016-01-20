@@ -173,7 +173,6 @@
                             android:layout_height="wrap_content"
                             android:orientation="horizontal"
                             android:id="@+id/segment_text"
-                            android:checkedButton="@+id/button_one"
                             android:weightSum="1">
 
                             <RadioButton android:id="@+id/rdbMale"

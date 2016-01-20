@@ -19,7 +19,7 @@ import asia.covisoft.goom.activity.order.OrderTransportActivity;
 import asia.covisoft.goom.activity.settings.SettingsLoginActivity;
 import asia.covisoft.goom.activity.settings.SettingsSignupActivity;
 import asia.covisoft.goom.backpress.BackFragment;
-import asia.covisoft.goom.helper.ViewHelper;
+import asia.covisoft.goom.helper.TouchEffect;
 import asia.covisoft.goom.utils.Preferences;
 
 public class OrderFragment extends BackFragment {
@@ -46,7 +46,7 @@ public class OrderFragment extends BackFragment {
         SharedPreferences loginPreferences = mContext.getSharedPreferences(Preferences.LOGIN_PREFERENCES, Context.MODE_PRIVATE);
         final String token = loginPreferences.getString(Preferences.LOGIN_PREFERENCES_USER_TOKEN, "");
         ImageView imgvCourier = (ImageView) rootView.findViewById(R.id.imgvCourier);
-        ViewHelper.addTouch(imgvCourier);
+        TouchEffect.addAlpha(imgvCourier);
 
         imgvCourier.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,16 +59,19 @@ public class OrderFragment extends BackFragment {
             }
         });
         ImageView imgvTransport = (ImageView) rootView.findViewById(R.id.imgvTransport);
-        ViewHelper.addTouch(imgvTransport);
+        TouchEffect.addAlpha(imgvTransport);
         imgvTransport.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                startActivity(new Intent(getActivity(), OrderTransportActivity.class));
+                if (token.equals(""))
+                    showDialogLogin();
+                else
+                    startActivity(new Intent(getActivity(), OrderTransportActivity.class));
             }
         });
         ImageView imgvFood = (ImageView) rootView.findViewById(R.id.imgvFood);
-        ViewHelper.addTouch(imgvFood);
+        TouchEffect.addAlpha(imgvFood);
         imgvFood.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,7 +80,7 @@ public class OrderFragment extends BackFragment {
             }
         });
         ImageView imgvShopping = (ImageView) rootView.findViewById(R.id.imgvShopping);
-        ViewHelper.addTouch(imgvShopping);
+        TouchEffect.addAlpha(imgvShopping);
         imgvShopping.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

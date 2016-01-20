@@ -19,6 +19,7 @@ public final class Extras {
     public static final String DRIVER_ID = "DRIVER_ID";
     public static final String DRIVER_NAME = "DRIVER_NAME";
     public static final String DRIVER_AGE = "DRIVER_AGE";
+    public static final String DRIVER_GENDER = "DRIVER_AGE";
     public static final String DRIVER_LATLNG = "DRIVER_LATLNG";
     public static final String DRIVER_TOKEN = "DRIVER_TOKEN";
 

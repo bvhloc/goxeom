@@ -3,7 +3,9 @@ package asia.covisoft.goom.activity.order;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.view.View;
+import android.widget.RadioButton;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
@@ -24,6 +26,22 @@ import asia.covisoft.goom.utils.Extras;
 
 public class OrderPickDriverActivity extends BaseActivity implements OrderPickDriverView, OnMapReadyCallback, View.OnClickListener {
 
+    private ScrollView scrollView;
+    private TextView tvId, tvName, tvAge;
+    private RadioButton rdbMale, rdbFemale;
+
+    private void initView() {
+        setContentView(R.layout.activity_order_pick_driver);
+
+        tvId = (TextView) findViewById(R.id.tvId);
+        tvName = (TextView) findViewById(R.id.tvName);
+        tvAge = (TextView) findViewById(R.id.tvAge);
+        rdbMale = (RadioButton) findViewById(R.id.rdbMale);
+        rdbFemale = (RadioButton) findViewById(R.id.rdbFemale);
+        scrollView = (ScrollView) findViewById(R.id.scrollView);
+        findViewById(R.id.btnBook).setOnClickListener(this);
+    }
+
     private Context mContext;
     private OrderPickDriverPresenter presenter;
     private OrderPickDriverModel model;
@@ -31,7 +49,6 @@ public class OrderPickDriverActivity extends BaseActivity implements OrderPickDr
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_order_pick_driver);
         mContext = this;
         presenter = new OrderPickDriverPresenter(this);
         model = new OrderPickDriverModel();
@@ -40,18 +57,6 @@ public class OrderPickDriverActivity extends BaseActivity implements OrderPickDr
         Bundle extras = getIntent().getExtras();
         presenter.getDiverInfo(extras);
         initMap();
-    }
-
-    private ScrollView scrollView;
-    private TextView tvId, tvName, tvAge;
-
-    private void initView() {
-
-        tvId = (TextView) findViewById(R.id.tvId);
-        tvName = (TextView) findViewById(R.id.tvName);
-        tvAge = (TextView) findViewById(R.id.tvAge);
-        scrollView = (ScrollView) findViewById(R.id.scrollView);
-        findViewById(R.id.btnBook).setOnClickListener(this);
     }
 
     private void initMap() {
@@ -92,6 +97,16 @@ public class OrderPickDriverActivity extends BaseActivity implements OrderPickDr
         tvId.setText(model.id);
         tvName.setText(model.name);
         tvAge.setText(model.age + "");
+        switch (model.gender){
+            case "male":
+                rdbMale.setChecked(true);
+                rdbMale.setTextColor(ContextCompat.getColor(mContext,  R.color.mAppBackground));
+                break;
+            case "female":
+                rdbFemale.setChecked(true);
+                rdbFemale.setTextColor(ContextCompat.getColor(mContext, R.color.mAppBackground));
+                break;
+        }
     }
 
 

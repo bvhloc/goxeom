@@ -7,6 +7,7 @@ public class OrderPickDriverModel {
 
     public String id;
     public String name;
+    public String gender;
     public int age;
     public String token;
 }

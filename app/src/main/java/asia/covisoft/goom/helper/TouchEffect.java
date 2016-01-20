@@ -4,13 +4,13 @@ import android.graphics.Rect;
 import android.view.MotionEvent;
 import android.view.View;
 
-public class ViewHelper {
+public class TouchEffect {
 
     private static float TOUCH_ALPHA = (float) 0.5;
 
     private static Rect rect;
 
-    public static void addTouch(View view){
+    public static void addAlpha(View view){
 
         view.setOnTouchListener(new View.OnTouchListener() {
             @Override

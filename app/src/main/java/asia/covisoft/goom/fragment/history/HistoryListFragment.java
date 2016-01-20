@@ -68,20 +68,20 @@ public class HistoryListFragment extends BackFragment implements HistoryView{
 
                 if (isChecked) {
 
-                    //show Category
+                    //show Inprocess
                     lvInprocess.setVisibility(View.VISIBLE);
                     rdbInprocess.setTextColor(ContextCompat.getColor(mContext, R.color.mAppBackground));
 
-                    //hide NearMe
+                    //hide Completed
                     lvCompleted.setVisibility(View.GONE);
                     rdbCompleted.setTextColor(ContextCompat.getColor(mContext, R.color.mGreen));
                 } else {
 
-                    //hide Category
+                    //hide Inprocess
                     lvInprocess.setVisibility(View.GONE);
                     rdbInprocess.setTextColor(ContextCompat.getColor(mContext, R.color.mGreen));
 
-                    //show NearMe
+                    //show Completed
                     lvCompleted.setVisibility(View.VISIBLE);
                     rdbCompleted.setTextColor(ContextCompat.getColor(mContext, R.color.mAppBackground));
                 }

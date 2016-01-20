@@ -141,32 +141,6 @@ public class OrderCourierActivity extends BaseActivity implements OrderCourierVi
         mapFragment.getMapAsync(this);
     }
 
-    private HashMap<Marker, LoadcourierRoot.Loadcourier> driverHashMap;
-
-    @Override
-    public boolean onMarkerClick(Marker marker) {
-
-        LoadcourierRoot.Loadcourier driver = driverHashMap.get(marker);
-
-        Intent intent = new Intent(mContext, OrderPickDriverActivity.class);
-
-        intent.putExtra(Extras.DRIVER_ID, driver.getDriverId());
-
-        intent.putExtra(Extras.DRIVER_NAME, new Hex().toString(driver.getFullName()));
-
-        Calendar birthCalendar = new DatetimeHelper().getCalendar(driver.getBirthDay(), DatetimeFormat.SERVER_DATE_FORMAT);
-        int driverAge = Calendar.getInstance().get(Calendar.YEAR) - birthCalendar.get(Calendar.YEAR);
-        intent.putExtra(Extras.DRIVER_AGE, driverAge);
-
-        intent.putExtra(Extras.DRIVER_TOKEN, driver.getToken());
-
-        intent.putExtra(Extras.DRIVER_LATLNG, marker.getPosition());
-
-        startActivityForResult(intent, RequestCodes.PICK_DRIVER);
-
-        return true;
-    }
-
     private GoogleMap mMap;
 
     @SuppressWarnings("ResourceType")
@@ -182,10 +156,9 @@ public class OrderCourierActivity extends BaseActivity implements OrderCourierVi
 
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng, 14));
             mMap.setMyLocationEnabled(true);
-
             mMap.setOnMarkerClickListener(this);
 
-            presenter.getDriver(model.userToken);
+            presenter.getDriver(model.userToken, currentLatLng.latitude, currentLatLng.longitude);
         }
     }
 
@@ -207,6 +180,34 @@ public class OrderCourierActivity extends BaseActivity implements OrderCourierVi
         }
 
         setupUI();
+    }
+
+    private HashMap<Marker, LoadcourierRoot.Loadcourier> driverHashMap;
+
+    @Override
+    public boolean onMarkerClick(Marker marker) {
+
+        LoadcourierRoot.Loadcourier driver = driverHashMap.get(marker);
+
+        Intent intent = new Intent(mContext, OrderPickDriverActivity.class);
+
+        intent.putExtra(Extras.DRIVER_ID, driver.getDriverId());
+
+        intent.putExtra(Extras.DRIVER_NAME, new Hex().toString(driver.getFullName()));
+
+        Calendar birthCalendar = new DatetimeHelper().getCalendar(driver.getBirthDay(), DatetimeFormat.SERVER_DATE_FORMAT);
+        int driverAge = Calendar.getInstance().get(Calendar.YEAR) - birthCalendar.get(Calendar.YEAR);
+        intent.putExtra(Extras.DRIVER_AGE, driverAge);
+
+        intent.putExtra(Extras.DRIVER_GENDER, driver.getGender());
+
+        intent.putExtra(Extras.DRIVER_TOKEN, driver.getToken());
+
+        intent.putExtra(Extras.DRIVER_LATLNG, marker.getPosition());
+
+        startActivityForResult(intent, RequestCodes.PICK_DRIVER);
+
+        return true;
     }
 
     private void setupUI() {
