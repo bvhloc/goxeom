@@ -4,8 +4,7 @@ import java.util.List;
 
 import asia.covisoft.goom.pojo.gson.LoadtransportRoot;
 
-public interface OrderTransportView {
+public interface OrderTransportView extends OrderView {
 
-    void onConnectionFail();
     void onDriverReady(List<LoadtransportRoot.Loadtransport> drivers);
 }

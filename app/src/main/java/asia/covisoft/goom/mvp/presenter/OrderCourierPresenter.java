@@ -8,26 +8,24 @@ import android.util.Log;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import asia.covisoft.goom.R;
 import asia.covisoft.goom.helper.NetworkClient;
-import asia.covisoft.goom.mvp.model.OrderCourierModel;
+import asia.covisoft.goom.mvp.model.OrderPresenter;
 import asia.covisoft.goom.mvp.view.OrderCourierView;
 import asia.covisoft.goom.pojo.gson.LoadcourierRoot;
 import asia.covisoft.goom.utils.Constant;
 
-public class OrderCourierPresenter {
+public class OrderCourierPresenter extends OrderPresenter {
 
     private OrderCourierView view;
     private Context context;
 
     public OrderCourierPresenter(OrderCourierView view) {
+        super(view);
         this.view = view;
         this.context = (Context) view;
     }
@@ -82,54 +80,8 @@ public class OrderCourierPresenter {
         }.execute();
     }
 
-    public void getCost(final OrderCourierModel model) {
-        new AsyncTask<Void, Void, String>() {
-
-            @Override
-            protected void onPreExecute() {
-                super.onPreExecute();
-                progressDialog = ProgressDialog.show(context, "", context.getString(R.string.dialog_loading));
-            }
-
-            @Override
-            protected String doInBackground(Void... params) {
-
-                String URL = Constant.HOST +
-                        "getcost.php?token=" + model.userToken +
-                        "&type=C&fromlat=" + model.latFrom +
-                        "&fromlong=" + model.lngFrom +
-                        "&tolat=" + model.latTo +
-                        "&tolong=" + model.lngTo +
-                        "&itemcost=0";
-                Log.d("sdb", URL);
-                try {
-                    String json = new NetworkClient().getJsonFromUrl(URL);
-
-                    JSONObject rootObject = new JSONObject(json);
-
-                    model.cost = rootObject.optString("getcost");
-
-                    return model.cost;
-
-                } catch (JSONException | IOException e) {
-                    e.printStackTrace();
-                }
-
-                return "";
-            }
-
-            @Override
-            protected void onPostExecute(String cost) {
-                super.onPostExecute(cost);
-
-                progressDialog.dismiss();
-                if (cost.isEmpty())
-                    view.onConnectionFail();
-                else {
-                    view.onCostResult(model);
-                }
-            }
-
-        }.execute();
+    @Override
+    public void getCost(String userToken, double latFrom, double lngFrom, double latTo, double lngTo, double cost) {
+        super.getCost(userToken, latFrom, lngFrom, latTo, lngTo, cost);
     }
 }

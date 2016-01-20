@@ -14,16 +14,18 @@ import java.util.List;
 
 import asia.covisoft.goom.R;
 import asia.covisoft.goom.helper.NetworkClient;
+import asia.covisoft.goom.mvp.model.OrderPresenter;
 import asia.covisoft.goom.mvp.view.OrderTransportView;
 import asia.covisoft.goom.pojo.gson.LoadtransportRoot;
 import asia.covisoft.goom.utils.Constant;
 
-public class OrderTransportPresenter {
+public class OrderTransportPresenter extends OrderPresenter {
 
     private OrderTransportView view;
     private Context context;
 
     public OrderTransportPresenter(OrderTransportView view) {
+        super(view);
         this.view = view;
         this.context = (Context) view;
     }
@@ -78,4 +80,8 @@ public class OrderTransportPresenter {
         }.execute();
     }
 
+    @Override
+    public void getCost(String userToken, double latFrom, double lngFrom, double latTo, double lngTo, double cost) {
+        super.getCost(userToken, latFrom, lngFrom, latTo, lngTo, cost);
+    }
 }

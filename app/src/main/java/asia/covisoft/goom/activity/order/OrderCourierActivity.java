@@ -315,12 +315,14 @@ public class OrderCourierActivity extends BaseActivity implements OrderCourierVi
     private void btnNextClicked() {
 
         if (validInput()) {
-            presenter.getCost(model);
+            presenter.getCost(model.userToken, model.latFrom, model.lngFrom, model.latTo, model.lngTo, 0);
         }
     }
 
     @Override
-    public void onCostResult(OrderCourierModel model) {
+    public void onCostResult(String cost) {
+
+        model.cost = cost;
 
         Intent intent = new Intent(mContext, OrderConfirmActivity.class);
         intent.putExtra(Extras.BOOKING_TYPE, OrderConfirmActivity.BOOK_TYPE_COURIER);

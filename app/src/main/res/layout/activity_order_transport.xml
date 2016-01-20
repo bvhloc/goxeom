@@ -117,6 +117,7 @@
                         android:orientation="vertical">
 
                         <TextView
+                            android:id="@+id/tvAddressFrom"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:drawableEnd="@drawable/ic_forward"
@@ -172,7 +173,7 @@
                             android:layout_height="wrap_content"
                             android:hint="@string/activity_order_courier_locationdetails"
                             android:textColorHint="@color/mBlackText"
-                            android:id="@+id/edtDetails" />
+                            android:id="@+id/edtDetailsFrom" />
 
                         <TextView
                             android:layout_width="match_parent"
@@ -218,6 +219,7 @@
                         android:orientation="vertical">
 
                         <TextView
+                            android:id="@+id/tvAddressTo"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:drawableEnd="@drawable/ic_forward"

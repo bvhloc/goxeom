@@ -11,6 +11,7 @@ import android.widget.TextView;
 import asia.covisoft.goom.R;
 import asia.covisoft.goom.base.BaseActivity;
 import asia.covisoft.goom.mvp.model.OrderCourierModel;
+import asia.covisoft.goom.mvp.model.OrderTransportModel;
 import asia.covisoft.goom.mvp.presenter.OrderConfirmPresenter;
 import asia.covisoft.goom.mvp.view.OrderConfirmView;
 import asia.covisoft.goom.utils.Extras;
@@ -39,6 +40,7 @@ public class OrderConfirmActivity extends BaseActivity implements OrderConfirmVi
     private String bookType;
     private OrderConfirmPresenter presenter;
     private OrderCourierModel courierModel;
+    private OrderTransportModel transportModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +74,15 @@ public class OrderConfirmActivity extends BaseActivity implements OrderConfirmVi
 
                 break;
             case BOOK_TYPE_TRANSPORT:
+
+                transportModel = (OrderTransportModel) extras.getSerializable(Extras.BOOKING_INFO);
+                if (transportModel != null) {
+                    tvAddressFrom.setText(transportModel.addressFrom);
+                    tvAddressTo.setText(transportModel.addressTo);
+                    tvPrice.setText(transportModel.cost + " " + getString(R.string.money_unit));
+                    tvTotal.setText(transportModel.cost + " " + getString(R.string.money_unit));
+                }
+
                 break;
             case BOOK_TYPE_FOODING:
                 break;
@@ -87,6 +98,7 @@ public class OrderConfirmActivity extends BaseActivity implements OrderConfirmVi
                 presenter.bookCourier(courierModel);
                 break;
             case BOOK_TYPE_TRANSPORT:
+                presenter.bookTransport(transportModel);
                 break;
             case BOOK_TYPE_FOODING:
                 break;
