@@ -14,7 +14,6 @@ import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapsInitializer;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
@@ -128,7 +127,7 @@ public class OrderCourierActivity extends BaseActivity implements OrderCourierVi
 
     private void initMap() {
 
-        MapsInitializer.initialize(mContext);
+//        MapsInitializer.initialize(mContext);
 
         WorkaroundMapFragment mapFragment = (WorkaroundMapFragment) getSupportFragmentManager().findFragmentById(R.id.mMap);
         mapFragment.setOnTouchListener(new WorkaroundMapFragment.OnTouchListener() {

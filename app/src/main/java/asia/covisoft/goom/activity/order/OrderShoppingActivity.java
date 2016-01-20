@@ -2,44 +2,45 @@ package asia.covisoft.goom.activity.order;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.view.View;
 import android.widget.ScrollView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.util.Calendar;
+import java.util.HashMap;
+import java.util.List;
+
+import asia.covisoft.goom.R;
 import asia.covisoft.goom.base.BaseActivity;
+import asia.covisoft.goom.customview.WorkaroundMapFragment;
+import asia.covisoft.goom.helper.DatetimeHelper;
+import asia.covisoft.goom.helper.GPSTracker;
+import asia.covisoft.goom.helper.Hex;
+import asia.covisoft.goom.mvp.model.OrderShoppingModel;
 import asia.covisoft.goom.mvp.presenter.OrderShoppingPresenter;
 import asia.covisoft.goom.mvp.view.OrderShoppingView;
-import asia.covisoft.goom.utils.Constant;
-import asia.covisoft.goom.R;
-import asia.covisoft.goom.customview.WorkaroundMapFragment;
+import asia.covisoft.goom.pojo.gson.LoadshoppingRoot;
+import asia.covisoft.goom.utils.DatetimeFormat;
 import asia.covisoft.goom.utils.Extras;
+import asia.covisoft.goom.utils.Preferences;
+import asia.covisoft.goom.utils.RequestCodes;
 
-public class OrderShoppingActivity extends BaseActivity implements OrderShoppingView{
-
-    private Context mContext;
-    private OrderShoppingPresenter presenter;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_order_shopping);
-        mContext = this;
-        presenter = new OrderShoppingPresenter(this);
-        initView();
-
-        presenter.setupMap();
-    }
+public class OrderShoppingActivity extends BaseActivity implements OrderShoppingView, OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
 
     private ScrollView scrollView;
 
     private void initView() {
+        setContentView(R.layout.activity_order_shopping);
 
         scrollView = (ScrollView) findViewById(R.id.scrollView);
         findViewById(R.id.lnlPickFrom).setOnClickListener(new View.OnClickListener() {
@@ -65,53 +66,110 @@ public class OrderShoppingActivity extends BaseActivity implements OrderShopping
         });
     }
 
-    private GoogleMap mMap;
+    private Context mContext;
+    private OrderShoppingPresenter presenter;
+    private OrderShoppingModel model;
+
     @Override
-    public void onMapReady(LatLng currentLatLng) {
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mContext = this;
+        presenter = new OrderShoppingPresenter(this);
+        model = new OrderShoppingModel();
+        initView();
 
-        if (mMap == null) {
-            // Try to obtain the map from the SupportMapFragment.
-            mMap = ((WorkaroundMapFragment) getSupportFragmentManager().findFragmentById(R.id.mMap))
-                    .getMap();
-            ((WorkaroundMapFragment) getSupportFragmentManager().findFragmentById(R.id.mMap)).setOnTouchListener(new WorkaroundMapFragment.OnTouchListener() {
-                @Override
-                public void onTouch() {
+        SharedPreferences loginPreferences = getSharedPreferences(Preferences.LOGIN_PREFERENCES, MODE_PRIVATE);
+        model.userToken = loginPreferences.getString(Preferences.LOGIN_PREFERENCES_USER_TOKEN, "");
+        initMap();
+    }
 
-                    scrollView.requestDisallowInterceptTouchEvent(true);
-                }
-            });
-            // Check if we were successful in obtaining the map.
-            if (mMap != null) {
-                double lat = currentLatLng.latitude;
-                double lng = currentLatLng.longitude;
-                mMap.addMarker(new MarkerOptions().position(currentLatLng).title(getString(R.string.lowcase_your_location)));
-                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng, 14));
-                mMap.setMyLocationEnabled(true);
+    private void initMap() {
 
-                LatLng latlng1 = new LatLng(lat + 0.002, lng + 0.002);
-                mMap.addMarker(new MarkerOptions().position(latlng1).icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_location)));
-                LatLng latlng2 = new LatLng(lat + 0.001, lng + 0.004);
-                mMap.addMarker(new MarkerOptions().position(latlng2).icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_location)));
-                LatLng latlng3 = new LatLng(lat - 0.001, lng - 0.004);
-                mMap.addMarker(new MarkerOptions().position(latlng3).icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_location)));
-                LatLng latlng4 = new LatLng(lat - 0.003, lng);
-                mMap.addMarker(new MarkerOptions().position(latlng4).icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_location)));
+        WorkaroundMapFragment mapFragment = (WorkaroundMapFragment) getSupportFragmentManager().findFragmentById(R.id.mMap);
+        mapFragment.setOnTouchListener(new WorkaroundMapFragment.OnTouchListener() {
+            @Override
+            public void onTouch() {
 
-                mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
-                    @Override
-                    public boolean onMarkerClick(Marker marker) {
+                scrollView.requestDisallowInterceptTouchEvent(true);
+            }
+        });
+        mapFragment.getMapAsync(this);
+    }
 
-                        Intent intent = new Intent(mContext, OrderPickDriverActivity.class);
-                        intent.putExtra(Extras.DRIVER_LATLNG, marker.getPosition());
-                        startActivity(intent);
+    private GoogleMap mMap;
 
-                        return true;
-                    }
-                });
+    @SuppressWarnings("ResourceType")
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+
+        mMap = googleMap;
+        // Check if we were successful in obtaining the map.
+        if (mMap != null) {
+
+            GPSTracker gpsTracker = new GPSTracker(mContext);
+            LatLng currentLatLng = new LatLng(gpsTracker.getLatitude(), gpsTracker.getLongitude());
+
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng, 14));
+            mMap.setMyLocationEnabled(true);
+            mMap.setOnMarkerClickListener(this);
+
+            presenter.getDriver(model.userToken, currentLatLng.latitude, currentLatLng.longitude);
+        }
+    }
+
+    @Override
+    public void onDriverReady(List<LoadshoppingRoot.Loadshopping> drivers) {
+
+        if (drivers.isEmpty()) {
+            Snackbar.make(findViewById(R.id.tab_container), getString(R.string.snackbar_nodrivernearby), Snackbar.LENGTH_LONG).show();
+        } else {
+            driverHashMap = new HashMap<>();
+            for (LoadshoppingRoot.Loadshopping driver : drivers) {
+
+                String driverFullName = new Hex().toString(driver.getFullName());
+                LatLng driverLatLng = new LatLng(Double.valueOf(driver.getLatitude()), Double.valueOf(driver.getLongitude()));
+                Marker marker = mMap.addMarker(new MarkerOptions().title(driverFullName).position(driverLatLng).icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_location)));
+
+                driverHashMap.put(marker, driver);
             }
         }
     }
 
+    private HashMap<Marker, LoadshoppingRoot.Loadshopping> driverHashMap;
 
+    @Override
+    public boolean onMarkerClick(Marker marker) {
 
+        LoadshoppingRoot.Loadshopping driver = driverHashMap.get(marker);
+
+        Intent intent = new Intent(mContext, OrderPickDriverActivity.class);
+
+        intent.putExtra(Extras.DRIVER_ID, driver.getDriverId());
+
+        intent.putExtra(Extras.DRIVER_NAME, new Hex().toString(driver.getFullName()));
+
+        Calendar birthCalendar = new DatetimeHelper().getCalendar(driver.getBirthDay(), DatetimeFormat.SERVER_DATE_FORMAT);
+        int driverAge = Calendar.getInstance().get(Calendar.YEAR) - birthCalendar.get(Calendar.YEAR);
+        intent.putExtra(Extras.DRIVER_AGE, driverAge);
+
+        intent.putExtra(Extras.DRIVER_GENDER, driver.getGender());
+
+        intent.putExtra(Extras.DRIVER_TOKEN, driver.getToken());
+
+        intent.putExtra(Extras.DRIVER_LATLNG, marker.getPosition());
+
+        startActivityForResult(intent, RequestCodes.PICK_DRIVER);
+
+        return true;
+    }
+
+    @Override
+    public void onConnectionFail() {
+
+    }
+
+    @Override
+    public void onCostResult(String cost) {
+
+    }
 }

@@ -76,6 +76,7 @@ public class OrderFragment extends BackFragment {
             @Override
             public void onClick(View v) {
 
+                //TODO add check and show dialog
                 startActivity(new Intent(getActivity(), OrderFoodActivity.class));
             }
         });
@@ -85,6 +86,9 @@ public class OrderFragment extends BackFragment {
             @Override
             public void onClick(View v) {
 
+                if (token.equals(""))
+                    showDialogLogin();
+                else
                 startActivity(new Intent(getActivity(), OrderShoppingActivity.class));
             }
         });
