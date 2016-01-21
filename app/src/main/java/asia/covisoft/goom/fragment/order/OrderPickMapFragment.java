@@ -88,6 +88,7 @@ public class OrderPickMapFragment extends Fragment implements OnMapReadyCallback
         });
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng, 14));
         googleMap.setMyLocationEnabled(true);
+        googleMap.getUiSettings().setZoomControlsEnabled(true);
     }
 
     private void setAddress(final LatLng latlng) {

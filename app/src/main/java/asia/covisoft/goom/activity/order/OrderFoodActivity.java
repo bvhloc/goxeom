@@ -3,8 +3,8 @@ package asia.covisoft.goom.activity.order;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
-import android.support.v4.content.ContextCompat;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
@@ -17,38 +17,47 @@ import android.widget.SearchView;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.ArrayList;
 
-import asia.covisoft.goom.base.BaseActivity;
-import asia.covisoft.goom.mvp.presenter.OrderFoodPresenter;
-import asia.covisoft.goom.mvp.view.OrderFoodView;
-import asia.covisoft.goom.utils.Constant;
 import asia.covisoft.goom.R;
 import asia.covisoft.goom.adapter.list.FoodTypeListAdapter;
 import asia.covisoft.goom.adapter.list.RestaurantListAdapter;
-import asia.covisoft.goom.pojo.FoodTypeItem;
-import asia.covisoft.goom.pojo.RestaurantItem;
+import asia.covisoft.goom.base.BaseMapActivity;
 import asia.covisoft.goom.customview.HeaderGridView;
 import asia.covisoft.goom.customview.WorkaroundMapFragment;
+import asia.covisoft.goom.helper.GPSTracker;
+import asia.covisoft.goom.mvp.presenter.OrderFoodPresenter;
+import asia.covisoft.goom.mvp.view.OrderFoodView;
+import asia.covisoft.goom.pojo.FoodTypeItem;
+import asia.covisoft.goom.pojo.RestaurantItem;
+import asia.covisoft.goom.utils.Constant;
 
-public class OrderFoodActivity extends BaseActivity implements OrderFoodView {
+public class OrderFoodActivity extends BaseMapActivity implements OrderFoodView {
 
-    private Context mContext;
-    private OrderFoodPresenter presenter;
+    private RadioButton rdbCategory, rdbNearMe;
+    private ListView lvFoodType;
+    private HeaderGridView gvRestarants;
+    private LinearLayout lnlNearMe;
+    private SearchView searchView;
 
-    private RestaurantListAdapter restaurantAdapter;
-    private FoodTypeListAdapter foodtypeAdapter;
+    private void initView() {
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_order_food);
-        mContext = this;
-        presenter = new OrderFoodPresenter(this);
-        initView();
+        rdbCategory = (RadioButton) findViewById(R.id.rdbCategory);
+        rdbCategory.setTextColor(ContextCompat.getColor(mContext, R.color.mAppBackground));
+        rdbNearMe = (RadioButton) findViewById(R.id.rdbNearMe);
+        lvFoodType = (ListView) findViewById(R.id.lvFoodType);
+        lnlNearMe = (LinearLayout) findViewById(R.id.lnlNearMe);
+        gvRestarants = (HeaderGridView) findViewById(R.id.gvRestaurants);
+        searchView = (SearchView) findViewById(R.id.searchView);
+        findViewById(R.id.search_container).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+                //click searchView
+                searchView.setIconified(false);
+            }
+        });
         rdbCategory.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -74,6 +83,21 @@ public class OrderFoodActivity extends BaseActivity implements OrderFoodView {
                 }
             }
         });
+    }
+
+    private Context mContext;
+    private OrderFoodPresenter presenter;
+
+    private RestaurantListAdapter restaurantAdapter;
+    private FoodTypeListAdapter foodtypeAdapter;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_order_food);
+        mContext = this;
+        presenter = new OrderFoodPresenter(this);
+        initView();
 
         foodtypeAdapter = new FoodTypeListAdapter(mContext, listDataSet());
         lvFoodType.setAdapter(foodtypeAdapter);
@@ -88,7 +112,7 @@ public class OrderFoodActivity extends BaseActivity implements OrderFoodView {
         gvRestarants.setAdapter(restaurantAdapter);
         gvRestarants.setOnItemClickListener(gvRestaurantsListener);
 
-        presenter.setupMap();
+        initMap();
     }
 
     private AdapterView.OnItemClickListener lvFoodTypeListener = new AdapterView.OnItemClickListener() {
@@ -113,58 +137,37 @@ public class OrderFoodActivity extends BaseActivity implements OrderFoodView {
         }
     };
 
-    private RadioButton rdbCategory, rdbNearMe;
-    private ListView lvFoodType;
-    private HeaderGridView gvRestarants;
-    private LinearLayout lnlNearMe;
-    private SearchView searchView;
+    private void initMap() {
 
-    private void initView() {
-
-        rdbCategory = (RadioButton) findViewById(R.id.rdbCategory);
-        rdbCategory.setTextColor(ContextCompat.getColor(mContext, R.color.mAppBackground));
-        rdbNearMe = (RadioButton) findViewById(R.id.rdbNearMe);
-        lvFoodType = (ListView) findViewById(R.id.lvFoodType);
-        lnlNearMe = (LinearLayout) findViewById(R.id.lnlNearMe);
-        gvRestarants = (HeaderGridView) findViewById(R.id.gvRestaurants);
-        searchView = (SearchView) findViewById(R.id.searchView);
-        findViewById(R.id.search_container).setOnClickListener(new View.OnClickListener() {
+        WorkaroundMapFragment mapFragment = ((WorkaroundMapFragment) getSupportFragmentManager().findFragmentById(R.id.mMap));
+        mapFragment.setOnTouchListener(new WorkaroundMapFragment.OnTouchListener() {
             @Override
-            public void onClick(View v) {
+            public void onTouch() {
 
-                //click searchView
-                searchView.setIconified(false);
+                gvRestarants.requestDisallowInterceptTouchEvent(true);
             }
         });
+        mapFragment.getMapAsync(this);
     }
 
     private GoogleMap mMap;
 
     @Override
-    public void onMapReady(LatLng currentLatLng) {
+    public void onMapReady(GoogleMap googleMap) {
+        super.onMapReady(googleMap);
 
-        // Do a null check to confirm that we have not already instantiated the map.
-        if (mMap == null) {
-            // Try to obtain the map from the SupportMapFragment.
-            mMap = ((WorkaroundMapFragment) getSupportFragmentManager().findFragmentById(R.id.mMap))
-                    .getMap();
-            ((WorkaroundMapFragment) getSupportFragmentManager().findFragmentById(R.id.mMap)).setOnTouchListener(new WorkaroundMapFragment.OnTouchListener() {
-                @Override
-                public void onTouch() {
+        mMap = googleMap;
+        // Check if we were successful in obtaining the map.
+        if (mMap != null) {
 
-                    gvRestarants.requestDisallowInterceptTouchEvent(true);
-                }
-            });
-            // Check if we were successful in obtaining the map.
-            if (mMap != null) {
-                mMap.addMarker(new MarkerOptions().position(currentLatLng).title(getString(R.string.lowcase_your_location)));
-                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng, 14));
-                mMap.setMyLocationEnabled(true);
-            }
+            GPSTracker gpsTracker = new GPSTracker(mContext);
+            LatLng currentLatLng = new LatLng(gpsTracker.getLatitude(), gpsTracker.getLongitude());
+
+            googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng, 14));
         }
     }
 
-//    @Override
+    //    @Override
 //    public void onResume() {
 //        mapView.onResume();
 //        super.onResume();

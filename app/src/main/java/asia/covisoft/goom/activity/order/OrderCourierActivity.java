@@ -14,7 +14,6 @@ import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
@@ -25,7 +24,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import asia.covisoft.goom.R;
-import asia.covisoft.goom.base.BaseActivity;
+import asia.covisoft.goom.base.BaseMapActivity;
 import asia.covisoft.goom.customview.WorkaroundMapFragment;
 import asia.covisoft.goom.helper.DatetimeHelper;
 import asia.covisoft.goom.helper.GPSTracker;
@@ -42,7 +41,7 @@ import asia.covisoft.goom.utils.Extras;
 import asia.covisoft.goom.utils.Preferences;
 import asia.covisoft.goom.utils.RequestCodes;
 
-public class OrderCourierActivity extends BaseActivity implements OrderCourierView, GoogleMap.OnMarkerClickListener, OnMapReadyCallback, SettingsProfileView {
+public class OrderCourierActivity extends BaseMapActivity implements OrderCourierView, GoogleMap.OnMarkerClickListener, SettingsProfileView {
 
     private ScrollView scrollView;
     private TextView tvDriverName,
@@ -142,9 +141,9 @@ public class OrderCourierActivity extends BaseActivity implements OrderCourierVi
 
     private GoogleMap mMap;
 
-    @SuppressWarnings("ResourceType")
     @Override
     public void onMapReady(GoogleMap googleMap) {
+        super.onMapReady(googleMap);
 
         mMap = googleMap;
         // Check if we were successful in obtaining the map.
@@ -153,8 +152,8 @@ public class OrderCourierActivity extends BaseActivity implements OrderCourierVi
             GPSTracker gpsTracker = new GPSTracker(mContext);
             LatLng currentLatLng = new LatLng(gpsTracker.getLatitude(), gpsTracker.getLongitude());
 
-            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng, 14));
-            mMap.setMyLocationEnabled(true);
+            mMap.moveCamera(CameraUpdateFactory.newLatLng(currentLatLng));
+
             mMap.setOnMarkerClickListener(this);
 
             presenter.getDriver(model.userToken, currentLatLng.latitude, currentLatLng.longitude);

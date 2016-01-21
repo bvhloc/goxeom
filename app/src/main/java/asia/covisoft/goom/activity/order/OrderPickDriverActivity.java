@@ -11,20 +11,19 @@ import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import asia.covisoft.goom.R;
-import asia.covisoft.goom.base.BaseActivity;
+import asia.covisoft.goom.base.BaseMapActivity;
 import asia.covisoft.goom.customview.WorkaroundMapFragment;
 import asia.covisoft.goom.mvp.model.OrderPickDriverModel;
 import asia.covisoft.goom.mvp.presenter.OrderPickDriverPresenter;
 import asia.covisoft.goom.mvp.view.OrderPickDriverView;
 import asia.covisoft.goom.utils.Extras;
 
-public class OrderPickDriverActivity extends BaseActivity implements OrderPickDriverView, OnMapReadyCallback, View.OnClickListener {
+public class OrderPickDriverActivity extends BaseMapActivity implements OrderPickDriverView, View.OnClickListener {
 
     private ScrollView scrollView;
     private TextView tvId, tvName, tvAge;
@@ -75,9 +74,9 @@ public class OrderPickDriverActivity extends BaseActivity implements OrderPickDr
 
     private GoogleMap mMap;
 
-    @SuppressWarnings("ResourceType")
     @Override
     public void onMapReady(GoogleMap googleMap) {
+        super.onMapReady(googleMap);
 
         mMap = googleMap;
 
@@ -85,8 +84,7 @@ public class OrderPickDriverActivity extends BaseActivity implements OrderPickDr
         // Check if we were successful in obtaining the map.
         if (mMap != null) {
             mMap.addMarker(new MarkerOptions().position(driverLatLng).icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_location)));
-            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(driverLatLng, 14));
-            mMap.setMyLocationEnabled(true);
+            mMap.moveCamera(CameraUpdateFactory.newLatLng(driverLatLng));
         }
     }
 
