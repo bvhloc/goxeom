@@ -23,6 +23,7 @@ allprojects {
     repositories {
         mavenCentral()
         maven { url "https://jitpack.io" }
+        maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
     }
 }
 
@@ -38,4 +39,5 @@ dependencies {
     //    compile 'com.github.locbvh:ExpandableLayout:1.0'
     compile 'com.squareup.okhttp:okhttp:2.7.2'
     compile 'com.squareup.picasso:picasso:2.5.2'
+    compile 'com.michaelpardo:activeandroid:3.1.0-SNAPSHOT'
 }

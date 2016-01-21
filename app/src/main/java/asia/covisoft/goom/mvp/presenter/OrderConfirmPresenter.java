@@ -5,19 +5,25 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.activeandroid.query.Select;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.Calendar;
 
 import asia.covisoft.goom.R;
+import asia.covisoft.goom.helper.DatetimeHelper;
 import asia.covisoft.goom.helper.Hex;
 import asia.covisoft.goom.helper.NetworkClient;
 import asia.covisoft.goom.mvp.model.OrderCourierModel;
 import asia.covisoft.goom.mvp.model.OrderShoppingModel;
 import asia.covisoft.goom.mvp.model.OrderTransportModel;
 import asia.covisoft.goom.mvp.view.OrderConfirmView;
+import asia.covisoft.goom.pojo.activeandroid.LocationHistory;
 import asia.covisoft.goom.utils.Constant;
+import asia.covisoft.goom.utils.DatetimeFormat;
 
 public class OrderConfirmPresenter {
 
@@ -27,6 +33,27 @@ public class OrderConfirmPresenter {
     public OrderConfirmPresenter(OrderConfirmView view) {
         this.view = view;
         this.context = (Context) view;
+    }
+
+    //TODO check this
+    public void saveHistory(String address, double lat, double lng){
+
+        int count = new Select()
+                .from(LocationHistory.class)
+                .where(LocationHistory.COL_ADDRESS + " = '" + address +
+                        "' and " + LocationHistory.COL_LAT + " = " + lat +
+                        " and " + LocationHistory.COL_LNG + " = " + lng)
+                .count();
+        if (!(count > 0)) {
+            LocationHistory history = new LocationHistory();
+            String datetime = new DatetimeHelper()
+                    .getString(Calendar.getInstance(), DatetimeFormat.APP_HISTORY_DATETIME_FORMAT);
+            history.setDatetime(datetime);
+            history.setAddress(address);
+            history.setLat(lat);
+            history.setLng(lng);
+            history.save();
+        }
     }
 
     private final int RESULT_BOOKING_SUCCESS = 0;

@@ -14,16 +14,16 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:textColor="@color/mBlackText"
-            android:text="@string/list_item_location_history_name" />
+            android:text="@string/list_item_location_history_datetime" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="@string/list_item_location_history_name"
+            android:text="@string/list_item_location_history_datetime"
             android:layout_marginStart="5dp"
             android:layout_marginLeft="5dp"
-            android:id="@+id/tvName" />
+            android:id="@+id/tvDatetime" />
 
     </LinearLayout>
 

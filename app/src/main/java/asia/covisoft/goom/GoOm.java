@@ -2,13 +2,20 @@ package asia.covisoft.goom;
 
 import android.app.Application;
 
+import com.activeandroid.ActiveAndroid;
+
 public class GoOm extends Application {
 
     @Override
     public void onCreate() {
         super.onCreate();
+        ActiveAndroid.initialize(this);
+    }
 
-//        Log.d("myDebug", "appStart");
+    @Override
+    public void onTerminate() {
+        super.onTerminate();
+        ActiveAndroid.dispose();
     }
 
     @Override

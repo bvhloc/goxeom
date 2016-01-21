@@ -87,6 +87,7 @@ public class OrderConfirmActivity extends BaseActivity implements OrderConfirmVi
 
                 break;
             case BOOK_TYPE_FOODING:
+                //TODO impl
                 break;
             case BOOK_TYPE_SHOPPING:
 
@@ -111,6 +112,7 @@ public class OrderConfirmActivity extends BaseActivity implements OrderConfirmVi
                 presenter.bookTransport(transportModel);
                 break;
             case BOOK_TYPE_FOODING:
+                //TODO impl
                 break;
             case BOOK_TYPE_SHOPPING:
                 presenter.bookShopping(shoppingModel);
@@ -120,6 +122,30 @@ public class OrderConfirmActivity extends BaseActivity implements OrderConfirmVi
 
     @Override
     public void onBookingMade(String bookingId) {
+
+        switch (bookType) {
+            case BOOK_TYPE_COURIER:
+
+                presenter.saveHistory(courierModel.addressFrom, courierModel.latFrom, courierModel.latTo);
+                presenter.saveHistory(courierModel.addressTo, courierModel.latTo, courierModel.lngTo);
+
+                break;
+            case BOOK_TYPE_TRANSPORT:
+
+                presenter.saveHistory(transportModel.addressFrom, transportModel.latFrom, transportModel.latTo);
+                presenter.saveHistory(transportModel.addressTo, transportModel.latTo, transportModel.lngTo);
+
+                break;
+            case BOOK_TYPE_FOODING:
+                //TODO impl
+                break;
+            case BOOK_TYPE_SHOPPING:
+
+                presenter.saveHistory(shoppingModel.addressFrom, shoppingModel.latFrom, shoppingModel.latTo);
+                presenter.saveHistory(shoppingModel.addressTo, shoppingModel.latTo, shoppingModel.lngTo);
+
+                break;
+        }
 
         Intent intent = new Intent(mContext, OrderMadeActivity.class);
         intent.putExtra(Extras.BOOKING_ID, bookingId);

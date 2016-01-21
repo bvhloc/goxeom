@@ -1,6 +1,8 @@
 package asia.covisoft.goom.activity.order;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -9,13 +11,14 @@ import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.SearchView;
 
-import java.util.ArrayList;
+import com.google.android.gms.maps.model.LatLng;
 
 import asia.covisoft.goom.R;
 import asia.covisoft.goom.adapter.list.LocationHistoryListAdapter;
 import asia.covisoft.goom.base.BaseActivity;
 import asia.covisoft.goom.fragment.order.OrderPickMapFragment;
-import asia.covisoft.goom.pojo.LocationHistoryItem;
+import asia.covisoft.goom.pojo.activeandroid.LocationHistory;
+import asia.covisoft.goom.utils.Extras;
 
 public class OrderPickLocationActivity extends BaseActivity implements AdapterView.OnItemClickListener {
 
@@ -30,7 +33,7 @@ public class OrderPickLocationActivity extends BaseActivity implements AdapterVi
         mContext = this;
         initView();
 
-        mAdapter = new LocationHistoryListAdapter(mContext, dataSet());
+        mAdapter = new LocationHistoryListAdapter(mContext, new LocationHistory().getAll());
         lvLocationHistory.setAdapter(mAdapter);
         lvLocationHistory.setOnItemClickListener(this);
     }
@@ -38,7 +41,15 @@ public class OrderPickLocationActivity extends BaseActivity implements AdapterVi
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-        onBackPressed();
+        LocationHistory item = mAdapter.getItem(position);
+
+        //TODO check this
+        Intent data = new Intent();
+        data.putExtra(Extras.PICKED_ADDRESS, item.getAddress());
+        LatLng latlng = new LatLng(item.getLat(), item.getLng());
+        data.putExtra(Extras.PICKED_LATLNG, latlng);
+        this.setResult(Activity.RESULT_OK, data);
+        this.finish();
     }
 
     private SearchView searchView;
@@ -81,24 +92,5 @@ public class OrderPickLocationActivity extends BaseActivity implements AdapterVi
                 .add(R.id.tab_container, new OrderPickMapFragment())
                 .addToBackStack(null)
                 .commit();
-    }
-
-    private ArrayList<LocationHistoryItem> dataSet() {
-        ArrayList<LocationHistoryItem> list = new ArrayList<>();
-        list.add(new LocationHistoryItem("Toa nha 8", "To Ky - Q.12 - Ho Chi Minh"));
-        list.add(new LocationHistoryItem("Toa nha 8", "To Ky - Q.12 - Ho Chi Minh"));
-        list.add(new LocationHistoryItem("Toa nha 8", "To Ky - Q.12 - Ho Chi Minh"));
-        list.add(new LocationHistoryItem("Toa nha 8", "To Ky - Q.12 - Ho Chi Minh"));
-        list.add(new LocationHistoryItem("Toa nha 8", "To Ky - Q.12 - Ho Chi Minh"));
-        list.add(new LocationHistoryItem("Toa nha 8", "To Ky - Q.12 - Ho Chi Minh"));
-        list.add(new LocationHistoryItem("Toa nha 8", "To Ky - Q.12 - Ho Chi Minh"));
-        list.add(new LocationHistoryItem("Toa nha 8", "To Ky - Q.12 - Ho Chi Minh"));
-        list.add(new LocationHistoryItem("Toa nha 8", "To Ky - Q.12 - Ho Chi Minh"));
-        list.add(new LocationHistoryItem("Toa nha 8", "To Ky - Q.12 - Ho Chi Minh"));
-        list.add(new LocationHistoryItem("Toa nha 8", "To Ky - Q.12 - Ho Chi Minh"));
-        list.add(new LocationHistoryItem("Toa nha 8", "To Ky - Q.12 - Ho Chi Minh"));
-        list.add(new LocationHistoryItem("Toa nha 8", "To Ky - Q.12 - Ho Chi Minh"));
-        list.add(new LocationHistoryItem("Toa nha 8", "To Ky - Q.12 - Ho Chi Minh"));
-        return list;
     }
 }

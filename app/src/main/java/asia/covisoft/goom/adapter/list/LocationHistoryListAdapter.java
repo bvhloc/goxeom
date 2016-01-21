@@ -5,22 +5,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import asia.covisoft.goom.R;
-import asia.covisoft.goom.pojo.HistoryItem;
-import asia.covisoft.goom.pojo.LocationHistoryItem;
+import asia.covisoft.goom.pojo.activeandroid.LocationHistory;
 
 /**
  * Created by Covisoft on 26/11/2015.
  */
-public class LocationHistoryListAdapter extends ArrayAdapter<LocationHistoryItem> {
+public class LocationHistoryListAdapter extends ArrayAdapter<LocationHistory> {
 
     public Context context;
-    private ArrayList<LocationHistoryItem> model;
+    private List<LocationHistory> model;
 
     @Override
     public int getCount() {
@@ -29,7 +27,7 @@ public class LocationHistoryListAdapter extends ArrayAdapter<LocationHistoryItem
 
     private static final int resId = R.layout.list_item_location_history;
 
-    public LocationHistoryListAdapter(Context context, ArrayList<LocationHistoryItem> model) {
+    public LocationHistoryListAdapter(Context context, List<LocationHistory> model) {
         super(context, resId, model);
 
         this.context = context;
@@ -38,7 +36,7 @@ public class LocationHistoryListAdapter extends ArrayAdapter<LocationHistoryItem
 
     private class ViewHolder {
 
-        TextView tvName;
+        TextView tvDatetime;
         TextView tvAddress;
 
     }
@@ -46,7 +44,7 @@ public class LocationHistoryListAdapter extends ArrayAdapter<LocationHistoryItem
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        LocationHistoryItem item = getItem(position);
+        LocationHistory item = getItem(position);
 
         final ViewHolder viewHolder;
         if (convertView == null) {
@@ -54,7 +52,7 @@ public class LocationHistoryListAdapter extends ArrayAdapter<LocationHistoryItem
             LayoutInflater inflater = LayoutInflater.from(getContext());
             convertView = inflater.inflate(resId, parent, false);
 
-            viewHolder.tvName = (TextView) convertView.findViewById(R.id.tvName);
+            viewHolder.tvDatetime = (TextView) convertView.findViewById(R.id.tvDatetime);
             viewHolder.tvAddress = (TextView) convertView.findViewById(R.id.tvAddress);
 
             convertView.setTag(viewHolder);
@@ -62,7 +60,7 @@ public class LocationHistoryListAdapter extends ArrayAdapter<LocationHistoryItem
             viewHolder = (ViewHolder) convertView.getTag();
         }
 
-        viewHolder.tvName.setText(item.getName());
+        viewHolder.tvDatetime.setText(item.getDatetime());
         viewHolder.tvAddress.setText(item.getAddress());
 
         return convertView;

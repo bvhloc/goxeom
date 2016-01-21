@@ -161,7 +161,7 @@
     <string name="activity_order_food_ordered_title">ORDERED</string>
     <string name="activity_order_food_ordered_pickupnow">Pick up now!</string>
 
-    <string name="list_item_location_history_name">Name:</string>
+    <string name="list_item_location_history_datetime">Datetime:</string>
     <string name="list_item_location_history_address">Address:</string>
 
     <string name="activity_settings_signup_error_phone_length">Phone number length mustn\'t be more than 11</string>
