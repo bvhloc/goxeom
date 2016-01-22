@@ -126,13 +126,13 @@ public class OrderConfirmActivity extends BaseActivity implements OrderConfirmVi
         switch (bookType) {
             case BOOK_TYPE_COURIER:
 
-                presenter.saveHistory(courierModel.addressFrom, courierModel.latFrom, courierModel.latTo);
+                presenter.saveHistory(courierModel.addressFrom, courierModel.latFrom, courierModel.lngFrom);
                 presenter.saveHistory(courierModel.addressTo, courierModel.latTo, courierModel.lngTo);
 
                 break;
             case BOOK_TYPE_TRANSPORT:
 
-                presenter.saveHistory(transportModel.addressFrom, transportModel.latFrom, transportModel.latTo);
+                presenter.saveHistory(transportModel.addressFrom, transportModel.latFrom, transportModel.lngFrom);
                 presenter.saveHistory(transportModel.addressTo, transportModel.latTo, transportModel.lngTo);
 
                 break;
@@ -141,7 +141,7 @@ public class OrderConfirmActivity extends BaseActivity implements OrderConfirmVi
                 break;
             case BOOK_TYPE_SHOPPING:
 
-                presenter.saveHistory(shoppingModel.addressFrom, shoppingModel.latFrom, shoppingModel.latTo);
+                presenter.saveHistory(shoppingModel.addressFrom, shoppingModel.latFrom, shoppingModel.lngFrom);
                 presenter.saveHistory(shoppingModel.addressTo, shoppingModel.latTo, shoppingModel.lngTo);
 
                 break;

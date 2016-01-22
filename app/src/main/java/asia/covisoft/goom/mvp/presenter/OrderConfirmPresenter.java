@@ -5,6 +5,7 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.activeandroid.query.From;
 import com.activeandroid.query.Select;
 
 import org.json.JSONException;
@@ -36,14 +37,14 @@ public class OrderConfirmPresenter {
     }
 
     //TODO check this
-    public void saveHistory(String address, double lat, double lng){
+    public void saveHistory(String address, double lat, double lng) {
 
-        int count = new Select()
+        From query = new Select()
                 .from(LocationHistory.class)
                 .where(LocationHistory.COL_ADDRESS + " = '" + address +
                         "' and " + LocationHistory.COL_LAT + " = " + lat +
-                        " and " + LocationHistory.COL_LNG + " = " + lng)
-                .count();
+                        " and " + LocationHistory.COL_LNG + " = " + lng);
+        int count = query.count();
         if (!(count > 0)) {
             LocationHistory history = new LocationHistory();
             String datetime = new DatetimeHelper()
