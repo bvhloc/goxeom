@@ -1,8 +1,6 @@
 package asia.covisoft.goom.adapter.list;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,20 +10,17 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.ArrayList;
+import java.util.List;
 
 import asia.covisoft.goom.R;
-import asia.covisoft.goom.pojo.RestaurantItem;
+import asia.covisoft.goom.helper.Hex;
+import asia.covisoft.goom.pojo.gson.LoadfoodingRoot.Loadfooding.RestaurantList;
+import asia.covisoft.goom.utils.Constant;
 
-/**
- * Created by Covisoft on 23/11/2015.
- */
-public class RestaurantListAdapter extends ArrayAdapter<RestaurantItem> {
+public class RestaurantListAdapter extends ArrayAdapter<RestaurantList> {
 
     public Context context;
-    private ArrayList<RestaurantItem> model;
+    private List<RestaurantList> model;
 
     @Override
     public int getCount() {
@@ -34,7 +29,7 @@ public class RestaurantListAdapter extends ArrayAdapter<RestaurantItem> {
 
     private static final int resId = R.layout.grid_item_restaurant;
 
-    public RestaurantListAdapter(Context context, ArrayList<RestaurantItem> model) {
+    public RestaurantListAdapter(Context context, List<RestaurantList> model) {
         super(context, resId, model);
 
         this.context = context;
@@ -51,7 +46,7 @@ public class RestaurantListAdapter extends ArrayAdapter<RestaurantItem> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        RestaurantItem item = getItem(position);
+        RestaurantList item = getItem(position);
 
         final ViewHolder viewHolder;
         if (convertView == null) {
@@ -69,10 +64,13 @@ public class RestaurantListAdapter extends ArrayAdapter<RestaurantItem> {
             viewHolder = (ViewHolder) convertView.getTag();
         }
 
-        viewHolder.tvName.setText(item.getName());
-        viewHolder.tvAddress.setText(item.getAddress());
+        String name = new Hex().toString(item.getRestaurantName());
+        viewHolder.tvName.setText(name);
+        String address = new Hex().toString(item.getRestaurantAddress());
+        viewHolder.tvAddress.setText(address);
+        String imageUrl = new Hex().toString(item.getRestaurantImage());
         Picasso.with(context)
-                .load("file:///android_asset/"+item.getImageUrl())
+                .load(Constant.HOST + imageUrl)
                 .into(viewHolder.imgvAvatar);
 
         return convertView;

@@ -190,6 +190,9 @@ public class LoadfoodingRoot {
             @SerializedName("restaurant_info")
             @Expose
             private String restaurantInfo;
+            @SerializedName("restaurant_image")
+            @Expose
+            private String restaurantImage;
             @SerializedName("restaurant_rating")
             @Expose
             private String restaurantRating;
@@ -321,6 +324,24 @@ public class LoadfoodingRoot {
              */
             public void setRestaurantInfo(String restaurantInfo) {
                 this.restaurantInfo = restaurantInfo;
+            }
+
+            /**
+             *
+             * @return
+             * The restaurantImage
+             */
+            public String getRestaurantImage() {
+                return restaurantImage;
+            }
+
+            /**
+             *
+             * @param restaurantImage
+             * The restaurant_image
+             */
+            public void setRestaurantImage(String restaurantImage) {
+                this.restaurantImage = restaurantImage;
             }
 
             /**

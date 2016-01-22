@@ -75,7 +75,7 @@ public class OrderPickLocationActivity extends BaseActivity implements AdapterVi
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     buttonView.setChecked(false);
-                    openMap();
+                    openMap(new OrderPickMapFragment());
                 }
             }
         });
@@ -84,7 +84,7 @@ public class OrderPickLocationActivity extends BaseActivity implements AdapterVi
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     buttonView.setChecked(false);
-                    openMap();
+                    openMap(new OrderPickMapFragment());
                 }
             }
         });
@@ -109,15 +109,7 @@ public class OrderPickLocationActivity extends BaseActivity implements AdapterVi
             Log.i("sdb", "Place: " + place.getName());
 
             //add mapFragment with argurment placeLatLng
-            String tag = "mapTAG";
-            FragmentManager fm = getSupportFragmentManager();
-            Fragment mapFragment =  fm.findFragmentByTag(tag);
-            FragmentTransaction transaction = fm.beginTransaction();
-            if (mapFragment == null) {
-                transaction.add(R.id.tab_container, OrderPickMapFragment.newInstance(place.getLatLng()), tag);
-                transaction.addToBackStack(null);
-                transaction.commitAllowingStateLoss();
-            }//
+            openMap(OrderPickMapFragment.newInstance(place.getLatLng()));
 
         } else if (resultCode == PlaceAutocomplete.RESULT_ERROR) {
             Status status = PlaceAutocomplete.getStatus(this, data);
@@ -125,16 +117,16 @@ public class OrderPickLocationActivity extends BaseActivity implements AdapterVi
         }
     }
 
-    private void openMap() {
+    private void openMap(OrderPickMapFragment mapFragment) {
 
         String tag = "mapTAG";
         FragmentManager fm = getSupportFragmentManager();
-        Fragment mapFragment =  fm.findFragmentByTag(tag);
+        Fragment fragment = fm.findFragmentByTag(tag);
         FragmentTransaction transaction = fm.beginTransaction();
-        if (mapFragment == null) {
-            transaction.add(R.id.tab_container, new OrderPickMapFragment(), tag);
+        if (fragment == null) {
+            transaction.add(R.id.tab_container, mapFragment, tag);
             transaction.addToBackStack(null);
-            transaction.commit();
+            transaction.commitAllowingStateLoss();
         }
     }
 }

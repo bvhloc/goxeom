@@ -2,7 +2,7 @@ package asia.covisoft.goom.activity.order;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
@@ -18,7 +18,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.LatLng;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import asia.covisoft.goom.R;
 import asia.covisoft.goom.adapter.list.FoodTypeListAdapter;
@@ -29,9 +29,8 @@ import asia.covisoft.goom.customview.WorkaroundMapFragment;
 import asia.covisoft.goom.helper.GPSTracker;
 import asia.covisoft.goom.mvp.presenter.OrderFoodPresenter;
 import asia.covisoft.goom.mvp.view.OrderFoodView;
-import asia.covisoft.goom.pojo.FoodTypeItem;
-import asia.covisoft.goom.pojo.RestaurantItem;
-import asia.covisoft.goom.utils.Constant;
+import asia.covisoft.goom.pojo.gson.LoadfoodingRoot;
+import asia.covisoft.goom.utils.Preferences;
 
 public class OrderFoodActivity extends BaseMapActivity implements OrderFoodView {
 
@@ -99,17 +98,12 @@ public class OrderFoodActivity extends BaseMapActivity implements OrderFoodView 
         presenter = new OrderFoodPresenter(this);
         initView();
 
-        foodtypeAdapter = new FoodTypeListAdapter(mContext, listDataSet());
-        lvFoodType.setAdapter(foodtypeAdapter);
         lvFoodType.setOnItemClickListener(lvFoodTypeListener);
 
         LayoutInflater inflater = getLayoutInflater();
         @SuppressLint("InflateParams")
         View header = inflater.inflate(R.layout.header_map, null);
         gvRestarants.addHeaderView(header);
-
-        restaurantAdapter = new RestaurantListAdapter(mContext, gridDataSet());
-        gvRestarants.setAdapter(restaurantAdapter);
         gvRestarants.setOnItemClickListener(gvRestaurantsListener);
 
         initMap();
@@ -119,9 +113,9 @@ public class OrderFoodActivity extends BaseMapActivity implements OrderFoodView 
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-            Intent intent = new Intent(mContext, OrderFoodPickRestaurantActivity.class);
-            intent.putExtra(Constant.ORDER_FOOD_PICK_RESTAURANT_TITLE, foodtypeAdapter.getItem(position).getName());
-            startActivity(intent);
+//            Intent intent = new Intent(mContext, OrderFoodPickRestaurantActivity.class);
+//            intent.putExtra(Constant.ORDER_FOOD_PICK_RESTAURANT_TITLE, foodtypeAdapter.getItem(position).getName());
+//            startActivity(intent);
         }
     };
 
@@ -129,11 +123,11 @@ public class OrderFoodActivity extends BaseMapActivity implements OrderFoodView 
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-            Intent intent = new Intent(mContext, OrderFoodPickFoodActivity.class);
-            intent.putExtra("name", restaurantAdapter.getItem(position - gvRestarants.getNumColumns()).getName());
-            intent.putExtra("address", restaurantAdapter.getItem(position - gvRestarants.getNumColumns()).getAddress());
-            intent.putExtra("imageurl", restaurantAdapter.getItem(position - gvRestarants.getNumColumns()).getImageUrl());
-            startActivity(intent);
+//            Intent intent = new Intent(mContext, OrderFoodPickFoodActivity.class);
+//            intent.putExtra("name", restaurantAdapter.getItem(position - gvRestarants.getNumColumns()).getName());
+//            intent.putExtra("address", restaurantAdapter.getItem(position - gvRestarants.getNumColumns()).getAddress());
+//            intent.putExtra("imageurl", restaurantAdapter.getItem(position - gvRestarants.getNumColumns()).getImageUrl());
+//            startActivity(intent);
         }
     };
 
@@ -164,6 +158,11 @@ public class OrderFoodActivity extends BaseMapActivity implements OrderFoodView 
             LatLng currentLatLng = new LatLng(gpsTracker.getLatitude(), gpsTracker.getLongitude());
 
             googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng, 14));
+
+            SharedPreferences loginPreferences = getSharedPreferences(Preferences.LOGIN_PREFERENCES, MODE_PRIVATE);
+            String userToken = loginPreferences.getString(Preferences.LOGIN_PREFERENCES_USER_TOKEN, "");
+
+            presenter.getFooding(userToken, currentLatLng.latitude, currentLatLng.longitude);
         }
     }
 
@@ -185,27 +184,46 @@ public class OrderFoodActivity extends BaseMapActivity implements OrderFoodView 
 //        mapView.onLowMemory();
 //    }
 
-    private ArrayList<FoodTypeItem> listDataSet() {
-        ArrayList<FoodTypeItem> list = new ArrayList<>();
-        list.add(new FoodTypeItem("BEST-SELLER", "category/best.jpg"));
-        list.add(new FoodTypeItem("PHO", "category/pho.jpg"));
-        list.add(new FoodTypeItem("COM", "category/com.jpg"));
-        list.add(new FoodTypeItem("PIZZA", "category/pizza.jpg"));
-        return list;
+//    private ArrayList<FoodTypeItem> listDataSet() {
+//        ArrayList<FoodTypeItem> list = new ArrayList<>();
+//        list.add(new FoodTypeItem("BEST-SELLER", "category/best.jpg"));
+//        list.add(new FoodTypeItem("PHO", "category/pho.jpg"));
+//        list.add(new FoodTypeItem("COM", "category/com.jpg"));
+//        list.add(new FoodTypeItem("PIZZA", "category/pizza.jpg"));
+//        return list;
+//    }
+
+//    private ArrayList<RestaurantItem> gridDataSet() {
+//        ArrayList<RestaurantItem> list = new ArrayList<>();
+//        list.add(new RestaurantItem("Cơm gà 3 ghiền", "96 Đặng Văn Ngữ, P4, Q3, HCM", "category/best.jpg"));
+//        list.add(new RestaurantItem("Bánh Xèo A Phủ", "121 Nguyễn Văn Nghi, 7, Gò Vấp, Hồ Chí Minh", "menu/banhxeo.jpg"));
+//        list.add(new RestaurantItem("Chả Giò Bà Rịa", "78 Tân Sơn Nhì, Tân Phú, Hồ Chí Minh", "menu/chagio.jpg"));
+//        list.add(new RestaurantItem("Cơm Tấm Cây Khế 3", "32 Cây Trâm, 9, Gò Vấp, Hồ Chí Minh", "menu/comtam.jpg"));
+//        list.add(new RestaurantItem("Gỏi Cuốn Cô Huệ", "57 Châu Văn Liêm, 14, 5, Hồ Chí Minh", "menu/goicuon.jpg"));
+//        list.add(new RestaurantItem("Nem Nướng Đà Lạt", "69 Vạn Kiếp, phường 3, Bình Thạnh, Hồ Chí Minh", "menu/nemnuong.jpg"));
+//        list.add(new RestaurantItem("Phở Quê Hương", "1223 Phan Văn Trị, 10, Gò Vấp, Hồ Chí Minh", "category/pho.jpg"));
+//        list.add(new RestaurantItem("Cơm Tấm Thuận Kiều", "17 Út Tịch, 4, Hồ Chí Minh", "category/com.jpg"));
+//        list.add(new RestaurantItem("Pizza Hut", "264 Nguyễn Trãi, 8, 5, Hồ Chí Minh", "category/pizza.jpg"));
+//        list.add(new RestaurantItem("Cơm Tấm Cali", "82 Nguyễn Văn Trỗi, 8, Phú Nhuận, Hồ Chí Minh", "menu/comtam.jpg"));
+//        return list;
+//    }
+
+    @Override
+    public void onConnectionFail() {
+
     }
 
-    private ArrayList<RestaurantItem> gridDataSet() {
-        ArrayList<RestaurantItem> list = new ArrayList<>();
-        list.add(new RestaurantItem("Cơm gà 3 ghiền", "96 Đặng Văn Ngữ, P4, Q3, HCM", "category/best.jpg"));
-        list.add(new RestaurantItem("Bánh Xèo A Phủ", "121 Nguyễn Văn Nghi, 7, Gò Vấp, Hồ Chí Minh", "menu/banhxeo.jpg"));
-        list.add(new RestaurantItem("Chả Giò Bà Rịa", "78 Tân Sơn Nhì, Tân Phú, Hồ Chí Minh", "menu/chagio.jpg"));
-        list.add(new RestaurantItem("Cơm Tấm Cây Khế 3", "32 Cây Trâm, 9, Gò Vấp, Hồ Chí Minh", "menu/comtam.jpg"));
-        list.add(new RestaurantItem("Gỏi Cuốn Cô Huệ", "57 Châu Văn Liêm, 14, 5, Hồ Chí Minh", "menu/goicuon.jpg"));
-        list.add(new RestaurantItem("Nem Nướng Đà Lạt", "69 Vạn Kiếp, phường 3, Bình Thạnh, Hồ Chí Minh", "menu/nemnuong.jpg"));
-        list.add(new RestaurantItem("Phở Quê Hương", "1223 Phan Văn Trị, 10, Gò Vấp, Hồ Chí Minh", "category/pho.jpg"));
-        list.add(new RestaurantItem("Cơm Tấm Thuận Kiều", "17 Út Tịch, 4, Hồ Chí Minh", "category/com.jpg"));
-        list.add(new RestaurantItem("Pizza Hut", "264 Nguyễn Trãi, 8, 5, Hồ Chí Minh", "category/pizza.jpg"));
-        list.add(new RestaurantItem("Cơm Tấm Cali", "82 Nguyễn Văn Trỗi, 8, Phú Nhuận, Hồ Chí Minh", "menu/comtam.jpg"));
-        return list;
+    @Override
+    public void onCategoriesLoaded(List<LoadfoodingRoot.Loadfooding.Category> categories) {
+
+        foodtypeAdapter = new FoodTypeListAdapter(mContext, categories);
+        lvFoodType.setAdapter(foodtypeAdapter);
+    }
+
+    @Override
+    public void onRestaurantsLoaded(List<LoadfoodingRoot.Loadfooding.RestaurantList> restaurants) {
+
+        restaurantAdapter = new RestaurantListAdapter(mContext, restaurants);
+        gvRestarants.setAdapter(restaurantAdapter);
     }
 }

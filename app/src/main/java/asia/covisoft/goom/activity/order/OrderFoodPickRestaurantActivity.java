@@ -1,7 +1,6 @@
 package asia.covisoft.goom.activity.order;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -10,12 +9,12 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import asia.covisoft.goom.base.BaseActivity;
-import asia.covisoft.goom.utils.Constant;
 import asia.covisoft.goom.R;
 import asia.covisoft.goom.adapter.list.RestaurantListAdapter;
-import asia.covisoft.goom.pojo.RestaurantItem;
+import asia.covisoft.goom.base.BaseActivity;
 import asia.covisoft.goom.customview.HeaderGridView;
+import asia.covisoft.goom.pojo.RestaurantItem;
+import asia.covisoft.goom.utils.Constant;
 
 public class OrderFoodPickRestaurantActivity extends BaseActivity implements AdapterView.OnItemClickListener {
 
@@ -33,7 +32,7 @@ public class OrderFoodPickRestaurantActivity extends BaseActivity implements Ada
 
         tvTitle.setText(getIntent().getStringExtra(Constant.ORDER_FOOD_PICK_RESTAURANT_TITLE));
 
-        restaurantAdapter = new RestaurantListAdapter(this, gridDataSet());
+//        restaurantAdapter = new RestaurantListAdapter(this, gridDataSet());
         gvRestarants.setAdapter(restaurantAdapter);
 
         gvRestarants.setOnItemClickListener(this);
@@ -42,11 +41,11 @@ public class OrderFoodPickRestaurantActivity extends BaseActivity implements Ada
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-        Intent intent = new Intent(mContext, OrderFoodPickFoodActivity.class);
-        intent.putExtra("name", restaurantAdapter.getItem(position).getName());
-        intent.putExtra("address", restaurantAdapter.getItem(position).getAddress());
-        intent.putExtra("imageurl", restaurantAdapter.getItem(position).getImageUrl());
-        startActivity(intent);
+//        Intent intent = new Intent(mContext, OrderFoodPickFoodActivity.class);
+//        intent.putExtra("name", restaurantAdapter.getItem(position).getName());
+//        intent.putExtra("address", restaurantAdapter.getItem(position).getAddress());
+//        intent.putExtra("imageurl", restaurantAdapter.getItem(position).getImageUrl());
+//        startActivity(intent);
     }
 
     private TextView tvTitle;

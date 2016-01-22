@@ -1,8 +1,12 @@
 package asia.covisoft.goom.mvp.view;
 
-/**
- * Created by Covisoft on 21/12/2015.
- */
-public interface OrderFoodView {
+import java.util.List;
 
+import asia.covisoft.goom.pojo.gson.LoadfoodingRoot.Loadfooding.Category;
+import asia.covisoft.goom.pojo.gson.LoadfoodingRoot.Loadfooding.RestaurantList;
+
+public interface OrderFoodView {
+    void onConnectionFail();
+    void onCategoriesLoaded(List<Category> categories);
+    void onRestaurantsLoaded(List<RestaurantList> restaurants);
 }

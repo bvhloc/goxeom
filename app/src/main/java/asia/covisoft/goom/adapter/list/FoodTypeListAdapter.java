@@ -10,18 +10,17 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import asia.covisoft.goom.R;
-import asia.covisoft.goom.pojo.FoodTypeItem;
+import asia.covisoft.goom.helper.Hex;
+import asia.covisoft.goom.pojo.gson.LoadfoodingRoot.Loadfooding.Category;
+import asia.covisoft.goom.utils.Constant;
 
-/**
- * Created by Covisoft on 23/11/2015.
- */
-public class FoodTypeListAdapter extends ArrayAdapter<FoodTypeItem> {
+public class FoodTypeListAdapter extends ArrayAdapter<Category> {
 
     public Context context;
-    private ArrayList<FoodTypeItem> model;
+    private List<Category> model;
 
     @Override
     public int getCount() {
@@ -30,7 +29,7 @@ public class FoodTypeListAdapter extends ArrayAdapter<FoodTypeItem> {
 
     private static final int resId = R.layout.list_item_foodtype;
 
-    public FoodTypeListAdapter(Context context, ArrayList<FoodTypeItem> model) {
+    public FoodTypeListAdapter(Context context, List<Category> model) {
         super(context, resId, model);
 
         this.context = context;
@@ -46,7 +45,7 @@ public class FoodTypeListAdapter extends ArrayAdapter<FoodTypeItem> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        FoodTypeItem item = getItem(position);
+        Category item = getItem(position);
 
         final ViewHolder viewHolder;
         if (convertView == null) {
@@ -63,9 +62,11 @@ public class FoodTypeListAdapter extends ArrayAdapter<FoodTypeItem> {
             viewHolder = (ViewHolder) convertView.getTag();
         }
 
-        viewHolder.tvName.setText(item.getName());
+        String name = new Hex().toString(item.getFoodTypeName());
+        viewHolder.tvName.setText(name);
+        String imageUrl = new Hex().toString(item.getFoodTypeImage());
         Picasso.with(context)
-                .load("file:///android_asset/"+item.getImageUrl())
+                .load(Constant.HOST + imageUrl)
                 .into(viewHolder.imgvAvatar);
 
         return convertView;
