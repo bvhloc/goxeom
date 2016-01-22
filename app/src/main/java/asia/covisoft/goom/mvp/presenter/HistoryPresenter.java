@@ -42,7 +42,7 @@ public class HistoryPresenter {
 
 
                 String URL = Constant.HOST +
-                        "loadhistory.php?token=" + token;//TODO active this code
+                        "loadhistory.php?token=" + token;
                 Log.d("sdb", URL);
                 try {
                     String json = new NetworkClient().getJsonFromUrl(URL);

@@ -36,7 +36,6 @@ public class OrderConfirmPresenter {
         this.context = (Context) view;
     }
 
-    //TODO check this
     public void saveHistory(String address, double lat, double lng) {
 
         From query = new Select()

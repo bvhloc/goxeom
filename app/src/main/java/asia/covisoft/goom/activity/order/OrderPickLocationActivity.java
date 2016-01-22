@@ -4,13 +4,21 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.CompoundButton;
 import android.widget.ListView;
 import android.widget.RadioButton;
-import android.widget.SearchView;
 
+import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
+import com.google.android.gms.common.GooglePlayServicesRepairableException;
+import com.google.android.gms.common.api.Status;
+import com.google.android.gms.location.places.Place;
+import com.google.android.gms.location.places.ui.PlaceAutocomplete;
 import com.google.android.gms.maps.model.LatLng;
 
 import asia.covisoft.goom.R;
@@ -43,7 +51,6 @@ public class OrderPickLocationActivity extends BaseActivity implements AdapterVi
 
         LocationHistory item = mAdapter.getItem(position);
 
-        //TODO check this
         Intent data = new Intent();
         data.putExtra(Extras.PICKED_ADDRESS, item.getAddress());
         LatLng latlng = new LatLng(item.getLat(), item.getLng());
@@ -52,20 +59,18 @@ public class OrderPickLocationActivity extends BaseActivity implements AdapterVi
         this.finish();
     }
 
-    private SearchView searchView;
     private ListView lvLocationHistory;
 
     private void initView() {
 
-        searchView = (SearchView) findViewById(R.id.searchView);
         findViewById(R.id.search_container).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                searchView.setIconified(false);
+                openSearch();
             }
         });
-        ((RadioButton)findViewById(R.id.btnOpenLocation)).setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        ((RadioButton) findViewById(R.id.btnOpenLocation)).setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
@@ -74,10 +79,10 @@ public class OrderPickLocationActivity extends BaseActivity implements AdapterVi
                 }
             }
         });
-        ((RadioButton)findViewById(R.id.btnCurrentLocation)).setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        ((RadioButton) findViewById(R.id.btnCurrentLocation)).setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(isChecked){
+                if (isChecked) {
                     buttonView.setChecked(false);
                     openMap();
                 }
@@ -86,11 +91,50 @@ public class OrderPickLocationActivity extends BaseActivity implements AdapterVi
         lvLocationHistory = (ListView) findViewById(R.id.lvLocationHistory);
     }
 
+    private void openSearch() {
+
+        try {
+            Intent intent = new PlaceAutocomplete.IntentBuilder(PlaceAutocomplete.MODE_FULLSCREEN)
+                    .build(this);
+            startActivityForResult(intent, 0);
+        } catch (GooglePlayServicesRepairableException | GooglePlayServicesNotAvailableException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode == RESULT_OK) {
+            Place place = PlaceAutocomplete.getPlace(this, data);
+            Log.i("sdb", "Place: " + place.getName());
+
+            //add mapFragment with argurment placeLatLng
+            String tag = "mapTAG";
+            FragmentManager fm = getSupportFragmentManager();
+            Fragment mapFragment =  fm.findFragmentByTag(tag);
+            FragmentTransaction transaction = fm.beginTransaction();
+            if (mapFragment == null) {
+                transaction.add(R.id.tab_container, OrderPickMapFragment.newInstance(place.getLatLng()), tag);
+                transaction.addToBackStack(null);
+                transaction.commitAllowingStateLoss();
+            }//
+
+        } else if (resultCode == PlaceAutocomplete.RESULT_ERROR) {
+            Status status = PlaceAutocomplete.getStatus(this, data);
+            Log.i("sdb", status.getStatusMessage());
+        }
+    }
+
     private void openMap() {
 
-        getSupportFragmentManager().beginTransaction()
-                .add(R.id.tab_container, new OrderPickMapFragment())
-                .addToBackStack(null)
-                .commit();
+        String tag = "mapTAG";
+        FragmentManager fm = getSupportFragmentManager();
+        Fragment mapFragment =  fm.findFragmentByTag(tag);
+        FragmentTransaction transaction = fm.beginTransaction();
+        if (mapFragment == null) {
+            transaction.add(R.id.tab_container, new OrderPickMapFragment(), tag);
+            transaction.addToBackStack(null);
+            transaction.commit();
+        }
     }
 }

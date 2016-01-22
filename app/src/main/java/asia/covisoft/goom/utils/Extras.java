@@ -30,4 +30,6 @@ public final class Extras {
     //OrderMadeActivity
     public static final String BOOKING_ID = "BOOKING_ID";
 
+    //OrderPickMapFragment
+    public static final String PLACE_LATLNG = "PLACE_LATLNG";
 }

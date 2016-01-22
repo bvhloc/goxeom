@@ -5,9 +5,6 @@ import android.support.v4.app.FragmentTransaction;
 
 import asia.covisoft.goom.R;
 
-/**
- * Created by Covisoft on 19/11/2015.
- */
 public class FragmentNavigator {
 
     public static void goTo(Fragment from, Fragment to, boolean addToBackStack) {
@@ -22,7 +19,6 @@ public class FragmentNavigator {
     }
 
     public static void goTo(Fragment from, Fragment to) {
-
         goTo(from, to, true);
     }
 }

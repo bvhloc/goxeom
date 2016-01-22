@@ -36,6 +36,16 @@ public class OrderPickMapFragment extends Fragment implements OnMapReadyCallback
         // Required empty public constructor
     }
 
+    public static OrderPickMapFragment newInstance(LatLng latlng){
+
+        OrderPickMapFragment fragment = new OrderPickMapFragment();
+        Bundle args = new Bundle();
+        args.putParcelable(Extras.PLACE_LATLNG, latlng);
+        fragment.setArguments(args);
+
+        return fragment;
+    }
+
     private TextView tvAddress;
     private ProgressBar pbAddress;
 
@@ -71,22 +81,27 @@ public class OrderPickMapFragment extends Fragment implements OnMapReadyCallback
 
     }
 
-    private LatLng currentLatLng;
+    private LatLng latlng;
 
     @SuppressWarnings("ResourceType")
     @Override
     public void onMapReady(GoogleMap googleMap) {
 
-        currentLatLng = new GPSTracker(mContext).getLatLng();
+        Bundle args = getArguments();
+        if(args != null){
+            latlng = getArguments().getParcelable(Extras.PLACE_LATLNG);
+        }else {
+            latlng = new GPSTracker(mContext).getLatLng();
+        }
         googleMap.setOnCameraChangeListener(new GoogleMap.OnCameraChangeListener() {
             @Override
             public void onCameraChange(CameraPosition cameraPosition) {
 
-                currentLatLng = cameraPosition.target;
-                setAddress(currentLatLng);
+                latlng = cameraPosition.target;
+                setAddress(latlng);
             }
         });
-        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng, 14));
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latlng, 15));
         googleMap.setMyLocationEnabled(true);
         googleMap.getUiSettings().setZoomControlsEnabled(true);
     }
@@ -127,7 +142,7 @@ public class OrderPickMapFragment extends Fragment implements OnMapReadyCallback
 
             Intent data = new Intent();
             data.putExtra(Extras.PICKED_ADDRESS, address);
-            data.putExtra(Extras.PICKED_LATLNG, currentLatLng);
+            data.putExtra(Extras.PICKED_LATLNG, latlng);
             mActivity.setResult(Activity.RESULT_OK, data);
             mActivity.finish();
         }
