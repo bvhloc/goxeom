@@ -222,5 +222,6 @@
     <string name="money_unit">VNĐ</string>
     <string name="dialog_cancelbooking">Cancel this booking?</string>
     <string name="error_costempty">Please input cost</string>
+    <string name="snackbar_norestaurantnearby">No restaurant near by</string>
 
 </resources>

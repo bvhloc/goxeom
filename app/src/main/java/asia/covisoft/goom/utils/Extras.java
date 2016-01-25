@@ -6,6 +6,7 @@ package asia.covisoft.goom.utils;
 public final class Extras {
 
     public static final String IS_LOGIN = "IS_LOGIN";
+    public static final String USER_TOKEN = "USER_TOKEN";
 
     //OrderCourierActivity
     public static final String PICKED_ADDRESS = "PICKED_ADDRESS";
@@ -32,4 +33,14 @@ public final class Extras {
 
     //OrderPickMapFragment
     public static final String PLACE_LATLNG = "PLACE_LATLNG";
+
+    //OrderFoodPickRestaurantActivity
+    public static final String FOOD_TYPE = "FOOD_TYPE";
+    public static final String FOOD_TYPE_NAME = "FOOD_TYPE_NAME";
+
+    //OrderFoodPickFoodActivity
+    public static final String RESTAURANT_ID = "RESTAURANT_ID";
+    public static final String RESTAURANT_NAME = "RESTAURANT_NAME";
+    public static final String RESTAURANT_ADDRESS = "RESTAURANT_ADDRESS";
+    public static final String RESTAURANT_IMAGE = "RESTAURANT_IMAGE";
 }

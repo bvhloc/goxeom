@@ -1,9 +1,13 @@
 package asia.covisoft.goom.activity.order;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,8 +20,12 @@ import android.widget.SearchView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.util.HashMap;
 import java.util.List;
 
 import asia.covisoft.goom.R;
@@ -27,12 +35,15 @@ import asia.covisoft.goom.base.BaseMapActivity;
 import asia.covisoft.goom.customview.HeaderGridView;
 import asia.covisoft.goom.customview.WorkaroundMapFragment;
 import asia.covisoft.goom.helper.GPSTracker;
+import asia.covisoft.goom.helper.Hex;
 import asia.covisoft.goom.mvp.presenter.OrderFoodPresenter;
 import asia.covisoft.goom.mvp.view.OrderFoodView;
-import asia.covisoft.goom.pojo.gson.LoadfoodingRoot;
+import asia.covisoft.goom.pojo.gson.LoadfoodingRoot.Loadfooding.Category;
+import asia.covisoft.goom.pojo.gson.LoadfoodingRoot.Loadfooding.RestaurantList;
+import asia.covisoft.goom.utils.Extras;
 import asia.covisoft.goom.utils.Preferences;
 
-public class OrderFoodActivity extends BaseMapActivity implements OrderFoodView {
+public class OrderFoodActivity extends BaseMapActivity implements OrderFoodView, GoogleMap.OnMarkerClickListener {
 
     private RadioButton rdbCategory, rdbNearMe;
     private ListView lvFoodType;
@@ -89,6 +100,7 @@ public class OrderFoodActivity extends BaseMapActivity implements OrderFoodView 
 
     private RestaurantListAdapter restaurantAdapter;
     private FoodTypeListAdapter foodtypeAdapter;
+    private String userToken;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -113,9 +125,11 @@ public class OrderFoodActivity extends BaseMapActivity implements OrderFoodView 
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-//            Intent intent = new Intent(mContext, OrderFoodPickRestaurantActivity.class);
-//            intent.putExtra(Constant.ORDER_FOOD_PICK_RESTAURANT_TITLE, foodtypeAdapter.getItem(position).getName());
-//            startActivity(intent);
+            Intent intent = new Intent(mContext, OrderFoodPickRestaurantActivity.class);
+            intent.putExtra(Extras.FOOD_TYPE, foodtypeAdapter.getItem(position).getFoodTypeId());
+            intent.putExtra(Extras.FOOD_TYPE_NAME, foodtypeAdapter.getItem(position).getFoodTypeName());
+            intent.putExtra(Extras.USER_TOKEN, userToken);
+            startActivity(intent);
         }
     };
 
@@ -123,13 +137,28 @@ public class OrderFoodActivity extends BaseMapActivity implements OrderFoodView 
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-//            Intent intent = new Intent(mContext, OrderFoodPickFoodActivity.class);
-//            intent.putExtra("name", restaurantAdapter.getItem(position - gvRestarants.getNumColumns()).getName());
-//            intent.putExtra("address", restaurantAdapter.getItem(position - gvRestarants.getNumColumns()).getAddress());
-//            intent.putExtra("imageurl", restaurantAdapter.getItem(position - gvRestarants.getNumColumns()).getImageUrl());
-//            startActivity(intent);
+            Intent intent = new Intent(mContext, OrderFoodPickFoodActivity.class);
+            intent.putExtra(Extras.RESTAURANT_ID, restaurantAdapter.getItem(position).getRestaurantId());
+            intent.putExtra(Extras.RESTAURANT_NAME, restaurantAdapter.getItem(position).getRestaurantName());
+            intent.putExtra(Extras.RESTAURANT_ADDRESS, restaurantAdapter.getItem(position).getRestaurantAddress());
+            intent.putExtra(Extras.RESTAURANT_IMAGE, restaurantAdapter.getItem(position).getRestaurantImage());
+            startActivity(intent);
         }
     };
+
+    @Override
+    public boolean onMarkerClick(Marker marker) {
+
+        RestaurantList restaurant = restaurantHashMap.get(marker);
+        Intent intent = new Intent(mContext, OrderFoodPickFoodActivity.class);
+        intent.putExtra(Extras.RESTAURANT_ID, restaurant.getRestaurantId());
+        intent.putExtra(Extras.RESTAURANT_NAME, restaurant.getRestaurantName());
+        intent.putExtra(Extras.RESTAURANT_ADDRESS, restaurant.getRestaurantAddress());
+        intent.putExtra(Extras.RESTAURANT_IMAGE, restaurant.getRestaurantImage());
+        startActivity(intent);
+
+        return true;
+    }
 
     private void initMap() {
 
@@ -160,9 +189,11 @@ public class OrderFoodActivity extends BaseMapActivity implements OrderFoodView 
             googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng, 14));
 
             SharedPreferences loginPreferences = getSharedPreferences(Preferences.LOGIN_PREFERENCES, MODE_PRIVATE);
-            String userToken = loginPreferences.getString(Preferences.LOGIN_PREFERENCES_USER_TOKEN, "");
+            userToken = loginPreferences.getString(Preferences.LOGIN_PREFERENCES_USER_TOKEN, "");
 
             presenter.getFooding(userToken, currentLatLng.latitude, currentLatLng.longitude);
+
+            mMap.setOnMarkerClickListener(this);
         }
     }
 
@@ -184,46 +215,46 @@ public class OrderFoodActivity extends BaseMapActivity implements OrderFoodView 
 //        mapView.onLowMemory();
 //    }
 
-//    private ArrayList<FoodTypeItem> listDataSet() {
-//        ArrayList<FoodTypeItem> list = new ArrayList<>();
-//        list.add(new FoodTypeItem("BEST-SELLER", "category/best.jpg"));
-//        list.add(new FoodTypeItem("PHO", "category/pho.jpg"));
-//        list.add(new FoodTypeItem("COM", "category/com.jpg"));
-//        list.add(new FoodTypeItem("PIZZA", "category/pizza.jpg"));
-//        return list;
-//    }
-
-//    private ArrayList<RestaurantItem> gridDataSet() {
-//        ArrayList<RestaurantItem> list = new ArrayList<>();
-//        list.add(new RestaurantItem("Cơm gà 3 ghiền", "96 Đặng Văn Ngữ, P4, Q3, HCM", "category/best.jpg"));
-//        list.add(new RestaurantItem("Bánh Xèo A Phủ", "121 Nguyễn Văn Nghi, 7, Gò Vấp, Hồ Chí Minh", "menu/banhxeo.jpg"));
-//        list.add(new RestaurantItem("Chả Giò Bà Rịa", "78 Tân Sơn Nhì, Tân Phú, Hồ Chí Minh", "menu/chagio.jpg"));
-//        list.add(new RestaurantItem("Cơm Tấm Cây Khế 3", "32 Cây Trâm, 9, Gò Vấp, Hồ Chí Minh", "menu/comtam.jpg"));
-//        list.add(new RestaurantItem("Gỏi Cuốn Cô Huệ", "57 Châu Văn Liêm, 14, 5, Hồ Chí Minh", "menu/goicuon.jpg"));
-//        list.add(new RestaurantItem("Nem Nướng Đà Lạt", "69 Vạn Kiếp, phường 3, Bình Thạnh, Hồ Chí Minh", "menu/nemnuong.jpg"));
-//        list.add(new RestaurantItem("Phở Quê Hương", "1223 Phan Văn Trị, 10, Gò Vấp, Hồ Chí Minh", "category/pho.jpg"));
-//        list.add(new RestaurantItem("Cơm Tấm Thuận Kiều", "17 Út Tịch, 4, Hồ Chí Minh", "category/com.jpg"));
-//        list.add(new RestaurantItem("Pizza Hut", "264 Nguyễn Trãi, 8, 5, Hồ Chí Minh", "category/pizza.jpg"));
-//        list.add(new RestaurantItem("Cơm Tấm Cali", "82 Nguyễn Văn Trỗi, 8, Phú Nhuận, Hồ Chí Minh", "menu/comtam.jpg"));
-//        return list;
-//    }
-
     @Override
     public void onConnectionFail() {
+        new AlertDialog.Builder(mContext)
+                .setMessage(getString(R.string.dialog_connection_fail))
+                .setNeutralButton(getString(R.string.lowcase_ok), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
 
+                        onBackPressed();
+                    }
+                })
+                .show();
     }
 
     @Override
-    public void onCategoriesLoaded(List<LoadfoodingRoot.Loadfooding.Category> categories) {
+    public void onCategoriesLoaded(List<Category> categories) {
 
         foodtypeAdapter = new FoodTypeListAdapter(mContext, categories);
         lvFoodType.setAdapter(foodtypeAdapter);
     }
 
+    private HashMap<Marker, RestaurantList> restaurantHashMap;
+
     @Override
-    public void onRestaurantsLoaded(List<LoadfoodingRoot.Loadfooding.RestaurantList> restaurants) {
+    public void onRestaurantsLoaded(List<RestaurantList> restaurants) {
 
         restaurantAdapter = new RestaurantListAdapter(mContext, restaurants);
         gvRestarants.setAdapter(restaurantAdapter);
+        if (restaurants.isEmpty()) {
+            Snackbar.make(findViewById(R.id.tab_container), getString(R.string.snackbar_norestaurantnearby), Snackbar.LENGTH_LONG).show();
+        } else {
+            restaurantHashMap = new HashMap<>();
+            for (RestaurantList restaurant : restaurants) {
+
+                String restaurantName = new Hex().toString(restaurant.getRestaurantName());
+                LatLng restaurantLatLng = new LatLng(Double.valueOf(restaurant.getRestaurantLat()), Double.valueOf(restaurant.getRestaurantLong()));
+                Marker marker = mMap.addMarker(new MarkerOptions().title(restaurantName).position(restaurantLatLng).icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_red_marker)));
+
+                restaurantHashMap.put(marker, restaurant);
+            }
+        }
     }
 }

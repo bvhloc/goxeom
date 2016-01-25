@@ -9,6 +9,4 @@ public final class Constant {
 
     public static final String TAB_POSTION = "TAB_POSTION";
     public static final String HISTORY_STATE = "HISTORY_STATE";
-
-    public static final String ORDER_FOOD_PICK_RESTAURANT_TITLE = "ORDER_FOOD_PICK_RESTAURANT_TITLE";
 }
