@@ -33,9 +33,9 @@ public class OrderFoodPickFoodPresenter {
         @SuppressLint("InflateParams")
         View header = inflater.inflate(R.layout.header_restaurant, null);
 
-        String name = new Hex().toString(extras.getString(Extras.RESTAURANT_NAME));
-        String address = new Hex().toString(extras.getString(Extras.RESTAURANT_ADDRESS));
-        String url = new Hex().toString(extras.getString(Extras.RESTAURANT_IMAGE));
+        String name = Hex.decode(extras.getString(Extras.RESTAURANT_NAME));
+        String address = Hex.decode(extras.getString(Extras.RESTAURANT_ADDRESS));
+        String url = Hex.decode(extras.getString(Extras.RESTAURANT_IMAGE));
 
         ((TextView)header.findViewById(R.id.tvName)).setText(name);
         ((TextView)header.findViewById(R.id.tvAddress)).setText(address);

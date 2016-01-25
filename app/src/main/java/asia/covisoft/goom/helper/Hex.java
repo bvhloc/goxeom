@@ -5,7 +5,7 @@ import java.math.BigInteger;
 
 public class Hex {
 
-    public String fromString(String str) {
+    public static String encode(String str) {
 
         byte[] bytes = new byte[0];
         try {
@@ -24,7 +24,7 @@ public class Hex {
         return hexString;
     }
 
-    public String toString(String hex) {
+    public static String decode(String hex) {
 
         if(hex.equals(""))
             return "";

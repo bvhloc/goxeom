@@ -76,14 +76,13 @@ public class OrderConfirmPresenter {
             @Override
             protected JSONObject doInBackground(Void... params) {
 
-                Hex hex = new Hex();
-                String addressFrom = hex.fromString(model.addressFrom);
-                String addressTo = hex.fromString(model.addressTo);
-                String detailsFrom = hex.fromString(model.detailsFrom);
-                String detailsTo = hex.fromString(model.detailsTo);
-                String contactNameFrom = hex.fromString(model.contactNameFrom);
-                String contactNameTo = hex.fromString(model.contactNameTo);
-                String items = hex.fromString(model.items);
+                String addressFrom = Hex.encode(model.addressFrom);
+                String addressTo = Hex.encode(model.addressTo);
+                String detailsFrom = Hex.encode(model.detailsFrom);
+                String detailsTo = Hex.encode(model.detailsTo);
+                String contactNameFrom = Hex.encode(model.contactNameFrom);
+                String contactNameTo = Hex.encode(model.contactNameTo);
+                String items = Hex.encode(model.items);
 
                 String URL = Constant.HOST +
                         "setcourier.php?usertoken=" + model.userToken +
@@ -156,10 +155,9 @@ public class OrderConfirmPresenter {
             @Override
             protected JSONObject doInBackground(Void... params) {
 
-                Hex hex = new Hex();
-                String addressFrom = hex.fromString(model.addressFrom);
-                String addressTo = hex.fromString(model.addressTo);
-                String detailsFrom = hex.fromString(model.detailsFrom);
+                String addressFrom = Hex.encode(model.addressFrom);
+                String addressTo = Hex.encode(model.addressTo);
+                String detailsFrom = Hex.encode(model.detailsFrom);
 
                 String URL = Constant.HOST +
                         "settransport.php?usertoken=" + model.userToken +
@@ -226,12 +224,11 @@ public class OrderConfirmPresenter {
             @Override
             protected JSONObject doInBackground(Void... params) {
 
-                Hex hex = new Hex();
-                String addressFrom = hex.fromString(model.addressFrom);
-                String addressTo = hex.fromString(model.addressTo);
-                String detailsFrom = hex.fromString(model.shopDetails);
-                String detailsTo = hex.fromString(model.locationDetails);
-                String items = hex.fromString(model.items);
+                String addressFrom = Hex.encode(model.addressFrom);
+                String addressTo = Hex.encode(model.addressTo);
+                String detailsFrom = Hex.encode(model.shopDetails);
+                String detailsTo = Hex.encode(model.locationDetails);
+                String items = Hex.encode(model.items);
 
                 String URL = Constant.HOST +
                         "setshopping.php?usertoken=" + model.userToken +

@@ -249,7 +249,7 @@ public class OrderFoodActivity extends BaseMapActivity implements OrderFoodView,
             restaurantHashMap = new HashMap<>();
             for (RestaurantList restaurant : restaurants) {
 
-                String restaurantName = new Hex().toString(restaurant.getRestaurantName());
+                String restaurantName = Hex.decode(restaurant.getRestaurantName());
                 LatLng restaurantLatLng = new LatLng(Double.valueOf(restaurant.getRestaurantLat()), Double.valueOf(restaurant.getRestaurantLong()));
                 Marker marker = mMap.addMarker(new MarkerOptions().title(restaurantName).position(restaurantLatLng).icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_red_marker)));
 

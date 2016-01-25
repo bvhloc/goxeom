@@ -200,7 +200,7 @@ public class SettingsProfileActivity extends BaseActivity implements SettingsPro
             model.newPassword = edtNewPassword.getText().toString();
             model.confirmPassword = edtConfirmPassword.getText().toString();
 
-            if (!new MD5().encrypt(model.currentPassword).equals(model.password)) {
+            if (!MD5.encrypt(model.currentPassword).equals(model.password)) {
 
                 edtCurrentPassword.setError(getString(R.string.activity_settings_profile_error_current_password_wrong));
                 edtCurrentPassword.requestFocus();
@@ -230,7 +230,7 @@ public class SettingsProfileActivity extends BaseActivity implements SettingsPro
                 return false;
             }
 
-            model.newPassword = new MD5().encrypt(model.newPassword);
+            model.newPassword = MD5.encrypt(model.newPassword);
 
         }else {
             model.newPassword = model.password;

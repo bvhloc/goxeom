@@ -43,7 +43,7 @@ public class SettingsSignupPresenter {
 
                 int result = 0;
                 final String URL = Constant.HOST + "signup.php?type=user&userid=" + params[0]
-                        + "&pass=" + new MD5().encrypt(params[1])
+                        + "&pass=" + MD5.encrypt(params[1])
                         + "&email=" + params[2]
                         + "&phonenumber=" + params[3];
                 try {

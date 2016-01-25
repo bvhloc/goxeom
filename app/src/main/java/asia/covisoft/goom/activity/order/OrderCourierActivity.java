@@ -169,7 +169,7 @@ public class OrderCourierActivity extends BaseMapActivity implements OrderCourie
             driverHashMap = new HashMap<>();
             for (Loadcourier driver : drivers) {
 
-                String driverFullName = new Hex().toString(driver.getFullName());
+                String driverFullName = Hex.decode(driver.getFullName());
                 LatLng driverLatLng = new LatLng(Double.valueOf(driver.getLatitude()), Double.valueOf(driver.getLongitude()));
                 Marker marker = mMap.addMarker(new MarkerOptions().title(driverFullName).position(driverLatLng).icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_location)));
 
@@ -191,7 +191,7 @@ public class OrderCourierActivity extends BaseMapActivity implements OrderCourie
 
         intent.putExtra(Extras.DRIVER_ID, driver.getDriverId());
 
-        intent.putExtra(Extras.DRIVER_NAME, new Hex().toString(driver.getFullName()));
+        intent.putExtra(Extras.DRIVER_NAME, Hex.decode(driver.getFullName()));
 
         Calendar birthCalendar = new DatetimeHelper().getCalendar(driver.getBirthDay(), DatetimeFormat.SERVER_DATE_FORMAT);
         int driverAge = Calendar.getInstance().get(Calendar.YEAR) - birthCalendar.get(Calendar.YEAR);

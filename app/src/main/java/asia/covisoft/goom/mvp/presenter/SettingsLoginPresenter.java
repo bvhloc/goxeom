@@ -49,7 +49,7 @@ public class SettingsLoginPresenter {
                 boolean result = false;
                 final String URL = Constant.HOST +
                         "login.php?userid=" + params[0] +
-                        "&pass=" + new MD5().encrypt(params[1]) +
+                        "&pass=" + MD5.encrypt(params[1]) +
                         "&lat=" + lat +
                         "&long=" + lng;
                 Log.d("sdb", URL);

@@ -61,7 +61,7 @@ public class SettingsProfilePresenter {
 
                     model.username = info.getUserName();
                     model.email = info.getEmail();
-                    model.fullname = new Hex().toString(info.getFullName());
+                    model.fullname = Hex.decode(info.getFullName());
                     model.phone = info.getPhoneNumber();
                     model.birthday = info.getBirthDay();
                     model.password = info.getPassWord();
@@ -103,7 +103,7 @@ public class SettingsProfilePresenter {
             @Override
             protected Integer doInBackground(Void... params) {
 
-                String fullname = new Hex().fromString(model.newFullname);
+                String fullname = Hex.encode(model.newFullname);
                 Calendar birthCal = new DatetimeHelper().getCalendar(model.newBirthday, DatetimeFormat.APP_DATE_FORMAT);
                 String birthday = new DatetimeHelper().getString(birthCal, DatetimeFormat.SERVER_DATE_FORMAT);
 

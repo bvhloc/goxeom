@@ -62,9 +62,9 @@ public class FoodTypeListAdapter extends ArrayAdapter<Category> {
             viewHolder = (ViewHolder) convertView.getTag();
         }
 
-        String name = new Hex().toString(item.getFoodTypeName());
+        String name = new Hex().decode(item.getFoodTypeName());
         viewHolder.tvName.setText(name);
-        String imageUrl = new Hex().toString(item.getFoodTypeImage());
+        String imageUrl = new Hex().decode(item.getFoodTypeImage());
         Picasso.with(context)
                 .load(Constant.HOST + imageUrl)
                 .into(viewHolder.imgvAvatar);

@@ -66,7 +66,7 @@ public class HistoryListAdapter extends ArrayAdapter<HistoryItem> {
         }
 
         viewHolder.tvDatetime.setText(item.getTradingDate());
-        viewHolder.tvAddress.setText(new Hex().toString(item.getTradingLocation()));
+        viewHolder.tvAddress.setText(new Hex().decode(item.getTradingLocation()));
         if (item.getTradingStatus().equals("cancel")) {
             viewHolder.imgvCanceled.setVisibility(View.VISIBLE);
         } else {

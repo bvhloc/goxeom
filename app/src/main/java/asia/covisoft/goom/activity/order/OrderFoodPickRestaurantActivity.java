@@ -41,7 +41,7 @@ public class OrderFoodPickRestaurantActivity extends BaseActivity implements Ada
         Bundle extras = getIntent().getExtras();
         String token = extras.getString(Extras.USER_TOKEN);
         String type = extras.getString(Extras.FOOD_TYPE);
-        String typeName = new Hex().toString(extras.getString(Extras.FOOD_TYPE_NAME));
+        String typeName = Hex.decode(extras.getString(Extras.FOOD_TYPE_NAME));
 
         tvTitle.setText(typeName);
 
