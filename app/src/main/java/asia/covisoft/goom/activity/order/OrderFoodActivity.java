@@ -137,7 +137,9 @@ public class OrderFoodActivity extends BaseMapActivity implements OrderFoodView,
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
+            position = position - gvRestarants.getNumColumns();
             Intent intent = new Intent(mContext, OrderFoodPickFoodActivity.class);
+            intent.putExtra(Extras.USER_TOKEN, userToken);
             intent.putExtra(Extras.RESTAURANT_ID, restaurantAdapter.getItem(position).getRestaurantId());
             intent.putExtra(Extras.RESTAURANT_NAME, restaurantAdapter.getItem(position).getRestaurantName());
             intent.putExtra(Extras.RESTAURANT_ADDRESS, restaurantAdapter.getItem(position).getRestaurantAddress());
@@ -151,6 +153,7 @@ public class OrderFoodActivity extends BaseMapActivity implements OrderFoodView,
 
         RestaurantList restaurant = restaurantHashMap.get(marker);
         Intent intent = new Intent(mContext, OrderFoodPickFoodActivity.class);
+        intent.putExtra(Extras.USER_TOKEN, userToken);
         intent.putExtra(Extras.RESTAURANT_ID, restaurant.getRestaurantId());
         intent.putExtra(Extras.RESTAURANT_NAME, restaurant.getRestaurantName());
         intent.putExtra(Extras.RESTAURANT_ADDRESS, restaurant.getRestaurantAddress());

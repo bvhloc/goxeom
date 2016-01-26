@@ -27,6 +27,7 @@ public class OrderFoodPickRestaurantActivity extends BaseActivity implements Ada
     private HeaderGridView gvRestarants;
     private RestaurantListAdapter restaurantAdapter;
     private OrderFoodPickRestaurantPresenter presenter;
+    private String userToken;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,19 +40,20 @@ public class OrderFoodPickRestaurantActivity extends BaseActivity implements Ada
         gvRestarants.setOnItemClickListener(this);
 
         Bundle extras = getIntent().getExtras();
-        String token = extras.getString(Extras.USER_TOKEN);
+        userToken = extras.getString(Extras.USER_TOKEN);
         String type = extras.getString(Extras.FOOD_TYPE);
         String typeName = Hex.decode(extras.getString(Extras.FOOD_TYPE_NAME));
 
         tvTitle.setText(typeName);
 
-        presenter.getRestaurants(token, type);
+        presenter.getRestaurants(userToken, type);
     }
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
         Intent intent = new Intent(mContext, OrderFoodPickFoodActivity.class);
+        intent.putExtra(Extras.USER_TOKEN, userToken);
         intent.putExtra(Extras.RESTAURANT_ID, restaurantAdapter.getItem(position).getRestaurantId());
         intent.putExtra(Extras.RESTAURANT_NAME, restaurantAdapter.getItem(position).getRestaurantName());
         intent.putExtra(Extras.RESTAURANT_ADDRESS, restaurantAdapter.getItem(position).getRestaurantAddress());

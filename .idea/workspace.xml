@@ -18,27 +18,22 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_LOG_LEVEL" value="DEBUG" />
-    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="sdb" />
+    <option name="TOOL_WINDOW_LOG_LEVEL" value="ERROR" />
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="No Filters" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="088085dc-62f0-4879-b31f-824ba160ac60" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/adapter/list/FoodTypeListAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/adapter/list/FoodTypeListAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/helper/Hex.java" afterPath="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/helper/Hex.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/adapter/list/HistoryListAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/adapter/list/HistoryListAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/helper/MD5.java" afterPath="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/helper/MD5.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/mvp/presenter/OrderConfirmPresenter.java" afterPath="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/mvp/presenter/OrderConfirmPresenter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/activity/order/OrderCourierActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/activity/order/OrderCourierActivity.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/adapter/list/FoodExpandableListAdapter.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/pojo/gson/FoodlistRoot.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/pojo/gson/MenulistRoot.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/activity/order/OrderFoodActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/activity/order/OrderFoodActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/activity/order/OrderFoodPickFoodActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/activity/order/OrderFoodPickFoodActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/mvp/presenter/OrderFoodPickFoodPresenter.java" afterPath="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/mvp/presenter/OrderFoodPickFoodPresenter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/mvp/view/OrderFoodPickFoodView.java" afterPath="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/mvp/view/OrderFoodPickFoodView.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/activity/order/OrderFoodPickRestaurantActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/activity/order/OrderFoodPickRestaurantActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/activity/order/OrderShoppingActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/activity/order/OrderShoppingActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/activity/order/OrderTransportActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/activity/order/OrderTransportActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/adapter/list/RestaurantListAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/adapter/list/RestaurantListAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/mvp/presenter/SettingsLoginPresenter.java" afterPath="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/mvp/presenter/SettingsLoginPresenter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/activity/settings/SettingsProfileActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/activity/settings/SettingsProfileActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/mvp/presenter/SettingsProfilePresenter.java" afterPath="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/mvp/presenter/SettingsProfilePresenter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/mvp/presenter/SettingsSignupPresenter.java" afterPath="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/mvp/presenter/SettingsSignupPresenter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_order_food_pick_food.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_order_food_pick_food.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="GoXeOm.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -65,7 +60,97 @@
     <favorites_list name="GoXeOm" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="OrderFoodPresenter.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/mvp/presenter/OrderFoodPresenter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="38" column="0" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="OrderFoodPickFoodActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/activity/order/OrderFoodPickFoodActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="78" column="36" selection-start-line="78" selection-start-column="36" selection-end-line="78" selection-end-column="36" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="OrderFoodActivity.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/activity/order/OrderFoodActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.23172906">
+              <caret line="139" column="33" selection-start-line="139" selection-start-column="33" selection-end-line="139" selection-end-column="33" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FoodExpandableListAdapter.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/adapter/list/FoodExpandableListAdapter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="103" column="46" selection-start-line="103" selection-start-column="46" selection-end-line="103" selection-end-column="46" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1243#1244#0" expanded="true" />
+                <element signature="e#1279#1280#0" expanded="true" />
+                <element signature="e#2415#2416#0" expanded="true" />
+                <element signature="e#2468#2469#0" expanded="true" />
+                <element signature="e#2516#2517#0" expanded="true" />
+                <element signature="e#2557#2558#0" expanded="true" />
+                <element signature="e#2620#2621#0" expanded="true" />
+                <element signature="e#2656#2657#0" expanded="true" />
+                <element signature="e#3505#3506#0" expanded="true" />
+                <element signature="e#3533#3534#0" expanded="true" />
+                <element signature="e#3625#3626#0" expanded="true" />
+                <element signature="e#3652#3653#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="list_item_food.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/list_item_food.xml">
+          <provider editor-type-id="android-designer">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-3.275862">
+              <caret line="14" column="8" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="8" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Extras.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/utils/Extras.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="20" column="59" selection-start-line="20" selection-start-column="59" selection-end-line="20" selection-end-column="59" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="OrderFoodPickFoodView.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/mvp/view/OrderFoodPickFoodView.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="13" column="9" selection-start-line="13" selection-start-column="9" selection-end-line="13" selection-end-column="9" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -2639,12 +2724,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/helper/ViewHelper.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/mvp/view/OrderTransportView.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/mvp/presenter/OrderTransportPresenter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/helper/NetworkClient.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/base/BaseMapReadyCallback.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/base/BaseMapActitivy.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/activity/order/OrderPickDriverActivity.java" />
         <option value="$PROJECT_DIR$/app/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/pojo/activeandroid/ProductComment.java" />
@@ -2674,22 +2753,28 @@
         <option value="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/mvp/view/OrderFoodPickRestaurantView.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/mvp/presenter/OrderFoodPickRestaurantPresenter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/utils/Constant.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/mvp/view/OrderFoodPickFoodView.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/utils/Extras.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/base/BaseMapActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/helper/MD5.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/helper/Hex.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/activity/order/OrderCourierActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/activity/order/OrderFoodActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/activity/order/OrderFoodPickRestaurantActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/activity/order/OrderShoppingActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/activity/order/OrderTransportActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/mvp/presenter/OrderConfirmPresenter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/mvp/presenter/OrderFoodPickFoodPresenter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/mvp/presenter/SettingsLoginPresenter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/mvp/presenter/SettingsSignupPresenter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/mvp/presenter/SettingsProfilePresenter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/activity/settings/SettingsProfileActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/activity/order/OrderFoodPickRestaurantActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/pojo/gson/MenulistRoot.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/adapter/list/FoodListAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/pojo/gson/FoodlistRoot.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_order_food_pick_food.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/mvp/view/OrderFoodPickFoodView.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/mvp/presenter/OrderFoodPickFoodPresenter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/activity/order/OrderFoodPickFoodActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/adapter/list/FoodExpandableListAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/activity/order/OrderFoodActivity.java" />
       </list>
     </option>
   </component>
@@ -2727,6 +2812,8 @@
     <panes>
       <pane id="PackagesPane" />
       <pane id="Scratches" />
+      <pane id="Scope" />
+      <pane id="ProjectPane" />
       <pane id="AndroidView">
         <subPane>
           <PATH>
@@ -2819,7 +2906,7 @@
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="mvp" />
+              <option name="myItemId" value="backpress" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -2841,18 +2928,38 @@
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="mvp" />
+              <option name="myItemId" value="activity" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GoXeOm" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="goom" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="activity" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="presenter" />
+              <option name="myItemId" value="order" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="ProjectPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -3092,12 +3199,14 @@
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22734627" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977462" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.11625148" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39976275" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977462" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2336892" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -3107,14 +3216,12 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24595469" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977462" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24595469" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.49228945" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22734627" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.11625148" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -3122,15 +3229,15 @@
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24595469" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977462" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977462" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -3143,8 +3250,8 @@
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977462" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25860023" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
@@ -3161,86 +3268,15 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="23" />
+      <option name="time" value="24" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_order_pick_location.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.827586">
-          <caret line="36" column="49" selection-start-line="36" selection-start-column="49" selection-end-line="36" selection-end-column="49" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-location/8.4.0/jars/classes.jar!/com/google/android/gms/location/places/Place.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.680315">
-          <caret line="14" column="17" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-location/8.4.0/jars/classes.jar!/com/google/android/gms/location/places/ui/zza.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.37637794">
-          <caret line="40" column="39" selection-start-line="40" selection-start-column="39" selection-end-line="40" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-location/8.4.0/jars/classes.jar!/com/google/android/gms/location/places/ui/PlaceAutocomplete.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.86771655">
-          <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/activity/order/OrderPickLocationActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="101" column="9" selection-start-line="101" selection-start-column="9" selection-end-line="101" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/activity/order/OrderConfirmActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.049557522">
-          <caret line="89" column="18" selection-start-line="89" selection-start-column="18" selection-end-line="89" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/mvp/presenter/OrderCourierPresenter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4283186">
-          <caret line="35" column="81" selection-start-line="35" selection-start-column="26" selection-end-line="35" selection-end-column="81" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Android/sdk/sources/android-23/java/lang/Object.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33274338">
-          <caret line="353" column="18" selection-start-line="353" selection-start-column="18" selection-end-line="353" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/helper/FragmentNavigator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="18" column="5" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#733#734#0" expanded="true" />
-            <element signature="e#769#770#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3270,9 +3306,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.22654867">
           <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3280,9 +3313,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6637168">
           <caret line="73" column="45" selection-start-line="73" selection-start-column="45" selection-end-line="73" selection-end-column="45" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3290,7 +3320,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.260177">
           <caret line="23" column="51" selection-start-line="23" selection-start-column="51" selection-end-line="23" selection-end-column="51" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3314,17 +3343,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.30481285">
           <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/mvp/presenter/OrderFoodPresenter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.09269162">
-          <caret line="38" column="0" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3332,7 +3350,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="382" column="9" selection-start-line="382" selection-start-column="9" selection-end-line="382" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3340,12 +3357,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.7112299">
           <caret line="21" column="5" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#415#431#0" expanded="true" />
-            <element signature="e#538#539#0" expanded="true" />
-            <element signature="e#575#576#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3353,19 +3364,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.27094474">
           <caret line="8" column="61" selection-start-line="8" selection-start-column="61" selection-end-line="8" selection-end-column="61" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/mvp/presenter/OrderFoodPickRestaurantPresenter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.338681">
-          <caret line="68" column="22" selection-start-line="68" selection-start-column="22" selection-end-line="68" selection-end-column="22" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3377,35 +3375,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/mvp/view/OrderFoodPickFoodView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.101604275">
-          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/utils/Extras.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.79679143">
-          <caret line="40" column="31" selection-start-line="40" selection-start-column="31" selection-end-line="40" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/activity/order/OrderFoodPickFoodActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.017825311">
-          <caret line="29" column="13" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/base/BaseActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.13547237">
           <caret line="7" column="22" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3413,7 +3386,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.13547237">
           <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3421,7 +3393,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.4402852">
           <caret line="15" column="5" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3445,7 +3416,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.23707666">
           <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3455,26 +3425,6 @@
           <caret line="171" column="40" selection-start-line="171" selection-start-column="40" selection-end-line="171" selection-end-column="40" />
           <folding>
             <element signature="method#onInfoUpdate#0;class#OrderCourierActivity#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/activity/order/OrderFoodActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="251" column="40" selection-start-line="251" selection-start-column="40" selection-end-line="251" selection-end-column="40" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/activity/order/OrderFoodPickRestaurantActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.8627451">
-          <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -3499,7 +3449,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.24777183">
           <caret line="225" column="0" selection-start-line="225" selection-start-column="0" selection-end-line="225" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3507,7 +3456,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="53" column="39" selection-start-line="53" selection-start-column="39" selection-end-line="53" selection-end-column="39" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3515,7 +3463,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="45" column="37" selection-start-line="45" selection-start-column="37" selection-end-line="45" selection-end-column="37" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3523,7 +3470,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.4064171">
           <caret line="232" column="32" selection-start-line="232" selection-start-column="32" selection-end-line="232" selection-end-column="32" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3531,15 +3477,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5080214">
           <caret line="105" column="34" selection-start-line="105" selection-start-column="34" selection-end-line="105" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/mvp/presenter/OrderFoodPickFoodPresenter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.39037433">
-          <caret line="37" column="21" selection-start-line="37" selection-start-column="21" selection-end-line="37" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3547,7 +3484,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.13547237">
           <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3555,7 +3491,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.033868093">
           <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3563,7 +3498,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.16934046">
           <caret line="27" column="13" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3571,7 +3505,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.16934046">
           <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3579,7 +3512,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-1.0320855">
           <caret line="48" column="24" selection-start-line="48" selection-start-column="24" selection-end-line="48" selection-end-column="24" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3595,7 +3527,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.82887703">
           <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3603,7 +3534,208 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.01604278">
           <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/mvp/presenter/OrderFoodPickRestaurantPresenter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7290553">
+          <caret line="74" column="5" selection-start-line="31" selection-start-column="4" selection-end-line="74" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/activity/order/OrderFoodPickRestaurantActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5365419">
+          <caret line="60" column="30" selection-start-line="54" selection-start-column="7" selection-end-line="60" selection-end-column="30" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/mvp/presenter/OrderFoodPresenter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="38" column="0" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/pojo/gson/MenulistRoot.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.39037433">
+          <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#356#366#0" expanded="false" />
+            <element signature="e#469#470#0" expanded="false" />
+            <element signature="e#500#501#0" expanded="false" />
+            <element signature="e#622#623#0" expanded="false" />
+            <element signature="e#662#663#0" expanded="false" />
+            <element signature="e#1508#1509#0" expanded="false" />
+            <element signature="e#1545#1546#0" expanded="false" />
+            <element signature="e#1676#1677#0" expanded="false" />
+            <element signature="e#1720#1721#0" expanded="false" />
+            <element signature="e#1837#1838#0" expanded="false" />
+            <element signature="e#1876#1877#0" expanded="false" />
+            <element signature="e#2015#2016#0" expanded="false" />
+            <element signature="e#2063#2064#0" expanded="false" />
+            <element signature="e#2188#2189#0" expanded="false" />
+            <element signature="e#2231#2232#0" expanded="false" />
+            <element signature="e#2386#2387#0" expanded="false" />
+            <element signature="e#2442#2443#0" expanded="false" />
+            <element signature="e#2563#2564#0" expanded="false" />
+            <element signature="e#2604#2605#0" expanded="false" />
+            <element signature="e#2752#2753#0" expanded="false" />
+            <element signature="e#2804#2805#0" expanded="false" />
+            <element signature="e#2923#2924#0" expanded="false" />
+            <element signature="e#2963#2964#0" expanded="false" />
+            <element signature="e#3106#3107#0" expanded="false" />
+            <element signature="e#3156#3157#0" expanded="false" />
+            <element signature="e#3273#3274#0" expanded="false" />
+            <element signature="e#3312#3313#0" expanded="false" />
+            <element signature="e#3451#3452#0" expanded="false" />
+            <element signature="e#3499#3500#0" expanded="false" />
+            <element signature="e#3620#3621#0" expanded="false" />
+            <element signature="e#3661#3662#0" expanded="false" />
+            <element signature="e#3808#3809#0" expanded="false" />
+            <element signature="e#3860#3861#0" expanded="false" />
+            <element signature="e#3977#3978#0" expanded="false" />
+            <element signature="e#4016#4017#0" expanded="false" />
+            <element signature="e#4155#4156#0" expanded="false" />
+            <element signature="e#4203#4204#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/adapter/list/FoodListAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.23707666">
+          <caret line="21" column="58" selection-start-line="21" selection-start-column="50" selection-end-line="21" selection-end-column="58" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#669#670#0" expanded="false" />
+            <element signature="e#704#705#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Android/sdk/platforms/android-23/data/res/layout/simple_expandable_list_item_1.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/list_item_food.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.275862">
+          <caret line="14" column="8" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_order_food_pick_food.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.71428573">
+          <caret line="32" column="41" selection-start-line="32" selection-start-column="41" selection-end-line="32" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/pojo/gson/FoodlistRoot.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334">
+          <caret line="32" column="17" selection-start-line="32" selection-start-column="17" selection-end-line="32" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/mvp/view/OrderFoodPickFoodView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="13" column="9" selection-start-line="13" selection-start-column="9" selection-end-line="13" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/mvp/presenter/OrderFoodPickFoodPresenter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.69518715">
+          <caret line="127" column="23" selection-start-line="127" selection-start-column="23" selection-end-line="127" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/utils/Extras.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="20" column="59" selection-start-line="20" selection-start-column="59" selection-end-line="20" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Android/sdk/platforms/android-23/data/res/layout/simple_expandable_list_item_2.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.75">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/adapter/list/FoodExpandableListAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="103" column="46" selection-start-line="103" selection-start-column="46" selection-end-line="103" selection-end-column="46" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1243#1244#0" expanded="true" />
+            <element signature="e#1279#1280#0" expanded="true" />
+            <element signature="e#2415#2416#0" expanded="true" />
+            <element signature="e#2468#2469#0" expanded="true" />
+            <element signature="e#2516#2517#0" expanded="true" />
+            <element signature="e#2557#2558#0" expanded="true" />
+            <element signature="e#2620#2621#0" expanded="true" />
+            <element signature="e#2656#2657#0" expanded="true" />
+            <element signature="e#3505#3506#0" expanded="true" />
+            <element signature="e#3533#3534#0" expanded="true" />
+            <element signature="e#3625#3626#0" expanded="true" />
+            <element signature="e#3652#3653#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/activity/order/OrderFoodPickFoodActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="78" column="36" selection-start-line="78" selection-start-column="36" selection-end-line="78" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/asia/covisoft/goom/activity/order/OrderFoodActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.23172906">
+          <caret line="139" column="33" selection-start-line="139" selection-start-column="33" selection-end-line="139" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
