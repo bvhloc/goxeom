@@ -11,7 +11,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.github.aakira.expandablelayout.ExpandableRelativeLayout;
+import com.bvhloc.expandablelayout.ExpandableRelativeLayout;
 
 import java.util.Calendar;
 

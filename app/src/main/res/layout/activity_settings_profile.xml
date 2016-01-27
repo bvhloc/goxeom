@@ -1,3 +1,4 @@
+<!--suppress ALL -->
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -127,7 +128,7 @@
                     android:drawableRight="@android:drawable/arrow_down_float"
                     android:drawablePadding="@dimen/activity_horizontal_margin"/>
 
-                <com.github.aakira.expandablelayout.ExpandableRelativeLayout
+                <com.bvhloc.expandablelayout.ExpandableRelativeLayout
                     android:id="@+id/elChangePassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -233,7 +234,7 @@
 
                     </LinearLayout>
 
-                </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
+                </com.bvhloc.expandablelayout.ExpandableRelativeLayout>
 
                 <Button
                     android:id="@+id/btnUpdate"
