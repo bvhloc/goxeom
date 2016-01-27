@@ -177,21 +177,29 @@ public class SettingsProfileActivity extends BaseActivity implements SettingsPro
             edtEmail.setError(getString(R.string.activity_settings_signup_error_email_empty));
             edtEmail.requestFocus();
             return false;
+        }else {
+            edtEmail.setError(null);
         }
         if (model.newPhone.isEmpty()) {
             edtPhone.setError(getString(R.string.activity_settings_signup_error_phone_empty));
             edtPhone.requestFocus();
             return false;
+        }else {
+            edtPhone.setError(null);
         }
         if (model.newPhone.length() > 11) {
             edtPhone.setError(getString(R.string.activity_settings_signup_error_phone_length));
             edtPhone.requestFocus();
             return false;
+        }else {
+            edtPhone.setError(null);
         }
         if (model.newBirthday.isEmpty()) {
             edtBirthday.setError(getString(R.string.activity_settings_profile_error_birthday_empty));
             edtBirthday.requestFocus();
             return false;
+        }else {
+            edtBirthday.setError(null);
         }
 
         if(elChangePassword.isExpanded()){
@@ -205,29 +213,39 @@ public class SettingsProfileActivity extends BaseActivity implements SettingsPro
                 edtCurrentPassword.setError(getString(R.string.activity_settings_profile_error_current_password_wrong));
                 edtCurrentPassword.requestFocus();
                 return false;
+            }else {
+                edtCurrentPassword.setError(null);
             }
             if (model.currentPassword.isEmpty()) {
 
                 edtCurrentPassword.setError(getString(R.string.activity_settings_profile_error_current_password_empty));
                 edtCurrentPassword.requestFocus();
                 return false;
+            }else {
+                edtCurrentPassword.setError(null);
             }
             if (model.newPassword.isEmpty()) {
 
                 edtNewPassword.setError(getString(R.string.activity_settings_profile_error_new_password_empty));
                 edtNewPassword.requestFocus();
                 return false;
+            }else {
+                edtNewPassword.setError(null);
             }
             if (model.confirmPassword.isEmpty()) {
 
                 edtConfirmPassword.setError(getString(R.string.activity_settings_profile_error_confirm_empty));
                 edtConfirmPassword.requestFocus();
                 return false;
+            }else {
+                edtConfirmPassword.setError(null);
             }
             if (!model.newPassword.equals(model.confirmPassword)) {
                 edtConfirmPassword.setError(getString(R.string.activity_settings_signup_error_confirm));
                 edtConfirmPassword.requestFocus();
                 return false;
+            }else {
+                edtConfirmPassword.setError(null);
             }
 
             model.newPassword = MD5.encrypt(model.newPassword);

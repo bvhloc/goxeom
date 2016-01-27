@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/imageButton"
             android:background="@android:color/transparent"
-            android:src="@drawable/ic_location_transparent" />
+            android:src="@drawable/ic_green_marker_transparent" />
 
         <LinearLayout
             android:orientation="vertical"

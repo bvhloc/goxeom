@@ -47,7 +47,7 @@
                     android:textStyle="bold" />
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/activity_horizontal_margin"
                     android:layout_marginRight="@dimen/activity_horizontal_margin"
@@ -55,36 +55,59 @@
                     android:paddingLeft="@dimen/activity_horizontal_margin"
                     android:paddingRight="@dimen/activity_horizontal_margin">
 
-                    <TextView
-                        android:id="@+id/tvAddressFrom"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                    <LinearLayout
                         android:layout_marginTop="10dp"
-                        android:drawableLeft="@drawable/ic_location_transparent"
-                        android:drawablePadding="10dp"
-                        android:drawableStart="@drawable/ic_location_transparent"
-                        android:gravity="center_vertical"
-                        android:text="150 Quang Trung, Go Vap, Ho Chi Minh, Phong 24, Lau 1, Toa nha Venus"
-                        android:textColor="@color/mBlackText"
-                        tools:ignore="HardcodedText" />
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        tools:ignore="UseCompoundDrawables">
+
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:src="@drawable/ic_green_marker_transparent"
+                            android:layout_gravity="bottom"
+                            tools:ignore="ContentDescription" />
+
+                        <TextView
+                            android:id="@+id/tvAddressFrom"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="150 Quang Trung, Go Vap, Ho Chi Minh, Phong 24, Lau 1, Toa nha Venus"
+                            android:textColor="@color/mBlackText"
+                            tools:ignore="HardcodedText" />
+
+                    </LinearLayout>
 
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/line_break" />
+                        android:src="@drawable/line_break"
+                        tools:ignore="ContentDescription" />
 
-                    <TextView
-                        android:id="@+id/tvAddressTo"
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="10dp"
-                        android:drawableLeft="@drawable/ic_location_transparent"
-                        android:drawablePadding="10dp"
-                        android:drawableStart="@drawable/ic_location_transparent"
-                        android:gravity="center_vertical"
-                        android:text="20 Dong Khoi, Quan 1, Ho Chi Minh, Phong 2, Tang 8, Toa nha Anna"
-                        android:textColor="@color/mBlackText"
-                        tools:ignore="HardcodedText" />
+                        tools:ignore="UseCompoundDrawables">
+
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:src="@drawable/ic_green_marker_transparent"
+                            android:layout_gravity="top"
+                            tools:ignore="ContentDescription" />
+
+                        <TextView
+                            android:id="@+id/tvAddressTo"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="20 Dong Khoi, Quan 1, Ho Chi Minh, Phong 2, Tang 8, Toa nha Anna"
+                            android:textColor="@color/mBlackText"
+                            tools:ignore="HardcodedText" />
+
+                    </LinearLayout>
 
                 </LinearLayout>
 

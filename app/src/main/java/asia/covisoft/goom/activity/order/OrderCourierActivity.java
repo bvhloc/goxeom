@@ -171,7 +171,7 @@ public class OrderCourierActivity extends BaseMapActivity implements OrderCourie
 
                 String driverFullName = Hex.decode(driver.getFullName());
                 LatLng driverLatLng = new LatLng(Double.valueOf(driver.getLatitude()), Double.valueOf(driver.getLongitude()));
-                Marker marker = mMap.addMarker(new MarkerOptions().title(driverFullName).position(driverLatLng).icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_location)));
+                Marker marker = mMap.addMarker(new MarkerOptions().title(driverFullName).position(driverLatLng).icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_green_marker_filled)));
 
                 driverHashMap.put(marker, driver);
             }

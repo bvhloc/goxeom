@@ -83,7 +83,7 @@ public class OrderPickDriverActivity extends BaseMapActivity implements OrderPic
         LatLng driverLatLng = getIntent().getParcelableExtra(Extras.DRIVER_LATLNG);
         // Check if we were successful in obtaining the map.
         if (mMap != null) {
-            mMap.addMarker(new MarkerOptions().position(driverLatLng).icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_location)));
+            mMap.addMarker(new MarkerOptions().position(driverLatLng).icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_green_marker_filled)));
             mMap.moveCamera(CameraUpdateFactory.newLatLng(driverLatLng));
         }
     }

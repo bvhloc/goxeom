@@ -3,6 +3,7 @@ package asia.covisoft.goom;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
@@ -32,6 +33,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     private TabFragment tabFragment;
     private SharedPreferences loginPreferences;
+    private SharedPreferences appPreferences;
 
     private ProgressDialog progressDialog;
 
@@ -53,8 +55,39 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 //            tabFragment = (TabFragment) getSupportFragmentManager().getFragments().get(0);
 //        }
 
-        progressDialog = ProgressDialog.show(MainActivity.this, "", getString(R.string.dialog_loading));
-        initMap();
+
+        appPreferences = getSharedPreferences(Preferences.APP_PREFERENCES, MODE_PRIVATE);
+        if (validGmsVersion()) {
+            initMap();
+        } else {
+            appPreferences.edit()
+                    .putBoolean(Preferences.APP_PREFERENCES_INVALID_GMS, true)
+                    .apply();
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (appPreferences.getBoolean(Preferences.APP_PREFERENCES_INVALID_GMS, false)) {
+            if (validGmsVersion()) {
+                initMap();
+                appPreferences.edit()
+                        .putBoolean(Preferences.APP_PREFERENCES_INVALID_GMS, false)
+                        .apply();
+            }
+        }
+    }
+
+    private boolean validGmsVersion() {
+
+        int gmsVersion = 0;
+        try {
+            gmsVersion = getPackageManager().getPackageInfo("com.google.android.gms", 0).versionCode;
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+        return gmsVersion >= getResources().getInteger(R.integer.google_play_services_version);
     }
 
     @SuppressWarnings("ResourceType")
@@ -72,6 +105,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     private void initMap() {
 
+        progressDialog = ProgressDialog.show(MainActivity.this, "", getString(R.string.dialog_loading));
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.mMap);
         mapFragment.getMapAsync(this);
@@ -141,6 +175,10 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                     loginPreferences.edit()
                             .putString(Preferences.LOGIN_PREFERENCES_USER_TOKEN, token)
                             .apply();
+                } else {
+                    loginPreferences.edit()
+                            .putString(Preferences.LOGIN_PREFERENCES_USER_TOKEN, "")
+                            .apply();
                 }
                 int tabPos = getIntent().getIntExtra(Constant.TAB_POSTION, 1);
                 initScreen(tabPos);
@@ -162,13 +200,16 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     @Override
     public void onBackPressed() {
 
-        if (!tabFragment.onBackPressed()) {
-            // container Fragment or its associates couldn't handle the back pressed task
-            // delegating the task to super class
-            super.onBackPressed();
+        if (tabFragment != null) {
+            if (!tabFragment.onBackPressed()) {
+                // container Fragment or its associates couldn't handle the back pressed task
+                // delegating the task to super class
+                super.onBackPressed();
+            }
+        }else {
+            MainActivity.this.finish();
         }
     }
-
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {

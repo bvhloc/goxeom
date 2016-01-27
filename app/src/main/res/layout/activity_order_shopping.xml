@@ -108,7 +108,7 @@
                         android:layout_gravity="center_vertical"
                         android:layout_margin="5dp"
                         android:contentDescription="@string/fragment_settings_signup"
-                        android:src="@drawable/ic_location_transparent" />
+                        android:src="@drawable/ic_green_marker_transparent" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -241,7 +241,7 @@
                         android:layout_gravity="center_vertical"
                         android:layout_margin="5dp"
                         android:contentDescription="@string/fragment_settings_signup"
-                        android:src="@drawable/ic_monney" />
+                        android:src="@drawable/ic_money" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -294,7 +294,7 @@
                         android:layout_gravity="center_vertical"
                         android:layout_margin="5dp"
                         android:contentDescription="@string/fragment_settings_signup"
-                        android:src="@drawable/ic_location_transparent" />
+                        android:src="@drawable/ic_green_marker_transparent" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
