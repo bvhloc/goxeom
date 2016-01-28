@@ -64,11 +64,11 @@ public class RestaurantListAdapter extends ArrayAdapter<RestaurantList> {
             viewHolder = (ViewHolder) convertView.getTag();
         }
 
-        String name = new Hex().decode(item.getRestaurantName());
+        String name = Hex.decode(item.getRestaurantName());
         viewHolder.tvName.setText(name);
-        String address = new Hex().decode(item.getRestaurantAddress());
+        String address = Hex.decode(item.getRestaurantAddress());
         viewHolder.tvAddress.setText(address);
-        String imageUrl = new Hex().decode(item.getRestaurantImage());
+        String imageUrl = Hex.decode(item.getRestaurantImage());
         Picasso.with(context)
                 .load(Constant.HOST + imageUrl)
                 .into(viewHolder.imgvAvatar);

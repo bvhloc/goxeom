@@ -1,7 +1,9 @@
 package asia.covisoft.goom.adapter.list;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Typeface;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,7 +25,7 @@ public class FoodExpandableListAdapter extends BaseExpandableListAdapter {
     private HashMap<String, List<Foodlist>> childs;
 
     public FoodExpandableListAdapter(Context context, List<String> groups,
-                                 HashMap<String, List<Foodlist>> childs) {
+                                     HashMap<String, List<Foodlist>> childs) {
         this.context = context;
         this.groups = groups;
         this.childs = childs;
@@ -40,28 +42,41 @@ public class FoodExpandableListAdapter extends BaseExpandableListAdapter {
         return childPosition;
     }
 
+    private class ChildViewHolder {
+
+        TextView tvName;
+        TextView tvPrice;
+    }
+
+    @SuppressLint("InflateParams")
     @Override
     public View getChildView(int groupPosition, final int childPosition,
                              boolean isLastChild, View convertView, ViewGroup parent) {
 
         Foodlist child = (Foodlist) getChild(groupPosition, childPosition);
 
+        ChildViewHolder childViewHolder;
         if (convertView == null) {
-            LayoutInflater infalInflater = (LayoutInflater) this.context
-                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = infalInflater.inflate(R.layout.list_item_food, null);
-        }
+            convertView = LayoutInflater.from(context)
+                    .inflate(R.layout.list_item_food, parent, false);
 
-        TextView tvName = (TextView) convertView
-                .findViewById(R.id.tvName);
-        TextView tvPrice = (TextView) convertView
-                .findViewById(R.id.tvPrice);
+            childViewHolder = new ChildViewHolder();
+
+            childViewHolder.tvName = (TextView) convertView
+                    .findViewById(R.id.tvName);
+            childViewHolder.tvPrice = (TextView) convertView
+                    .findViewById(R.id.tvPrice);
+
+            convertView.setTag(childViewHolder);
+        } else {
+            childViewHolder = (ChildViewHolder) convertView.getTag();
+        }
 
         String name = Hex.decode(child.getFoodName());
         String price = child.getFoodCost();
 
-        tvName.setText(name);
-        tvPrice.setText(price);
+        childViewHolder.tvName.setText(name);
+        childViewHolder.tvPrice.setText(price);
 
         return convertView;
     }
@@ -87,23 +102,35 @@ public class FoodExpandableListAdapter extends BaseExpandableListAdapter {
         return groupPosition;
     }
 
+    private class GroupViewHolder {
+
+        TextView tvTitle;
+    }
+
     @Override
     public View getGroupView(int groupPosition, boolean isExpanded,
                              View convertView, ViewGroup parent) {
-        String headerTitle = (String) getGroup(groupPosition);
+        String title = (String) getGroup(groupPosition);
+
+        GroupViewHolder groupViewHolder;
         if (convertView == null) {
-            LayoutInflater infalInflater = (LayoutInflater) this.context
-                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = infalInflater.inflate(android.R.layout.simple_expandable_list_item_1, null);
+            convertView = LayoutInflater.from(context)
+                    .inflate(android.R.layout.simple_expandable_list_item_1, null);
+
+            groupViewHolder = new GroupViewHolder();
+
+            groupViewHolder.tvTitle = (TextView) convertView.findViewById(android.R.id.text1);
+            groupViewHolder.tvTitle.setTypeface(null, Typeface.BOLD);
+            groupViewHolder.tvTitle.setTextColor(ContextCompat.getColor(context, R.color.mDarkGreen));
+
+            convertView.setTag(groupViewHolder);
+        }else {
+            groupViewHolder = (GroupViewHolder) convertView.getTag();
         }
 
-        TextView lblListHeader = (TextView) convertView
-                .findViewById(android.R.id.text1);
-        lblListHeader.setTypeface(null, Typeface.BOLD);
+        title = Hex.decode(title);
 
-        headerTitle = Hex.decode(headerTitle);
-
-        lblListHeader.setText(headerTitle);
+        groupViewHolder.tvTitle.setText(title);
 
         return convertView;
     }

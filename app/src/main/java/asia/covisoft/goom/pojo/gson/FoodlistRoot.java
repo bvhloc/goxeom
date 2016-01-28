@@ -222,5 +222,24 @@ public class FoodlistRoot {
             this.menuName = menuName;
         }
 
+
+        private int quatity;
+        private String note;
+
+        public int getQuatity() {
+            return quatity;
+        }
+
+        public void setQuatity(int quatity) {
+            this.quatity = quatity;
+        }
+
+        public String getNote() {
+            return note;
+        }
+
+        public void setNote(String note) {
+            this.note = note;
+        }
     }
 }

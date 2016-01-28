@@ -9,6 +9,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
@@ -111,14 +112,26 @@ public class OrderFoodActivity extends BaseMapActivity implements OrderFoodView,
         initView();
 
         lvFoodType.setOnItemClickListener(lvFoodTypeListener);
+        gvRestarants.setOnItemClickListener(gvRestaurantsListener);
+        initGridHeader();
+
+        initMap();
+    }
+
+    private void initGridHeader(){
 
         LayoutInflater inflater = getLayoutInflater();
         @SuppressLint("InflateParams")
         View header = inflater.inflate(R.layout.header_map, null);
-        gvRestarants.addHeaderView(header);
-        gvRestarants.setOnItemClickListener(gvRestaurantsListener);
 
-        initMap();
+        DisplayMetrics displaymetrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
+        int screenHeight = displaymetrics.heightPixels;
+
+        header.setLayoutParams(new LinearLayout
+                .LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, screenHeight * 40 / 100));
+
+        gvRestarants.addHeaderView(header);
     }
 
     private AdapterView.OnItemClickListener lvFoodTypeListener = new AdapterView.OnItemClickListener() {

@@ -12,9 +12,6 @@ import java.util.List;
 import asia.covisoft.goom.R;
 import asia.covisoft.goom.pojo.activeandroid.LocationHistory;
 
-/**
- * Created by Covisoft on 26/11/2015.
- */
 public class LocationHistoryListAdapter extends ArrayAdapter<LocationHistory> {
 
     public Context context;

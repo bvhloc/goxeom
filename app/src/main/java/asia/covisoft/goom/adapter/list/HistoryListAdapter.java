@@ -14,9 +14,6 @@ import asia.covisoft.goom.R;
 import asia.covisoft.goom.helper.Hex;
 import asia.covisoft.goom.pojo.HistoryItem;
 
-/**
- * Created by Covisoft on 23/11/2015.
- */
 public class HistoryListAdapter extends ArrayAdapter<HistoryItem> {
 
     public Context context;
@@ -52,7 +49,7 @@ public class HistoryListAdapter extends ArrayAdapter<HistoryItem> {
         final ViewHolder viewHolder;
         if (convertView == null) {
             viewHolder = new ViewHolder();
-            LayoutInflater inflater = LayoutInflater.from(getContext());
+            LayoutInflater inflater = LayoutInflater.from(context);
             convertView = inflater.inflate(resId, parent, false);
 
             viewHolder.tvDatetime = (TextView) convertView.findViewById(R.id.tvDatetime);
@@ -66,7 +63,7 @@ public class HistoryListAdapter extends ArrayAdapter<HistoryItem> {
         }
 
         viewHolder.tvDatetime.setText(item.getTradingDate());
-        viewHolder.tvAddress.setText(new Hex().decode(item.getTradingLocation()));
+        viewHolder.tvAddress.setText( Hex.decode(item.getTradingLocation()));
         if (item.getTradingStatus().equals("cancel")) {
             viewHolder.imgvCanceled.setVisibility(View.VISIBLE);
         } else {
