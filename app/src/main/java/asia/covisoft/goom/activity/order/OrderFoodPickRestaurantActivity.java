@@ -13,7 +13,7 @@ import java.util.List;
 import asia.covisoft.goom.R;
 import asia.covisoft.goom.adapter.list.RestaurantListAdapter;
 import asia.covisoft.goom.base.BaseActivity;
-import asia.covisoft.goom.customview.HeaderGridView;
+import asia.covisoft.goom.widget.HeaderGridView;
 import asia.covisoft.goom.helper.Hex;
 import asia.covisoft.goom.mvp.presenter.OrderFoodPickRestaurantPresenter;
 import asia.covisoft.goom.mvp.view.OrderFoodPickRestaurantView;

@@ -12,9 +12,8 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import asia.covisoft.goom.base.BaseActivity;
-import asia.covisoft.goom.utils.Constant;
 import asia.covisoft.goom.R;
-import asia.covisoft.goom.customview.WorkaroundMapFragment;
+import asia.covisoft.goom.widget.WorkaroundMapFragment;
 import asia.covisoft.goom.mvp.presenter.HistoryDetailsPresenter;
 import asia.covisoft.goom.mvp.view.HistoryDetailsView;
 

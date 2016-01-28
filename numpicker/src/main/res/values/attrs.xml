@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+	<declare-styleable name="NumberPicker">
+		<attr name="rangeStart" format="integer|reference" />
+		<attr name="rangeEnd" format="integer|reference" />
+		<attr name="speed" format="integer|reference" />
+		<attr name="current" format="integer|reference" />
+		<attr name="displayedValues" format="reference" />
+		<attr name="android:orientation" />
+
+		<attr name="numVeticalPadding" format="dimension" />
+		<attr name="numHorizontalPadding" format="dimension" />
+		<attr name="numSize" format="dimension" />
+		<attr name="numBackground" format="reference" />
+		<attr name="incrementDrawable" format="reference" />
+		<attr name="decrementDrawable" format="reference" />
+		<attr name="keyboardInput" format="boolean" />
+		<attr name="numColor" format="color" />
+	</declare-styleable>
+
+</resources>

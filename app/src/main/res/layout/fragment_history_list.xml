@@ -22,7 +22,7 @@
 
         <View style="@style/Divider"/>
 
-        <asia.covisoft.goom.customview.segmented.SegmentedRadioGroup
+        <asia.covisoft.goom.widget.segmented.SegmentedRadioGroup
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -59,7 +59,7 @@
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="@color/mGreen" />
 
-        </asia.covisoft.goom.customview.segmented.SegmentedRadioGroup>
+        </asia.covisoft.goom.widget.segmented.SegmentedRadioGroup>
 
         <ListView
             android:layout_width="wrap_content"

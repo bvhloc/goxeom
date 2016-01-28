@@ -17,7 +17,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import asia.covisoft.goom.R;
 import asia.covisoft.goom.base.BaseMapActivity;
-import asia.covisoft.goom.customview.WorkaroundMapFragment;
+import asia.covisoft.goom.widget.WorkaroundMapFragment;
 import asia.covisoft.goom.mvp.model.OrderPickDriverModel;
 import asia.covisoft.goom.mvp.presenter.OrderPickDriverPresenter;
 import asia.covisoft.goom.mvp.view.OrderPickDriverView;

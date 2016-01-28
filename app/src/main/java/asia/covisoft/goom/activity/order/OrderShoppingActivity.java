@@ -25,7 +25,7 @@ import java.util.List;
 
 import asia.covisoft.goom.R;
 import asia.covisoft.goom.base.BaseMapActivity;
-import asia.covisoft.goom.customview.WorkaroundMapFragment;
+import asia.covisoft.goom.widget.WorkaroundMapFragment;
 import asia.covisoft.goom.helper.DatetimeHelper;
 import asia.covisoft.goom.helper.GPSTracker;
 import asia.covisoft.goom.helper.Hex;
