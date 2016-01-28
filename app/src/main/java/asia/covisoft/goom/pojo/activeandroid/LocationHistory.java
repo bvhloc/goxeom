@@ -20,11 +20,11 @@ public class LocationHistory extends Model {
 
     public final static String COL_LAT = "COL_LAT";
     @Column(name = COL_LAT)
-    private double lat;
+    private String lat;
 
     public final static String COL_LNG = "COL_LNG";
     @Column(name = COL_LNG)
-    private double lng;
+    private String lng;
 
     public final static String COL_DETAILS = "COL_DETAILS";
     @Column(name = COL_DETAILS)
@@ -46,19 +46,19 @@ public class LocationHistory extends Model {
         this.address = address;
     }
 
-    public double getLat() {
+    public String getLat() {
         return lat;
     }
 
-    public void setLat(double lat) {
+    public void setLat(String lat) {
         this.lat = lat;
     }
 
-    public double getLng() {
+    public String getLng() {
         return lng;
     }
 
-    public void setLng(double lng) {
+    public void setLng(String lng) {
         this.lng = lng;
     }
 

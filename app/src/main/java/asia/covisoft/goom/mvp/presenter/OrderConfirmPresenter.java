@@ -41,8 +41,8 @@ public class OrderConfirmPresenter {
         From query = new Select()
                 .from(LocationHistory.class)
                 .where(LocationHistory.COL_ADDRESS + " = '" + address +
-                        "' and " + LocationHistory.COL_LAT + " = " + lat +
-                        " and " + LocationHistory.COL_LNG + " = " + lng);
+                        "' and " + LocationHistory.COL_LAT + " = '" + lat +
+                        "' and " + LocationHistory.COL_LNG + " = '" + lng + "'");
         int count = query.count();
         if (!(count > 0)) {
             LocationHistory history = new LocationHistory();
@@ -50,8 +50,8 @@ public class OrderConfirmPresenter {
                     .getString(Calendar.getInstance(), DatetimeFormat.APP_HISTORY_DATETIME_FORMAT);
             history.setDatetime(datetime);
             history.setAddress(address);
-            history.setLat(lat);
-            history.setLng(lng);
+            history.setLat(String.valueOf(lat));
+            history.setLng(String.valueOf(lng));
             history.save();
         }
     }

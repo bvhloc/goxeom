@@ -53,7 +53,9 @@ public class OrderPickLocationActivity extends BaseActivity implements AdapterVi
 
         Intent data = new Intent();
         data.putExtra(Extras.PICKED_ADDRESS, item.getAddress());
-        LatLng latlng = new LatLng(item.getLat(), item.getLng());
+        double lat = Double.parseDouble(item.getLat());
+        double lng = Double.parseDouble(item.getLng());
+        LatLng latlng = new LatLng(lat, lng);
         data.putExtra(Extras.PICKED_LATLNG, latlng);
         this.setResult(Activity.RESULT_OK, data);
         this.finish();

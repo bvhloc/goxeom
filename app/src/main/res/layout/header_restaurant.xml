@@ -20,9 +20,9 @@
         android:weightSum="1">
 
         <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/imageButton"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:scaleType="fitCenter"
             android:background="@android:color/transparent"
             android:src="@drawable/ic_green_marker_transparent" />
 
@@ -53,9 +53,10 @@
         </LinearLayout>
 
         <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/imageButton2"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:id="@+id/btnCall"
+            android:scaleType="fitCenter"
             android:background="@android:color/transparent"
             android:src="@drawable/ic_call"
             android:layout_gravity="bottom"/>

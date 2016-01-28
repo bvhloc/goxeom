@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ExpandableListView;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -15,7 +14,6 @@ import asia.covisoft.goom.adapter.list.FoodExpandableListAdapter;
 import asia.covisoft.goom.base.BaseActivity;
 import asia.covisoft.goom.mvp.presenter.OrderFoodPickFoodPresenter;
 import asia.covisoft.goom.mvp.view.OrderFoodPickFoodView;
-import asia.covisoft.goom.pojo.FoodItem;
 import asia.covisoft.goom.pojo.gson.FoodlistRoot;
 import asia.covisoft.goom.utils.Extras;
 
@@ -77,30 +75,5 @@ public class OrderFoodPickFoodActivity extends BaseActivity implements OrderFood
 
         mAdapter = new FoodExpandableListAdapter(mContext, groups, childs);
         lvFood.setAdapter(mAdapter);
-    }
-
-
-    private ArrayList<FoodItem> dataSet() {
-        ArrayList<FoodItem> list = new ArrayList<>();
-        list.add(new FoodItem("Com Ga Hai Nam", "50.000"));
-        list.add(new FoodItem("Com Ga Hai Nam", "50.000"));
-        list.add(new FoodItem("Com Ga Hai Nam", "50.000"));
-        list.add(new FoodItem("Com Ga Hai Nam", "50.000"));
-        list.add(new FoodItem("Com Ga Hai Nam", "50.000"));
-        list.add(new FoodItem("Com Ga Hai Nam", "50.000"));
-        list.add(new FoodItem("Com Ga Hai Nam", "50.000"));
-        list.add(new FoodItem("Com Ga Hai Nam", "50.000"));
-        list.add(new FoodItem("Com Ga Hai Nam", "50.000"));
-        list.add(new FoodItem("Com Ga Hai Nam", "50.000"));
-        list.add(new FoodItem("Com Ga Hai Nam", "50.000"));
-        list.add(new FoodItem("Com Ga Hai Nam", "50.000"));
-        list.add(new FoodItem("Com Ga Hai Nam", "50.000"));
-        list.add(new FoodItem("Com Ga Hai Nam", "50.000"));
-        list.add(new FoodItem("Com Ga Hai Nam", "50.000"));
-        list.add(new FoodItem("Com Ga Hai Nam", "50.000"));
-        list.add(new FoodItem("Com Ga Hai Nam", "50.000"));
-        list.add(new FoodItem("Com Ga Hai Nam", "50.000"));
-        list.add(new FoodItem("Com Ga Hai Nam", "50.000"));
-        return list;
     }
 }
