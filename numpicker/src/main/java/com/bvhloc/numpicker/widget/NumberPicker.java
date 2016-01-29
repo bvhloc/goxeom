@@ -102,7 +102,7 @@ public class NumberPicker extends LinearLayout implements OnClickListener,
     private int mPrevious;
     private OnChangedListener mListener;
     private Formatter mFormatter;
-    private long mSpeed = 50;
+    private long mSpeed = 80;
 
     private Drawable mNumBackground;
     private Drawable mIncrementDrawable;
@@ -211,7 +211,6 @@ public class NumberPicker extends LinearLayout implements OnClickListener,
                 vertical = !"horizontal".equals(orientation);
             }
         }
-
         // set a wrong orientation so our own orientation method will perform changes
         super.setOrientation(!vertical ? VERTICAL : HORIZONTAL);
         setOrientation(vertical ? VERTICAL : HORIZONTAL);
@@ -233,10 +232,10 @@ public class NumberPicker extends LinearLayout implements OnClickListener,
         mIncrementButton.setScaleType(ImageView.ScaleType.FIT_CENTER);
         mDecrementButton.setScaleType(ImageView.ScaleType.FIT_CENTER);
 
-        if(mIncrementDrawable != null){
+        if (mIncrementDrawable != null) {
             mIncrementButton.setImageDrawable(mIncrementDrawable);
         }
-        if(mDecrementDrawable != null){
+        if (mDecrementDrawable != null) {
             mDecrementButton.setImageDrawable(mDecrementDrawable);
         }
 
@@ -255,7 +254,7 @@ public class NumberPicker extends LinearLayout implements OnClickListener,
         } else {
             mText.setBackground(ContextCompat.getDrawable(context, android.R.drawable.edit_text));
         }
-        if(!mKeyboardInput){
+        if (!mKeyboardInput) {
             mText.setEnabled(false);
         }
         mText.setTextColor(mNumColor);
