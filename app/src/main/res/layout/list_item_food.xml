@@ -39,6 +39,7 @@
         android:gravity="center">
 
         <com.bvhloc.numpicker.widget.NumberPicker
+            android:id="@+id/numPicker"
             android:orientation="horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -49,11 +50,12 @@
             app:keyboardInput="false"/>
 
         <TextView
+            android:id="@+id/tvAddNote"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="@string/lowcase_addnote"
-            android:textColor="@color/mBlackText"/>
+            android:textColor="@color/mDarkGreen"/>
 
     </LinearLayout>
 

@@ -12,6 +12,8 @@
 
     <string name="snackbar_nodrivernearby">No driver near by</string>
 
+    <string name="colon_driver">Driver:</string>
+
     <string name="upcase_pick_your_service">PICK YOUR SERVICE</string>
     <string name="upcase_submit">SUBMIT</string>
     <string name="upcase_next">NEXT</string>
@@ -39,10 +41,10 @@
     <string name="upcase_inprocess">INPROCESS</string>
     <string name="upcase_completed">COMPLETED</string>
     <string name="upcase_uselocation">USE LOCATION</string>
+    <string name="upcase_update">UPDATE</string>
 
     <string name="lowcase_confirm">Confirm</string>
     <string name="lowcase_ok">Ok</string>
-
     <string name="lowcase_your_location">Your Location</string>
     <string name="lowcase_search">Search</string>
     <string name="lowcase_total">Total</string>
@@ -64,6 +66,19 @@
     <string name="lowcase_username">Username</string>
     <string name="lowcase_showpassword">Show Password</string>
     <string name="lowcase_cancelbooking">Cancel Booking</string>
+    <string name="lowcase_clear">Clear</string>
+    <string name="lowcase_note">Note</string>
+    <string name="lowcase_login">Login</string>
+    <string name="lowcase_signup">Sign Up</string>
+    <string name="lowcase_cancel">Cancel</string>
+    <string name="lowcase_profile">Profile</string>
+    <string name="lowcase_nopickeddriver">No Picked Driver</string>
+    <string name="lowcase_changepassword">Change Password</string>
+    <string name="lowcase_fullname">Fullname</string>
+    <string name="lowcase_yes">Yes</string>
+    <string name="lowcase_no">No</string>
+    <string name="lowcase_save">Save</string>
+    <string name="lowcase_birthday">Birthday</string>
 
     <string name="settings_tab_title">Settings</string>
     <string name="history_tab_title">History</string>
@@ -181,38 +196,19 @@
     <string name="activity_settings_login_error_wrongpassword">Wrong password</string>
     <string name="activity_settings_login_error_username_notexist">This username isn\'t exist</string>
     <string name="dialog_pleaseloginsignup">Please login or signup</string>
-    <string name="lowcase_login">Login</string>
-    <string name="lowcase_signup">Sign Up</string>
-    <string name="lowcase_cancel">Cancel</string>
 
-<!-- TODO: Remove or change this placeholder text -->
-    <string name="lowcase_profile">Profile</string>
-
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
     <string name="activity_settings_profile_logoutaccount">Logout Account</string>
-    <string name="upcase_update">UPDATE</string>
     <string name="activity_settings_profile_currentpassword">Current Password</string>
     <string name="activity_settings_profile_newpassword">New Password</string>
     <string name="activity_settings_profile_confirmpassword">Confirm Password</string>
-    <string name="lowcase_fullname">Fullname</string>
     <string name="dialog_logout">Are you logging out?</string>
-    <string name="lowcase_yes">Yes</string>
-    <string name="lowcase_no">No</string>
-    <string name="lowcase_save">Save</string>
-    <string name="lowcase_birthday">Birthday</string>
     <string name="toast_updatesuccess">Update successfully</string>
     <string name="activity_settings_profile_error_birthday_empty">Please insert birthday</string>
-    <string name="lowcase_changepassword">Change Password</string>
     <string name="activity_settings_profile_error_current_password_empty">Please insert current password</string>
     <string name="activity_settings_profile_error_new_password_empty">Please insert new password</string>
     <string name="activity_settings_profile_error_confirm_empty">Please confirm new password</string>
     <string name="activity_settings_profile_error_current_password_wrong">Wrong password</string>
 
-<!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="colon_driver">Driver:</string>
-    <string name="lowcase_nopickeddriver">No Picked Driver</string>
     <string name="snackbar_pickdriver">Please pick a driver</string>
     <string name="snackbar_picklocationfrom">Please pick sending location</string>
     <string name="snackbar_picklocationto">Please pick receiving location</string>
@@ -223,5 +219,7 @@
     <string name="dialog_cancelbooking">Cancel this booking?</string>
     <string name="error_costempty">Please input cost</string>
     <string name="snackbar_norestaurantnearby">No restaurant near by</string>
+
+    <string name="activity_order_food_pick_food_itemprice">(Item: $item$) Price: $price$</string>
 
 </resources>

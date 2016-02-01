@@ -102,7 +102,7 @@ public class NumberPicker extends LinearLayout implements OnClickListener,
     private int mPrevious;
     private OnChangedListener mListener;
     private Formatter mFormatter;
-    private long mSpeed = 80;
+    private long mSpeed = 50;
 
     private Drawable mNumBackground;
     private Drawable mIncrementDrawable;
@@ -470,6 +470,8 @@ public class NumberPicker extends LinearLayout implements OnClickListener,
             } else if (R.id.decrement == getId()) {
                 mNumberPicker.cancelDecrement();
             }
+
+            mNumberPicker.onPickedListener.onPicked(mNumberPicker.mCurrent);
         }
     }
 
@@ -550,6 +552,8 @@ public class NumberPicker extends LinearLayout implements OnClickListener,
         } else if (R.id.decrement == v.getId()) {
             changeCurrent(mCurrent - 1);
         }
+
+        onPickedListener.onPicked(mCurrent);
     }
 
     // PRIVATE ====================================================================================
@@ -696,5 +700,14 @@ public class NumberPicker extends LinearLayout implements OnClickListener,
 
             return mEnd >= -1 && val > mEnd || mStart <= 1 && val < mStart ? "" : filtered;
         }
+    }
+
+    public OnPickedListener onPickedListener;
+    public interface OnPickedListener{
+        void onPicked(int pickedValue);
+    }
+
+    public void setOnPickListener(OnPickedListener onPickedListener) {
+        this.onPickedListener = onPickedListener;
     }
 }
