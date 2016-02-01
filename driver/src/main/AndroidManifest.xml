@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="gcm.play.android.samples.com.gcmquickstart" >
+    package="asia.covisoft.goomdriver" >
 
     <!-- [START gcm_permission] -->
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
@@ -13,7 +13,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="gcm.play.android.samples.com.gcmquickstart.MainActivity"
+            android:name="asia.covisoft.goomdriver.MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -29,14 +29,14 @@
             android:permission="com.google.android.c2dm.permission.SEND" >
             <intent-filter>
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
-                <category android:name="gcm.play.android.samples.com.gcmquickstart" />
+                <category android:name="asia.covisoft.goomdriver" />
             </intent-filter>
         </receiver>
         <!-- [END gcm_receiver] -->
 
         <!-- [START gcm_listener] -->
         <service
-            android:name="gcm.play.android.samples.com.gcmquickstart.MyGcmListenerService"
+            android:name=".gcm.GoOmGcmListenerService"
             android:exported="false" >
             <intent-filter>
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
@@ -45,7 +45,7 @@
         <!-- [END gcm_listener] -->
         <!-- [START instanceId_listener] -->
         <service
-            android:name="gcm.play.android.samples.com.gcmquickstart.MyInstanceIDListenerService"
+            android:name=".gcm.GoOmInstanceIDListenerService"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.google.android.gms.iid.InstanceID"/>
@@ -53,7 +53,7 @@
         </service>
         <!-- [END instanceId_listener] -->
         <service
-            android:name="gcm.play.android.samples.com.gcmquickstart.RegistrationIntentService"
+            android:name=".gcm.RegistrationIntentService"
             android:exported="false">
         </service>
     </application>

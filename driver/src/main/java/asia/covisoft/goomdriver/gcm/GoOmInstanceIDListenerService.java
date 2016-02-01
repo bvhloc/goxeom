@@ -14,19 +14,15 @@
  * limitations under the License.
  */
 
-package gcm.play.android.samples.com.gcmquickstart;
+package asia.covisoft.goomdriver.gcm;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
-import android.util.Log;
 
-import com.google.android.gms.iid.InstanceID;
 import com.google.android.gms.iid.InstanceIDListenerService;
 
-public class MyInstanceIDListenerService extends InstanceIDListenerService {
+public class GoOmInstanceIDListenerService extends InstanceIDListenerService {
 
-    private static final String TAG = "MyInstanceIDLS";
+    private static final String TAG = "GoOmInstanceIDLS";
 
     /**
      * Called if InstanceID token is updated. This may occur if the security of

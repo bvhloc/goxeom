@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package gcm.play.android.samples.com.gcmquickstart;
+package asia.covisoft.goomdriver;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -31,6 +31,9 @@ import android.widget.TextView;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
+
+import asia.covisoft.goomdriver.gcm.QuickstartPreferences;
+import asia.covisoft.goomdriver.gcm.RegistrationIntentService;
 
 public class MainActivity extends AppCompatActivity {
 

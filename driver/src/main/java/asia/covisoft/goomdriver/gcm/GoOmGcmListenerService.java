@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package gcm.play.android.samples.com.gcmquickstart;
+package asia.covisoft.goomdriver.gcm;
 
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -28,9 +28,12 @@ import android.util.Log;
 
 import com.google.android.gms.gcm.GcmListenerService;
 
-public class MyGcmListenerService extends GcmListenerService {
+import asia.covisoft.goomdriver.MainActivity;
+import asia.covisoft.goomdriver.R;
 
-    private static final String TAG = "MyGcmListenerService";
+public class GoOmGcmListenerService extends GcmListenerService {
+
+    private static final String TAG = "GoOmGcmListenerService";
 
     /**
      * Called when message is received.

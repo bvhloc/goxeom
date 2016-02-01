@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package gcm.play.android.samples.com.gcmquickstart;
+package asia.covisoft.goomdriver.gcm;
 
 public class QuickstartPreferences {
 
