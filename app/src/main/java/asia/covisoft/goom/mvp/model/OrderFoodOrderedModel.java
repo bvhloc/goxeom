@@ -1,10 +1,11 @@
 package asia.covisoft.goom.mvp.model;
 
+import java.io.Serializable;
 import java.util.List;
 
 import asia.covisoft.goom.pojo.gson.FoodlistRoot.Foodlist;
 
-public class OrderFoodOrderedModel {
+public class OrderFoodOrderedModel implements Serializable {
 
     public String userToken;
     public String addressFrom;
@@ -18,4 +19,5 @@ public class OrderFoodOrderedModel {
     public long cost;
     public long deliveryCost;
     public long foodCost;
+    public boolean pickNow;
 }

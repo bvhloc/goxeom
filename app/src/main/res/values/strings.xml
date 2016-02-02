@@ -221,5 +221,6 @@
     <string name="snackbar_norestaurantnearby">No restaurant near by</string>
 
     <string name="activity_order_food_pick_food_itemprice">(Item: $item$) Price: $price$</string>
+    <string name="snackbar_pickoneitem">Please pick at least 1 item</string>
 
 </resources>

@@ -10,7 +10,9 @@ import android.widget.TextView;
 
 import asia.covisoft.goom.R;
 import asia.covisoft.goom.base.BaseActivity;
+import asia.covisoft.goom.helper.Hex;
 import asia.covisoft.goom.mvp.model.OrderCourierModel;
+import asia.covisoft.goom.mvp.model.OrderFoodOrderedModel;
 import asia.covisoft.goom.mvp.model.OrderShoppingModel;
 import asia.covisoft.goom.mvp.model.OrderTransportModel;
 import asia.covisoft.goom.mvp.presenter.OrderConfirmPresenter;
@@ -43,6 +45,7 @@ public class OrderConfirmActivity extends BaseActivity implements OrderConfirmVi
     private OrderCourierModel courierModel;
     private OrderTransportModel transportModel;
     private OrderShoppingModel shoppingModel;
+    private OrderFoodOrderedModel foodingModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,7 +92,14 @@ public class OrderConfirmActivity extends BaseActivity implements OrderConfirmVi
 
                 break;
             case BOOK_TYPE_FOODING:
-                //TODO impl
+                
+                foodingModel = (OrderFoodOrderedModel) extras.getSerializable(Extras.BOOKING_INFO);
+                if (foodingModel != null) {
+                    tvAddressFrom.setText(Hex.decode(foodingModel.addressFrom));
+                    tvAddressTo.setText(foodingModel.addressTo);
+                    tvPrice.setText(foodingModel.cost + " " + getString(R.string.money_unit));
+                    tvTotal.setText(foodingModel.cost + " " + getString(R.string.money_unit));
+                }
                 break;
             case BOOK_TYPE_SHOPPING:
 

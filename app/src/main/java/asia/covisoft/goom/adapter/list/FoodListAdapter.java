@@ -24,6 +24,10 @@ public class FoodListAdapter extends ArrayAdapter<Foodlist> {
     public Context context;
     private List<Foodlist> model;
 
+    public List<Foodlist> getFoods() {
+        return model;
+    }
+
     @Override
     public int getCount() {
         return model.size();
@@ -79,7 +83,7 @@ public class FoodListAdapter extends ArrayAdapter<Foodlist> {
 
                 item.setQuatity(pickedValue);
                 notifyDataSetChanged();
-//                genPrice();
+                changePrice();
             }
         });
         TouchEffect.addAlpha(viewHolder.tvAddNote);
@@ -92,6 +96,27 @@ public class FoodListAdapter extends ArrayAdapter<Foodlist> {
         });
 
         return convertView;
+    }
+
+    public void changePrice() {
+
+        long price = 0;
+        for (Foodlist food : getFoods()) {
+
+            long cost = Long.parseLong(food.getFoodCost());
+            price += (food.getQuatity() * cost);
+        }
+        onQuantitiesChangedListener.onQuantitiesChanged(price);
+    }
+
+    private OnQuantitiesChangedListener onQuantitiesChangedListener;
+
+    public interface OnQuantitiesChangedListener {
+        void onQuantitiesChanged(long price);
+    }
+
+    public void setOnQuantitiesChangedListener(OnQuantitiesChangedListener onQuantitiesChangedListener) {
+        this.onQuantitiesChangedListener = onQuantitiesChangedListener;
     }
 
     public static class NoteDialog{

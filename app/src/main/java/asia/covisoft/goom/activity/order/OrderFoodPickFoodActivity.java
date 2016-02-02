@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.view.View;
 import android.widget.ExpandableListView;
 import android.widget.TextView;
@@ -97,8 +98,11 @@ public class OrderFoodPickFoodActivity extends BaseActivity implements OrderFood
         lvFood.setAdapter(mAdapter);
     }
 
+    private int itemCount;
+
     private void setItemPrice(int itemCount, long price) {
 
+        this.itemCount = itemCount;
         String itemprice = getString(R.string.activity_order_food_pick_food_itemprice)
                 .replace("$item$", "" + itemCount)
                 .replace("$price$", "" + price);
@@ -107,9 +111,15 @@ public class OrderFoodPickFoodActivity extends BaseActivity implements OrderFood
 
     private void btnOrderClick() {
 
-        Intent intent = new Intent(mContext, OrderFoodOrderedActivity.class);
-        intent.putExtras(extras);
-        intent.putExtra(Extras.PICKED_FOODS, (Serializable) mAdapter.getPickedFoods());
-        startActivity(intent);
+        if (itemCount > 0) {
+
+            Intent intent = new Intent(mContext, OrderFoodOrderedActivity.class);
+            intent.putExtras(extras);
+            intent.putExtra(Extras.PICKED_FOODS, (Serializable) mAdapter.getPickedFoods());
+            startActivity(intent);
+        } else {
+            Snackbar.make(findViewById(R.id.tab_container), getString(R.string.snackbar_pickoneitem), Snackbar.LENGTH_SHORT)
+                    .show();
+        }
     }
 }

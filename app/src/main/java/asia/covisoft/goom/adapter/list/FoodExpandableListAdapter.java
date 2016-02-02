@@ -116,7 +116,7 @@ public class FoodExpandableListAdapter extends BaseExpandableListAdapter {
 
                 food.setQuatity(pickedValue);
                 notifyDataSetChanged();
-                genPrice();
+                changePrice();
             }
         });
         TouchEffect.addAlpha(childViewHolder.tvAddNote);
@@ -131,7 +131,7 @@ public class FoodExpandableListAdapter extends BaseExpandableListAdapter {
         return convertView;
     }
 
-    private void genPrice() {
+    private void changePrice() {
 
         int itemCount = 0;
         long price = 0;

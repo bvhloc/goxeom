@@ -5,7 +5,10 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.view.View;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -23,7 +26,7 @@ import asia.covisoft.goom.mvp.view.OrderView;
 import asia.covisoft.goom.pojo.gson.FoodlistRoot.Foodlist;
 import asia.covisoft.goom.utils.Extras;
 
-public class OrderFoodOrderedActivity extends BaseActivity implements OrderView {
+public class OrderFoodOrderedActivity extends BaseActivity implements OrderView, FoodListAdapter.OnQuantitiesChangedListener {
 
     private ListView lvFood;
     private TextView tvFoodCost, tvDeliveryCost, tvTotalCost, tvAddressTo;
@@ -49,7 +52,14 @@ public class OrderFoodOrderedActivity extends BaseActivity implements OrderView 
             @Override
             public void onClick(View v) {
 
-                startActivity(new Intent(mContext, OrderConfirmActivity.class));
+                btnNextClick();
+            }
+        });
+        ((CheckBox)findViewById(R.id.ckbPickNow)).setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+                model.pickNow = isChecked;
             }
         });
     }
@@ -84,7 +94,18 @@ public class OrderFoodOrderedActivity extends BaseActivity implements OrderView 
         model.foods = foods;
 
         mAdapter = new FoodListAdapter(mContext, foods);
+        mAdapter.setOnQuantitiesChangedListener(this);
         lvFood.setAdapter(mAdapter);
+        mAdapter.changePrice();
+    }
+
+    @Override
+    public void onQuantitiesChanged(long price) {
+
+        model.foodCost = price;
+        model.cost = model.foodCost + model.deliveryCost;
+        tvFoodCost.setText(model.foodCost + " " + getString(R.string.money_unit));
+        tvTotalCost.setText(model.cost + " " + getString(R.string.money_unit));
     }
 
     @Override
@@ -125,5 +146,38 @@ public class OrderFoodOrderedActivity extends BaseActivity implements OrderView 
         model.cost = model.deliveryCost + model.foodCost;
         tvDeliveryCost.setText(model.deliveryCost + " " + getString(R.string.money_unit));
         tvTotalCost.setText(model.cost + " " + getString(R.string.money_unit));
+    }
+
+    private void btnNextClick() {
+
+        if(validInput()){
+
+            Intent intent = new Intent(mContext, OrderConfirmActivity.class);
+            intent.putExtra(Extras.BOOKING_TYPE, OrderConfirmActivity.BOOK_TYPE_FOODING);
+            intent.putExtra(Extras.BOOKING_INFO, model);
+            startActivity(intent);
+        }
+    }
+
+    private boolean validInput(){
+
+        model.detailsTo = edtDetailsTo.getText().toString().trim();
+        model.foods = mAdapter.getFoods();
+
+        if(model.foodCost == 0){
+
+            Snackbar.make(findViewById(R.id.tab_container), getString(R.string.snackbar_pickoneitem), Snackbar.LENGTH_SHORT)
+                    .show();
+            return false;
+        }
+        if(model.latTo == 0 || model.lngTo == 0){
+
+            Snackbar.make(findViewById(R.id.tab_container), getString(R.string.snackbar_picklocationto), Snackbar.LENGTH_SHORT)
+                    .show();
+            tvAddressTo.setError("");
+            return false;
+        }
+
+        return true;
     }
 }
