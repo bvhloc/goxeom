@@ -43,8 +43,8 @@ public class OrderFoodPickFoodActivity extends BaseActivity implements OrderFood
 
     private Context mContext;
     private OrderFoodPickFoodPresenter presenter;
-
     private FoodExpandableListAdapter mAdapter;
+    private Bundle extras;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +53,7 @@ public class OrderFoodPickFoodActivity extends BaseActivity implements OrderFood
         presenter = new OrderFoodPickFoodPresenter(this);
         initView();
 
-        Bundle extras = getIntent().getExtras();
+        extras = getIntent().getExtras();
 
         presenter.setupListHeader(extras);
 
@@ -108,6 +108,7 @@ public class OrderFoodPickFoodActivity extends BaseActivity implements OrderFood
     private void btnOrderClick() {
 
         Intent intent = new Intent(mContext, OrderFoodOrderedActivity.class);
+        intent.putExtras(extras);
         intent.putExtra(Extras.PICKED_FOODS, (Serializable) mAdapter.getPickedFoods());
         startActivity(intent);
     }

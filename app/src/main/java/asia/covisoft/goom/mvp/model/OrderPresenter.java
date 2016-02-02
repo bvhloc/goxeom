@@ -27,7 +27,7 @@ public class OrderPresenter {
 
     private ProgressDialog progressDialog;
 
-    protected void getCost(final String userToken, final double latFrom, final double lngFrom, final double latTo, final double lngTo, final double cost) {
+    public void getCost(final String userToken, final double latFrom, final double lngFrom, final double latTo, final double lngTo, final double cost) {
         new AsyncTask<Void, Void, String>() {
 
             @Override

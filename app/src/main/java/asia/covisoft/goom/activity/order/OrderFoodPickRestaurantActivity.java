@@ -1,10 +1,10 @@
 package asia.covisoft.goom.activity.order;
 
+import android.app.AlertDialog;
 import android.content.Context;
-import android.content.Intent;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.SearchView;
 import android.widget.TextView;
 
@@ -13,14 +13,14 @@ import java.util.List;
 import asia.covisoft.goom.R;
 import asia.covisoft.goom.adapter.list.RestaurantListAdapter;
 import asia.covisoft.goom.base.BaseActivity;
-import asia.covisoft.goom.widget.HeaderGridView;
 import asia.covisoft.goom.helper.Hex;
 import asia.covisoft.goom.mvp.presenter.OrderFoodPickRestaurantPresenter;
 import asia.covisoft.goom.mvp.view.OrderFoodPickRestaurantView;
 import asia.covisoft.goom.pojo.gson.LoadfoodingRoot.Loadfooding.RestaurantList;
 import asia.covisoft.goom.utils.Extras;
+import asia.covisoft.goom.widget.HeaderGridView;
 
-public class OrderFoodPickRestaurantActivity extends BaseActivity implements AdapterView.OnItemClickListener, OrderFoodPickRestaurantView {
+public class OrderFoodPickRestaurantActivity extends BaseActivity implements OrderFoodPickRestaurantView {
 
     private Context mContext;
 
@@ -37,8 +37,6 @@ public class OrderFoodPickRestaurantActivity extends BaseActivity implements Ada
         presenter = new OrderFoodPickRestaurantPresenter(this);
         initView();
 
-        gvRestarants.setOnItemClickListener(this);
-
         Bundle extras = getIntent().getExtras();
         userToken = extras.getString(Extras.USER_TOKEN);
         String type = extras.getString(Extras.FOOD_TYPE);
@@ -47,18 +45,6 @@ public class OrderFoodPickRestaurantActivity extends BaseActivity implements Ada
         tvTitle.setText(typeName);
 
         presenter.getRestaurants(userToken, type);
-    }
-
-    @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-        Intent intent = new Intent(mContext, OrderFoodPickFoodActivity.class);
-        intent.putExtra(Extras.USER_TOKEN, userToken);
-        intent.putExtra(Extras.RESTAURANT_ID, restaurantAdapter.getItem(position).getRestaurantId());
-        intent.putExtra(Extras.RESTAURANT_NAME, restaurantAdapter.getItem(position).getRestaurantName());
-        intent.putExtra(Extras.RESTAURANT_ADDRESS, restaurantAdapter.getItem(position).getRestaurantAddress());
-        intent.putExtra(Extras.RESTAURANT_IMAGE, restaurantAdapter.getItem(position).getRestaurantImage());
-        startActivity(intent);
     }
 
     private TextView tvTitle;
@@ -81,7 +67,16 @@ public class OrderFoodPickRestaurantActivity extends BaseActivity implements Ada
 
     @Override
     public void onConnectionFail() {
+        new AlertDialog.Builder(mContext)
+                .setMessage(getString(R.string.dialog_connection_fail))
+                .setNeutralButton(getString(R.string.lowcase_ok), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
 
+                        onBackPressed();
+                    }
+                })
+                .show();
     }
 
     @Override

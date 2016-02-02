@@ -37,6 +37,8 @@ public final class Extras {
 
     //OrderFoodPickFoodActivity
     public static final String RESTAURANT_ID = "RESTAURANT_ID";
+    public static final String RESTAURANT_LAT = "RESTAURANT_LAT";
+    public static final String RESTAURANT_LNG = "RESTAURANT_LNG";
     public static final String RESTAURANT_NAME = "RESTAURANT_NAME";
     public static final String RESTAURANT_ADDRESS = "RESTAURANT_ADDRESS";
     public static final String RESTAURANT_IMAGE = "RESTAURANT_IMAGE";

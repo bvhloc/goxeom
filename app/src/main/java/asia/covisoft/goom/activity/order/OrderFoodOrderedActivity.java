@@ -1,32 +1,48 @@
 package asia.covisoft.goom.activity.order;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
+
+import com.google.android.gms.maps.model.LatLng;
 
 import java.util.List;
 
 import asia.covisoft.goom.R;
 import asia.covisoft.goom.adapter.list.FoodListAdapter;
 import asia.covisoft.goom.base.BaseActivity;
+import asia.covisoft.goom.mvp.model.OrderFoodOrderedModel;
+import asia.covisoft.goom.mvp.model.OrderPresenter;
+import asia.covisoft.goom.mvp.view.OrderView;
 import asia.covisoft.goom.pojo.gson.FoodlistRoot.Foodlist;
 import asia.covisoft.goom.utils.Extras;
 
-public class OrderFoodOrderedActivity extends BaseActivity {
+public class OrderFoodOrderedActivity extends BaseActivity implements OrderView {
 
     private ListView lvFood;
+    private TextView tvFoodCost, tvDeliveryCost, tvTotalCost, tvAddressTo;
+    private EditText edtDetailsTo;
 
     private void initView() {
         setContentView(R.layout.activity_order_food_ordered);
 
         lvFood = (ListView) findViewById(R.id.lvFood);
+        tvFoodCost = (TextView) findViewById(R.id.tvFoodCost);
+        tvDeliveryCost = (TextView) findViewById(R.id.tvDeliveryCost);
+        tvTotalCost = (TextView) findViewById(R.id.tvTotalCost);
+        tvAddressTo = (TextView) findViewById(R.id.tvAddressTo);
+        edtDetailsTo = (EditText) findViewById(R.id.edtDetailsTo);
         findViewById(R.id.lnlPick).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                startActivity(new Intent(mContext, OrderPickLocationActivity.class));
+                startActivityForResult(new Intent(mContext, OrderPickLocationActivity.class), 0);
             }
         });
         findViewById(R.id.btnNext).setOnClickListener(new View.OnClickListener() {
@@ -40,24 +56,74 @@ public class OrderFoodOrderedActivity extends BaseActivity {
 
     private Context mContext;
     private FoodListAdapter mAdapter;
+    private OrderPresenter presenter;
+    private OrderFoodOrderedModel model;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mContext = this;
+        presenter = new OrderPresenter(this);
+        model = new OrderFoodOrderedModel();
         initView();
 
         updateUI();
     }
 
     @SuppressWarnings("unchecked")
-    private void updateUI(){
+    private void updateUI() {
 
         Bundle extras = getIntent().getExtras();
 
+        model.userToken = extras.getString(Extras.USER_TOKEN);
+        model.addressFrom = extras.getString(Extras.RESTAURANT_ADDRESS);
+        model.latFrom = extras.getDouble(Extras.RESTAURANT_LAT);
+        model.lngFrom = extras.getDouble(Extras.RESTAURANT_LNG);
+
         List<Foodlist> foods = (List<Foodlist>) extras.getSerializable(Extras.PICKED_FOODS);
+        model.foods = foods;
 
         mAdapter = new FoodListAdapter(mContext, foods);
         lvFood.setAdapter(mAdapter);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK) {
+
+            LatLng receivedLatLng = data.getParcelableExtra(Extras.PICKED_LATLNG);
+            model.latTo = receivedLatLng.latitude;
+            model.lngTo = receivedLatLng.longitude;
+            model.addressTo = data.getStringExtra(Extras.PICKED_ADDRESS);
+
+            tvAddressTo.setText(model.addressTo);
+            tvAddressTo.setError(null);
+
+            presenter.getCost(model.userToken, model.latFrom, model.lngFrom, model.latTo, model.lngTo, 0);
+        }
+    }
+
+    @Override
+    public void onConnectionFail() {
+        new AlertDialog.Builder(mContext)
+                .setMessage(getString(R.string.dialog_connection_fail))
+                .setNeutralButton(getString(R.string.lowcase_ok), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        onBackPressed();
+                    }
+                })
+                .show();
+    }
+
+    @Override
+    public void onCostResult(String cost) {
+
+        model.deliveryCost = Long.parseLong(cost);
+        model.cost = model.deliveryCost + model.foodCost;
+        tvDeliveryCost.setText(model.deliveryCost + " " + getString(R.string.money_unit));
+        tvTotalCost.setText(model.cost + " " + getString(R.string.money_unit));
     }
 }

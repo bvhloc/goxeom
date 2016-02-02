@@ -112,7 +112,6 @@ public class OrderFoodActivity extends BaseMapActivity implements OrderFoodView,
         initView();
 
         lvFoodType.setOnItemClickListener(lvFoodTypeListener);
-        gvRestarants.setOnItemClickListener(gvRestaurantsListener);
         initGridHeader();
 
         initMap();
@@ -146,32 +145,12 @@ public class OrderFoodActivity extends BaseMapActivity implements OrderFoodView,
         }
     };
 
-    private AdapterView.OnItemClickListener gvRestaurantsListener = new AdapterView.OnItemClickListener() {
-        @Override
-        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-            position = position - gvRestarants.getNumColumns();
-            Intent intent = new Intent(mContext, OrderFoodPickFoodActivity.class);
-            intent.putExtra(Extras.USER_TOKEN, userToken);
-            intent.putExtra(Extras.RESTAURANT_ID, restaurantAdapter.getItem(position).getRestaurantId());
-            intent.putExtra(Extras.RESTAURANT_NAME, restaurantAdapter.getItem(position).getRestaurantName());
-            intent.putExtra(Extras.RESTAURANT_ADDRESS, restaurantAdapter.getItem(position).getRestaurantAddress());
-            intent.putExtra(Extras.RESTAURANT_IMAGE, restaurantAdapter.getItem(position).getRestaurantImage());
-            startActivity(intent);
-        }
-    };
-
     @Override
     public boolean onMarkerClick(Marker marker) {
 
         RestaurantList restaurant = restaurantHashMap.get(marker);
-        Intent intent = new Intent(mContext, OrderFoodPickFoodActivity.class);
-        intent.putExtra(Extras.USER_TOKEN, userToken);
-        intent.putExtra(Extras.RESTAURANT_ID, restaurant.getRestaurantId());
-        intent.putExtra(Extras.RESTAURANT_NAME, restaurant.getRestaurantName());
-        intent.putExtra(Extras.RESTAURANT_ADDRESS, restaurant.getRestaurantAddress());
-        intent.putExtra(Extras.RESTAURANT_IMAGE, restaurant.getRestaurantImage());
-        startActivity(intent);
+
+        restaurantAdapter.startPickFoodActivity(restaurant);
 
         return true;
     }

@@ -1,6 +1,9 @@
 package asia.covisoft.goom.adapter.list;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,9 +16,12 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 import asia.covisoft.goom.R;
+import asia.covisoft.goom.activity.order.OrderFoodPickFoodActivity;
 import asia.covisoft.goom.helper.Hex;
 import asia.covisoft.goom.pojo.gson.LoadfoodingRoot.Loadfooding.RestaurantList;
 import asia.covisoft.goom.utils.Constant;
+import asia.covisoft.goom.utils.Extras;
+import asia.covisoft.goom.utils.Preferences;
 
 public class RestaurantListAdapter extends ArrayAdapter<RestaurantList> {
 
@@ -46,7 +52,7 @@ public class RestaurantListAdapter extends ArrayAdapter<RestaurantList> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        RestaurantList item = getItem(position);
+        final RestaurantList item = getItem(position);
 
         final ViewHolder viewHolder;
         if (convertView == null) {
@@ -57,7 +63,6 @@ public class RestaurantListAdapter extends ArrayAdapter<RestaurantList> {
             viewHolder.imgvAvatar = (ImageView) convertView.findViewById(R.id.imgvAvatar);
             viewHolder.tvName = (TextView) convertView.findViewById(R.id.tvName);
             viewHolder.tvAddress = (TextView) convertView.findViewById(R.id.tvAddress);
-
 
             convertView.setTag(viewHolder);
         } else {
@@ -73,6 +78,30 @@ public class RestaurantListAdapter extends ArrayAdapter<RestaurantList> {
                 .load(Constant.HOST + imageUrl)
                 .into(viewHolder.imgvAvatar);
 
+        convertView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                startPickFoodActivity(item);
+            }
+        });
+
         return convertView;
+    }
+
+    public void startPickFoodActivity(RestaurantList restaurant){
+
+        SharedPreferences loginPreferences = context.getSharedPreferences(Preferences.LOGIN_PREFERENCES, Activity.MODE_PRIVATE);
+        String userToken = loginPreferences.getString(Preferences.LOGIN_PREFERENCES_USER_TOKEN, "");
+
+        Intent intent = new Intent(context, OrderFoodPickFoodActivity.class);
+        intent.putExtra(Extras.USER_TOKEN, userToken);
+        intent.putExtra(Extras.RESTAURANT_ID, restaurant.getRestaurantId());
+        intent.putExtra(Extras.RESTAURANT_LAT, Double.parseDouble(restaurant.getRestaurantLat()));
+        intent.putExtra(Extras.RESTAURANT_LNG, Double.parseDouble(restaurant.getRestaurantLong()));
+        intent.putExtra(Extras.RESTAURANT_NAME, restaurant.getRestaurantName());
+        intent.putExtra(Extras.RESTAURANT_ADDRESS, restaurant.getRestaurantAddress());
+        intent.putExtra(Extras.RESTAURANT_IMAGE, restaurant.getRestaurantImage());
+        context.startActivity(intent);
     }
 }
