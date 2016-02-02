@@ -1,8 +1,5 @@
 package asia.covisoft.goom.utils;
 
-/**
- * Created by Covisoft on 13/01/2016.
- */
 public final class Extras {
 
     public static final String IS_LOGIN = "IS_LOGIN";
@@ -43,4 +40,7 @@ public final class Extras {
     public static final String RESTAURANT_NAME = "RESTAURANT_NAME";
     public static final String RESTAURANT_ADDRESS = "RESTAURANT_ADDRESS";
     public static final String RESTAURANT_IMAGE = "RESTAURANT_IMAGE";
+
+    //OrderFoodOrderedActivity
+    public static final String PICKED_FOODS = "PICKED_FOODS";
 }

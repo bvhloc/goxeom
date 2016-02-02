@@ -1,8 +1,11 @@
 package asia.covisoft.goom.pojo.gson;
 
+import android.os.Parcel;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,7 +33,7 @@ public class FoodlistRoot {
         this.foodlist = foodlist;
     }
 
-    public class Foodlist {
+    public static class Foodlist implements Serializable {
 
         @SerializedName("food_id")
         @Expose
@@ -59,6 +62,20 @@ public class FoodlistRoot {
         @SerializedName("menu_name")
         @Expose
         private String menuName;
+
+        protected Foodlist(Parcel in) {
+            foodId = in.readString();
+            foodName = in.readString();
+            menuId = in.readString();
+            foodImage = in.readString();
+            foodCost = in.readString();
+            foodInfo = in.readString();
+            foodRating = in.readString();
+            foodView = in.readString();
+            menuName = in.readString();
+            quatity = in.readInt();
+            note = in.readString();
+        }
 
         /**
          *

@@ -1,16 +1,13 @@
 package asia.covisoft.goom.adapter.list;
 
 import android.annotation.SuppressLint;
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.graphics.Typeface;
 import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import com.bvhloc.numpicker.widget.NumberPicker;
@@ -30,6 +27,28 @@ public class FoodExpandableListAdapter extends BaseExpandableListAdapter {
     private List<String> groups; // header titles
     // child data in format of header title, child title
     private HashMap<String, List<Foodlist>> childs;
+
+    public List<Foodlist> getFoods() {
+
+        List<Foodlist> foods = new ArrayList<>();
+        for (String group : groups) {
+            for (Foodlist food : childs.get(group)) {
+                foods.add(food);
+            }
+        }
+        return foods;
+    }
+
+    public List<Foodlist> getPickedFoods() {
+
+        List<Foodlist> pickedFoods = new ArrayList<>();
+        for (Foodlist food : getFoods()) {
+            if (food.getQuatity() > 0) {
+                pickedFoods.add(food);
+            }
+        }
+        return pickedFoods;
+    }
 
     public FoodExpandableListAdapter(Context context, List<String> groups,
                                      HashMap<String, List<Foodlist>> childs) {
@@ -62,7 +81,7 @@ public class FoodExpandableListAdapter extends BaseExpandableListAdapter {
     public View getChildView(int groupPosition, final int childPosition,
                              boolean isLastChild, View convertView, ViewGroup parent) {
 
-        final Foodlist child = (Foodlist) getChild(groupPosition, childPosition);
+        final Foodlist food = (Foodlist) getChild(groupPosition, childPosition);
 
         ChildViewHolder childViewHolder;
         if (convertView == null) {
@@ -85,17 +104,17 @@ public class FoodExpandableListAdapter extends BaseExpandableListAdapter {
             childViewHolder = (ChildViewHolder) convertView.getTag();
         }
 
-        String name = Hex.decode(child.getFoodName());
-        String price = child.getFoodCost();
+        String name = Hex.decode(food.getFoodName());
+        String price = food.getFoodCost();
 
         childViewHolder.tvName.setText(name);
         childViewHolder.tvPrice.setText(price);
-        childViewHolder.numPicker.setCurrent(child.getQuatity());
+        childViewHolder.numPicker.setCurrent(food.getQuatity());
         childViewHolder.numPicker.setOnPickListener(new NumberPicker.OnPickedListener() {
             @Override
             public void onPicked(int pickedValue) {
 
-                child.setQuatity(pickedValue);
+                food.setQuatity(pickedValue);
                 notifyDataSetChanged();
                 genPrice();
             }
@@ -105,7 +124,7 @@ public class FoodExpandableListAdapter extends BaseExpandableListAdapter {
             @Override
             public void onClick(View v) {
 
-                showNoteDialog(child);
+                new FoodListAdapter.NoteDialog(context).showNoteDialog(food);
             }
         });
 
@@ -114,13 +133,9 @@ public class FoodExpandableListAdapter extends BaseExpandableListAdapter {
 
     private void genPrice() {
 
-        List<Foodlist> foods = new ArrayList<>();
-        for (List<Foodlist> childslist : childs.values()) {
-            foods.addAll(childslist);
-        }
         int itemCount = 0;
         long price = 0;
-        for (Foodlist food : foods) {
+        for (Foodlist food : getFoods()) {
 
             itemCount += food.getQuatity();
 
@@ -138,38 +153,6 @@ public class FoodExpandableListAdapter extends BaseExpandableListAdapter {
 
     public void setOnQuantitiesChangedListener(OnQuantitiesChangedListener onQuantitiesChangedListener) {
         this.onQuantitiesChangedListener = onQuantitiesChangedListener;
-    }
-
-    private void showNoteDialog(final Foodlist child) {
-
-        final EditText edtNote = new EditText(context);
-        edtNote.setHint(context.getString(R.string.lowcase_note));
-        String note = child.getNote();
-        if (note != null) {
-            edtNote.setText(note);
-            edtNote.setSelection(note.length());
-        }
-        AlertDialog dialog = new AlertDialog.Builder(context)
-                .setCancelable(false)
-                .setView(edtNote)
-                .setTitle(context.getString(R.string.lowcase_addnote))
-                .setNegativeButton(context.getString(R.string.lowcase_cancel), null)
-                .setNeutralButton(context.getString(R.string.lowcase_clear), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-                        child.setNote("");
-                    }
-                })
-                .setPositiveButton(context.getString(R.string.lowcase_save), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-                        child.setNote(edtNote.getText().toString());
-                    }
-                })
-                .create();
-        dialog.show();
     }
 
     @Override

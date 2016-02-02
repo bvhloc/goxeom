@@ -1,12 +1,15 @@
 package asia.covisoft.goom.activity.order;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ExpandableListView;
 import android.widget.TextView;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
 
@@ -15,7 +18,7 @@ import asia.covisoft.goom.adapter.list.FoodExpandableListAdapter;
 import asia.covisoft.goom.base.BaseActivity;
 import asia.covisoft.goom.mvp.presenter.OrderFoodPickFoodPresenter;
 import asia.covisoft.goom.mvp.view.OrderFoodPickFoodView;
-import asia.covisoft.goom.pojo.gson.FoodlistRoot;
+import asia.covisoft.goom.pojo.gson.FoodlistRoot.Foodlist;
 import asia.covisoft.goom.utils.Extras;
 
 public class OrderFoodPickFoodActivity extends BaseActivity implements OrderFoodPickFoodView {
@@ -33,8 +36,7 @@ public class OrderFoodPickFoodActivity extends BaseActivity implements OrderFood
             @Override
             public void onClick(View v) {
 
-                startActivity(new Intent(mContext, OrderFoodOrderedActivity.class));
-
+                btnOrderClick();
             }
         });
     }
@@ -63,7 +65,16 @@ public class OrderFoodPickFoodActivity extends BaseActivity implements OrderFood
 
     @Override
     public void onConnectionFail() {
+        new AlertDialog.Builder(mContext)
+                .setMessage(getString(R.string.dialog_connection_fail))
+                .setNeutralButton(getString(R.string.lowcase_ok), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
 
+                        onBackPressed();
+                    }
+                })
+                .show();
     }
 
     @Override
@@ -73,7 +84,7 @@ public class OrderFoodPickFoodActivity extends BaseActivity implements OrderFood
     }
 
     @Override
-    public void onMenuLoaded(List<String> groups, HashMap<String, List<FoodlistRoot.Foodlist>> childs) {
+    public void onMenuLoaded(List<String> groups, HashMap<String, List<Foodlist>> childs) {
 
         mAdapter = new FoodExpandableListAdapter(mContext, groups, childs);
         mAdapter.setOnQuantitiesChangedListener(new FoodExpandableListAdapter.OnQuantitiesChangedListener() {
@@ -92,5 +103,12 @@ public class OrderFoodPickFoodActivity extends BaseActivity implements OrderFood
                 .replace("$item$", "" + itemCount)
                 .replace("$price$", "" + price);
         tvItemPrice.setText(itemprice);
+    }
+
+    private void btnOrderClick() {
+
+        Intent intent = new Intent(mContext, OrderFoodOrderedActivity.class);
+        intent.putExtra(Extras.PICKED_FOODS, (Serializable) mAdapter.getPickedFoods());
+        startActivity(intent);
     }
 }

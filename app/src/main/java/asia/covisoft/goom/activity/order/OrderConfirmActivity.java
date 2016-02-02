@@ -62,6 +62,8 @@ public class OrderConfirmActivity extends BaseActivity implements OrderConfirmVi
     private void setupUI() {
 
         Bundle extras = getIntent().getExtras();
+        if(extras == null)
+            return;
         bookType = extras.getString(Extras.BOOKING_TYPE, "");
         switch (bookType) {
             case BOOK_TYPE_COURIER:
