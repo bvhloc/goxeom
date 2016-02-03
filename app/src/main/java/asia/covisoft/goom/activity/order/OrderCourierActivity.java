@@ -333,13 +333,10 @@ public class OrderCourierActivity extends BaseMapActivity implements OrderCourie
         model.detailsFrom = edtDetailsFrom.getText().toString().trim();
         model.detailsTo = edtDetailsTo.getText().toString().trim();
         model.items = edtItems.getText().toString().trim();
-
         if (model.driverToken == null || model.driverToken.isEmpty()) {
-            Snackbar.make(findViewById(R.id.tab_container), getString(R.string.snackbar_pickdriver), Snackbar.LENGTH_SHORT)
-                    .show();
-            tvDriverName.setError("");
-            return false;
+            model.driverToken = "";
         }
+
         if (model.latFrom == 0 || model.lngFrom == 0) {
 
             Snackbar.make(findViewById(R.id.tab_container), getString(R.string.snackbar_picklocationfrom), Snackbar.LENGTH_SHORT)

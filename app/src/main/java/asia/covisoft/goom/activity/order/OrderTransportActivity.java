@@ -231,7 +231,7 @@ public class OrderTransportActivity extends BaseMapActivity implements OrderTran
 
     private void btnNextClicked() {
 
-        if(validInput()){
+        if (validInput()) {
             presenter.getCost(model.userToken, model.latFrom, model.lngFrom, model.latTo, model.lngTo, 0);
         }
     }
@@ -250,13 +250,10 @@ public class OrderTransportActivity extends BaseMapActivity implements OrderTran
     private boolean validInput() {
 
         model.detailsFrom = edtDetailsFrom.getText().toString().trim();
-
         if (model.driverToken == null || model.driverToken.isEmpty()) {
-            Snackbar.make(findViewById(R.id.tab_container), getString(R.string.snackbar_pickdriver), Snackbar.LENGTH_SHORT)
-                    .show();
-            tvDriverName.setError("");
-            return false;
+            model.driverToken = "";
         }
+
         if (model.latFrom == 0 || model.lngFrom == 0) {
 
             Snackbar.make(findViewById(R.id.tab_container), getString(R.string.snackbar_picklocationfrom), Snackbar.LENGTH_SHORT)

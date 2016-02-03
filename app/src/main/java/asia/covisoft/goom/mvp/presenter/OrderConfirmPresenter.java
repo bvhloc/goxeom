@@ -194,7 +194,7 @@ public class OrderConfirmPresenter {
                 if (result == null)
                     view.onConnectionFail();
                 else {
-                    int resultValue = result.optInt("setcourier");
+                    int resultValue = result.optInt("settransport");
                     switch (resultValue) {
                         case RESULT_BOOKING_SUCCESS:
                             String bookingId = result.optString("id");
@@ -268,7 +268,7 @@ public class OrderConfirmPresenter {
                 if (result == null)
                     view.onConnectionFail();
                 else {
-                    int resultValue = result.optInt("setcourier");
+                    int resultValue = result.optInt("setshopping");
                     switch (resultValue) {
                         case RESULT_BOOKING_SUCCESS:
                             String bookingId = result.optString("id");
@@ -320,7 +320,7 @@ public class OrderConfirmPresenter {
 
                 String URL = Constant.HOST +
                         "setfooding.php?usertoken=" + model.userToken +
-                        "&drivertoken=20" +
+                        "&drivertoken=" +
                         "&foodingfrom=" + addressFrom +
                         "&foodingfromdetail=20" +
                         "&foodingfromlat=" + model.latFrom +
