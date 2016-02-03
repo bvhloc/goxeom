@@ -7,6 +7,10 @@ public class Hex {
 
     public static String encode(String str) {
 
+        if (str.equals("") || str.isEmpty()) {
+            return "20";
+        }
+
         byte[] bytes = new byte[0];
         try {
             bytes = str.getBytes("UTF-8");
@@ -26,7 +30,7 @@ public class Hex {
 
     public static String decode(String hex) {
 
-        if(hex.equals(""))
+        if (hex.equals(""))
             return "";
 
         byte[] bytes = new BigInteger(hex, 16).toByteArray();

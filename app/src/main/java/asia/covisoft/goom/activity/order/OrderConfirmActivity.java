@@ -92,7 +92,7 @@ public class OrderConfirmActivity extends BaseActivity implements OrderConfirmVi
 
                 break;
             case BOOK_TYPE_FOODING:
-                
+
                 foodingModel = (OrderFoodOrderedModel) extras.getSerializable(Extras.BOOKING_INFO);
                 if (foodingModel != null) {
                     tvAddressFrom.setText(Hex.decode(foodingModel.addressFrom));
@@ -124,7 +124,7 @@ public class OrderConfirmActivity extends BaseActivity implements OrderConfirmVi
                 presenter.bookTransport(transportModel);
                 break;
             case BOOK_TYPE_FOODING:
-                //TODO impl
+                presenter.bookFooding(foodingModel);
                 break;
             case BOOK_TYPE_SHOPPING:
                 presenter.bookShopping(shoppingModel);
@@ -149,7 +149,8 @@ public class OrderConfirmActivity extends BaseActivity implements OrderConfirmVi
 
                 break;
             case BOOK_TYPE_FOODING:
-                //TODO impl
+
+                presenter.saveHistory(foodingModel.addressTo, foodingModel.latTo, foodingModel.lngTo);
                 break;
             case BOOK_TYPE_SHOPPING:
 

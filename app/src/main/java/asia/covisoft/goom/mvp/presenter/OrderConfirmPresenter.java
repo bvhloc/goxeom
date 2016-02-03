@@ -19,10 +19,12 @@ import asia.covisoft.goom.helper.DatetimeHelper;
 import asia.covisoft.goom.helper.Hex;
 import asia.covisoft.goom.helper.NetworkClient;
 import asia.covisoft.goom.mvp.model.OrderCourierModel;
+import asia.covisoft.goom.mvp.model.OrderFoodOrderedModel;
 import asia.covisoft.goom.mvp.model.OrderShoppingModel;
 import asia.covisoft.goom.mvp.model.OrderTransportModel;
 import asia.covisoft.goom.mvp.view.OrderConfirmView;
 import asia.covisoft.goom.pojo.activeandroid.LocationHistory;
+import asia.covisoft.goom.pojo.gson.FoodlistRoot.Foodlist;
 import asia.covisoft.goom.utils.Constant;
 import asia.covisoft.goom.utils.DatetimeFormat;
 
@@ -267,6 +269,95 @@ public class OrderConfirmPresenter {
                     view.onConnectionFail();
                 else {
                     int resultValue = result.optInt("setcourier");
+                    switch (resultValue) {
+                        case RESULT_BOOKING_SUCCESS:
+                            String bookingId = result.optString("id");
+                            view.onBookingMade(bookingId);
+                            break;
+                        case RESULT_DRIVER_UNAVAIBLE:
+                            break;
+                        case RESULT_ACCOUNT_OUT_OF_MONEY:
+                            break;
+                        case RESULT_BOOKING_FAIL:
+                            break;
+                    }
+                }
+            }
+
+        }.execute();
+    }
+
+    public void bookFooding(final OrderFoodOrderedModel model) {
+        new AsyncTask<Void, Void, JSONObject>() {
+
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+                progressDialog = ProgressDialog.show(context, "", context.getString(R.string.dialog_loading));
+            }
+
+            @SuppressWarnings("UnnecessaryLocalVariable")
+            @Override
+            protected JSONObject doInBackground(Void... params) {
+
+                String addressFrom = model.addressFrom;
+                String addressTo = Hex.encode(model.addressTo);
+                String detailsTo = Hex.encode(model.detailsTo);
+                String foodIds = "";
+                String foodQuantities = "";
+                String foodNotes = "";
+                for (Foodlist food : model.foods) {
+                    foodIds += ";" + food.getFoodId();
+                    foodQuantities += ";" + food.getQuatity();
+                    if (food.getNote() == null) {
+                        food.setNote("");
+                    }
+                    foodNotes += ";" + Hex.encode(food.getNote());
+                }
+                foodIds = foodIds.substring(1);
+                foodQuantities = foodQuantities.substring(1);
+                foodNotes = foodNotes.substring(1);
+
+                String URL = Constant.HOST +
+                        "setfooding.php?usertoken=" + model.userToken +
+                        "&drivertoken=20" +
+                        "&foodingfrom=" + addressFrom +
+                        "&foodingfromdetail=20" +
+                        "&foodingfromlat=" + model.latFrom +
+                        "&foodingfromlong=" + model.lngFrom +
+                        "&foodingto=" + addressTo +
+                        "&foodingtodetail=" + detailsTo +
+                        "&foodingtolat=" + model.latTo +
+                        "&foodingtolong=" + model.lngTo +
+                        "&cost=" + model.cost +
+                        "&picknow=" + model.pickNow +
+                        "&type=buy&time=20" +
+                        "&foodid=" + foodIds +
+                        "&foodnumber=" + foodQuantities +
+                        "&foodnote=" + foodNotes;
+                Log.d("sdb", URL);
+                try {
+                    String json = new NetworkClient().getJsonFromUrl(URL);
+
+                    JSONObject result = new JSONObject(json);
+
+                    return result;
+
+                } catch (JSONException | IOException e) {
+                    e.printStackTrace();
+                }
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(JSONObject result) {
+                super.onPostExecute(result);
+
+                progressDialog.dismiss();
+                if (result == null)
+                    view.onConnectionFail();
+                else {
+                    int resultValue = result.optInt("setfooding");
                     switch (resultValue) {
                         case RESULT_BOOKING_SUCCESS:
                             String bookingId = result.optString("id");
