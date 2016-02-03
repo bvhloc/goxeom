@@ -45,4 +45,8 @@ public final class Extras {
 
     //OrderFoodOrderedActivity
     public static final String PICKED_FOODS = "PICKED_FOODS";
+
+    //HistoryDetaisActivity
+    public static final String HISTORY_STATE = "HISTORY_STATE";
+    public static final String TRADING_ID = "TRADING_ID";
 }

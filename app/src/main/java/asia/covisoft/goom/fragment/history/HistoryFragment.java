@@ -60,11 +60,11 @@ public class HistoryFragment extends BackFragment {
         super.onViewCreated(view, savedInstanceState);
 
         SharedPreferences loginPreferences = mContext.getSharedPreferences(Preferences.LOGIN_PREFERENCES, Context.MODE_PRIVATE);
-        String token = loginPreferences.getString(Preferences.LOGIN_PREFERENCES_USER_TOKEN, "");
-        if(!token.equals("")){
+        String userToken = loginPreferences.getString(Preferences.LOGIN_PREFERENCES_USER_TOKEN, "");
+        if(!userToken.equals("")){
 
             FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
-            transaction.replace(R.id.tab_container, new HistoryListFragment());
+            transaction.replace(R.id.tab_container, HistoryListFragment.newInstance(userToken));
             transaction.commit();
         }
     }

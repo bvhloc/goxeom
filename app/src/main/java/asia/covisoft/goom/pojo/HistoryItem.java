@@ -1,8 +1,5 @@
 package asia.covisoft.goom.pojo;
 
-/**
- * Created by Covisoft on 23/11/2015.
- */
 public class HistoryItem {
 
     private String historyTradingId;

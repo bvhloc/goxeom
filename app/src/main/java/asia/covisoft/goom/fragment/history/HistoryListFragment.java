@@ -22,13 +22,24 @@ import asia.covisoft.goom.mvp.model.HistoryModel;
 import asia.covisoft.goom.mvp.presenter.HistoryPresenter;
 import asia.covisoft.goom.mvp.view.HistoryView;
 import asia.covisoft.goom.pojo.HistoryItem;
-import asia.covisoft.goom.utils.Constant;
+import asia.covisoft.goom.utils.Extras;
 
 
-public class HistoryListFragment extends BackFragment implements HistoryView{
+@SuppressWarnings("FieldCanBeLocal")
+public class HistoryListFragment extends BackFragment implements HistoryView {
 
     public HistoryListFragment() {
         // Required empty public constructor
+    }
+
+    public static HistoryListFragment newInstance(String userToken) {
+
+        HistoryListFragment fragment = new HistoryListFragment();
+        Bundle args = new Bundle();
+        args.putString(Extras.USER_TOKEN, userToken);
+        fragment.setArguments(args);
+
+        return fragment;
     }
 
     private ListView lvInprocess, lvCompleted;
@@ -51,10 +62,9 @@ public class HistoryListFragment extends BackFragment implements HistoryView{
     private Context mContext;
 
     private HistoryListAdapter inprocessAdapter, completedAdapter;
-    @SuppressWarnings("FieldCanBeLocal")
     private HistoryPresenter presenter;
-    @SuppressWarnings("FieldCanBeLocal")
     private HistoryModel model;
+    private String userToken;
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
@@ -95,18 +105,21 @@ public class HistoryListFragment extends BackFragment implements HistoryView{
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                startActivity(new Intent(mContext, HistoryDetailsActivity.class).putExtra(Constant.HISTORY_STATE, false));
+                String tradingId = inprocessAdapter.getItem(position).getTradingId();
+                startDetails(tradingId, false);
             }
         });
         lvCompleted.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                startActivity(new Intent(mContext, HistoryDetailsActivity.class).putExtra(Constant.HISTORY_STATE, true));
+                String tradingId = completedAdapter.getItem(position).getTradingId();
+                startDetails(tradingId, true);
             }
         });
 
-        presenter.getHistory(model);
+        userToken = getArguments().getString(Extras.USER_TOKEN);
+        presenter.getHistory(userToken, model);
     }
 
 
@@ -123,6 +136,15 @@ public class HistoryListFragment extends BackFragment implements HistoryView{
 
         completedAdapter = new HistoryListAdapter(mContext, historyItems);
         lvCompleted.setAdapter(completedAdapter);
+    }
+
+    private void startDetails(String tradingId, boolean historyState){
+
+        Intent intent = new Intent(mContext, HistoryDetailsActivity.class);
+        intent.putExtra(Extras.TRADING_ID, tradingId);
+        intent.putExtra(Extras.HISTORY_STATE, historyState);
+        intent.putExtra(Extras.USER_TOKEN, userToken);
+        startActivity(intent);
     }
 
 //    private ArrayList<HistoryItem> dataSet1() {

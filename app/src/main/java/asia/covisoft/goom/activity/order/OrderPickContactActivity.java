@@ -20,7 +20,7 @@ public class OrderPickContactActivity extends BaseActivity implements View.OnCli
     private void initView() {
         setContentView(R.layout.activity_order_pick_contact);
 
-        findViewById(R.id.tvPickContact).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.lnlPickContact).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 

@@ -1,5 +1,5 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/tab_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -35,22 +35,36 @@
                 android:paddingLeft="@dimen/activity_horizontal_margin"
                 android:paddingRight="@dimen/activity_horizontal_margin">
 
-                <TextView
-                    android:id="@+id/tvPickContact"
+                <LinearLayout
+                    android:id="@+id/lnlPickContact"
+                    android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
-                    android:drawableStart="@drawable/ic_contact"
-                    android:drawableLeft="@drawable/ic_contact"
-                    android:drawableRight="@drawable/ic_forward"
-                    android:drawableEnd="@drawable/ic_forward"
-                    android:drawablePadding="5dp"
-                    android:background="@drawable/view_touch_selector"
-                    android:layout_marginTop="@dimen/activity_vertical_margin"
-                    android:layout_marginBottom="@dimen/activity_vertical_margin"
-                    android:text="@string/activity_order_pickcontact_addfromcontacts"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="#76b300" />
+                    android:background="@drawable/view_touch_selector">
+
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:src="@drawable/ic_contact"
+                        tools:ignore="ContentDescription" />
+
+                    <TextView
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:drawableRight="@drawable/ic_forward"
+                        android:drawableEnd="@drawable/ic_forward"
+                        android:drawablePadding="5dp"
+                        android:layout_marginTop="@dimen/activity_vertical_margin"
+                        android:layout_marginBottom="@dimen/activity_vertical_margin"
+                        android:text="@string/activity_order_pickcontact_addfromcontacts"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textColor="#76b300" />
+
+                </LinearLayout>
 
                 <TextView
                     android:layout_width="wrap_content"

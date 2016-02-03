@@ -13,6 +13,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import asia.covisoft.goom.base.BaseActivity;
 import asia.covisoft.goom.R;
+import asia.covisoft.goom.utils.Extras;
 import asia.covisoft.goom.widget.WorkaroundMapFragment;
 import asia.covisoft.goom.mvp.presenter.HistoryDetailsPresenter;
 import asia.covisoft.goom.mvp.view.HistoryDetailsView;
@@ -30,9 +31,15 @@ public class HistoryDetailsActivity extends BaseActivity implements HistoryDetai
         presenter = new HistoryDetailsPresenter(this);
         initView();
 
-        presenter.setupTitle(getIntent().getExtras());
+        Bundle extras = getIntent().getExtras();
+
+        presenter.setupTitle(extras);
 
         presenter.setupMap();
+
+        String userToken = extras.getString(Extras.USER_TOKEN);
+        String tradingId = extras.getString(Extras.TRADING_ID);
+        presenter.loadInfo(userToken, tradingId);
     }
 
     private ScrollView scrollView;
@@ -59,6 +66,8 @@ public class HistoryDetailsActivity extends BaseActivity implements HistoryDetai
     }
 
     private GoogleMap mMap;
+
+    @SuppressWarnings("ResourceType")
     @Override
     public void onMapReady(LatLng currentLatLng) {
 
