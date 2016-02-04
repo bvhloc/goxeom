@@ -17,6 +17,7 @@ import asia.covisoft.goom.mvp.model.OrderShoppingModel;
 import asia.covisoft.goom.mvp.model.OrderTransportModel;
 import asia.covisoft.goom.mvp.presenter.OrderConfirmPresenter;
 import asia.covisoft.goom.mvp.view.OrderConfirmView;
+import asia.covisoft.goom.utils.Constant;
 import asia.covisoft.goom.utils.Extras;
 
 public class OrderConfirmActivity extends BaseActivity implements OrderConfirmView {
@@ -57,11 +58,6 @@ public class OrderConfirmActivity extends BaseActivity implements OrderConfirmVi
         setupUI();
     }
 
-    public static final String BOOK_TYPE_COURIER = "C";
-    public static final String BOOK_TYPE_TRANSPORT = "T";
-    public static final String BOOK_TYPE_FOODING = "F";
-    public static final String BOOK_TYPE_SHOPPING = "S";
-
     private void setupUI() {
 
         Bundle extras = getIntent().getExtras();
@@ -69,7 +65,7 @@ public class OrderConfirmActivity extends BaseActivity implements OrderConfirmVi
             return;
         bookType = extras.getString(Extras.BOOKING_TYPE, "");
         switch (bookType) {
-            case BOOK_TYPE_COURIER:
+            case Constant.BOOK_TYPE_COURIER:
 
                 courierModel = (OrderCourierModel) extras.getSerializable(Extras.BOOKING_INFO);
                 if (courierModel != null) {
@@ -80,7 +76,7 @@ public class OrderConfirmActivity extends BaseActivity implements OrderConfirmVi
                 }
 
                 break;
-            case BOOK_TYPE_TRANSPORT:
+            case Constant.BOOK_TYPE_TRANSPORT:
 
                 transportModel = (OrderTransportModel) extras.getSerializable(Extras.BOOKING_INFO);
                 if (transportModel != null) {
@@ -91,7 +87,7 @@ public class OrderConfirmActivity extends BaseActivity implements OrderConfirmVi
                 }
 
                 break;
-            case BOOK_TYPE_FOODING:
+            case Constant.BOOK_TYPE_FOODING:
 
                 foodingModel = (OrderFoodOrderedModel) extras.getSerializable(Extras.BOOKING_INFO);
                 if (foodingModel != null) {
@@ -101,7 +97,7 @@ public class OrderConfirmActivity extends BaseActivity implements OrderConfirmVi
                     tvTotal.setText(foodingModel.cost + " " + getString(R.string.money_unit));
                 }
                 break;
-            case BOOK_TYPE_SHOPPING:
+            case Constant.BOOK_TYPE_SHOPPING:
 
                 shoppingModel = (OrderShoppingModel) extras.getSerializable(Extras.BOOKING_INFO);
                 if (shoppingModel != null) {
@@ -117,16 +113,16 @@ public class OrderConfirmActivity extends BaseActivity implements OrderConfirmVi
     private void btnOrderClicked() {
 
         switch (bookType) {
-            case BOOK_TYPE_COURIER:
+            case Constant.BOOK_TYPE_COURIER:
                 presenter.bookCourier(courierModel);
                 break;
-            case BOOK_TYPE_TRANSPORT:
+            case Constant.BOOK_TYPE_TRANSPORT:
                 presenter.bookTransport(transportModel);
                 break;
-            case BOOK_TYPE_FOODING:
+            case Constant.BOOK_TYPE_FOODING:
                 presenter.bookFooding(foodingModel);
                 break;
-            case BOOK_TYPE_SHOPPING:
+            case Constant.BOOK_TYPE_SHOPPING:
                 presenter.bookShopping(shoppingModel);
                 break;
         }
@@ -136,23 +132,23 @@ public class OrderConfirmActivity extends BaseActivity implements OrderConfirmVi
     public void onBookingMade(String bookingId) {
 
         switch (bookType) {
-            case BOOK_TYPE_COURIER:
+            case Constant.BOOK_TYPE_COURIER:
 
                 presenter.saveHistory(courierModel.addressFrom, courierModel.latFrom, courierModel.lngFrom);
                 presenter.saveHistory(courierModel.addressTo, courierModel.latTo, courierModel.lngTo);
 
                 break;
-            case BOOK_TYPE_TRANSPORT:
+            case Constant.BOOK_TYPE_TRANSPORT:
 
                 presenter.saveHistory(transportModel.addressFrom, transportModel.latFrom, transportModel.lngFrom);
                 presenter.saveHistory(transportModel.addressTo, transportModel.latTo, transportModel.lngTo);
 
                 break;
-            case BOOK_TYPE_FOODING:
+            case Constant.BOOK_TYPE_FOODING:
 
                 presenter.saveHistory(foodingModel.addressTo, foodingModel.latTo, foodingModel.lngTo);
                 break;
-            case BOOK_TYPE_SHOPPING:
+            case Constant.BOOK_TYPE_SHOPPING:
 
                 presenter.saveHistory(shoppingModel.addressFrom, shoppingModel.latFrom, shoppingModel.lngFrom);
                 presenter.saveHistory(shoppingModel.addressTo, shoppingModel.latTo, shoppingModel.lngTo);

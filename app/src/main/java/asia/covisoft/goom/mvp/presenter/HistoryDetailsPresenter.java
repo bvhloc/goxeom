@@ -1,22 +1,22 @@
 package asia.covisoft.goom.mvp.presenter;
 
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 
-import com.google.android.gms.maps.model.LatLng;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 
 import java.io.IOException;
 
 import asia.covisoft.goom.R;
-import asia.covisoft.goom.helper.GPSTracker;
+import asia.covisoft.goom.helper.Hex;
 import asia.covisoft.goom.helper.NetworkClient;
+import asia.covisoft.goom.helper.PolylineDrawer;
 import asia.covisoft.goom.mvp.view.HistoryDetailsView;
 import asia.covisoft.goom.pojo.gson.LoaddetailhistoryRoot;
+import asia.covisoft.goom.pojo.gson.LoaddetailhistoryRoot.Loaddetailhistory;
 import asia.covisoft.goom.utils.Constant;
 import asia.covisoft.goom.utils.Extras;
 
@@ -37,27 +37,11 @@ public class HistoryDetailsPresenter {
         view.setTitle(newTitle);
     }
 
-    public void setupMap() {
-
-        GPSTracker gpsTracker = new GPSTracker(context);
-        LatLng currentLatLng = new LatLng(gpsTracker.getLatitude(), gpsTracker.getLongitude());
-
-        view.onMapReady(currentLatLng);
-    }
-
-    private ProgressDialog progressDialog;
-
     public void loadInfo(final String userToken, final String id) {
-        new AsyncTask<String, Void, Boolean>() {
+        new AsyncTask<String, Void, Loaddetailhistory>() {
 
             @Override
-            protected void onPreExecute() {
-                super.onPreExecute();
-                progressDialog = ProgressDialog.show(context, "", context.getString(R.string.dialog_loading));
-            }
-
-            @Override
-            protected Boolean doInBackground(String... params) {
+            protected Loaddetailhistory doInBackground(String... params) {
 
                 String URL = Constant.HOST +
                         "loaddetailhistory.php?token=" + userToken +
@@ -68,25 +52,94 @@ public class HistoryDetailsPresenter {
 
                     LoaddetailhistoryRoot rootObject = new Gson().fromJson(json, LoaddetailhistoryRoot.class);
 
-                    return true;
+                    return rootObject.getLoaddetailhistory();
 
-                } catch (IOException e) {
+                } catch (IOException | JsonSyntaxException e) {
                     e.printStackTrace();
-                } catch (JsonSyntaxException e) {
-                    return false;
                 }
 
-                return false;
+                return null;
             }
 
             @Override
-            protected void onPostExecute(Boolean success) {
-                super.onPostExecute(success);
-                progressDialog.dismiss();
-                if (success) {
+            protected void onPostExecute(Loaddetailhistory result) {
+                super.onPostExecute(result);
+                if (result != null) {
 
-//                    view.onInprocessListReady(model.getInprocessList());
-//                    view.onCompletedListReady(model.getCompletedList());
+                    //get driver info
+                    Loaddetailhistory.Driver driver = result.getDriver();
+                    if (driver != null) {
+
+                        String driverName = Hex.decode(driver.getFullName());
+                        String driverPhone = driver.getPhoneNumber();
+
+                        view.onDriverInfo(driverName, driverPhone);
+                    }
+
+                    //get trading info
+                    String bookType = String.valueOf(id.charAt(0));
+                    String datetime = "";
+                    String addressFrom = "";
+                    String latFrom = "";
+                    String lngFrom = "";
+                    String addressTo = "";
+                    String latTo = "";
+                    String lngTo = "";
+                    String cost = "";
+                    switch (bookType) {
+                        case Constant.BOOK_TYPE_COURIER:
+                            Loaddetailhistory.Detailhistorycourier historycourier = result.getDetailhistorycourier();
+                            datetime = historycourier.getCourierDate();
+                            addressFrom = Hex.decode(historycourier.getCourierFrom());
+                            addressTo = Hex.decode(historycourier.getCourierTo());
+                            latFrom = historycourier.getCourierFromLat();
+                            lngFrom = historycourier.getCourierFromLong();
+                            latTo = historycourier.getCourierToLat();
+                            lngTo = historycourier.getCourierToLong();
+                            cost = historycourier.getCourierCost();
+                            break;
+                        case Constant.BOOK_TYPE_TRANSPORT:
+                            Loaddetailhistory.Detailhistorytransport historytransport = result.getDetailhistorytransport();
+                            datetime = historytransport.getTransportDate();
+                            addressFrom = Hex.decode(historytransport.getTransportFrom());
+                            addressTo = Hex.decode(historytransport.getTransportTo());
+                            latFrom = historytransport.getTransportFromLat();
+                            lngFrom = historytransport.getTransportFromLong();
+                            latTo = historytransport.getTransportToLat();
+                            lngTo = historytransport.getTransportToLong();
+                            cost = historytransport.getTransportCost();
+                            break;
+                        case Constant.BOOK_TYPE_SHOPPING:
+                            Loaddetailhistory.Detailhistoryshopping historyshopping = result.getDetailhistoryshopping();
+                            datetime = historyshopping.getShoppingTime();
+                            addressFrom = Hex.decode(historyshopping.getShoppingFrom());
+                            addressTo = Hex.decode(historyshopping.getShoppingTo());
+                            latFrom = historyshopping.getShoppingFromLat();
+                            lngFrom = historyshopping.getShoppingFromLong();
+                            latTo = historyshopping.getShoppingToLat();
+                            lngTo = historyshopping.getShoppingToLong();
+                            cost = historyshopping.getShoppingCost();
+                            break;
+                        case Constant.BOOK_TYPE_FOODING:
+                            Loaddetailhistory.Detailhistoryfooding historyfooding = result.getDetailhistoryfooding();
+                            datetime = historyfooding.getFoodingTime();
+                            addressFrom = Hex.decode(historyfooding.getFoodingFrom());
+                            addressTo = Hex.decode(historyfooding.getFoodingTo());
+                            latFrom = historyfooding.getFoodingFromLat();
+                            lngFrom = historyfooding.getFoodingFromLong();
+                            latTo = historyfooding.getFoodingToLat();
+                            lngTo = historyfooding.getFoodingToLong();
+                            cost = historyfooding.getFoodingCost();
+                            break;
+                    }
+                    view.onInfoLoaded(datetime, addressFrom, addressTo, cost);
+
+                    String requestUrl = PolylineDrawer.makeURL(context.getString(R.string.google_maps_key),
+                            Double.parseDouble(latFrom),
+                            Double.parseDouble(lngFrom),
+                            Double.parseDouble(latTo),
+                            Double.parseDouble(lngTo));
+                    view.onMapDraw(requestUrl);
                 }
             }
         }.execute();

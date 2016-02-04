@@ -1,12 +1,9 @@
 package asia.covisoft.goom.mvp.view;
 
-import com.google.android.gms.maps.model.LatLng;
-
-/**
- * Created by Covisoft on 14/12/2015.
- */
 public interface HistoryDetailsView {
 
     void setTitle(String title);
-    void onMapReady(LatLng currentLatLng);
+    void onDriverInfo(String driverName, String driverPhone);
+    void onInfoLoaded(String datetime, String addressFrom, String addressTo, String cost);
+    void onMapDraw(String requestUrl);
 }

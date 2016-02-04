@@ -7,4 +7,9 @@ public final class Constant {
     public static final int CONECTION_TIMEOUT = 20;
 
     public static final String TAB_POSTION = "TAB_POSTION";
+
+    public static final String BOOK_TYPE_COURIER = "C";
+    public static final String BOOK_TYPE_TRANSPORT = "T";
+    public static final String BOOK_TYPE_FOODING = "F";
+    public static final String BOOK_TYPE_SHOPPING = "S";
 }

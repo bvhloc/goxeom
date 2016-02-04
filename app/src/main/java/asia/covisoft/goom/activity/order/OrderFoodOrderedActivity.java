@@ -24,6 +24,7 @@ import asia.covisoft.goom.mvp.model.OrderFoodOrderedModel;
 import asia.covisoft.goom.mvp.model.OrderPresenter;
 import asia.covisoft.goom.mvp.view.OrderView;
 import asia.covisoft.goom.pojo.gson.FoodlistRoot.Foodlist;
+import asia.covisoft.goom.utils.Constant;
 import asia.covisoft.goom.utils.Extras;
 
 public class OrderFoodOrderedActivity extends BaseActivity implements OrderView, FoodListAdapter.OnQuantitiesChangedListener {
@@ -153,7 +154,7 @@ public class OrderFoodOrderedActivity extends BaseActivity implements OrderView,
         if(validInput()){
 
             Intent intent = new Intent(mContext, OrderConfirmActivity.class);
-            intent.putExtra(Extras.BOOKING_TYPE, OrderConfirmActivity.BOOK_TYPE_FOODING);
+            intent.putExtra(Extras.BOOKING_TYPE, Constant.BOOK_TYPE_FOODING);
             intent.putExtra(Extras.BOOKING_INFO, model);
             startActivity(intent);
         }

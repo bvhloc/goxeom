@@ -25,6 +25,7 @@ import java.util.List;
 
 import asia.covisoft.goom.R;
 import asia.covisoft.goom.base.BaseMapActivity;
+import asia.covisoft.goom.utils.Constant;
 import asia.covisoft.goom.widget.WorkaroundMapFragment;
 import asia.covisoft.goom.helper.DatetimeHelper;
 import asia.covisoft.goom.helper.GPSTracker;
@@ -247,7 +248,7 @@ public class OrderShoppingActivity extends BaseMapActivity implements OrderShopp
         model.cost = cost;
 
         Intent intent = new Intent(mContext, OrderConfirmActivity.class);
-        intent.putExtra(Extras.BOOKING_TYPE, OrderConfirmActivity.BOOK_TYPE_SHOPPING);
+        intent.putExtra(Extras.BOOKING_TYPE, Constant.BOOK_TYPE_SHOPPING);
         intent.putExtra(Extras.BOOKING_INFO, model);
         startActivity(intent);
     }
