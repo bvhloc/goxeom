@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="asia.covisoft.goomdriver" >
+    package="asia.covisoft.goom" >
 
     <!-- [START gcm_permission] -->
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
@@ -13,7 +13,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="asia.covisoft.goomdriver.MainActivity"
+            android:name="asia.covisoft.goom.MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

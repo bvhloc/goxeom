@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -57,6 +58,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
 
         appPreferences = getSharedPreferences(Preferences.APP_PREFERENCES, MODE_PRIVATE);
+        Log.d("sdb", "registered: " + PreferenceManager.getDefaultSharedPreferences(this).getString(Preferences.APP_PREFERENCES_GCM_TOKEN, ""));
         if (validGmsVersion()) {
             initMap();
         } else {
@@ -206,7 +208,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                 // delegating the task to super class
                 super.onBackPressed();
             }
-        }else {
+        } else {
             MainActivity.this.finish();
         }
     }

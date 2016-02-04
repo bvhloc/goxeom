@@ -35,10 +35,9 @@ import com.google.android.gms.common.GoogleApiAvailability;
 import asia.covisoft.goom.gcm.QuickstartPreferences;
 import asia.covisoft.goom.gcm.RegistrationIntentService;
 
-public class MainActivity extends AppCompatActivity {
+public class IntroActivity extends AppCompatActivity {
 
     private static final int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
-    private static final String TAG = "MainActivity";
 
     private BroadcastReceiver mRegistrationBroadcastReceiver;
     private ProgressBar mRegistrationProgressBar;
@@ -47,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_intro);
 
         mRegistrationProgressBar = (ProgressBar) findViewById(R.id.registrationProgressBar);
         mRegistrationBroadcastReceiver = new BroadcastReceiver() {
@@ -63,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     mInformationTextView.setText(getString(R.string.token_error_message));
                 }
+                startActivity(new Intent(IntroActivity.this, MainActivity.class));
             }
         };
         mInformationTextView = (TextView) findViewById(R.id.informationTextView);
@@ -100,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
                 apiAvailability.getErrorDialog(this, resultCode, PLAY_SERVICES_RESOLUTION_REQUEST)
                         .show();
             } else {
-                Log.i(TAG, "This device is not supported.");
+                Log.i("sdb", "This device is not supported.");
                 finish();
             }
             return false;

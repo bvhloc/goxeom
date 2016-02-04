@@ -28,7 +28,7 @@ import android.util.Log;
 
 import com.google.android.gms.gcm.GcmListenerService;
 
-import asia.covisoft.goom.MainActivity;
+import asia.covisoft.goom.IntroActivity;
 import asia.covisoft.goom.R;
 
 public class GoOmGcmListenerService extends GcmListenerService {
@@ -80,7 +80,7 @@ public class GoOmGcmListenerService extends GcmListenerService {
      * @param message GCM message received.
      */
     private void sendNotification(String title, String message) {
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, IntroActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent,
                 PendingIntent.FLAG_ONE_SHOT);

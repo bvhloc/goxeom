@@ -24,7 +24,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import asia.covisoft.goom.MainActivity;
+import asia.covisoft.goom.IntroActivity;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
@@ -36,8 +36,8 @@ import static android.support.test.espresso.matcher.ViewMatchers.withId;
 public class MainActivityEspressoTest {
 
     @Rule
-    public ActivityTestRule<MainActivity> mActivityRule =
-            new ActivityTestRule<>(MainActivity.class);
+    public ActivityTestRule<IntroActivity> mActivityRule =
+            new ActivityTestRule<>(IntroActivity.class);
 
     @Test
     public void displayInformationText_sameActivity() {

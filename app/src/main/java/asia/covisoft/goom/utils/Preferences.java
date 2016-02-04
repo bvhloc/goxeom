@@ -10,4 +10,5 @@ public final class Preferences {
 
     public static final String APP_PREFERENCES = "APP_PREFERENCES";
     public static final String APP_PREFERENCES_INVALID_GMS = "APP_PREFERENCES_INVALID_GMS";
+    public static final String APP_PREFERENCES_GCM_TOKEN = "APP_PREFERENCES_GCM_TOKEN";
 }
