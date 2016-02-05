@@ -3,7 +3,9 @@ package asia.covisoft.goom.activity.history;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
@@ -13,13 +15,17 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.util.List;
+
 import asia.covisoft.goom.R;
 import asia.covisoft.goom.base.BaseActivity;
 import asia.covisoft.goom.helper.GPSTracker;
+import asia.covisoft.goom.helper.Hex;
 import asia.covisoft.goom.helper.PhoneHelper;
 import asia.covisoft.goom.helper.PolylineDrawer;
 import asia.covisoft.goom.mvp.presenter.HistoryDetailsPresenter;
 import asia.covisoft.goom.mvp.view.HistoryDetailsView;
+import asia.covisoft.goom.pojo.gson.LoaddetailhistoryRoot.Loaddetailhistory.Foodlist;
 import asia.covisoft.goom.utils.Extras;
 import asia.covisoft.goom.widget.WorkaroundMapFragment;
 
@@ -143,6 +149,19 @@ public class HistoryDetailsActivity extends BaseActivity implements HistoryDetai
         tvAddressFrom.setText(addressFrom);
         tvAddressTo.setText(addressTo);
         tvTotal.setText(cost + " " + getString(R.string.money_unit));
+    }
+
+    @Override
+    public void onFoodsLoaded(List<Foodlist> foods) {
+
+        LinearLayout lnlList = (LinearLayout) findViewById(R.id.lnlList);
+        for (Foodlist food : foods) {
+            TextView tvFood = new TextView(mContext);
+            tvFood.setText("- " + Hex.decode(food.getFoodName()));
+            tvFood.setTextColor(ContextCompat.getColor(mContext, R.color.mBlackText));
+            lnlList.addView(tvFood);
+        }
+        findViewById(R.id.tvMenu).setVisibility(View.VISIBLE);
     }
 
     @Override

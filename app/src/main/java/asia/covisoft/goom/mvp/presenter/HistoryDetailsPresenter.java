@@ -130,6 +130,8 @@ public class HistoryDetailsPresenter {
                             latTo = historyfooding.getFoodingToLat();
                             lngTo = historyfooding.getFoodingToLong();
                             cost = historyfooding.getFoodingCost();
+
+                            view.onFoodsLoaded(result.getFoodlist());
                             break;
                     }
                     view.onInfoLoaded(datetime, addressFrom, addressTo, cost);

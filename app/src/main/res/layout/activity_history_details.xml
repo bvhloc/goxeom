@@ -146,6 +146,8 @@
                     android:textColor="@color/mBlackText" />
 
                 <TextView
+                    android:id="@+id/tvMenu"
+                    android:visibility="gone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
@@ -158,7 +160,23 @@
                     android:text="@string/lowcase_menu"
                     android:textColor="@color/mBlackText" />
 
+                <TextView
+                    android:id="@+id/tvItems"
+                    android:visibility="gone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                    android:drawableLeft="@drawable/ic_menu"
+                    android:drawablePadding="10dp"
+                    android:drawableStart="@drawable/ic_menu"
+                    android:gravity="center"
+                    android:text="@string/lowcase_items"
+                    android:textColor="@color/mBlackText" />
+
                 <LinearLayout
+                    android:id="@+id/lnlList"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/activity_horizontal_margin"
@@ -166,14 +184,6 @@
                     android:orientation="vertical"
                     android:paddingLeft="@dimen/activity_horizontal_margin"
                     android:paddingRight="@dimen/activity_horizontal_margin">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                        android:layout_marginRight="@dimen/activity_horizontal_margin"
-                        android:text="- Com ga"
-                        android:textColor="@color/mBlackText" />
 
                 </LinearLayout>
 
