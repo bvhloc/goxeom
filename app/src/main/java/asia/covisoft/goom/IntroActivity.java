@@ -1,12 +1,12 @@
 /**
  * Copyright 2015 Google Inc. All Rights Reserved.
- *
+ * <p/>
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
+ * <p/>
  * http://www.apache.org/licenses/LICENSE-2.0
- *
+ * <p/>
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -22,6 +22,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
@@ -32,7 +33,7 @@ import android.widget.TextView;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 
-import asia.covisoft.goom.gcm.QuickstartPreferences;
+import asia.covisoft.goom.gcm.GcmPreferences;
 import asia.covisoft.goom.gcm.RegistrationIntentService;
 
 public class IntroActivity extends AppCompatActivity {
@@ -42,6 +43,7 @@ public class IntroActivity extends AppCompatActivity {
     private BroadcastReceiver mRegistrationBroadcastReceiver;
     private ProgressBar mRegistrationProgressBar;
     private TextView mInformationTextView;
+    private boolean intro;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,13 +58,14 @@ public class IntroActivity extends AppCompatActivity {
                 SharedPreferences sharedPreferences =
                         PreferenceManager.getDefaultSharedPreferences(context);
                 boolean sentToken = sharedPreferences
-                        .getBoolean(QuickstartPreferences.SENT_TOKEN_TO_SERVER, false);
+                        .getBoolean(GcmPreferences.SENT_TOKEN_TO_SERVER, false);
                 if (sentToken) {
                     mInformationTextView.setText(getString(R.string.gcm_send_message));
                 } else {
                     mInformationTextView.setText(getString(R.string.token_error_message));
                 }
-                startActivity(new Intent(IntroActivity.this, MainActivity.class));
+
+                startMain();
             }
         };
         mInformationTextView = (TextView) findViewById(R.id.informationTextView);
@@ -72,13 +75,30 @@ public class IntroActivity extends AppCompatActivity {
             Intent intent = new Intent(this, RegistrationIntentService.class);
             startService(intent);
         }
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+
+                startMain();
+            }
+        }, 3000);
+    }
+
+    private void startMain(){
+        if (intro) {
+            startActivity(new Intent(this, MainActivity.class));
+            this.finish();
+        } else {
+            intro = true;
+        }
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         LocalBroadcastManager.getInstance(this).registerReceiver(mRegistrationBroadcastReceiver,
-                new IntentFilter(QuickstartPreferences.REGISTRATION_COMPLETE));
+                new IntentFilter(GcmPreferences.REGISTRATION_COMPLETE));
     }
 
     @Override

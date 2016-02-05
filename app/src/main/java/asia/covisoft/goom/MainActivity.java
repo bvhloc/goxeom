@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     private TabFragment tabFragment;
     private SharedPreferences loginPreferences;
-    private SharedPreferences appPreferences;
+    private SharedPreferences sharedPreferences;
 
     private ProgressDialog progressDialog;
 
@@ -57,13 +57,13 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 //        }
 
 
-        appPreferences = getSharedPreferences(Preferences.APP_PREFERENCES, MODE_PRIVATE);
-        Log.d("sdb", "registered: " + PreferenceManager.getDefaultSharedPreferences(this).getString(Preferences.APP_PREFERENCES_GCM_TOKEN, ""));
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        Log.d("sdb", "registered: " + sharedPreferences.getString(Preferences.GCM_TOKEN, ""));
         if (validGmsVersion()) {
             initMap();
         } else {
-            appPreferences.edit()
-                    .putBoolean(Preferences.APP_PREFERENCES_INVALID_GMS, true)
+            sharedPreferences.edit()
+                    .putBoolean(Preferences.INVALID_GMS, true)
                     .apply();
         }
     }
@@ -71,11 +71,11 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     @Override
     protected void onResume() {
         super.onResume();
-        if (appPreferences.getBoolean(Preferences.APP_PREFERENCES_INVALID_GMS, false)) {
+        if (sharedPreferences.getBoolean(Preferences.INVALID_GMS, false)) {
             if (validGmsVersion()) {
                 initMap();
-                appPreferences.edit()
-                        .putBoolean(Preferences.APP_PREFERENCES_INVALID_GMS, false)
+                sharedPreferences.edit()
+                        .putBoolean(Preferences.INVALID_GMS, false)
                         .apply();
             }
         }
@@ -144,7 +144,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                 String token = "";
                 final String URL = Constant.HOST +
                         "login.php?userid=" + params[0] +
-                        "&pass=" + new MD5().encrypt(params[1]) +
+                        "&pass=" + MD5.encrypt(params[1]) +
                         "&lat=" + lat +
                         "&long=" + lng;
                 Log.d("sdb", URL);

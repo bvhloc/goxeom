@@ -58,9 +58,8 @@ public class RegistrationIntentService extends IntentService {
             // [END get_token]
             Log.i(TAG, "GCM Registration Token: " + token);
             Log.d("sdb", "GCM Registration Token: " + token);
-            PreferenceManager.getDefaultSharedPreferences(getApplicationContext())
-                    .edit()
-                    .putString(Preferences.APP_PREFERENCES_GCM_TOKEN, token)
+            sharedPreferences.edit()
+                    .putString(Preferences.GCM_TOKEN, token)
                     .apply();
 
             // TODO: Implement this method to send any registration to your app's servers.
@@ -72,22 +71,22 @@ public class RegistrationIntentService extends IntentService {
             // You should store a boolean that indicates whether the generated token has been
             // sent to your server. If the boolean is false, send the token to your server,
             // otherwise your server should have already received the token.
-            sharedPreferences.edit().putBoolean(QuickstartPreferences.SENT_TOKEN_TO_SERVER, true).apply();
+            sharedPreferences.edit().putBoolean(GcmPreferences.SENT_TOKEN_TO_SERVER, true).apply();
             // [END register_for_gcm]
         } catch (Exception e) {
             Log.d(TAG, "Failed to complete token refresh", e);
             // If an exception happens while fetching the new token or updating our registration data
             // on a third-party server, this ensures that we'll attempt the update at a later time.
-            sharedPreferences.edit().putBoolean(QuickstartPreferences.SENT_TOKEN_TO_SERVER, false).apply();
+            sharedPreferences.edit().putBoolean(GcmPreferences.SENT_TOKEN_TO_SERVER, false).apply();
         }
         // Notify UI that registration has completed, so the progress indicator can be hidden.
-        Intent registrationComplete = new Intent(QuickstartPreferences.REGISTRATION_COMPLETE);
+        Intent registrationComplete = new Intent(GcmPreferences.REGISTRATION_COMPLETE);
         LocalBroadcastManager.getInstance(this).sendBroadcast(registrationComplete);
     }
 
     /**
      * Persist registration to third-party servers.
-     *
+     * <p/>
      * Modify this method to associate the user's GCM registration token with any server-side account
      * maintained by your application.
      *
