@@ -13,10 +13,10 @@ import android.widget.EditText;
 
 import asia.covisoft.goom.R;
 import asia.covisoft.goom.base.BaseActivity;
+import asia.covisoft.goom.helper.AppHelper;
 import asia.covisoft.goom.mvp.model.SettingsSignupModel;
 import asia.covisoft.goom.mvp.presenter.SettingsSignupPresenter;
 import asia.covisoft.goom.mvp.view.SettingsSignupView;
-import asia.covisoft.goom.utils.Constant;
 import asia.covisoft.goom.utils.Preferences;
 
 @SuppressWarnings("FieldCanBeLocal")
@@ -168,11 +168,7 @@ public class SettingsSignupActivity extends BaseActivity implements SettingsSign
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
 
-                                Intent intent = getBaseContext().getPackageManager()
-                                        .getLaunchIntentForPackage(getBaseContext().getPackageName());
-                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                intent.putExtra(Constant.TAB_POSTION, 2);
-                                startActivity(intent);
+                                new AppHelper(mContext).restartToMain(3);
 
                             }
                         }).show();

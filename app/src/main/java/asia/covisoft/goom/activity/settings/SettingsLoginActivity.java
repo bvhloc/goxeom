@@ -3,7 +3,6 @@ package asia.covisoft.goom.activity.settings;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.InputType;
@@ -16,12 +15,11 @@ import android.widget.TextView;
 
 import asia.covisoft.goom.R;
 import asia.covisoft.goom.base.BaseActivity;
+import asia.covisoft.goom.helper.AppHelper;
 import asia.covisoft.goom.helper.SystemHelper;
 import asia.covisoft.goom.mvp.model.SettingsLoginModel;
 import asia.covisoft.goom.mvp.presenter.SettingsLoginPresenter;
 import asia.covisoft.goom.mvp.view.SettingsLoginView;
-import asia.covisoft.goom.utils.Constant;
-import asia.covisoft.goom.utils.Extras;
 import asia.covisoft.goom.utils.Preferences;
 
 @SuppressWarnings("FieldCanBeLocal")
@@ -77,7 +75,7 @@ public class SettingsLoginActivity extends BaseActivity implements SettingsLogin
         new SystemHelper().hideKeyboard(this);
         if (validInput()) {
 
-            presenter.login(model);
+            presenter.login(model.getUsername(), model.getPassword());
         }
     }
 
@@ -124,12 +122,7 @@ public class SettingsLoginActivity extends BaseActivity implements SettingsLogin
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
 
-                                Intent intent = getBaseContext().getPackageManager()
-                                        .getLaunchIntentForPackage(getBaseContext().getPackageName());
-                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                intent.putExtra(Constant.TAB_POSTION, 3);
-                                intent.putExtra(Extras.IS_LOGIN, true);
-                                startActivity(intent);
+                                new AppHelper(mContext).restartToMain(3, true);
 
                             }
                         }).show();

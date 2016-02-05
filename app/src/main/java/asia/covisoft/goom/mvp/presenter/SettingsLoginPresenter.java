@@ -3,6 +3,7 @@ package asia.covisoft.goom.mvp.presenter;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
+import android.preference.PreferenceManager;
 import android.util.Log;
 
 import org.json.JSONException;
@@ -17,6 +18,7 @@ import asia.covisoft.goom.helper.NetworkClient;
 import asia.covisoft.goom.mvp.model.SettingsLoginModel;
 import asia.covisoft.goom.mvp.view.SettingsLoginView;
 import asia.covisoft.goom.utils.Constant;
+import asia.covisoft.goom.utils.Preferences;
 
 public class SettingsLoginPresenter {
 
@@ -30,10 +32,15 @@ public class SettingsLoginPresenter {
 
     private ProgressDialog progressDialog;
 
-    public void login(final SettingsLoginModel model) {
+    public void login(final String username, final String password) {
 
+        final SettingsLoginModel model = new SettingsLoginModel();
+        model.setUsername(username);
+        model.setPassword(password);
         final double lat = new GPSTracker(context).getLatitude();
         final double lng = new GPSTracker(context).getLongitude();
+        final String gcmToken = PreferenceManager.getDefaultSharedPreferences(context)
+                .getString(Preferences.GCM_TOKEN, "");
 
         new AsyncTask<String, Void, Boolean>() {
 
@@ -48,10 +55,11 @@ public class SettingsLoginPresenter {
 
                 boolean result = false;
                 final String URL = Constant.HOST +
-                        "login.php?userid=" + params[0] +
-                        "&pass=" + MD5.encrypt(params[1]) +
+                        "login.php?userid=" + username +
+                        "&pass=" + MD5.encrypt(password) +
                         "&lat=" + lat +
-                        "&long=" + lng;
+                        "&long=" + lng +
+                        "&registration=" + gcmToken;
                 Log.d("sdb", URL);
                 try {
 //                    Log.d("sdb", URL);
@@ -88,6 +96,6 @@ public class SettingsLoginPresenter {
                     view.onLogin(model);
             }
 
-        }.execute(model.getUsername(), model.getPassword());
+        }.execute();
     }
 }

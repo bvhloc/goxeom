@@ -3,7 +3,6 @@ package asia.covisoft.goom.activity.settings;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -17,13 +16,13 @@ import java.util.Calendar;
 
 import asia.covisoft.goom.R;
 import asia.covisoft.goom.base.BaseActivity;
+import asia.covisoft.goom.helper.AppHelper;
 import asia.covisoft.goom.helper.DatetimeHelper;
 import asia.covisoft.goom.helper.MD5;
 import asia.covisoft.goom.helper.SystemHelper;
 import asia.covisoft.goom.mvp.model.SettingsProfileModel;
 import asia.covisoft.goom.mvp.presenter.SettingsProfilePresenter;
 import asia.covisoft.goom.mvp.view.SettingsProfileView;
-import asia.covisoft.goom.utils.Constant;
 import asia.covisoft.goom.utils.DatetimeFormat;
 import asia.covisoft.goom.utils.Preferences;
 
@@ -272,11 +271,7 @@ public class SettingsProfileActivity extends BaseActivity implements SettingsPro
                                 .putString(Preferences.LOGIN_PREFERENCES_USER_TOKEN, "")
                                 .apply();
 
-                        Intent intent = getBaseContext().getPackageManager()
-                                .getLaunchIntentForPackage(getBaseContext().getPackageName());
-                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        intent.putExtra(Constant.TAB_POSTION, 3);
-                        startActivity(intent);
+                        new AppHelper(mContext).restartToMain(3);
 
                     }
                 }).show();
