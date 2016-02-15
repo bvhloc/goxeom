@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.List;
 
@@ -163,8 +164,10 @@ public class HistoryDetailsActivity extends BaseMapActivity implements HistoryDe
     }
 
     @Override
-    public void onMapDraw(String requestUrl, CameraUpdate cameraUpdate) {
+    public void onMapDraw(String requestUrl, CameraUpdate cameraUpdate, MarkerOptions sourceMarker, MarkerOptions destinationMarker) {
 
+        mMap.addMarker(sourceMarker);
+        mMap.addMarker(destinationMarker);
         mMap.moveCamera(cameraUpdate);
         new PolylineDrawer().drawPath(mMap, requestUrl);
         progressDialog.dismiss();

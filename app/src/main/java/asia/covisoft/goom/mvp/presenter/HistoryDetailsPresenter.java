@@ -7,8 +7,10 @@ import android.util.Log;
 
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 
@@ -151,16 +153,28 @@ public class HistoryDetailsPresenter {
                     LatLng source = new LatLng(sourceLat, sourceLng);
                     LatLng destination = new LatLng(destinationLat, destinationLng);
 
+                    //make url to draw polyline
                     String requestUrl = PolylineDrawer.makeURL(context.getString(R.string.google_maps_key),
                             source, destination);
 
+                    //build CameraUpdate
                     LatLngBounds bounds = new LatLngBounds.Builder()
                             .include(source)
                             .include(destination)
                             .build();
                     CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngBounds(bounds, 50);
 
-                    view.onMapDraw(requestUrl, cameraUpdate);
+                    //build markers
+                    MarkerOptions sourceMarker = new MarkerOptions()
+                            .icon(BitmapDescriptorFactory
+                                    .fromResource(R.drawable.ic_green_marker_transparent_small))
+                            .position(source);
+                    MarkerOptions destinationMarker = new MarkerOptions()
+                            .icon(BitmapDescriptorFactory
+                                    .fromResource(R.drawable.ic_blue_marker_transparent_small))
+                            .position(destination);
+
+                    view.onMapDraw(requestUrl, cameraUpdate, sourceMarker, destinationMarker);
                 }
             }
         }.execute();
