@@ -21,22 +21,22 @@ import java.util.concurrent.TimeUnit;
 
 import asia.covisoft.goom.utils.Constant;
 
-public class PolylineDrawer {
+public class  PolylineDrawer {
 
     @SuppressWarnings("StringBufferReplaceableByString")
-    public static String makeURL(String apiKey, double sourcelat, double sourcelog, double destlat, double destlog) {
+    public static String makeURL(String apiKey, LatLng source, LatLng destination) {
         StringBuilder urlString = new StringBuilder();
         urlString.append("https://maps.googleapis.com/maps/api/directions/json");
         urlString.append("?origin=");// from
-        urlString.append(Double.toString(sourcelat));
+        urlString.append(Double.toString(source.latitude));
         urlString.append(",");
         urlString
-                .append(Double.toString(sourcelog));
+                .append(Double.toString(source.longitude));
         urlString.append("&destination=");// to
         urlString
-                .append(Double.toString(destlat));
+                .append(Double.toString(destination.latitude));
         urlString.append(",");
-        urlString.append(Double.toString(destlog));
+        urlString.append(Double.toString(destination.longitude));
         urlString.append("&sensor=false&mode=driving&alternatives=true");
         urlString.append("&key=").append(apiKey);
         return urlString.toString();

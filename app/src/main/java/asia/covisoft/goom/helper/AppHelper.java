@@ -34,6 +34,7 @@ public class AppHelper {
 
         Intent intent = context.getApplicationContext().getPackageManager()
                 .getLaunchIntentForPackage(context.getApplicationContext().getPackageName());
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         context.startActivity(intent);
     }
 }

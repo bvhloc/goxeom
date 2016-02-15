@@ -21,7 +21,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -67,16 +66,18 @@ public class IntroActivity extends AppCompatActivity {
             startService(intent);
         }
 
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
+//        new Handler().postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//
+//                startMain();
+//            }
+//        }, 3000);//TODO active
 
-                startMain();
-            }
-        }, 3000);
+        startMain();
     }
 
-    private void startMain(){
+    private void startMain() {
         if (intro) {
             startActivity(new Intent(this, MainActivity.class));
             this.finish();

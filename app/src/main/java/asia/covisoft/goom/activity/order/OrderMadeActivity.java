@@ -9,6 +9,7 @@ import android.view.View;
 
 import asia.covisoft.goom.R;
 import asia.covisoft.goom.base.BaseActivity;
+import asia.covisoft.goom.helper.AppHelper;
 import asia.covisoft.goom.mvp.presenter.OrderMadePresenter;
 import asia.covisoft.goom.mvp.view.OrderMadeView;
 import asia.covisoft.goom.utils.Constant;
@@ -37,11 +38,7 @@ public class OrderMadeActivity extends BaseActivity implements OrderMadeView {
             @Override
             public void onClick(View v) {
 
-                Intent intent = getBaseContext().getPackageManager()
-                        .getLaunchIntentForPackage(getBaseContext().getPackageName());
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                intent.putExtra(Constant.TAB_POSTION, 1);
-                startActivity(intent);
+                new AppHelper(mContext).restartToMain(1);
             }
         });
     }

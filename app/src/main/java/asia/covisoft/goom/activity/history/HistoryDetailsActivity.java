@@ -9,17 +9,14 @@ import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
-import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.List;
 
 import asia.covisoft.goom.R;
-import asia.covisoft.goom.base.BaseActivity;
-import asia.covisoft.goom.helper.GPSTracker;
+import asia.covisoft.goom.base.BaseMapActivity;
 import asia.covisoft.goom.helper.Hex;
 import asia.covisoft.goom.helper.PhoneHelper;
 import asia.covisoft.goom.helper.PolylineDrawer;
@@ -29,10 +26,11 @@ import asia.covisoft.goom.pojo.gson.LoaddetailhistoryRoot.Loaddetailhistory.Food
 import asia.covisoft.goom.utils.Extras;
 import asia.covisoft.goom.widget.WorkaroundMapFragment;
 
-public class HistoryDetailsActivity extends BaseActivity implements HistoryDetailsView, OnMapReadyCallback {
+public class HistoryDetailsActivity extends BaseMapActivity implements HistoryDetailsView, OnMapReadyCallback {
 
     private ScrollView scrollView;
     private TextView tvTitle, tvDriverName, tvDatetime, tvAddressFrom, tvAddressTo, tvTotal;
+    private LinearLayout lnlList;
 
     private void initView() {
         setContentView(R.layout.activity_history_details);
@@ -41,6 +39,7 @@ public class HistoryDetailsActivity extends BaseActivity implements HistoryDetai
         tvTitle = (TextView) findViewById(R.id.tvTitle);
         tvDriverName = (TextView) findViewById(R.id.tvDriverName);
         tvDatetime = (TextView) findViewById(R.id.tvDatetime);
+        lnlList = (LinearLayout) findViewById(R.id.lnlList);
         tvAddressFrom = (TextView) findViewById(R.id.tvAddressFrom);
         tvAddressTo = (TextView) findViewById(R.id.tvAddressTo);
         tvTotal = (TextView) findViewById(R.id.tvTotal);
@@ -116,21 +115,11 @@ public class HistoryDetailsActivity extends BaseActivity implements HistoryDetai
 
     private GoogleMap mMap;
 
-    @SuppressWarnings("ResourceType")
     @Override
     public void onMapReady(GoogleMap googleMap) {
+        super.onMapReady(googleMap);
 
         mMap = googleMap;
-        // Check if we were successful in obtaining the map.
-        if (mMap != null) {
-
-            GPSTracker gpsTracker = new GPSTracker(mContext);
-            LatLng currentLatLng = new LatLng(gpsTracker.getLatitude(), gpsTracker.getLongitude());
-
-            mMap.addMarker(new MarkerOptions().position(currentLatLng).title(getString(R.string.lowcase_your_location)));
-            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng, 14));
-            mMap.setMyLocationEnabled(true);
-        }
     }
 
     private String driverPhone;
@@ -152,21 +141,31 @@ public class HistoryDetailsActivity extends BaseActivity implements HistoryDetai
     }
 
     @Override
+    public void onItemsLoaded(String items) {
+
+        findViewById(R.id.tvItems).setVisibility(View.VISIBLE);
+        TextView textView = new TextView(mContext);
+        textView.setText(Hex.decode(items));
+        textView.setTextColor(ContextCompat.getColor(mContext, R.color.mBlackText));
+        lnlList.addView(textView);
+    }
+
+    @Override
     public void onFoodsLoaded(List<Foodlist> foods) {
 
-        LinearLayout lnlList = (LinearLayout) findViewById(R.id.lnlList);
+        findViewById(R.id.tvMenu).setVisibility(View.VISIBLE);
         for (Foodlist food : foods) {
             TextView tvFood = new TextView(mContext);
             tvFood.setText("- " + Hex.decode(food.getFoodName()));
             tvFood.setTextColor(ContextCompat.getColor(mContext, R.color.mBlackText));
             lnlList.addView(tvFood);
         }
-        findViewById(R.id.tvMenu).setVisibility(View.VISIBLE);
     }
 
     @Override
-    public void onMapDraw(final String requestUrl) {
+    public void onMapDraw(String requestUrl, CameraUpdate cameraUpdate) {
 
+        mMap.moveCamera(cameraUpdate);
         new PolylineDrawer().drawPath(mMap, requestUrl);
         progressDialog.dismiss();
     }

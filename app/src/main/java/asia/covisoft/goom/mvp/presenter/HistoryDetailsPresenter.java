@@ -5,6 +5,10 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.google.android.gms.maps.CameraUpdate;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 
@@ -97,6 +101,8 @@ public class HistoryDetailsPresenter {
                             latTo = historycourier.getCourierToLat();
                             lngTo = historycourier.getCourierToLong();
                             cost = historycourier.getCourierCost();
+
+                            view.onItemsLoaded(historycourier.getCourierItem());
                             break;
                         case Constant.BOOK_TYPE_TRANSPORT:
                             Loaddetailhistory.Detailhistorytransport historytransport = result.getDetailhistorytransport();
@@ -119,6 +125,8 @@ public class HistoryDetailsPresenter {
                             latTo = historyshopping.getShoppingToLat();
                             lngTo = historyshopping.getShoppingToLong();
                             cost = historyshopping.getShoppingCost();
+
+                            view.onItemsLoaded(historyshopping.getShoppingItem());
                             break;
                         case Constant.BOOK_TYPE_FOODING:
                             Loaddetailhistory.Detailhistoryfooding historyfooding = result.getDetailhistoryfooding();
@@ -136,12 +144,23 @@ public class HistoryDetailsPresenter {
                     }
                     view.onInfoLoaded(datetime, addressFrom, addressTo, cost);
 
+                    double sourceLat = Double.parseDouble(latFrom);
+                    double sourceLng = Double.parseDouble(lngFrom);
+                    double destinationLat = Double.parseDouble(latTo);
+                    double destinationLng = Double.parseDouble(lngTo);
+                    LatLng source = new LatLng(sourceLat, sourceLng);
+                    LatLng destination = new LatLng(destinationLat, destinationLng);
+
                     String requestUrl = PolylineDrawer.makeURL(context.getString(R.string.google_maps_key),
-                            Double.parseDouble(latFrom),
-                            Double.parseDouble(lngFrom),
-                            Double.parseDouble(latTo),
-                            Double.parseDouble(lngTo));
-                    view.onMapDraw(requestUrl);
+                            source, destination);
+
+                    LatLngBounds bounds = new LatLngBounds.Builder()
+                            .include(source)
+                            .include(destination)
+                            .build();
+                    CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngBounds(bounds, 50);
+
+                    view.onMapDraw(requestUrl, cameraUpdate);
                 }
             }
         }.execute();
