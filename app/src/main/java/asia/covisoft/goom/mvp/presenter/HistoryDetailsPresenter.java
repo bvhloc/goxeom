@@ -175,6 +175,8 @@ public class HistoryDetailsPresenter {
                             .position(destination);
 
                     view.onMapDraw(requestUrl, cameraUpdate, sourceMarker, destinationMarker);
+                }else {
+                    view.onConnectionFail();
                 }
             }
         }.execute();

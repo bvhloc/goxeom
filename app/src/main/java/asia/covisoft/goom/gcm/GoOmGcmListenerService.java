@@ -20,6 +20,7 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Bundle;
@@ -27,9 +28,13 @@ import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
 import com.google.android.gms.gcm.GcmListenerService;
+import com.google.gson.Gson;
 
-import asia.covisoft.goom.IntroActivity;
 import asia.covisoft.goom.R;
+import asia.covisoft.goom.activity.history.HistoryDetailsActivity;
+import asia.covisoft.goom.pojo.gson.DriverconfirmRoot;
+import asia.covisoft.goom.utils.Extras;
+import asia.covisoft.goom.utils.Preferences;
 
 public class GoOmGcmListenerService extends GcmListenerService {
 
@@ -45,9 +50,11 @@ public class GoOmGcmListenerService extends GcmListenerService {
     // [START receive_message]
     @Override
     public void onMessageReceived(String from, Bundle data) {
-        String title = data.getString("title");
+//        String title = data.getString("title");
         String message = data.getString("message");
-        String tradingid = data.getString("tradingid");
+        String json = data.getString("trading");
+        DriverconfirmRoot response = new Gson().fromJson(json, DriverconfirmRoot.class);
+        String tradingid = response.getDriverconfirm().getTradingid();
         Log.d(TAG, "From: " + from);
         Log.d(TAG, "Message: " + message);
 
@@ -69,7 +76,7 @@ public class GoOmGcmListenerService extends GcmListenerService {
          * In some cases it may be useful to show a notification indicating to the user
          * that a message was received.
          */
-        sendNotification(title, message + " - " + tradingid);
+        sendNotification(message, tradingid);
         // [END_EXCLUDE]
     }
     // [END receive_message]
@@ -79,8 +86,16 @@ public class GoOmGcmListenerService extends GcmListenerService {
      *
      * @param message GCM message received.
      */
-    private void sendNotification(String title, String message) {
-        Intent intent = new Intent(this, IntroActivity.class);
+    private void sendNotification(String message, String tradingId) {
+
+        Intent intent = new Intent(this, HistoryDetailsActivity.class);
+        intent.putExtra(Extras.TRADING_ID, tradingId);
+        intent.putExtra(Extras.HISTORY_STATE, false);
+        SharedPreferences loginPreferences = getApplicationContext()
+                .getSharedPreferences(Preferences.LOGIN_PREFERENCES, Context.MODE_PRIVATE);
+        String userToken = loginPreferences.getString(Preferences.LOGIN_PREFERENCES_USER_TOKEN, "");
+        intent.putExtra(Extras.USER_TOKEN, userToken);
+
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent,
                 PendingIntent.FLAG_ONE_SHOT);
@@ -88,7 +103,7 @@ public class GoOmGcmListenerService extends GcmListenerService {
         Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
                 .setSmallIcon(R.drawable.ic_stat_ic_notification)
-                .setContentTitle(title)
+                .setContentTitle(getString(R.string.app_name_full))
                 .setContentText(message)
                 .setAutoCancel(true)
                 .setSound(defaultSoundUri)

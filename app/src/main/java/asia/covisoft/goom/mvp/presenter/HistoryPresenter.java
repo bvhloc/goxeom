@@ -48,11 +48,11 @@ public class HistoryPresenter {
                     ArrayList<HistoryItem> inprocessItems = new ArrayList<>();
                     inprocessItems.addAll(inprocessList);
 
-//                    model.setInprocessList(inprocessItems);//TODO active this code
+                    model.setInprocessList(inprocessItems);//TODO active this code
 
-                    //TODO remove this testing code
-                    List<LoadhistoryRoot.Loadhistory.Waiting> waitingList = root.getLoadhistory().getWaiting();
-                    inprocessItems.addAll(waitingList);
+//                    //TODO remove this testing code
+//                    List<LoadhistoryRoot.Loadhistory.Waiting> waitingList = root.getLoadhistory().getWaiting();
+//                    inprocessItems.addAll(waitingList);
                     model.setInprocessList(inprocessItems);
 
                     List<LoadhistoryRoot.Loadhistory.Success> successList = root.getLoadhistory().getSuccess();

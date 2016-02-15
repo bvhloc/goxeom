@@ -15,4 +15,5 @@ public interface HistoryDetailsView {
     void onFoodsLoaded(List<Foodlist> foods);
     void onItemsLoaded(String items);
     void onMapDraw(String requestUrl, CameraUpdate cameraUpdate, MarkerOptions sourceMarker, MarkerOptions destinationMarker);
+    void onConnectionFail();
 }

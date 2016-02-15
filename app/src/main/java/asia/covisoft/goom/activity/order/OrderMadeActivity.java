@@ -3,7 +3,6 @@ package asia.covisoft.goom.activity.order;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -12,7 +11,6 @@ import asia.covisoft.goom.base.BaseActivity;
 import asia.covisoft.goom.helper.AppHelper;
 import asia.covisoft.goom.mvp.presenter.OrderMadePresenter;
 import asia.covisoft.goom.mvp.view.OrderMadeView;
-import asia.covisoft.goom.utils.Constant;
 import asia.covisoft.goom.utils.Extras;
 
 public class OrderMadeActivity extends BaseActivity implements OrderMadeView {
@@ -67,23 +65,13 @@ public class OrderMadeActivity extends BaseActivity implements OrderMadeView {
 
         new AlertDialog.Builder(mContext)
                 .setMessage(getString(R.string.dialog_connection_fail))
-                .setNeutralButton(getString(R.string.lowcase_ok), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-                        onBackPressed();
-                    }
-                })
+                .setNeutralButton(getString(R.string.lowcase_ok), null)
                 .show();
     }
 
     @Override
     public void onBookingCanceled() {
 
-        Intent intent = getBaseContext().getPackageManager()
-                .getLaunchIntentForPackage(getBaseContext().getPackageName());
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        intent.putExtra(Constant.TAB_POSTION, 0);
-        startActivity(intent);
+        new AppHelper(mContext).restartToMain(0);
     }
 }

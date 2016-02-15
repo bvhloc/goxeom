@@ -1,7 +1,9 @@
 package asia.covisoft.goom.activity.history;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
@@ -22,12 +24,14 @@ import asia.covisoft.goom.helper.Hex;
 import asia.covisoft.goom.helper.PhoneHelper;
 import asia.covisoft.goom.helper.PolylineDrawer;
 import asia.covisoft.goom.mvp.presenter.HistoryDetailsPresenter;
+import asia.covisoft.goom.mvp.presenter.OrderMadePresenter;
 import asia.covisoft.goom.mvp.view.HistoryDetailsView;
+import asia.covisoft.goom.mvp.view.OrderMadeView;
 import asia.covisoft.goom.pojo.gson.LoaddetailhistoryRoot.Loaddetailhistory.Foodlist;
 import asia.covisoft.goom.utils.Extras;
 import asia.covisoft.goom.widget.WorkaroundMapFragment;
 
-public class HistoryDetailsActivity extends BaseMapActivity implements HistoryDetailsView, OnMapReadyCallback {
+public class HistoryDetailsActivity extends BaseMapActivity implements HistoryDetailsView, OnMapReadyCallback, OrderMadeView {
 
     private ScrollView scrollView;
     private TextView tvTitle, tvDriverName, tvDatetime, tvAddressFrom, tvAddressTo, tvTotal;
@@ -48,7 +52,7 @@ public class HistoryDetailsActivity extends BaseMapActivity implements HistoryDe
             @Override
             public void onClick(View v) {
 
-                onBackPressed();
+                showDialogCancel();
             }
         });
         findViewById(R.id.btnCall).setOnClickListener(new View.OnClickListener() {
@@ -67,9 +71,24 @@ public class HistoryDetailsActivity extends BaseMapActivity implements HistoryDe
         });
     }
 
+    private void showDialogCancel() {
+        new AlertDialog.Builder(mContext)
+                .setMessage(getString(R.string.dialog_cancelbooking))
+                .setNegativeButton(getString(R.string.lowcase_no),null)
+                .setPositiveButton(getString(R.string.lowcase_yes), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        OrderMadePresenter presenter = new OrderMadePresenter(HistoryDetailsActivity.this);
+                        presenter.setConfirm(tradingId, presenter.CONFIRM_VALUE_CANCEL);
+                    }
+                }).show();
+    }
+
     private Context mContext;
     private HistoryDetailsPresenter presenter;
     private ProgressDialog progressDialog;
+    private String tradingId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,7 +106,7 @@ public class HistoryDetailsActivity extends BaseMapActivity implements HistoryDe
         progressDialog = ProgressDialog.show(mContext, "", getString(R.string.dialog_loading));
 
         String userToken = extras.getString(Extras.USER_TOKEN);
-        String tradingId = extras.getString(Extras.TRADING_ID);
+        tradingId = extras.getString(Extras.TRADING_ID);
         presenter.loadInfo(userToken, tradingId);
     }
 
@@ -171,5 +190,23 @@ public class HistoryDetailsActivity extends BaseMapActivity implements HistoryDe
         mMap.moveCamera(cameraUpdate);
         new PolylineDrawer().drawPath(mMap, requestUrl);
         progressDialog.dismiss();
+    }
+
+    @Override
+    public void onConnectionFail() {
+        new AlertDialog.Builder(mContext)
+                .setMessage(getString(R.string.dialog_connection_fail))
+                .setNeutralButton(getString(R.string.lowcase_ok), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        onBackPressed();
+                    }
+                })
+                .show();
+    }
+
+    @Override
+    public void onBookingCanceled() {
+        onBackPressed();
     }
 }

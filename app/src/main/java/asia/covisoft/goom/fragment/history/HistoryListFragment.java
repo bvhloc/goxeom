@@ -122,6 +122,11 @@ public class HistoryListFragment extends BackFragment implements HistoryView {
         presenter.getHistory(userToken, model);
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        presenter.getHistory(userToken, model);
+    }
 
     @Override
     public void onInprocessListReady(ArrayList<HistoryItem> historyItems) {
