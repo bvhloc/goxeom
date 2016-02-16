@@ -71,9 +71,8 @@ public class  PolylineDrawer {
                     List<LatLng> list = decodePoly(encodedString);
                     PolylineOptions polyline = new PolylineOptions()
                             .addAll(list)
-                            .width(7)
+                            .width(5)
                             .color(Color.parseColor("#03A9F4"))
-                            .geodesic(true)
                             .geodesic(true);
                     googleMap.addPolyline(polyline);
                     /*

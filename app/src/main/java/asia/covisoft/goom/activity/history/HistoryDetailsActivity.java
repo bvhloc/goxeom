@@ -1,5 +1,6 @@
 package asia.covisoft.goom.activity.history;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -31,6 +32,7 @@ import asia.covisoft.goom.pojo.gson.LoaddetailhistoryRoot.Loaddetailhistory.Food
 import asia.covisoft.goom.utils.Extras;
 import asia.covisoft.goom.widget.WorkaroundMapFragment;
 
+@SuppressLint("SetTextI18n")
 public class HistoryDetailsActivity extends BaseMapActivity implements HistoryDetailsView, OnMapReadyCallback, OrderMadeView {
 
     private ScrollView scrollView;
@@ -74,7 +76,7 @@ public class HistoryDetailsActivity extends BaseMapActivity implements HistoryDe
     private void showDialogCancel() {
         new AlertDialog.Builder(mContext)
                 .setMessage(getString(R.string.dialog_cancelbooking))
-                .setNegativeButton(getString(R.string.lowcase_no),null)
+                .setNegativeButton(getString(R.string.lowcase_no), null)
                 .setPositiveButton(getString(R.string.lowcase_yes), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -176,7 +178,7 @@ public class HistoryDetailsActivity extends BaseMapActivity implements HistoryDe
         findViewById(R.id.tvMenu).setVisibility(View.VISIBLE);
         for (Foodlist food : foods) {
             TextView tvFood = new TextView(mContext);
-            tvFood.setText("- " + Hex.decode(food.getFoodName()));
+            tvFood.setText("- " + Hex.decode(food.getFoodName()) + " x" + food.getNumber());
             tvFood.setTextColor(ContextCompat.getColor(mContext, R.color.mBlackText));
             lnlList.addView(tvFood);
         }

@@ -31,6 +31,15 @@
                 android:orientation="vertical"
                 tools:ignore="NestedWeights">
 
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:src="@drawable/ic_triangle_down"
+                    android:layout_gravity="center_horizontal"
+                    tools:ignore="ContentDescription" />
+
                 <!--suppress AndroidDomInspection -->
                 <android.support.percent.PercentRelativeLayout
                     android:id="@+id/pickBox"
@@ -67,9 +76,9 @@
                 <FrameLayout
                     android:id="@+id/addressBox"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/activity_vertical_margin"
                     android:layout_alignParentBottom="true"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginBottom="@dimen/activity_vertical_margin"
                     android:background="@drawable/bg_address_box"
                     android:padding="5dp"
                     app:layout_widthPercent="70%">
@@ -98,6 +107,7 @@
             </android.support.percent.PercentRelativeLayout>
 
             <ImageView
+                android:layout_marginTop="8dp"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_weight="0.12"
