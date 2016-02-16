@@ -119,7 +119,6 @@ public class HistoryListFragment extends BackFragment implements HistoryView {
         });
 
         userToken = getArguments().getString(Extras.USER_TOKEN);
-        presenter.getHistory(userToken, model);
     }
 
     @Override

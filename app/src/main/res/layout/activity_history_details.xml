@@ -1,11 +1,11 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/tab_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/mAppBackground"
-    android:clickable="true">
+    android:clickable="true"
+    android:focusableInTouchMode="true">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -72,53 +72,124 @@
                     android:text="@string/lowcase_doubleclickmaptozoom"
                     android:textColor="@color/mBlackText" />
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:id="@+id/lnlDriverInfo"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/activity_horizontal_margin"
-                    android:text="@string/upcase_driverinformation"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="@color/mBlackText"
-                    android:textStyle="bold" />
+                    android:orientation="vertical">
 
-                <ImageView
-                    android:id="@+id/imgvDriver"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:src="@drawable/circled_user" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/activity_horizontal_margin"
+                        android:text="@string/upcase_driverinformation"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textColor="@color/mBlackText"
+                        android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/tvDriverName"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:text="Driver name"
-                    android:textColor="@color/mBlackText" />
+                    <ImageView
+                        android:id="@+id/imgvDriver"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:contentDescription=""
+                        android:src="@drawable/circled_user" />
+
+                    <TextView
+                        android:id="@+id/tvDriverName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:textColor="@color/mBlackText" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/btnSms"
+                            style="@style/SmallGreenButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginRight="20dp"
+                            android:text="@string/upcase_sendsms" />
+
+                        <Button
+                            android:id="@+id/btnCall"
+                            style="@style/SmallGreenButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginRight="20dp"
+                            android:text="@string/upcase_call" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:id="@+id/lnlTip"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:orientation="horizontal">
+                    android:orientation="vertical">
 
-                    <Button
-                        android:id="@+id/btnSms"
-                        style="@style/SmallGreenButton"
+                    <TextView
+                        android:layout_marginTop="@dimen/activity_vertical_margin"
+                        android:id="@+id/tvMaxTip"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginRight="20dp"
-                        android:text="@string/upcase_sendsms" />
+                        android:layout_gravity="center_horizontal"
+                        android:textColor="@color/mBlackText"
+                        android:text="@string/activity_history_detail_maxtip"/>
 
-                    <Button
-                        android:id="@+id/btnCall"
-                        style="@style/SmallGreenButton"
+                    <EditText
+                        style="@style/CustomSquareEditText"
+                        android:layout_gravity="center_horizontal"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginRight="20dp"
-                        android:text="@string/upcase_call" />
+                        android:inputType="numberDecimal"
+                        android:ems="10"
+                        android:gravity="center_horizontal"
+                        android:hint="@string/lowcase_tip"
+                        android:id="@+id/edtTip" />
+
+                    <TextView
+                        android:layout_marginBottom="@dimen/activity_vertical_margin"
+                        android:id="@+id/tvMinTip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:textColor="@color/mBlackText"
+                        android:text="@string/activity_history_detail_mintip"/>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/btnAccept"
+                            style="@style/SmallGreenButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginRight="20dp"
+                            android:text="@string/accept" />
+
+                        <Button
+                            android:id="@+id/btnDecline"
+                            style="@style/SmallGreenButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginRight="20dp"
+                            android:text="@string/decline" />
+
+                    </LinearLayout>
 
                 </LinearLayout>
 
@@ -142,12 +213,10 @@
                     android:drawablePadding="10dp"
                     android:drawableStart="@drawable/ic_clock"
                     android:gravity="center"
-                    android:text="June 11th, 11:20..."
                     android:textColor="@color/mBlackText" />
 
                 <TextView
                     android:id="@+id/tvMenu"
-                    android:visibility="gone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
@@ -158,11 +227,11 @@
                     android:drawableStart="@drawable/ic_menu"
                     android:gravity="center"
                     android:text="@string/lowcase_menu"
-                    android:textColor="@color/mBlackText" />
+                    android:textColor="@color/mBlackText"
+                    android:visibility="gone" />
 
                 <TextView
                     android:id="@+id/tvItems"
-                    android:visibility="gone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
@@ -173,7 +242,8 @@
                     android:drawableStart="@drawable/ic_menu"
                     android:gravity="center"
                     android:text="@string/lowcase_items"
-                    android:textColor="@color/mBlackText" />
+                    android:textColor="@color/mBlackText"
+                    android:visibility="gone" />
 
                 <LinearLayout
                     android:id="@+id/lnlList"
@@ -189,9 +259,9 @@
 
                 <View
                     style="@style/BlackDivider"
-                    android:layout_marginTop="@dimen/activity_vertical_margin"
                     android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                    android:layout_marginRight="@dimen/activity_horizontal_margin" />
+                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                    android:layout_marginTop="@dimen/activity_vertical_margin" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -203,16 +273,16 @@
                     android:paddingRight="@dimen/activity_horizontal_margin">
 
                     <LinearLayout
-                        android:layout_marginTop="10dp"
-                        android:orientation="horizontal"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal">
 
                         <ImageView
                             android:layout_width="30dp"
                             android:layout_height="30dp"
-                            android:src="@drawable/ic_green_marker_transparent"
-                            android:layout_gravity="bottom"/>
+                            android:layout_gravity="bottom"
+                            android:src="@drawable/ic_green_marker_transparent" />
 
                         <TextView
                             android:id="@+id/tvAddressFrom"
@@ -230,16 +300,16 @@
                         android:src="@drawable/line_break" />
 
                     <LinearLayout
-                        android:layout_marginBottom="10dp"
-                        android:orientation="horizontal"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:orientation="horizontal">
 
                         <ImageView
                             android:layout_width="30dp"
                             android:layout_height="30dp"
-                            android:src="@drawable/ic_blue_marker_transparent"
-                            android:layout_gravity="top"/>
+                            android:layout_gravity="top"
+                            android:src="@drawable/ic_blue_marker_transparent" />
 
                         <TextView
                             android:id="@+id/tvAddressTo"
@@ -274,8 +344,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
                         android:layout_marginLeft="8dp"
+                        android:layout_marginStart="8dp"
                         android:gravity="center_vertical"
                         android:text="@string/lowcase_total"
                         android:textColor="@color/mBlackText" />
@@ -292,12 +362,12 @@
 
                 <Button
                     android:id="@+id/btnCancel"
-                    android:padding="5dp"
                     style="@style/SmallGreenButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_margin="@dimen/activity_vertical_margin"
+                    android:padding="5dp"
                     android:text="@string/lowcase_cancelbooking" />
 
             </LinearLayout>

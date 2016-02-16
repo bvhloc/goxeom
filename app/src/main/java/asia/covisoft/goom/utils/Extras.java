@@ -47,6 +47,9 @@ public final class Extras {
     public static final String PICKED_FOODS = "PICKED_FOODS";
 
     //HistoryDetaisActivity
+    public static final String REQUEST_TIP = "REQUEST_TIP";
+    public static final String MAX_TIP = "MAX_TIP";
+    public static final String MIN_TIP = "MIN_TIP";
     public static final String HISTORY_STATE = "HISTORY_STATE";
     public static final String TRADING_ID = "TRADING_ID";
 }

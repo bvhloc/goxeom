@@ -224,5 +224,8 @@
 
     <string name="activity_order_food_pick_food_itemprice">(Item: $item$) Price: $price$</string>
     <string name="snackbar_pickoneitem">Please pick at least 1 item</string>
+    <string name="lowcase_tip">tip</string>
+    <string name="activity_history_detail_maxtip">(Max: $value$)</string>
+    <string name="activity_history_detail_mintip">(Min: $value$)</string>
 
 </resources>

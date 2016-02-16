@@ -33,6 +33,7 @@ import com.google.gson.Gson;
 import asia.covisoft.goom.R;
 import asia.covisoft.goom.activity.history.HistoryDetailsActivity;
 import asia.covisoft.goom.pojo.gson.DriverconfirmRoot;
+import asia.covisoft.goom.pojo.gson.DriverconfirmRoot.Driverconfirm;
 import asia.covisoft.goom.utils.Extras;
 import asia.covisoft.goom.utils.Preferences;
 
@@ -53,8 +54,7 @@ public class GoOmGcmListenerService extends GcmListenerService {
 //        String title = data.getString("title");
         String message = data.getString("message");
         String json = data.getString("trading");
-        DriverconfirmRoot response = new Gson().fromJson(json, DriverconfirmRoot.class);
-        String tradingid = response.getDriverconfirm().getTradingid();
+        Driverconfirm response = new Gson().fromJson(json, DriverconfirmRoot.class).getDriverconfirm();
         Log.d(TAG, "From: " + from);
         Log.d(TAG, "Message: " + message);
 
@@ -76,7 +76,7 @@ public class GoOmGcmListenerService extends GcmListenerService {
          * In some cases it may be useful to show a notification indicating to the user
          * that a message was received.
          */
-        sendNotification(message, tradingid);
+        sendNotification(message, response);
         // [END_EXCLUDE]
     }
     // [END receive_message]
@@ -86,10 +86,15 @@ public class GoOmGcmListenerService extends GcmListenerService {
      *
      * @param message GCM message received.
      */
-    private void sendNotification(String message, String tradingId) {
+    private void sendNotification(String message, Driverconfirm response) {
 
         Intent intent = new Intent(this, HistoryDetailsActivity.class);
-        intent.putExtra(Extras.TRADING_ID, tradingId);
+        intent.putExtra(Extras.TRADING_ID, response.getTradingid());
+        if(response.getValue().equals("tip")){
+            intent.putExtra(Extras.REQUEST_TIP, true);
+            intent.putExtra(Extras.MAX_TIP, response.getMaxsuggest());
+            intent.putExtra(Extras.MIN_TIP, response.getMinsuggest());
+        }
         intent.putExtra(Extras.HISTORY_STATE, false);
         SharedPreferences loginPreferences = getApplicationContext()
                 .getSharedPreferences(Preferences.LOGIN_PREFERENCES, Context.MODE_PRIVATE);

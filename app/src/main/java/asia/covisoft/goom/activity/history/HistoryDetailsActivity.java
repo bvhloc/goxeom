@@ -8,6 +8,8 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -24,6 +26,7 @@ import asia.covisoft.goom.base.BaseMapActivity;
 import asia.covisoft.goom.helper.Hex;
 import asia.covisoft.goom.helper.PhoneHelper;
 import asia.covisoft.goom.helper.PolylineDrawer;
+import asia.covisoft.goom.helper.TouchEffect;
 import asia.covisoft.goom.mvp.presenter.HistoryDetailsPresenter;
 import asia.covisoft.goom.mvp.presenter.OrderMadePresenter;
 import asia.covisoft.goom.mvp.view.HistoryDetailsView;
@@ -36,8 +39,11 @@ import asia.covisoft.goom.widget.WorkaroundMapFragment;
 public class HistoryDetailsActivity extends BaseMapActivity implements HistoryDetailsView, OnMapReadyCallback, OrderMadeView {
 
     private ScrollView scrollView;
-    private TextView tvTitle, tvDriverName, tvDatetime, tvAddressFrom, tvAddressTo, tvTotal;
+    private TextView tvTitle, tvDriverName, tvDatetime, tvAddressFrom, tvAddressTo, tvTotal,
+            tvMaxTip, tvMinTip;
     private LinearLayout lnlList;
+    private Button btnCancel;
+    private EditText edtTip;
 
     private void initView() {
         setContentView(R.layout.activity_history_details);
@@ -50,7 +56,29 @@ public class HistoryDetailsActivity extends BaseMapActivity implements HistoryDe
         tvAddressFrom = (TextView) findViewById(R.id.tvAddressFrom);
         tvAddressTo = (TextView) findViewById(R.id.tvAddressTo);
         tvTotal = (TextView) findViewById(R.id.tvTotal);
-        findViewById(R.id.btnCancel).setOnClickListener(new View.OnClickListener() {
+        tvMaxTip = (TextView) findViewById(R.id.tvMaxTip);
+        TouchEffect.addAlpha(tvMaxTip);
+        tvMaxTip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                edtTip.setText(maxTip);
+                edtTip.setSelection(maxTip.length());
+            }
+        });
+        tvMinTip = (TextView) findViewById(R.id.tvMinTip);
+        TouchEffect.addAlpha(tvMinTip);
+        tvMinTip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                edtTip.setText(minTip);
+                edtTip.setSelection(minTip.length());
+            }
+        });
+        edtTip = (EditText) findViewById(R.id.edtTip);
+        btnCancel = (Button) findViewById(R.id.btnCancel);
+        btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -90,6 +118,7 @@ public class HistoryDetailsActivity extends BaseMapActivity implements HistoryDe
     private Context mContext;
     private HistoryDetailsPresenter presenter;
     private ProgressDialog progressDialog;
+    private String userToken;
     private String tradingId;
 
     @Override
@@ -103,20 +132,58 @@ public class HistoryDetailsActivity extends BaseMapActivity implements HistoryDe
 
         Bundle extras = getIntent().getExtras();
 
-        presenter.setupTitle(extras);
+        setupUI(extras);
 
         progressDialog = ProgressDialog.show(mContext, "", getString(R.string.dialog_loading));
 
-        String userToken = extras.getString(Extras.USER_TOKEN);
+        userToken = extras.getString(Extras.USER_TOKEN);
         tradingId = extras.getString(Extras.TRADING_ID);
         presenter.loadInfo(userToken, tradingId);
     }
 
-    @Override
-    public void setTitle(String title) {
+    private boolean requestTip;
+    private String maxTip;
+    private String minTip;
 
+    public void setupUI(Bundle extras) {
+
+        boolean HISTORY_STATE = extras.getBoolean(Extras.HISTORY_STATE, true);
+        String title = HISTORY_STATE ? getString(R.string.upcase_completed) : getString(R.string.upcase_inprocess);
         title = tvTitle.getText() + " - " + title;
         tvTitle.setText(title);
+
+        requestTip = extras.getBoolean(Extras.REQUEST_TIP, false);
+        if (requestTip) {
+            btnCancel.setVisibility(View.GONE);
+            findViewById(R.id.lnlDriverInfo).setVisibility(View.GONE);
+
+            maxTip = extras.getString(Extras.MAX_TIP);
+            minTip = extras.getString(Extras.MIN_TIP);
+            String maxSuggest = getString(R.string.activity_history_detail_maxtip).replace("$value$", maxTip);
+            String minSuggest = getString(R.string.activity_history_detail_maxtip).replace("$value$", minTip);
+            tvMaxTip.setText(maxSuggest);
+            tvMinTip.setText(minSuggest);
+
+            findViewById(R.id.btnAccept).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    progressDialog = ProgressDialog.show(mContext, "", getString(R.string.dialog_loading));
+                    presenter.tip(userToken, tradingId, edtTip.getText().toString());
+                }
+            });
+            findViewById(R.id.btnDecline).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    progressDialog = ProgressDialog.show(mContext, "", getString(R.string.dialog_loading));
+                    presenter.tip(userToken, tradingId, "0");
+                }
+            });
+
+        } else {
+            findViewById(R.id.lnlTip).setVisibility(View.GONE);
+        }
     }
 
     private void initMap() {
@@ -209,6 +276,19 @@ public class HistoryDetailsActivity extends BaseMapActivity implements HistoryDe
 
     @Override
     public void onBookingCanceled() {
-        onBackPressed();
+        this.finish();
+    }
+
+    @Override
+    public void onTipConfirm() {
+        progressDialog.dismiss();
+        this.finish();
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (!requestTip) {
+            super.onBackPressed();
+        }
     }
 }

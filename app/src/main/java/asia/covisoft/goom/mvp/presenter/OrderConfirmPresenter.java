@@ -40,20 +40,26 @@ public class OrderConfirmPresenter {
 
     public void saveHistory(String address, double lat, double lng) {
 
+//        From query = new Select()
+//                .from(LocationHistory.class)
+//                .where(LocationHistory.COL_ADDRESS + " = '" + address +
+//                        "' and " + LocationHistory.COL_LAT + " = '" + lat +
+//                        "' and " + LocationHistory.COL_LNG + " = '" + lng + "'");
         From query = new Select()
                 .from(LocationHistory.class)
-                .where(LocationHistory.COL_ADDRESS + " = '" + address +
-                        "' and " + LocationHistory.COL_LAT + " = '" + lat +
-                        "' and " + LocationHistory.COL_LNG + " = '" + lng + "'");
+                .where(LocationHistory.COL_LAT + " = '" + lat + "' and " +
+                        LocationHistory.COL_LNG + " = '" + lng + "'");
         int count = query.count();
-        if (!(count > 0)) {
+        if (count == 0) {
             LocationHistory history = new LocationHistory();
             String datetime = new DatetimeHelper()
                     .getString(Calendar.getInstance(), DatetimeFormat.APP_HISTORY_DATETIME_FORMAT);
             history.setDatetime(datetime);
             history.setAddress(address);
-            history.setLat(String.valueOf(lat));
-            history.setLng(String.valueOf(lng));
+            String latitute = String.valueOf(lat);
+            String longitute = String.valueOf(lng);
+            history.setLat(latitute);
+            history.setLng(longitute);
             history.save();
         }
     }
@@ -106,6 +112,7 @@ public class OrderConfirmPresenter {
                 Log.d("sdb", URL);
                 try {
                     String json = new NetworkClient().getJsonFromUrl(URL);
+                    Log.d("sdb", json);
 
                     JSONObject result = new JSONObject(json);
 
@@ -175,6 +182,7 @@ public class OrderConfirmPresenter {
                 Log.d("sdb", URL);
                 try {
                     String json = new NetworkClient().getJsonFromUrl(URL);
+                    Log.d("sdb", json);
 
                     JSONObject result = new JSONObject(json);
 
@@ -249,6 +257,7 @@ public class OrderConfirmPresenter {
                 Log.d("sdb", URL);
                 try {
                     String json = new NetworkClient().getJsonFromUrl(URL);
+                    Log.d("sdb", json);
 
                     JSONObject result = new JSONObject(json);
 
@@ -338,6 +347,7 @@ public class OrderConfirmPresenter {
                 Log.d("sdb", URL);
                 try {
                     String json = new NetworkClient().getJsonFromUrl(URL);
+                    Log.d("sdb", json);
 
                     JSONObject result = new JSONObject(json);
 
