@@ -29,14 +29,17 @@ import asia.covisoft.goom.helper.PolylineDrawer;
 import asia.covisoft.goom.helper.TouchEffect;
 import asia.covisoft.goom.mvp.presenter.HistoryDetailsPresenter;
 import asia.covisoft.goom.mvp.presenter.OrderMadePresenter;
+import asia.covisoft.goom.mvp.presenter.TipPresenter;
 import asia.covisoft.goom.mvp.view.HistoryDetailsView;
 import asia.covisoft.goom.mvp.view.OrderMadeView;
+import asia.covisoft.goom.mvp.view.TipView;
 import asia.covisoft.goom.pojo.gson.LoaddetailhistoryRoot.Loaddetailhistory.Foodlist;
+import asia.covisoft.goom.service.CancelTipService;
 import asia.covisoft.goom.utils.Extras;
 import asia.covisoft.goom.widget.WorkaroundMapFragment;
 
 @SuppressLint("SetTextI18n")
-public class HistoryDetailsActivity extends BaseMapActivity implements HistoryDetailsView, OnMapReadyCallback, OrderMadeView {
+public class HistoryDetailsActivity extends BaseMapActivity implements HistoryDetailsView, OnMapReadyCallback, OrderMadeView, TipView {
 
     private ScrollView scrollView;
     private TextView tvTitle, tvDriverName, tvDatetime, tvAddressFrom, tvAddressTo, tvTotal,
@@ -117,6 +120,7 @@ public class HistoryDetailsActivity extends BaseMapActivity implements HistoryDe
 
     private Context mContext;
     private HistoryDetailsPresenter presenter;
+    private TipPresenter tipPresenter;
     private ProgressDialog progressDialog;
     private String userToken;
     private String tradingId;
@@ -126,6 +130,7 @@ public class HistoryDetailsActivity extends BaseMapActivity implements HistoryDe
         super.onCreate(savedInstanceState);
         mContext = this;
         presenter = new HistoryDetailsPresenter(this);
+        tipPresenter = new TipPresenter(this);
         initView();
 
         initMap();
@@ -154,6 +159,8 @@ public class HistoryDetailsActivity extends BaseMapActivity implements HistoryDe
 
         requestTip = extras.getBoolean(Extras.REQUEST_TIP, false);
         if (requestTip) {
+            CancelTipService.countdownTime = 30; //reset countdownTime
+
             btnCancel.setVisibility(View.GONE);
             findViewById(R.id.lnlDriverInfo).setVisibility(View.GONE);
 
@@ -169,7 +176,7 @@ public class HistoryDetailsActivity extends BaseMapActivity implements HistoryDe
                 public void onClick(View v) {
 
                     progressDialog = ProgressDialog.show(mContext, "", getString(R.string.dialog_loading));
-                    presenter.tip(userToken, tradingId, edtTip.getText().toString());
+                    tipPresenter.tip(userToken, tradingId, edtTip.getText().toString());
                 }
             });
             findViewById(R.id.btnDecline).setOnClickListener(new View.OnClickListener() {
@@ -177,7 +184,7 @@ public class HistoryDetailsActivity extends BaseMapActivity implements HistoryDe
                 public void onClick(View v) {
 
                     progressDialog = ProgressDialog.show(mContext, "", getString(R.string.dialog_loading));
-                    presenter.tip(userToken, tradingId, "0");
+                    tipPresenter.tip(userToken, tradingId, "0");
                 }
             });
 

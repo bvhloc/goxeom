@@ -20,7 +20,6 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Bundle;
@@ -34,6 +33,7 @@ import asia.covisoft.goom.R;
 import asia.covisoft.goom.activity.history.HistoryDetailsActivity;
 import asia.covisoft.goom.pojo.gson.DriverconfirmRoot;
 import asia.covisoft.goom.pojo.gson.DriverconfirmRoot.Driverconfirm;
+import asia.covisoft.goom.service.CancelTipService;
 import asia.covisoft.goom.utils.Extras;
 import asia.covisoft.goom.utils.Preferences;
 
@@ -81,6 +81,9 @@ public class GoOmGcmListenerService extends GcmListenerService {
     }
     // [END receive_message]
 
+    private String trandingId;
+    private String userToken;
+
     /**
      * Create and show a simple notification containing the received GCM message.
      *
@@ -89,17 +92,18 @@ public class GoOmGcmListenerService extends GcmListenerService {
     private void sendNotification(String message, Driverconfirm response) {
 
         Intent intent = new Intent(this, HistoryDetailsActivity.class);
-        intent.putExtra(Extras.TRADING_ID, response.getTradingid());
-        if(response.getValue().equals("tip")){
+        trandingId = response.getTradingid();
+        intent.putExtra(Extras.TRADING_ID, trandingId);
+        userToken = getSharedPreferences(Preferences.LOGIN_PREFERENCES, MODE_PRIVATE)
+                .getString(Preferences.LOGIN_PREFERENCES_USER_TOKEN, "");
+        intent.putExtra(Extras.USER_TOKEN, userToken);
+        intent.putExtra(Extras.HISTORY_STATE, false);
+        if (response.getValue().equals("tip")) {
             intent.putExtra(Extras.REQUEST_TIP, true);
             intent.putExtra(Extras.MAX_TIP, response.getMaxsuggest());
             intent.putExtra(Extras.MIN_TIP, response.getMinsuggest());
+            cancelTip();
         }
-        intent.putExtra(Extras.HISTORY_STATE, false);
-        SharedPreferences loginPreferences = getApplicationContext()
-                .getSharedPreferences(Preferences.LOGIN_PREFERENCES, Context.MODE_PRIVATE);
-        String userToken = loginPreferences.getString(Preferences.LOGIN_PREFERENCES_USER_TOKEN, "");
-        intent.putExtra(Extras.USER_TOKEN, userToken);
 
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent,
@@ -119,4 +123,61 @@ public class GoOmGcmListenerService extends GcmListenerService {
 
         notificationManager.notify(0 /* ID of notification */, notificationBuilder.build());
     }
+
+    private void cancelTip() {
+
+        Intent intent = new Intent(GoOmGcmListenerService.this, CancelTipService.class);
+        intent.putExtra(Extras.USER_TOKEN, userToken);
+        intent.putExtra(Extras.TRADING_ID, trandingId);
+        startService(intent);
+    }
+
+//    public static boolean countdown;
+//    private TipPresenter tipPresenter;
+//    private int countdownTime = 10;
+//    private Handler mHandler;
+//    private Runnable countdownRunnable;
+//
+//    private void countdownToCancel() {
+//
+//        countdown = true;
+//        tipPresenter = new TipPresenter(this);
+//
+//        Looper.prepare();
+//        mHandler = new Handler();
+//        countdownRunnable = new Runnable() {
+//            @Override
+//            public void run() {
+//
+//                countdownTime--;
+//                SLog.d(countdownTime + "");
+//                Log.d("sdb", countdownTime + "");
+//                if (countdown) {
+//                    if (countdownTime < 0) {
+//                        notificationManager.cancelAll();
+//                        tipPresenter.tip(userToken, trandingId, "0");
+//                    } else {
+//                        mHandler.postDelayed(countdownRunnable, 1000);
+//                    }
+//                }
+//            }
+//        };
+//        mHandler.post(countdownRunnable);
+//    }
+//
+//    @Override
+//    public void onTipConfirm() {
+//
+//    }
+//
+//    @Override
+//    public void onConnectionFail() {
+//
+//        mHandler.postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                tipPresenter.tip(userToken, trandingId, "0");
+//            }
+//        }, 3000);
+//    }
 }
