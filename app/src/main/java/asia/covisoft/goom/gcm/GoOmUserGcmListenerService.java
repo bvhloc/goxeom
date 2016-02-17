@@ -35,11 +35,10 @@ import asia.covisoft.goom.pojo.gson.DriverconfirmRoot;
 import asia.covisoft.goom.pojo.gson.DriverconfirmRoot.Driverconfirm;
 import asia.covisoft.goom.service.CancelTipService;
 import asia.covisoft.goom.utils.Extras;
-import asia.covisoft.goom.utils.Preferences;
 
-public class GoOmGcmListenerService extends GcmListenerService {
+public class GoOmUserGcmListenerService extends GcmListenerService {
 
-    private static final String TAG = "GoOmGcmListenerService";
+    private static final String TAG = "GcmListenerService";
 
     /**
      * Called when message is received.
@@ -94,9 +93,6 @@ public class GoOmGcmListenerService extends GcmListenerService {
         Intent intent = new Intent(this, HistoryDetailsActivity.class);
         trandingId = response.getTradingid();
         intent.putExtra(Extras.TRADING_ID, trandingId);
-        userToken = getSharedPreferences(Preferences.LOGIN_PREFERENCES, MODE_PRIVATE)
-                .getString(Preferences.LOGIN_PREFERENCES_USER_TOKEN, "");
-        intent.putExtra(Extras.USER_TOKEN, userToken);
         intent.putExtra(Extras.HISTORY_STATE, false);
         if (response.getValue().equals("tip")) {
             intent.putExtra(Extras.REQUEST_TIP, true);
@@ -126,8 +122,7 @@ public class GoOmGcmListenerService extends GcmListenerService {
 
     private void cancelTip() {
 
-        Intent intent = new Intent(GoOmGcmListenerService.this, CancelTipService.class);
-        intent.putExtra(Extras.USER_TOKEN, userToken);
+        Intent intent = new Intent(GoOmUserGcmListenerService.this, CancelTipService.class);
         intent.putExtra(Extras.TRADING_ID, trandingId);
         startService(intent);
     }

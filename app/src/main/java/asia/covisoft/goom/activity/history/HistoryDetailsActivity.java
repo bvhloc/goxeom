@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.location.Location;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
@@ -13,11 +14,13 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.mikhaellopez.circularprogressbar.CircularProgressBar;
 
 import java.util.List;
 
@@ -35,6 +38,7 @@ import asia.covisoft.goom.mvp.view.OrderMadeView;
 import asia.covisoft.goom.mvp.view.TipView;
 import asia.covisoft.goom.pojo.gson.LoaddetailhistoryRoot.Loaddetailhistory.Foodlist;
 import asia.covisoft.goom.service.CancelTipService;
+import asia.covisoft.goom.utils.Constant;
 import asia.covisoft.goom.utils.Extras;
 import asia.covisoft.goom.widget.WorkaroundMapFragment;
 
@@ -43,10 +47,11 @@ public class HistoryDetailsActivity extends BaseMapActivity implements HistoryDe
 
     private ScrollView scrollView;
     private TextView tvTitle, tvDriverName, tvDatetime, tvAddressFrom, tvAddressTo, tvTotal,
-            tvMaxTip, tvMinTip;
+            tvMaxTip, tvMinTip, tvCountDown;
     private LinearLayout lnlList;
-    private Button btnCancel;
+    private Button btnCancel, btnAccept, btnDecline;
     private EditText edtTip;
+    private CircularProgressBar pbCountDown;
 
     private void initView() {
         setContentView(R.layout.activity_history_details);
@@ -79,7 +84,11 @@ public class HistoryDetailsActivity extends BaseMapActivity implements HistoryDe
                 edtTip.setSelection(minTip.length());
             }
         });
+        tvCountDown = (TextView) findViewById(R.id.tvCountDown);
+        pbCountDown = (CircularProgressBar) findViewById(R.id.pbCountDown);
         edtTip = (EditText) findViewById(R.id.edtTip);
+        btnAccept = (Button) findViewById(R.id.btnAccept);
+        btnDecline = (Button) findViewById(R.id.btnDecline);
         btnCancel = (Button) findViewById(R.id.btnCancel);
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -122,7 +131,6 @@ public class HistoryDetailsActivity extends BaseMapActivity implements HistoryDe
     private HistoryDetailsPresenter presenter;
     private TipPresenter tipPresenter;
     private ProgressDialog progressDialog;
-    private String userToken;
     private String tradingId;
 
     @Override
@@ -141,9 +149,10 @@ public class HistoryDetailsActivity extends BaseMapActivity implements HistoryDe
 
         progressDialog = ProgressDialog.show(mContext, "", getString(R.string.dialog_loading));
 
-        userToken = extras.getString(Extras.USER_TOKEN);
         tradingId = extras.getString(Extras.TRADING_ID);
-        presenter.loadInfo(userToken, tradingId);
+        presenter.loadInfo(tradingId);
+
+        Location.di
     }
 
     private boolean requestTip;
@@ -159,7 +168,7 @@ public class HistoryDetailsActivity extends BaseMapActivity implements HistoryDe
 
         requestTip = extras.getBoolean(Extras.REQUEST_TIP, false);
         if (requestTip) {
-            CancelTipService.countdownTime = 30; //reset countdownTime
+            CancelTipService.countdownTime = Constant.COUNT_DOWN_START; //reset countdownTime
 
             btnCancel.setVisibility(View.GONE);
             findViewById(R.id.lnlDriverInfo).setVisibility(View.GONE);
@@ -171,26 +180,32 @@ public class HistoryDetailsActivity extends BaseMapActivity implements HistoryDe
             tvMaxTip.setText(maxSuggest);
             tvMinTip.setText(minSuggest);
 
-            findViewById(R.id.btnAccept).setOnClickListener(new View.OnClickListener() {
+            btnAccept.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
 
-                    progressDialog = ProgressDialog.show(mContext, "", getString(R.string.dialog_loading));
-                    tipPresenter.tip(userToken, tradingId, edtTip.getText().toString());
+                    sendTip(edtTip.getText().toString());
                 }
             });
-            findViewById(R.id.btnDecline).setOnClickListener(new View.OnClickListener() {
+            btnDecline.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
 
-                    progressDialog = ProgressDialog.show(mContext, "", getString(R.string.dialog_loading));
-                    tipPresenter.tip(userToken, tradingId, "0");
+                    sendTip("0");
                 }
             });
 
+            presenter.countdown();
         } else {
             findViewById(R.id.lnlTip).setVisibility(View.GONE);
         }
+    }
+
+    private void sendTip(String value) {
+
+        progressDialog = ProgressDialog.show(mContext, "", getString(R.string.dialog_loading));
+        CancelTipService.sent = true;
+        tipPresenter.tip(tradingId, value);
     }
 
     private void initMap() {
@@ -205,8 +220,6 @@ public class HistoryDetailsActivity extends BaseMapActivity implements HistoryDe
             }
         });
         mapFragment.getMapAsync(this);
-
-
     }
 
     private GoogleMap mMap;
@@ -289,6 +302,36 @@ public class HistoryDetailsActivity extends BaseMapActivity implements HistoryDe
     @Override
     public void onTipConfirm() {
         progressDialog.dismiss();
+        this.finish();
+    }
+
+    @Override
+    public void onCountDown(int countdownTime) {
+
+        if (countdownTime > 0) {
+            tvCountDown.setText(String.valueOf(countdownTime));
+        } else {
+            tvCountDown.setText(getString(R.string.lowcase_timeoff));
+            btnAccept.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    timeOff();
+                }
+            });
+            btnDecline.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    timeOff();
+                }
+            });
+        }
+        pbCountDown.setProgress(countdownTime * 100 / Constant.COUNT_DOWN_START);
+
+    }
+
+    private void timeOff() {
+
+        Toast.makeText(mContext, getString(R.string.lowcase_timeoff), Toast.LENGTH_LONG).show();
         this.finish();
     }
 

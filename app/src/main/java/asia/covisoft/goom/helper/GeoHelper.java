@@ -3,6 +3,7 @@ package asia.covisoft.goom.helper;
 import android.content.Context;
 import android.location.Address;
 import android.location.Geocoder;
+import android.location.Location;
 import android.util.Log;
 
 import com.google.android.gms.maps.model.LatLng;
@@ -12,9 +13,6 @@ import java.text.DecimalFormat;
 import java.util.List;
 import java.util.Locale;
 
-/**
- * Created by Covisoft on 30/12/2015.
- */
 public class GeoHelper {
 
     private Context context;
@@ -53,6 +51,19 @@ public class GeoHelper {
     public String getAddress(LatLng latlng){
 
         return getAddress(latlng.latitude, latlng.longitude);
+    }
+
+    public float getRoadDistance(LatLng source, LatLng destination){
+
+        Location loc1 = new Location("");
+        loc1.setLatitude(source.latitude);
+        loc1.setLongitude(source.longitude);
+
+        Location loc2 = new Location("");
+        loc2.setLatitude(destination.latitude);
+        loc2.setLongitude(destination.longitude);
+
+        return loc1.distanceTo(loc2); //distance in meters
     }
 
     public double getDistance(LatLng source, LatLng destination) {

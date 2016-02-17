@@ -1,7 +1,9 @@
 package asia.covisoft.goom.mvp.presenter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.AsyncTask;
+import android.os.Handler;
 import android.util.Log;
 
 import com.google.android.gms.maps.CameraUpdate;
@@ -22,7 +24,9 @@ import asia.covisoft.goom.helper.PolylineDrawer;
 import asia.covisoft.goom.mvp.view.HistoryDetailsView;
 import asia.covisoft.goom.pojo.gson.LoaddetailhistoryRoot;
 import asia.covisoft.goom.pojo.gson.LoaddetailhistoryRoot.Loaddetailhistory;
+import asia.covisoft.goom.service.CancelTipService;
 import asia.covisoft.goom.utils.Constant;
+import asia.covisoft.goom.utils.Preferences;
 
 public class HistoryDetailsPresenter {
 
@@ -34,7 +38,12 @@ public class HistoryDetailsPresenter {
         this.context = (Context) view;
     }
 
-    public void loadInfo(final String userToken, final String id) {
+    public void loadInfo(final String id) {
+
+        final String userToken = context
+                .getSharedPreferences(Preferences.LOGIN_PREFERENCES, Activity.MODE_PRIVATE)
+                .getString(Preferences.LOGIN_PREFERENCES_USER_TOKEN, "");
+
         new AsyncTask<String, Void, Loaddetailhistory>() {
 
             @Override
@@ -171,5 +180,23 @@ public class HistoryDetailsPresenter {
                 }
             }
         }.execute();
+    }
+
+    private Handler countdownHandler;
+    private Runnable countdownRunnable;
+
+    public void countdown() {
+
+        countdownHandler = new Handler();
+        countdownRunnable = new Runnable() {
+            @Override
+            public void run() {
+                if (CancelTipService.countdownTime >= 0) {
+                    view.onCountDown(CancelTipService.countdownTime);
+                    countdownHandler.postDelayed(countdownRunnable, 1000);
+                }
+            }
+        };
+        countdownHandler.post(countdownRunnable);
     }
 }

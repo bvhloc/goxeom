@@ -20,7 +20,7 @@ import android.content.Intent;
 
 import com.google.android.gms.iid.InstanceIDListenerService;
 
-public class GoOmInstanceIDListenerService extends InstanceIDListenerService {
+public class GoOmUserInstanceIDListenerService extends InstanceIDListenerService {
 
     private static final String TAG = "GoOmInstanceIDLS";
 

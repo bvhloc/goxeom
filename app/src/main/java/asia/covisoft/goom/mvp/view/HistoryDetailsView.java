@@ -15,5 +15,5 @@ public interface HistoryDetailsView {
     void onItemsLoaded(String items);
     void onMapDraw(String requestUrl, CameraUpdate cameraUpdate, MarkerOptions sourceMarker, MarkerOptions destinationMarker);
     void onConnectionFail();
-    void onTipConfirm();
+    void onCountDown(int countdownTime);
 }

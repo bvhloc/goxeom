@@ -227,5 +227,6 @@
     <string name="lowcase_tip">tip</string>
     <string name="activity_history_detail_maxtip">(Max: $value$)</string>
     <string name="activity_history_detail_mintip">(Min: $value$)</string>
+    <string name="lowcase_timeoff">Time Off</string>
 
 </resources>

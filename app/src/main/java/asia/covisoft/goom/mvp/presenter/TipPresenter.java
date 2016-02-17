@@ -1,5 +1,6 @@
 package asia.covisoft.goom.mvp.presenter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
@@ -12,6 +13,7 @@ import java.io.IOException;
 import asia.covisoft.goom.helper.NetworkClient;
 import asia.covisoft.goom.mvp.view.TipView;
 import asia.covisoft.goom.utils.Constant;
+import asia.covisoft.goom.utils.Preferences;
 
 public class TipPresenter {
 
@@ -23,7 +25,11 @@ public class TipPresenter {
         this.context = (Context) view;
     }
 
-    public void tip(final String userToken, final String tradingId, final String value) {
+    public void tip(final String tradingId, final String value) {
+
+        final String userToken = context.getSharedPreferences(Preferences.LOGIN_PREFERENCES, Activity.MODE_PRIVATE)
+                .getString(Preferences.LOGIN_PREFERENCES_USER_TOKEN, "");
+
         new AsyncTask<Void, Void, Boolean>() {
             @Override
             protected Boolean doInBackground(Void... params) {

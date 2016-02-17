@@ -147,7 +147,6 @@ public class HistoryListFragment extends BackFragment implements HistoryView {
         Intent intent = new Intent(mContext, HistoryDetailsActivity.class);
         intent.putExtra(Extras.TRADING_ID, tradingId);
         intent.putExtra(Extras.HISTORY_STATE, historyState);
-        intent.putExtra(Extras.USER_TOKEN, userToken);
         startActivity(intent);
     }
 
