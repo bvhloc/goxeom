@@ -75,16 +75,22 @@ public class NumberPicker extends LinearLayout implements OnClickListener,
             '-', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'
     };
 
+    private long mSpeedUp;
     private final Handler mChangeHandler;
     private final Runnable mChangeRunnable = new Runnable() {
         @Override
         public void run() {
+
+            if (mSpeedUp >= 30) {
+                mSpeedUp -= 5;
+            }
+
             if (mIncrement) {
                 changeCurrent(mCurrent + 1);
-                mChangeHandler.postDelayed(this, mSpeed);
+                mChangeHandler.postDelayed(this, mSpeedUp);
             } else if (mDecrement) {
                 changeCurrent(mCurrent - 1);
-                mChangeHandler.postDelayed(this, mSpeed);
+                mChangeHandler.postDelayed(this, mSpeedUp);
             }
         }
     };
@@ -102,7 +108,7 @@ public class NumberPicker extends LinearLayout implements OnClickListener,
     private int mPrevious;
     private OnChangedListener mListener;
     private Formatter mFormatter;
-    private long mSpeed = 50;
+    private long mSpeed = 120;
 
     private Drawable mNumBackground;
     private Drawable mIncrementDrawable;
@@ -183,6 +189,7 @@ public class NumberPicker extends LinearLayout implements OnClickListener,
             mStart = a.getInt(R.styleable.NumberPicker_rangeStart, DEFAULT_START);
             mEnd = a.getInt(R.styleable.NumberPicker_rangeEnd, DEFAULT_END);
             mSpeed = a.getInt(R.styleable.NumberPicker_speed, (int) mSpeed);
+            mSpeedUp = mSpeed;
             mCurrent = a.getInt(R.styleable.NumberPicker_current, mCurrent);
 
             mNumColor = a.getColor(R.styleable.NumberPicker_numColor, ContextCompat.getColor(context, android.R.color.primary_text_light));
@@ -471,7 +478,7 @@ public class NumberPicker extends LinearLayout implements OnClickListener,
                 mNumberPicker.cancelDecrement();
             }
 
-            mNumberPicker.onPickedListener.onPicked(mNumberPicker.mCurrent);
+            mNumberPicker.onPicked(mNumberPicker.mCurrent);
         }
     }
 
@@ -553,7 +560,7 @@ public class NumberPicker extends LinearLayout implements OnClickListener,
             changeCurrent(mCurrent - 1);
         }
 
-        onPickedListener.onPicked(mCurrent);
+        onPicked(mCurrent);
     }
 
     // PRIVATE ====================================================================================
@@ -702,8 +709,15 @@ public class NumberPicker extends LinearLayout implements OnClickListener,
         }
     }
 
+    public void onPicked(int pickedValue){
+
+        mSpeedUp = mSpeed;
+        onPickedListener.onPicked(pickedValue);
+    }
+
     public OnPickedListener onPickedListener;
-    public interface OnPickedListener{
+
+    public interface OnPickedListener {
         void onPicked(int pickedValue);
     }
 

@@ -2,7 +2,6 @@ package asia.covisoft.goom.widget;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.MotionEvent;
 
 import com.google.android.gms.maps.GoogleMapOptions;
@@ -36,13 +35,11 @@ public class CustomMapView extends MapView {
         switch (action) {
             case MotionEvent.ACTION_DOWN:
                 // Disallow ScrollView to intercept touch events.
-                Log.d("myDebug", "d");
                 this.getParent().getParent().requestDisallowInterceptTouchEvent(true);
                 break;
 
             case MotionEvent.ACTION_UP:
                 // Allow ScrollView to intercept touch events.
-                Log.d("myDebug", "d");
                 this.getParent().getParent().requestDisallowInterceptTouchEvent(false);
                 break;
         }

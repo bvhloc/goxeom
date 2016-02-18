@@ -60,7 +60,7 @@ public class CancelTipService extends Service implements TipView {
                     return;
                 }
                 countdownTime--;
-                SLog.d("" + countdownTime);
+                SLog.dm("" + countdownTime);
                 if (countdownTime < 0) {
                     notificationManager.cancelAll();
                     tipPresenter.tip(trandingId, "0");

@@ -5,7 +5,6 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.location.Location;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
@@ -30,6 +29,7 @@ import asia.covisoft.goom.helper.Hex;
 import asia.covisoft.goom.helper.PhoneHelper;
 import asia.covisoft.goom.helper.PolylineDrawer;
 import asia.covisoft.goom.helper.TouchEffect;
+import asia.covisoft.goom.helper.ViewHelper;
 import asia.covisoft.goom.mvp.presenter.HistoryDetailsPresenter;
 import asia.covisoft.goom.mvp.presenter.OrderMadePresenter;
 import asia.covisoft.goom.mvp.presenter.TipPresenter;
@@ -49,7 +49,10 @@ public class HistoryDetailsActivity extends BaseMapActivity implements HistoryDe
     private TextView tvTitle, tvDriverName, tvDatetime, tvAddressFrom, tvAddressTo, tvTotal,
             tvMaxTip, tvMinTip, tvCountDown;
     private LinearLayout lnlList;
-    private Button btnCancel, btnAccept, btnDecline;
+    private Button btnCancel,
+            btnCall, btnSms,
+            btnBook, btnVote,
+            btnAccept, btnDecline;
     private EditText edtTip;
     private CircularProgressBar pbCountDown;
 
@@ -66,6 +69,39 @@ public class HistoryDetailsActivity extends BaseMapActivity implements HistoryDe
         tvTotal = (TextView) findViewById(R.id.tvTotal);
         tvMaxTip = (TextView) findViewById(R.id.tvMaxTip);
         TouchEffect.addAlpha(tvMaxTip);
+        tvMinTip = (TextView) findViewById(R.id.tvMinTip);
+        TouchEffect.addAlpha(tvMinTip);
+        tvCountDown = (TextView) findViewById(R.id.tvCountDown);
+        pbCountDown = (CircularProgressBar) findViewById(R.id.pbCountDown);
+        edtTip = (EditText) findViewById(R.id.edtTip);
+        btnAccept = (Button) findViewById(R.id.btnAccept);
+        btnDecline = (Button) findViewById(R.id.btnDecline);
+        btnBook = (Button) findViewById(R.id.btnBook);
+        btnVote = (Button) findViewById(R.id.btnVote);
+        btnCancel = (Button) findViewById(R.id.btnCancel);
+        btnCall = (Button) findViewById(R.id.btnCall);
+        btnSms = (Button) findViewById(R.id.btnSms);
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                showDialogCancel();
+            }
+        });
+        btnCall.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                new PhoneHelper(mContext).dial(driverPhone);
+            }
+        });
+        btnSms.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                new PhoneHelper(mContext).message(driverPhone, null);
+            }
+        });
         tvMaxTip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -74,8 +110,6 @@ public class HistoryDetailsActivity extends BaseMapActivity implements HistoryDe
                 edtTip.setSelection(maxTip.length());
             }
         });
-        tvMinTip = (TextView) findViewById(R.id.tvMinTip);
-        TouchEffect.addAlpha(tvMinTip);
         tvMinTip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -84,31 +118,18 @@ public class HistoryDetailsActivity extends BaseMapActivity implements HistoryDe
                 edtTip.setSelection(minTip.length());
             }
         });
-        tvCountDown = (TextView) findViewById(R.id.tvCountDown);
-        pbCountDown = (CircularProgressBar) findViewById(R.id.pbCountDown);
-        edtTip = (EditText) findViewById(R.id.edtTip);
-        btnAccept = (Button) findViewById(R.id.btnAccept);
-        btnDecline = (Button) findViewById(R.id.btnDecline);
-        btnCancel = (Button) findViewById(R.id.btnCancel);
-        btnCancel.setOnClickListener(new View.OnClickListener() {
+        btnAccept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                showDialogCancel();
+                sendTip(edtTip.getText().toString());
             }
         });
-        findViewById(R.id.btnCall).setOnClickListener(new View.OnClickListener() {
+        btnDecline.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                new PhoneHelper(mContext).dial(driverPhone);
-            }
-        });
-        findViewById(R.id.btnSms).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                new PhoneHelper(mContext).message(driverPhone, null);
+                sendTip("0");
             }
         });
     }
@@ -151,8 +172,6 @@ public class HistoryDetailsActivity extends BaseMapActivity implements HistoryDe
 
         tradingId = extras.getString(Extras.TRADING_ID);
         presenter.loadInfo(tradingId);
-
-        Location.di
     }
 
     private boolean requestTip;
@@ -166,12 +185,17 @@ public class HistoryDetailsActivity extends BaseMapActivity implements HistoryDe
         title = tvTitle.getText() + " - " + title;
         tvTitle.setText(title);
 
+        if (HISTORY_STATE) {
+            ViewHelper.gone(btnCancel, btnCall, btnSms);
+        } else {
+            ViewHelper.gone(btnBook, btnVote);
+        }
+
         requestTip = extras.getBoolean(Extras.REQUEST_TIP, false);
         if (requestTip) {
             CancelTipService.countdownTime = Constant.COUNT_DOWN_START; //reset countdownTime
 
-            btnCancel.setVisibility(View.GONE);
-            findViewById(R.id.lnlDriverInfo).setVisibility(View.GONE);
+            ViewHelper.gone(btnCancel, findViewById(R.id.lnlDriverInfo));
 
             maxTip = extras.getString(Extras.MAX_TIP);
             minTip = extras.getString(Extras.MIN_TIP);
@@ -180,24 +204,9 @@ public class HistoryDetailsActivity extends BaseMapActivity implements HistoryDe
             tvMaxTip.setText(maxSuggest);
             tvMinTip.setText(minSuggest);
 
-            btnAccept.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                    sendTip(edtTip.getText().toString());
-                }
-            });
-            btnDecline.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                    sendTip("0");
-                }
-            });
-
             presenter.countdown();
         } else {
-            findViewById(R.id.lnlTip).setVisibility(View.GONE);
+            ViewHelper.gone(findViewById(R.id.lnlTip));
         }
     }
 

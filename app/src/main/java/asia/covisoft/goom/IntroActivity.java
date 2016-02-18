@@ -16,8 +16,11 @@
 
 package asia.covisoft.goom;
 
+import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
@@ -30,6 +33,7 @@ import com.google.android.gms.common.GoogleApiAvailability;
 
 import asia.covisoft.goom.gcm.GcmPreferences;
 import asia.covisoft.goom.gcm.RegistrationIntentService;
+import asia.covisoft.goom.helper.NetworkClient;
 
 public class IntroActivity extends AppCompatActivity {
 
@@ -38,10 +42,13 @@ public class IntroActivity extends AppCompatActivity {
     private BroadcastReceiver mRegistrationBroadcastReceiver;
     private boolean intro;
 
+    private Context mContext;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_intro);
+        mContext = this;
 
         mRegistrationBroadcastReceiver = new BroadcastReceiver() {
             @Override
@@ -59,6 +66,48 @@ public class IntroActivity extends AppCompatActivity {
                 startMain();
             }
         };
+
+        checkConnection();
+    }
+
+    private ProgressDialog progressDialog;
+
+    private void checkConnection() {
+
+        NetworkClient.checkInternetConnection(5, new NetworkClient.OnConnectedListener() {
+            @Override
+            public void onPreConnect() {
+
+                progressDialog = ProgressDialog.show(mContext, null, getString(R.string.dialog_connecting));
+            }
+
+            @Override
+            public void onConnected() {
+
+                progressDialog.dismiss();
+                registerGCM();
+            }
+
+            @Override
+            public void onFail() {
+
+                progressDialog.dismiss();
+                new AlertDialog.Builder(mContext)
+                        .setTitle(getString(R.string.dialog_connectionfailed_title))
+                        .setMessage(getString(R.string.dialog_connectionfailed_message))
+                        .setPositiveButton(getString(R.string.lowcase_tryagain), new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                                checkConnection();
+                            }
+                        })
+                        .show();
+            }
+        });
+    }
+
+    private void registerGCM() {
 
         if (checkPlayServices()) {
             // Start IntentService to register this application with GCM.

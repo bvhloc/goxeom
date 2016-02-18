@@ -2,7 +2,6 @@ package asia.covisoft.goom.activity.order;
 
 import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -166,13 +165,7 @@ public class OrderConfirmActivity extends BaseActivity implements OrderConfirmVi
 
         new AlertDialog.Builder(mContext)
                 .setMessage(getString(R.string.dialog_connection_fail))
-                .setNeutralButton(getString(R.string.lowcase_ok), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-                        onBackPressed();
-                    }
-                })
+                .setNeutralButton(getString(R.string.lowcase_ok), null)
                 .show();
     }
 }

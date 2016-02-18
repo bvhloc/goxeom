@@ -228,5 +228,10 @@
     <string name="activity_history_detail_maxtip">(Max: $value$)</string>
     <string name="activity_history_detail_mintip">(Min: $value$)</string>
     <string name="lowcase_timeoff">Time Off</string>
+    <string name="dialog_connecting">Connecting...</string>
+    <string name="dialog_connectionfailed_title">Connection failed</string>
+    <string name="dialog_connectionfailed_message">Please check your connection and try again!</string>
+    <string name="lowcase_tryagain">Try Again</string>
+    <string name="upcase_vote">VOTE</string>
 
 </resources>

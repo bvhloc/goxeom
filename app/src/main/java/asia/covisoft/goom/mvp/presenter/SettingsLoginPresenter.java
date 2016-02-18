@@ -62,7 +62,6 @@ public class SettingsLoginPresenter {
                         "&registration=" + gcmToken;
                 Log.d("sdb", URL);
                 try {
-//                    Log.d("sdb", URL);
                     String json = new NetworkClient().getJsonFromUrl(URL);
 
                     JSONObject jsonRootObject = new JSONObject(json);

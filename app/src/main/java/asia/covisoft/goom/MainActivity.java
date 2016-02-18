@@ -51,7 +51,6 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
 
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-//        Log.d("sdb", "registered: " + sharedPreferences.getString(Preferences.GCM_TOKEN, ""));
         if (validGmsVersion()) {
             initMap();
         } else {
