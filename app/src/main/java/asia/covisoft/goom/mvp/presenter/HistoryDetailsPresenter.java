@@ -15,12 +15,16 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.IOException;
 
 import asia.covisoft.goom.R;
 import asia.covisoft.goom.helper.Hex;
 import asia.covisoft.goom.helper.NetworkClient;
 import asia.covisoft.goom.helper.PolylineDrawer;
+import asia.covisoft.goom.helper.SLog;
 import asia.covisoft.goom.mvp.view.HistoryDetailsView;
 import asia.covisoft.goom.pojo.gson.LoaddetailhistoryRoot;
 import asia.covisoft.goom.pojo.gson.LoaddetailhistoryRoot.Loaddetailhistory;
@@ -199,4 +203,65 @@ public class HistoryDetailsPresenter {
         };
         countdownHandler.post(countdownRunnable);
     }
+
+    private Handler trackdriverHandler;
+    private Runnable trackdriverRunnable;
+    public boolean stopTracking;
+
+    public void trackDriver(final String tradingId, final LatLng toLatLng) {
+        trackdriverHandler = new Handler();
+        trackdriverRunnable = new Runnable() {
+            @Override
+            public void run() {
+
+                if(!stopTracking){
+                    getDriverLocation(tradingId, toLatLng);
+                    trackdriverHandler.postDelayed(trackdriverRunnable, 5000);
+                }
+            }
+        };
+        trackdriverHandler.post(trackdriverRunnable);
+    }
+
+    private void getDriverLocation(final String tradingId, LatLng toLatLng) {
+
+        final String userToken = context
+                .getSharedPreferences(Preferences.LOGIN_PREFERENCES, Activity.MODE_PRIVATE)
+                .getString(Preferences.LOGIN_PREFERENCES_USER_TOKEN, "");
+
+        new AsyncTask<Void, Void, LatLng>() {
+            @Override
+            protected LatLng doInBackground(Void... params) {
+
+                String URL = Constant.HOST +
+                        "getlocation.php?token=" + userToken +
+                        "&tradingid="+tradingId;
+                Log.d("sdb", URL);
+                try {
+                    String json = new NetworkClient().getJsonFromUrl(URL);
+
+                    JSONObject rootObject = new JSONObject(json);
+                    JSONObject getlocation = rootObject.optJSONObject("getlocation");
+                    int result = getlocation.getInt("Value");
+                    if(result==0){
+                        double latitude = getlocation.getDouble("latitude");
+                        double longitude = getlocation.getDouble("longitude");
+                        return new LatLng(latitude, longitude);
+                    }
+
+                } catch (IOException | JSONException e) {
+                    e.printStackTrace();
+                }
+
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(LatLng driverLatLng) {
+                super.onPostExecute(driverLatLng);
+                SLog.dm(driverLatLng.latitude+"");
+            }
+        }.execute();
+    }
+
 }

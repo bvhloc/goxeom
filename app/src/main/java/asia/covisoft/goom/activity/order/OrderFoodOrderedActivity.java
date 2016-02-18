@@ -1,5 +1,6 @@
 package asia.covisoft.goom.activity.order;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -27,6 +28,7 @@ import asia.covisoft.goom.pojo.gson.FoodlistRoot.Foodlist;
 import asia.covisoft.goom.utils.Constant;
 import asia.covisoft.goom.utils.Extras;
 
+@SuppressLint("SetTextI18n")
 public class OrderFoodOrderedActivity extends BaseActivity implements OrderView, FoodListAdapter.OnQuantitiesChangedListener {
 
     private ListView lvFood;
@@ -56,7 +58,7 @@ public class OrderFoodOrderedActivity extends BaseActivity implements OrderView,
                 btnNextClick();
             }
         });
-        ((CheckBox)findViewById(R.id.ckbPickNow)).setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        ((CheckBox) findViewById(R.id.ckbPickNow)).setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
@@ -151,7 +153,7 @@ public class OrderFoodOrderedActivity extends BaseActivity implements OrderView,
 
     private void btnNextClick() {
 
-        if(validInput()){
+        if (validInput()) {
 
             Intent intent = new Intent(mContext, OrderConfirmActivity.class);
             intent.putExtra(Extras.BOOKING_TYPE, Constant.BOOK_TYPE_FOODING);
@@ -160,18 +162,23 @@ public class OrderFoodOrderedActivity extends BaseActivity implements OrderView,
         }
     }
 
-    private boolean validInput(){
+    private boolean validInput() {
 
         model.detailsTo = edtDetailsTo.getText().toString().trim();
         model.foods = mAdapter.getFoods();
+        for (int i = model.foods.size() - 1; i >= 0; i--) {
+            if (model.foods.get(i).getQuatity() <= 0) {
+                model.foods.remove(i);
+            }
+        }
 
-        if(model.foodCost == 0){
+        if (model.foodCost == 0) {
 
             Snackbar.make(findViewById(R.id.tab_container), getString(R.string.snackbar_pickoneitem), Snackbar.LENGTH_SHORT)
                     .show();
             return false;
         }
-        if(model.latTo == 0 || model.lngTo == 0){
+        if (model.latTo == 0 || model.lngTo == 0) {
 
             Snackbar.make(findViewById(R.id.tab_container), getString(R.string.snackbar_picklocationto), Snackbar.LENGTH_SHORT)
                     .show();

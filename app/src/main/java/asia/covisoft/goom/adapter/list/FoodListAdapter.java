@@ -119,7 +119,7 @@ public class FoodListAdapter extends ArrayAdapter<Foodlist> {
         this.onQuantitiesChangedListener = onQuantitiesChangedListener;
     }
 
-    public static class NoteDialog{
+    public static class NoteDialog {
 
         private Context context;
 

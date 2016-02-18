@@ -1,5 +1,6 @@
 package asia.covisoft.goom.activity.order;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -57,6 +58,7 @@ public class OrderConfirmActivity extends BaseActivity implements OrderConfirmVi
         setupUI();
     }
 
+    @SuppressLint("SetTextI18n")
     private void setupUI() {
 
         Bundle extras = getIntent().getExtras();

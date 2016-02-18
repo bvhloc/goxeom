@@ -18,6 +18,7 @@ import android.widget.Toast;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.mikhaellopez.circularprogressbar.CircularProgressBar;
 
@@ -47,7 +48,7 @@ public class HistoryDetailsActivity extends BaseMapActivity implements HistoryDe
 
     private ScrollView scrollView;
     private TextView tvTitle, tvDriverName, tvDatetime, tvAddressFrom, tvAddressTo, tvTotal,
-            tvMaxTip, tvMinTip, tvCountDown;
+            tvMaxTip, tvMinTip, tvCountDown, tvDestination;
     private LinearLayout lnlList;
     private Button btnCancel,
             btnCall, btnSms,
@@ -61,6 +62,7 @@ public class HistoryDetailsActivity extends BaseMapActivity implements HistoryDe
 
         scrollView = (ScrollView) findViewById(R.id.scrollView);
         tvTitle = (TextView) findViewById(R.id.tvTitle);
+        tvDestination = (TextView) findViewById(R.id.tvDestination);
         tvDriverName = (TextView) findViewById(R.id.tvDriverName);
         tvDatetime = (TextView) findViewById(R.id.tvDatetime);
         lnlList = (LinearLayout) findViewById(R.id.lnlList);
@@ -174,13 +176,14 @@ public class HistoryDetailsActivity extends BaseMapActivity implements HistoryDe
         presenter.loadInfo(tradingId);
     }
 
+    private boolean HISTORY_STATE;
     private boolean requestTip;
     private String maxTip;
     private String minTip;
 
     public void setupUI(Bundle extras) {
 
-        boolean HISTORY_STATE = extras.getBoolean(Extras.HISTORY_STATE, true);
+        HISTORY_STATE = extras.getBoolean(Extras.HISTORY_STATE, true);
         String title = HISTORY_STATE ? getString(R.string.upcase_completed) : getString(R.string.upcase_inprocess);
         title = tvTitle.getText() + " - " + title;
         tvTitle.setText(title);
@@ -253,6 +256,7 @@ public class HistoryDetailsActivity extends BaseMapActivity implements HistoryDe
     public void onInfoLoaded(String datetime, String addressFrom, String addressTo, String cost) {
 
         tvDatetime.setText(datetime);
+        tvDestination.setText(addressTo);
         tvAddressFrom.setText(addressFrom);
         tvAddressTo.setText(addressTo);
         tvTotal.setText(cost + " " + getString(R.string.money_unit));
@@ -280,14 +284,21 @@ public class HistoryDetailsActivity extends BaseMapActivity implements HistoryDe
         }
     }
 
+
     @Override
     public void onMapDraw(String requestUrl, CameraUpdate cameraUpdate, MarkerOptions sourceMarker, MarkerOptions destinationMarker) {
+
+        LatLng toLatLng = sourceMarker.getPosition();
 
         mMap.addMarker(sourceMarker);
         mMap.addMarker(destinationMarker);
         mMap.moveCamera(cameraUpdate);
         new PolylineDrawer().drawPath(mMap, requestUrl);
         progressDialog.dismiss();
+
+        if(!HISTORY_STATE && !requestTip){
+            presenter.trackDriver(tradingId, toLatLng);
+        }
     }
 
     @Override
@@ -335,13 +346,18 @@ public class HistoryDetailsActivity extends BaseMapActivity implements HistoryDe
             });
         }
         pbCountDown.setProgress(countdownTime * 100 / Constant.COUNT_DOWN_START);
-
     }
 
     private void timeOff() {
 
         Toast.makeText(mContext, getString(R.string.lowcase_timeoff), Toast.LENGTH_LONG).show();
         this.finish();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        presenter.stopTracking = true;
     }
 
     @Override

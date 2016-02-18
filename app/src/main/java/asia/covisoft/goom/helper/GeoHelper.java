@@ -29,12 +29,16 @@ public class GeoHelper {
             List<Address> addresses = geocoder.getFromLocation(latitude, longitude, 1);
             if (addresses.size() > 0) {
                 Address address = addresses.get(0);
-                for (int i = 0; i <= address.getMaxAddressLineIndex(); i++) {
-                    if(i==address.getMaxAddressLineIndex()){
-                        result.append(address.getAddressLine(i));
-                        break;
+                if(address.getMaxAddressLineIndex()==0){
+                    result.append(address.getAddressLine(0));
+                }else {
+                    for (int i = 0; i < address.getMaxAddressLineIndex(); i++) {
+                        if(i==address.getMaxAddressLineIndex()-1){
+                            result.append(address.getAddressLine(i));
+                            break;
+                        }
+                        result.append(address.getAddressLine(i)).append(", ");
                     }
-                    result.append(address.getAddressLine(i)).append(", ");
                 }
 //                result.append(address.getAddressLine(0)).append(", ");
 //                result.append(address.getSubLocality()).append(", ");
