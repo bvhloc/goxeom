@@ -5,9 +5,6 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.provider.ContactsContract;
 
-/**
- * Created by Covisoft on 27/11/2015.
- */
 public class ContactProvider {
 
     public String getContactNumber(Context context, Uri uriContact) {

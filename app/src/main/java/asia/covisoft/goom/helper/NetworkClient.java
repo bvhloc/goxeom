@@ -34,7 +34,7 @@ public class NetworkClient {
             @Override
             protected Boolean doInBackground(Void... params) {
 
-                Request request = new Request.Builder().url("http://m.google.com").build();
+                Request request = new Request.Builder().url("https://www.google.com").build();
                 OkHttpClient okHttpClient = new OkHttpClient();
                 okHttpClient.setConnectTimeout(timeout, TimeUnit.SECONDS);
                 try {

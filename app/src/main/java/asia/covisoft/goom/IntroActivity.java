@@ -93,6 +93,7 @@ public class IntroActivity extends AppCompatActivity {
 
                 progressDialog.dismiss();
                 new AlertDialog.Builder(mContext)
+                        .setCancelable(false)
                         .setTitle(getString(R.string.dialog_connectionfailed_title))
                         .setMessage(getString(R.string.dialog_connectionfailed_message))
                         .setPositiveButton(getString(R.string.lowcase_tryagain), new DialogInterface.OnClickListener() {

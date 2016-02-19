@@ -1,10 +1,16 @@
 package asia.covisoft.goom.activity.order;
 
+import android.Manifest;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.EditText;
 
@@ -24,7 +30,7 @@ public class OrderPickContactActivity extends BaseActivity implements View.OnCli
             @Override
             public void onClick(View v) {
 
-                startActivityForResult(new Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI), 0);
+                pickPhoneContact();
             }
         });
         findViewById(R.id.btnDone).setOnClickListener(this);
@@ -41,6 +47,54 @@ public class OrderPickContactActivity extends BaseActivity implements View.OnCli
         initView();
 
         setupUI();
+    }
+
+    private final int PERMISSIONS_REQUEST_ACCESS_CONTACT = 1;
+
+    private void pickPhoneContact(){
+
+        if (ContextCompat.checkSelfPermission(mContext,
+                Manifest.permission.READ_CONTACTS)
+                != PackageManager.PERMISSION_GRANTED) {
+
+            ActivityCompat.requestPermissions((Activity) mContext,
+                    new String[]{Manifest.permission.READ_CONTACTS},
+                    PERMISSIONS_REQUEST_ACCESS_CONTACT);
+        } else {
+
+            startActivityForResult(new Intent(Intent.ACTION_PICK,
+                    ContactsContract.Contacts.CONTENT_URI),
+                    0);
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           @NonNull String permissions[], @NonNull int[] grantResults) {
+        switch (requestCode) {
+            case PERMISSIONS_REQUEST_ACCESS_CONTACT: {
+                // If request is cancelled, the result arrays are empty.
+                //noinspection StatementWithEmptyBody
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+                    // permission was granted, yay! Do the
+                    // contacts-related task you need to do.
+                    //noinspection MissingPermission
+                    startActivityForResult(new Intent(Intent.ACTION_PICK,
+                                    ContactsContract.Contacts.CONTENT_URI),
+                            0);
+                } else {
+
+                    // permission denied, boo! Disable the
+                    // functionality that depends on this permission.
+                }
+//                return;
+            }
+
+            // other 'case' lines to check for other
+            // permissions this app might request
+        }
     }
 
     private void setupUI() {

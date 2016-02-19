@@ -1,14 +1,20 @@
 package asia.covisoft.goom;
 
+import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
 
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -25,6 +31,7 @@ import de.greenrobot.event.EventBus;
 
 public class MainActivity extends AppCompatActivity implements OnMapReadyCallback, SettingsLoginView {
 
+    private Context mContext;
     private TabFragment tabFragment;
     private SharedPreferences loginPreferences;
     private SharedPreferences sharedPreferences;
@@ -35,6 +42,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mContext = this;
 
 //        if (savedInstanceState == null) {
 //            // withholding the previously created fragment from being created again
@@ -58,6 +66,9 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                     .putBoolean(Preferences.INVALID_GMS, true)
                     .apply();
         }
+
+        int tabPos = getIntent().getIntExtra(Constant.TAB_POSTION, 1);
+        initScreen(tabPos);
     }
 
     @Override
@@ -92,20 +103,82 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         mapFragment.getMapAsync(this);
     }
 
-    @SuppressWarnings("ResourceType")
+    private final int PERMISSIONS_REQUEST_ACCESS_LOCATION = 1;
+    private GoogleMap mMap;
+
     @Override
     public void onMapReady(GoogleMap googleMap) {
 
-        googleMap.setMyLocationEnabled(true);
-        findViewById(R.id.mapContainer).setVisibility(View.GONE);
-        progressDialog.dismiss();
+        mMap = googleMap;
 
-        checkLogin();
+        if (ContextCompat.checkSelfPermission(mContext,
+                android.Manifest.permission.ACCESS_FINE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED ||
+                ContextCompat.checkSelfPermission(mContext,
+                        android.Manifest.permission.ACCESS_COARSE_LOCATION)
+                        != PackageManager.PERMISSION_GRANTED) {
+
+//            // Should we show an explanation?
+//            if (ActivityCompat.shouldShowRequestPermissionRationale(mContext,
+//                    Manifest.permission.READ_CONTACTS)) {
+//
+//                // Show an expanation to the user *asynchronously* -- don't block
+//                // this thread waiting for the user's response! After the user
+//                // sees the explanation, try again to request the permission.
+//
+//            } else {
+//
+//                // No explanation needed, we can request the permission.
+//
+//                ActivityCompat.requestPermissions(mContext,
+//                        new String[]{Manifest.permission.READ_CONTACTS},
+//                        MY_PERMISSIONS_REQUEST_READ_CONTACTS);
+//
+//                // MY_PERMISSIONS_REQUEST_READ_CONTACTS is an
+//                // app-defined int constant. The callback method gets the
+//                // result of the request.
+//            }
+            ActivityCompat.requestPermissions((Activity) mContext,
+                    new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION,
+                            android.Manifest.permission.ACCESS_COARSE_LOCATION},
+                    PERMISSIONS_REQUEST_ACCESS_LOCATION);
+        } else {
+
+            mMap.setMyLocationEnabled(true);
+            checkLogin();
+        }
+        progressDialog.dismiss();
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           @NonNull String permissions[], @NonNull int[] grantResults) {
+        switch (requestCode) {
+            case PERMISSIONS_REQUEST_ACCESS_LOCATION: {
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+                    // permission was granted, yay! Do the
+                    // contacts-related task you need to do.
+                    //noinspection MissingPermission
+                    mMap.setMyLocationEnabled(true);
+                    checkLogin();
+                } else {
+
+                    // permission denied, boo! Disable the
+                    // functionality that depends on this permission.
+                    MainActivity.this.finish();
+                }
+//                return;
+            }
+
+            // other 'case' lines to check for other
+            // permissions this app might request
+        }
     }
 
     private void checkLogin() {
-
-        int tabPos = getIntent().getIntExtra(Constant.TAB_POSTION, 1);
 
         if (!getIntent().getBooleanExtra(Extras.IS_LOGIN, false)) {
 
@@ -113,28 +186,35 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
             loginPreferences.edit()
                     .putString(Preferences.LOGIN_PREFERENCES_USER_TOKEN, "")
-            .apply();
-
-            initScreen(tabPos);
+                    .apply();
 
             String username = loginPreferences.getString(Preferences.LOGIN_PREFERENCES_USERNAME, "");
             String password = loginPreferences.getString(Preferences.LOGIN_PREFERENCES_PASSWORD, "");
             if (!username.equals("") && !password.equals("")) {
+                progressDialog = ProgressDialog.show(MainActivity.this, "", getString(R.string.dialog_loading));
                 new SettingsLoginPresenter(this).login(username, password);
             }
-        }else {
-            initScreen(tabPos);
         }
     }
 
     @Override
     public void onConnectionFail() {
-
+        new AlertDialog.Builder(this)
+                .setCancelable(false)
+                .setMessage(getString(R.string.dialog_connection_fail))
+                .setNeutralButton(getString(R.string.lowcase_ok), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        MainActivity.this.finish();
+                    }
+                })
+                .show();
     }
 
     @Override
     public void onLogin(SettingsLoginModel model) {
 
+        progressDialog.dismiss();
         String userToken = model.getToken();
         if (!userToken.equals("")) {
             loginPreferences.edit()
