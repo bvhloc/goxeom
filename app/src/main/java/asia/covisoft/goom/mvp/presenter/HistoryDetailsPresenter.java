@@ -21,10 +21,10 @@ import org.json.JSONObject;
 import java.io.IOException;
 
 import asia.covisoft.goom.R;
+import asia.covisoft.goom.helper.DistanceMatrix;
 import asia.covisoft.goom.helper.Hex;
 import asia.covisoft.goom.helper.NetworkClient;
 import asia.covisoft.goom.helper.PolylineDrawer;
-import asia.covisoft.goom.helper.SLog;
 import asia.covisoft.goom.mvp.view.HistoryDetailsView;
 import asia.covisoft.goom.pojo.gson.LoaddetailhistoryRoot;
 import asia.covisoft.goom.pojo.gson.LoaddetailhistoryRoot.Loaddetailhistory;
@@ -214,8 +214,8 @@ public class HistoryDetailsPresenter {
             @Override
             public void run() {
 
-                if(!stopTracking){
-                    getDriverLocation(tradingId, toLatLng);
+                if (!stopTracking) {
+                    requestDriverLocation(tradingId, toLatLng);
                     trackdriverHandler.postDelayed(trackdriverRunnable, 5000);
                 }
             }
@@ -223,7 +223,7 @@ public class HistoryDetailsPresenter {
         trackdriverHandler.post(trackdriverRunnable);
     }
 
-    private void getDriverLocation(final String tradingId, LatLng toLatLng) {
+    private void requestDriverLocation(final String tradingId, final LatLng toLatLng) {
 
         final String userToken = context
                 .getSharedPreferences(Preferences.LOGIN_PREFERENCES, Activity.MODE_PRIVATE)
@@ -235,7 +235,7 @@ public class HistoryDetailsPresenter {
 
                 String URL = Constant.HOST +
                         "getlocation.php?token=" + userToken +
-                        "&tradingid="+tradingId;
+                        "&tradingid=" + tradingId;
                 Log.d("sdb", URL);
                 try {
                     String json = new NetworkClient().getJsonFromUrl(URL);
@@ -243,7 +243,7 @@ public class HistoryDetailsPresenter {
                     JSONObject rootObject = new JSONObject(json);
                     JSONObject getlocation = rootObject.optJSONObject("getlocation");
                     int result = getlocation.getInt("Value");
-                    if(result==0){
+                    if (result == 0) {
                         double latitude = getlocation.getDouble("latitude");
                         double longitude = getlocation.getDouble("longitude");
                         return new LatLng(latitude, longitude);
@@ -259,9 +259,37 @@ public class HistoryDetailsPresenter {
             @Override
             protected void onPostExecute(LatLng driverLatLng) {
                 super.onPostExecute(driverLatLng);
-                SLog.dm(driverLatLng.latitude+"");
+                if (driverLatLng != null) {
+                    requestJourneyInfo(driverLatLng, toLatLng);
+                }
             }
         }.execute();
+    }
+
+    private void requestJourneyInfo(final LatLng driverLatLng, final LatLng toLatLng) {
+
+        DistanceMatrix.requestJourneyInfo(driverLatLng, toLatLng, new DistanceMatrix.OnInfoReceivedListener() {
+            @Override
+            public void onPreRequest() {
+
+            }
+
+            @Override
+            public void onResultReceived(String originAddress, String destinationAddress, String distanceText, String distanceValue, String durationText, String durationValue) {
+
+                MarkerOptions driverMarkerOptions = new MarkerOptions()
+                        .icon(BitmapDescriptorFactory
+                                .fromResource(R.drawable.ic_marker_driver))
+                        .position(driverLatLng);
+
+                view.onDriverTracking(driverMarkerOptions, distanceText, durationText);
+            }
+
+            @Override
+            public void onFail() {
+
+            }
+        });
     }
 
 }

@@ -233,5 +233,9 @@
     <string name="dialog_connectionfailed_message">Please check your connection and try again!</string>
     <string name="lowcase_tryagain">Try Again</string>
     <string name="upcase_vote">VOTE</string>
+    <string name="activity_history_detail_distance">Distance:</string>
+    <string name="activity_history_detail_arrivaltime">Arrival Time:</string>
+    <string name="upcase_accept">ACCEPT</string>
+    <string name="upcase_decline">DECLINE</string>
 
 </resources>

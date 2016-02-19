@@ -16,4 +16,5 @@ public interface HistoryDetailsView {
     void onMapDraw(String requestUrl, CameraUpdate cameraUpdate, MarkerOptions sourceMarker, MarkerOptions destinationMarker);
     void onConnectionFail();
     void onCountDown(int countdownTime);
+    void onDriverTracking(MarkerOptions driverMarkerOptions, String distance, String duration);
 }

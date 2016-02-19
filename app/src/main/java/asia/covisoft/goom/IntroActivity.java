@@ -121,7 +121,7 @@ public class IntroActivity extends AppCompatActivity {
 //
 //                startMain();
 //            }
-//        }, 3000);//TODO active
+//        }, 3000); //TODO active
 
         startMain();
     }

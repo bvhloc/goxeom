@@ -19,6 +19,7 @@ import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.mikhaellopez.circularprogressbar.CircularProgressBar;
 
@@ -47,8 +48,11 @@ import asia.covisoft.goom.widget.WorkaroundMapFragment;
 public class HistoryDetailsActivity extends BaseMapActivity implements HistoryDetailsView, OnMapReadyCallback, OrderMadeView, TipView {
 
     private ScrollView scrollView;
-    private TextView tvTitle, tvDriverName, tvDatetime, tvAddressFrom, tvAddressTo, tvTotal,
-            tvMaxTip, tvMinTip, tvCountDown, tvDestination;
+    private TextView tvTitle,tvDestination,
+            tvDistance, tvArrivalTime,
+            tvDriverName, tvDatetime,
+            tvAddressFrom, tvAddressTo, tvTotal,
+            tvMaxTip, tvMinTip, tvCountDown;
     private LinearLayout lnlList;
     private Button btnCancel,
             btnCall, btnSms,
@@ -63,6 +67,8 @@ public class HistoryDetailsActivity extends BaseMapActivity implements HistoryDe
         scrollView = (ScrollView) findViewById(R.id.scrollView);
         tvTitle = (TextView) findViewById(R.id.tvTitle);
         tvDestination = (TextView) findViewById(R.id.tvDestination);
+        tvDistance = (TextView) findViewById(R.id.tvDistance);
+        tvArrivalTime = (TextView) findViewById(R.id.tvArrivalTime);
         tvDriverName = (TextView) findViewById(R.id.tvDriverName);
         tvDatetime = (TextView) findViewById(R.id.tvDatetime);
         lnlList = (LinearLayout) findViewById(R.id.lnlList);
@@ -189,7 +195,7 @@ public class HistoryDetailsActivity extends BaseMapActivity implements HistoryDe
         tvTitle.setText(title);
 
         if (HISTORY_STATE) {
-            ViewHelper.gone(btnCancel, btnCall, btnSms);
+            ViewHelper.gone(btnCancel, btnCall, btnSms, findViewById(R.id.lnlJourneyInfo));
         } else {
             ViewHelper.gone(btnBook, btnVote);
         }
@@ -198,7 +204,7 @@ public class HistoryDetailsActivity extends BaseMapActivity implements HistoryDe
         if (requestTip) {
             CancelTipService.countdownTime = Constant.COUNT_DOWN_START; //reset countdownTime
 
-            ViewHelper.gone(btnCancel, findViewById(R.id.lnlDriverInfo));
+            ViewHelper.gone(btnCancel, findViewById(R.id.lnlDriverInfo), findViewById(R.id.lnlJourneyInfo));
 
             maxTip = extras.getString(Extras.MAX_TIP);
             minTip = extras.getString(Extras.MIN_TIP);
@@ -299,6 +305,20 @@ public class HistoryDetailsActivity extends BaseMapActivity implements HistoryDe
         if(!HISTORY_STATE && !requestTip){
             presenter.trackDriver(tradingId, toLatLng);
         }
+    }
+
+    private Marker driverMarker;
+
+    @Override
+    public void onDriverTracking(MarkerOptions driverMarkerOptions, String distance, String duration) {
+
+        if(driverMarker!= null){
+            driverMarker.remove();
+        }
+        driverMarker = mMap.addMarker(driverMarkerOptions);
+
+        tvDistance.setText(distance);
+        tvArrivalTime.setText(duration);
     }
 
     @Override
