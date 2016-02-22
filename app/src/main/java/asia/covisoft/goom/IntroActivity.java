@@ -94,7 +94,7 @@ public class IntroActivity extends AppCompatActivity {
             @Override
             public void onFail() {
 
-//                progressDialog.dismiss();
+                progressDialog.dismiss();
                 new AlertDialog.Builder(mContext)
                         .setCancelable(false)
                         .setTitle(getString(R.string.dialog_connectionfailed_title))

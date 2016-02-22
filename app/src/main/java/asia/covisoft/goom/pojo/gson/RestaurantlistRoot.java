@@ -6,26 +6,23 @@ import com.google.gson.annotations.SerializedName;
 import java.util.ArrayList;
 import java.util.List;
 
-import asia.covisoft.goom.pojo.gson.LoadfoodingRoot.Loadfooding.RestaurantList;
-
 public class RestaurantlistRoot {
 
     @SerializedName("restaurantlist")
     @Expose
-    private List<RestaurantList> restaurantlist = new ArrayList<RestaurantList>();
+    private List<LoadfoodingRoot.Loadfooding.RestaurantList> restaurantlist = new ArrayList<LoadfoodingRoot.Loadfooding.RestaurantList>();
 
     /**
      * @return The restaurantlist
      */
-    public List<RestaurantList> getRestaurantlist() {
+    public List<LoadfoodingRoot.Loadfooding.RestaurantList> getRestaurantlist() {
         return restaurantlist;
     }
 
     /**
      * @param restaurantlist The restaurantlist
      */
-    public void setRestaurantlist(List<RestaurantList> restaurantlist) {
+    public void setRestaurantlist(List<LoadfoodingRoot.Loadfooding.RestaurantList> restaurantlist) {
         this.restaurantlist = restaurantlist;
     }
-
 }
