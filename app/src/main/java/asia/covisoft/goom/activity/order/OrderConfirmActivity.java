@@ -10,15 +10,15 @@ import android.widget.TextView;
 
 import asia.covisoft.goom.R;
 import asia.covisoft.goom.base.BaseActivity;
-import asia.covisoft.goom.helper.Hex;
+import asia.covisoft.goom.utils.Hex;
 import asia.covisoft.goom.mvp.model.OrderCourierModel;
 import asia.covisoft.goom.mvp.model.OrderFoodOrderedModel;
 import asia.covisoft.goom.mvp.model.OrderShoppingModel;
 import asia.covisoft.goom.mvp.model.OrderTransportModel;
 import asia.covisoft.goom.mvp.presenter.OrderConfirmPresenter;
 import asia.covisoft.goom.mvp.view.OrderConfirmView;
-import asia.covisoft.goom.utils.Constant;
-import asia.covisoft.goom.utils.Extras;
+import asia.covisoft.goom.prefs.Constant;
+import asia.covisoft.goom.prefs.Extras;
 
 public class OrderConfirmActivity extends BaseActivity implements OrderConfirmView {
 

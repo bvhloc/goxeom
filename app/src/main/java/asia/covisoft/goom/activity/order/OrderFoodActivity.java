@@ -35,14 +35,14 @@ import asia.covisoft.goom.adapter.list.RestaurantListAdapter;
 import asia.covisoft.goom.base.BaseMapActivity;
 import asia.covisoft.goom.widget.HeaderGridView;
 import asia.covisoft.goom.widget.WorkaroundMapFragment;
-import asia.covisoft.goom.helper.GPSTracker;
-import asia.covisoft.goom.helper.Hex;
+import asia.covisoft.goom.utils.GPSTracker;
+import asia.covisoft.goom.utils.Hex;
 import asia.covisoft.goom.mvp.presenter.OrderFoodPresenter;
 import asia.covisoft.goom.mvp.view.OrderFoodView;
 import asia.covisoft.goom.pojo.gson.LoadfoodingRoot.Loadfooding.Category;
 import asia.covisoft.goom.pojo.gson.LoadfoodingRoot.Loadfooding.RestaurantList;
-import asia.covisoft.goom.utils.Extras;
-import asia.covisoft.goom.utils.Preferences;
+import asia.covisoft.goom.prefs.Extras;
+import asia.covisoft.goom.prefs.Preferences;
 
 public class OrderFoodActivity extends BaseMapActivity implements OrderFoodView, GoogleMap.OnMarkerClickListener {
 

@@ -16,15 +16,15 @@ import java.util.Calendar;
 
 import asia.covisoft.goom.R;
 import asia.covisoft.goom.base.BaseActivity;
-import asia.covisoft.goom.helper.AppHelper;
-import asia.covisoft.goom.helper.DatetimeHelper;
-import asia.covisoft.goom.helper.MD5;
-import asia.covisoft.goom.helper.SystemHelper;
+import asia.covisoft.goom.utils.AppHelper;
+import asia.covisoft.goom.utils.DatetimeHelper;
+import asia.covisoft.goom.utils.MD5;
+import asia.covisoft.goom.utils.SystemHelper;
 import asia.covisoft.goom.mvp.model.SettingsProfileModel;
 import asia.covisoft.goom.mvp.presenter.SettingsProfilePresenter;
 import asia.covisoft.goom.mvp.view.SettingsProfileView;
-import asia.covisoft.goom.utils.DatetimeFormat;
-import asia.covisoft.goom.utils.Preferences;
+import asia.covisoft.goom.prefs.DatetimeFormat;
+import asia.covisoft.goom.prefs.Preferences;
 
 @SuppressWarnings("FieldCanBeLocal")
 public class SettingsProfileActivity extends BaseActivity implements SettingsProfileView {

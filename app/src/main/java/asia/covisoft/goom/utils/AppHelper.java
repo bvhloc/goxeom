@@ -1,11 +1,11 @@
-package asia.covisoft.goom.helper;
+package asia.covisoft.goom.utils;
 
 import android.content.Context;
 import android.content.Intent;
 
 import asia.covisoft.goom.MainActivity;
-import asia.covisoft.goom.utils.Constant;
-import asia.covisoft.goom.utils.Extras;
+import asia.covisoft.goom.prefs.Constant;
+import asia.covisoft.goom.prefs.Extras;
 
 public class AppHelper {
 

@@ -15,12 +15,12 @@ import android.widget.TextView;
 
 import asia.covisoft.goom.R;
 import asia.covisoft.goom.base.BaseActivity;
-import asia.covisoft.goom.helper.AppHelper;
-import asia.covisoft.goom.helper.SystemHelper;
+import asia.covisoft.goom.utils.AppHelper;
+import asia.covisoft.goom.utils.SystemHelper;
 import asia.covisoft.goom.mvp.model.SettingsLoginModel;
 import asia.covisoft.goom.mvp.presenter.SettingsLoginPresenter;
 import asia.covisoft.goom.mvp.view.SettingsLoginView;
-import asia.covisoft.goom.utils.Preferences;
+import asia.covisoft.goom.prefs.Preferences;
 
 @SuppressWarnings("FieldCanBeLocal")
 public class SettingsLoginActivity extends BaseActivity implements SettingsLoginView {

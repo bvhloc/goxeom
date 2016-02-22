@@ -13,11 +13,11 @@ import android.widget.EditText;
 
 import asia.covisoft.goom.R;
 import asia.covisoft.goom.base.BaseActivity;
-import asia.covisoft.goom.helper.AppHelper;
+import asia.covisoft.goom.utils.AppHelper;
 import asia.covisoft.goom.mvp.model.SettingsSignupModel;
 import asia.covisoft.goom.mvp.presenter.SettingsSignupPresenter;
 import asia.covisoft.goom.mvp.view.SettingsSignupView;
-import asia.covisoft.goom.utils.Preferences;
+import asia.covisoft.goom.prefs.Preferences;
 
 @SuppressWarnings("FieldCanBeLocal")
 public class SettingsSignupActivity extends BaseActivity implements SettingsSignupView {

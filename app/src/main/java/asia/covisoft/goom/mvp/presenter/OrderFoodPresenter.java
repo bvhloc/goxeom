@@ -10,11 +10,11 @@ import com.google.gson.Gson;
 import java.io.IOException;
 
 import asia.covisoft.goom.R;
-import asia.covisoft.goom.helper.NetworkClient;
+import asia.covisoft.goom.utils.NetworkClient;
 import asia.covisoft.goom.mvp.view.OrderFoodView;
 import asia.covisoft.goom.pojo.gson.LoadfoodingRoot;
 import asia.covisoft.goom.pojo.gson.LoadfoodingRoot.Loadfooding;
-import asia.covisoft.goom.utils.Constant;
+import asia.covisoft.goom.prefs.Constant;
 
 public class OrderFoodPresenter {
 

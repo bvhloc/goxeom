@@ -20,7 +20,7 @@ import asia.covisoft.goom.base.BaseActivity;
 import asia.covisoft.goom.mvp.presenter.OrderFoodPickFoodPresenter;
 import asia.covisoft.goom.mvp.view.OrderFoodPickFoodView;
 import asia.covisoft.goom.pojo.gson.FoodlistRoot.Foodlist;
-import asia.covisoft.goom.utils.Extras;
+import asia.covisoft.goom.prefs.Extras;
 
 public class OrderFoodPickFoodActivity extends BaseActivity implements OrderFoodPickFoodView {
 

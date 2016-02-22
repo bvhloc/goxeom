@@ -30,7 +30,7 @@ import com.google.android.gms.iid.InstanceID;
 import java.io.IOException;
 
 import asia.covisoft.goom.R;
-import asia.covisoft.goom.utils.Preferences;
+import asia.covisoft.goom.prefs.Preferences;
 
 public class RegistrationIntentService extends IntentService {
 

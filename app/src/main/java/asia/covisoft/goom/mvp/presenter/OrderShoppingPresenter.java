@@ -13,12 +13,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import asia.covisoft.goom.R;
-import asia.covisoft.goom.helper.NetworkClient;
+import asia.covisoft.goom.utils.NetworkClient;
 import asia.covisoft.goom.mvp.model.OrderPresenter;
 import asia.covisoft.goom.mvp.view.OrderShoppingView;
 import asia.covisoft.goom.pojo.gson.LoadshoppingRoot;
 import asia.covisoft.goom.pojo.gson.LoadshoppingRoot.Loadshopping;
-import asia.covisoft.goom.utils.Constant;
+import asia.covisoft.goom.prefs.Constant;
 
 public class OrderShoppingPresenter extends OrderPresenter {
 

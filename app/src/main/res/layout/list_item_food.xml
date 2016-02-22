@@ -44,7 +44,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:numBackground="@drawable/bg_square_edittext"
-            app:numSize="12sp"
+            app:numSize="9sp"
             app:incrementDrawable="@drawable/ic_numpick_plus"
             app:decrementDrawable="@drawable/ic_numpick_minus"
             app:keyboardInput="false"/>

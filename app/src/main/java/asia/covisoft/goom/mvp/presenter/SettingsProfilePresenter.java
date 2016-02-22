@@ -14,14 +14,14 @@ import java.io.IOException;
 import java.util.Calendar;
 
 import asia.covisoft.goom.R;
-import asia.covisoft.goom.helper.DatetimeHelper;
-import asia.covisoft.goom.helper.Hex;
-import asia.covisoft.goom.helper.NetworkClient;
+import asia.covisoft.goom.utils.DatetimeHelper;
+import asia.covisoft.goom.utils.Hex;
+import asia.covisoft.goom.utils.NetworkClient;
 import asia.covisoft.goom.mvp.model.SettingsProfileModel;
 import asia.covisoft.goom.mvp.view.SettingsProfileView;
 import asia.covisoft.goom.pojo.gson.LoadinfoRoot;
-import asia.covisoft.goom.utils.Constant;
-import asia.covisoft.goom.utils.DatetimeFormat;
+import asia.covisoft.goom.prefs.Constant;
+import asia.covisoft.goom.prefs.DatetimeFormat;
 
 public class SettingsProfilePresenter {
 

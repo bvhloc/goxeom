@@ -13,11 +13,11 @@ import java.util.List;
 import asia.covisoft.goom.R;
 import asia.covisoft.goom.adapter.list.RestaurantListAdapter;
 import asia.covisoft.goom.base.BaseActivity;
-import asia.covisoft.goom.helper.Hex;
+import asia.covisoft.goom.utils.Hex;
 import asia.covisoft.goom.mvp.presenter.OrderFoodPickRestaurantPresenter;
 import asia.covisoft.goom.mvp.view.OrderFoodPickRestaurantView;
 import asia.covisoft.goom.pojo.gson.LoadfoodingRoot.Loadfooding.RestaurantList;
-import asia.covisoft.goom.utils.Extras;
+import asia.covisoft.goom.prefs.Extras;
 import asia.covisoft.goom.widget.HeaderGridView;
 
 public class OrderFoodPickRestaurantActivity extends BaseActivity implements OrderFoodPickRestaurantView {

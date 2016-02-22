@@ -26,7 +26,7 @@ import asia.covisoft.goom.adapter.list.LocationHistoryListAdapter;
 import asia.covisoft.goom.base.BaseActivity;
 import asia.covisoft.goom.fragment.order.OrderPickMapFragment;
 import asia.covisoft.goom.pojo.activeandroid.LocationHistory;
-import asia.covisoft.goom.utils.Extras;
+import asia.covisoft.goom.prefs.Extras;
 
 public class OrderPickLocationActivity extends BaseActivity implements AdapterView.OnItemClickListener {
 

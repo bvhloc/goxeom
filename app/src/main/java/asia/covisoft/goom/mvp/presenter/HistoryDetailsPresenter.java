@@ -21,16 +21,16 @@ import org.json.JSONObject;
 import java.io.IOException;
 
 import asia.covisoft.goom.R;
-import asia.covisoft.goom.helper.DistanceMatrix;
-import asia.covisoft.goom.helper.Hex;
-import asia.covisoft.goom.helper.NetworkClient;
-import asia.covisoft.goom.helper.PolylineDrawer;
+import asia.covisoft.goom.utils.DistanceMatrix;
+import asia.covisoft.goom.utils.Hex;
+import asia.covisoft.goom.utils.NetworkClient;
+import asia.covisoft.goom.utils.PolylineDrawer;
 import asia.covisoft.goom.mvp.view.HistoryDetailsView;
 import asia.covisoft.goom.pojo.gson.LoaddetailhistoryRoot;
 import asia.covisoft.goom.pojo.gson.LoaddetailhistoryRoot.Loaddetailhistory;
 import asia.covisoft.goom.service.CancelTipService;
-import asia.covisoft.goom.utils.Constant;
-import asia.covisoft.goom.utils.Preferences;
+import asia.covisoft.goom.prefs.Constant;
+import asia.covisoft.goom.prefs.Preferences;
 
 public class HistoryDetailsPresenter {
 

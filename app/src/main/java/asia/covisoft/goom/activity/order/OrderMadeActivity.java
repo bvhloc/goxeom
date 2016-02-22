@@ -8,10 +8,10 @@ import android.view.View;
 
 import asia.covisoft.goom.R;
 import asia.covisoft.goom.base.BaseActivity;
-import asia.covisoft.goom.helper.AppHelper;
+import asia.covisoft.goom.utils.AppHelper;
 import asia.covisoft.goom.mvp.presenter.OrderMadePresenter;
 import asia.covisoft.goom.mvp.view.OrderMadeView;
-import asia.covisoft.goom.utils.Extras;
+import asia.covisoft.goom.prefs.Extras;
 
 public class OrderMadeActivity extends BaseActivity implements OrderMadeView {
 

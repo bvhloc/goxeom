@@ -1,4 +1,4 @@
-package asia.covisoft.goom.utils;
+package asia.covisoft.goom.prefs;
 
 import android.annotation.SuppressLint;
 

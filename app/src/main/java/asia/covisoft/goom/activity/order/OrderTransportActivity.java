@@ -25,19 +25,19 @@ import java.util.List;
 
 import asia.covisoft.goom.R;
 import asia.covisoft.goom.base.BaseMapActivity;
-import asia.covisoft.goom.utils.Constant;
+import asia.covisoft.goom.prefs.Constant;
 import asia.covisoft.goom.widget.WorkaroundMapFragment;
-import asia.covisoft.goom.helper.DatetimeHelper;
-import asia.covisoft.goom.helper.GPSTracker;
-import asia.covisoft.goom.helper.Hex;
+import asia.covisoft.goom.utils.DatetimeHelper;
+import asia.covisoft.goom.utils.GPSTracker;
+import asia.covisoft.goom.utils.Hex;
 import asia.covisoft.goom.mvp.model.OrderTransportModel;
 import asia.covisoft.goom.mvp.presenter.OrderTransportPresenter;
 import asia.covisoft.goom.mvp.view.OrderTransportView;
 import asia.covisoft.goom.pojo.gson.LoadtransportRoot.Loadtransport;
-import asia.covisoft.goom.utils.DatetimeFormat;
-import asia.covisoft.goom.utils.Extras;
-import asia.covisoft.goom.utils.Preferences;
-import asia.covisoft.goom.utils.RequestCodes;
+import asia.covisoft.goom.prefs.DatetimeFormat;
+import asia.covisoft.goom.prefs.Extras;
+import asia.covisoft.goom.prefs.Preferences;
+import asia.covisoft.goom.prefs.RequestCodes;
 
 public class OrderTransportActivity extends BaseMapActivity implements OrderTransportView, GoogleMap.OnMarkerClickListener {
 

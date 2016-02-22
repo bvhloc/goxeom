@@ -21,13 +21,13 @@ import java.util.HashMap;
 import java.util.List;
 
 import asia.covisoft.goom.R;
-import asia.covisoft.goom.helper.Hex;
-import asia.covisoft.goom.helper.NetworkClient;
+import asia.covisoft.goom.utils.Hex;
+import asia.covisoft.goom.utils.NetworkClient;
 import asia.covisoft.goom.mvp.view.OrderFoodPickFoodView;
 import asia.covisoft.goom.pojo.gson.FoodlistRoot;
 import asia.covisoft.goom.pojo.gson.FoodlistRoot.Foodlist;
-import asia.covisoft.goom.utils.Constant;
-import asia.covisoft.goom.utils.Extras;
+import asia.covisoft.goom.prefs.Constant;
+import asia.covisoft.goom.prefs.Extras;
 
 public class OrderFoodPickFoodPresenter {
 

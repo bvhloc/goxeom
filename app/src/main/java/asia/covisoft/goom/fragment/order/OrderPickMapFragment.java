@@ -22,9 +22,9 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 
 import asia.covisoft.goom.R;
-import asia.covisoft.goom.helper.GPSTracker;
-import asia.covisoft.goom.helper.GeoHelper;
-import asia.covisoft.goom.utils.Extras;
+import asia.covisoft.goom.utils.GPSTracker;
+import asia.covisoft.goom.utils.GeoHelper;
+import asia.covisoft.goom.prefs.Extras;
 
 /**
  * A simple {@link Fragment} subclass.

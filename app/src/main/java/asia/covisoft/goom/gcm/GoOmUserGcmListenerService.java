@@ -34,7 +34,7 @@ import asia.covisoft.goom.activity.history.HistoryDetailsActivity;
 import asia.covisoft.goom.pojo.gson.DriverconfirmRoot;
 import asia.covisoft.goom.pojo.gson.DriverconfirmRoot.Driverconfirm;
 import asia.covisoft.goom.service.CancelTipService;
-import asia.covisoft.goom.utils.Extras;
+import asia.covisoft.goom.prefs.Extras;
 
 public class GoOmUserGcmListenerService extends GcmListenerService {
 

@@ -27,11 +27,11 @@ import java.util.List;
 
 import asia.covisoft.goom.R;
 import asia.covisoft.goom.base.BaseMapActivity;
-import asia.covisoft.goom.helper.Hex;
-import asia.covisoft.goom.helper.PhoneHelper;
-import asia.covisoft.goom.helper.PolylineDrawer;
-import asia.covisoft.goom.helper.TouchEffect;
-import asia.covisoft.goom.helper.ViewHelper;
+import asia.covisoft.goom.utils.Hex;
+import asia.covisoft.goom.utils.PhoneHelper;
+import asia.covisoft.goom.utils.PolylineDrawer;
+import asia.covisoft.goom.utils.TouchEffect;
+import asia.covisoft.goom.utils.ViewHelper;
 import asia.covisoft.goom.mvp.presenter.HistoryDetailsPresenter;
 import asia.covisoft.goom.mvp.presenter.OrderMadePresenter;
 import asia.covisoft.goom.mvp.presenter.TipPresenter;
@@ -40,8 +40,8 @@ import asia.covisoft.goom.mvp.view.OrderMadeView;
 import asia.covisoft.goom.mvp.view.TipView;
 import asia.covisoft.goom.pojo.gson.LoaddetailhistoryRoot.Loaddetailhistory.Foodlist;
 import asia.covisoft.goom.service.CancelTipService;
-import asia.covisoft.goom.utils.Constant;
-import asia.covisoft.goom.utils.Extras;
+import asia.covisoft.goom.prefs.Constant;
+import asia.covisoft.goom.prefs.Extras;
 import asia.covisoft.goom.widget.WorkaroundMapFragment;
 
 @SuppressLint("SetTextI18n")

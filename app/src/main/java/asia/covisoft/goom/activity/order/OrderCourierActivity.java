@@ -25,11 +25,11 @@ import java.util.List;
 
 import asia.covisoft.goom.R;
 import asia.covisoft.goom.base.BaseMapActivity;
-import asia.covisoft.goom.utils.Constant;
+import asia.covisoft.goom.prefs.Constant;
 import asia.covisoft.goom.widget.WorkaroundMapFragment;
-import asia.covisoft.goom.helper.DatetimeHelper;
-import asia.covisoft.goom.helper.GPSTracker;
-import asia.covisoft.goom.helper.Hex;
+import asia.covisoft.goom.utils.DatetimeHelper;
+import asia.covisoft.goom.utils.GPSTracker;
+import asia.covisoft.goom.utils.Hex;
 import asia.covisoft.goom.mvp.model.OrderCourierModel;
 import asia.covisoft.goom.mvp.model.SettingsProfileModel;
 import asia.covisoft.goom.mvp.presenter.OrderCourierPresenter;
@@ -37,10 +37,10 @@ import asia.covisoft.goom.mvp.presenter.SettingsProfilePresenter;
 import asia.covisoft.goom.mvp.view.OrderCourierView;
 import asia.covisoft.goom.mvp.view.SettingsProfileView;
 import asia.covisoft.goom.pojo.gson.LoadcourierRoot.Loadcourier;
-import asia.covisoft.goom.utils.DatetimeFormat;
-import asia.covisoft.goom.utils.Extras;
-import asia.covisoft.goom.utils.Preferences;
-import asia.covisoft.goom.utils.RequestCodes;
+import asia.covisoft.goom.prefs.DatetimeFormat;
+import asia.covisoft.goom.prefs.Extras;
+import asia.covisoft.goom.prefs.Preferences;
+import asia.covisoft.goom.prefs.RequestCodes;
 
 public class OrderCourierActivity extends BaseMapActivity implements OrderCourierView, GoogleMap.OnMarkerClickListener, SettingsProfileView {
 

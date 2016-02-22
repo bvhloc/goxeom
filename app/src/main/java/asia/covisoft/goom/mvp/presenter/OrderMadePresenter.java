@@ -12,10 +12,10 @@ import org.json.JSONObject;
 import java.io.IOException;
 
 import asia.covisoft.goom.R;
-import asia.covisoft.goom.helper.NetworkClient;
+import asia.covisoft.goom.utils.NetworkClient;
 import asia.covisoft.goom.mvp.view.OrderMadeView;
-import asia.covisoft.goom.utils.Constant;
-import asia.covisoft.goom.utils.Preferences;
+import asia.covisoft.goom.prefs.Constant;
+import asia.covisoft.goom.prefs.Preferences;
 
 public class OrderMadePresenter {
 

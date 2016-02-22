@@ -24,6 +24,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -33,7 +34,7 @@ import com.google.android.gms.common.GoogleApiAvailability;
 
 import asia.covisoft.goom.gcm.GcmPreferences;
 import asia.covisoft.goom.gcm.RegistrationIntentService;
-import asia.covisoft.goom.helper.NetworkClient;
+import asia.covisoft.goom.utils.NetworkClient;
 
 public class IntroActivity extends AppCompatActivity {
 
@@ -49,6 +50,8 @@ public class IntroActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_intro);
         mContext = this;
+
+        intro = false;
 
         mRegistrationBroadcastReceiver = new BroadcastReceiver() {
             @Override
@@ -91,7 +94,7 @@ public class IntroActivity extends AppCompatActivity {
             @Override
             public void onFail() {
 
-                progressDialog.dismiss();
+//                progressDialog.dismiss();
                 new AlertDialog.Builder(mContext)
                         .setCancelable(false)
                         .setTitle(getString(R.string.dialog_connectionfailed_title))
@@ -116,15 +119,15 @@ public class IntroActivity extends AppCompatActivity {
             startService(intent);
         }
 
-//        new Handler().postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//
-//                startMain();
-//            }
-//        }, 3000); //TODO active
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
 
-        startMain();
+                startMain();
+            }
+        }, 3000);
+
+//        startMain();
     }
 
     private void startMain() {

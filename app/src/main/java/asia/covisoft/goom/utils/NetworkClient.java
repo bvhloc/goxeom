@@ -1,4 +1,4 @@
-package asia.covisoft.goom.helper;
+package asia.covisoft.goom.utils;
 
 import android.os.AsyncTask;
 
@@ -9,7 +9,7 @@ import com.squareup.okhttp.Response;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
-import asia.covisoft.goom.utils.Constant;
+import asia.covisoft.goom.prefs.Constant;
 
 public class NetworkClient {
 

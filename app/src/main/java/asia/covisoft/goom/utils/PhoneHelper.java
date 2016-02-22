@@ -1,4 +1,4 @@
-package asia.covisoft.goom.helper;
+package asia.covisoft.goom.utils;
 
 import android.content.Context;
 import android.content.Intent;

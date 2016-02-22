@@ -11,11 +11,11 @@ import java.io.IOException;
 import java.util.List;
 
 import asia.covisoft.goom.R;
-import asia.covisoft.goom.helper.NetworkClient;
+import asia.covisoft.goom.utils.NetworkClient;
 import asia.covisoft.goom.mvp.view.OrderFoodPickRestaurantView;
 import asia.covisoft.goom.pojo.gson.LoadfoodingRoot.Loadfooding.RestaurantList;
 import asia.covisoft.goom.pojo.gson.RestaurantlistRoot;
-import asia.covisoft.goom.utils.Constant;
+import asia.covisoft.goom.prefs.Constant;
 
 public class OrderFoodPickRestaurantPresenter {
 

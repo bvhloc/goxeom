@@ -12,12 +12,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import asia.covisoft.goom.helper.NetworkClient;
+import asia.covisoft.goom.utils.NetworkClient;
 import asia.covisoft.goom.mvp.model.HistoryModel;
 import asia.covisoft.goom.mvp.view.HistoryView;
 import asia.covisoft.goom.pojo.HistoryItem;
 import asia.covisoft.goom.pojo.gson.LoadhistoryRoot;
-import asia.covisoft.goom.utils.Constant;
+import asia.covisoft.goom.prefs.Constant;
 
 public class HistoryPresenter {
 

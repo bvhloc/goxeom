@@ -16,9 +16,10 @@ import android.widget.EditText;
 
 import asia.covisoft.goom.R;
 import asia.covisoft.goom.base.BaseActivity;
-import asia.covisoft.goom.helper.ContactProvider;
-import asia.covisoft.goom.utils.Extras;
+import asia.covisoft.goom.utils.ContactProvider;
+import asia.covisoft.goom.prefs.Extras;
 
+@SuppressWarnings("FieldCanBeLocal")
 public class OrderPickContactActivity extends BaseActivity implements View.OnClickListener {
 
     private EditText edtName, edtPhone;
@@ -50,6 +51,7 @@ public class OrderPickContactActivity extends BaseActivity implements View.OnCli
     }
 
     private final int PERMISSIONS_REQUEST_ACCESS_CONTACT = 1;
+    private final int REQUEST_CODE_ACCESS_CONTACT = 0;
 
     private void pickPhoneContact(){
 
@@ -64,7 +66,7 @@ public class OrderPickContactActivity extends BaseActivity implements View.OnCli
 
             startActivityForResult(new Intent(Intent.ACTION_PICK,
                     ContactsContract.Contacts.CONTENT_URI),
-                    0);
+                    REQUEST_CODE_ACCESS_CONTACT);
         }
     }
 

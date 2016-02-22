@@ -1,4 +1,4 @@
-package asia.covisoft.goom.helper;
+package asia.covisoft.goom.utils;
 
 import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;

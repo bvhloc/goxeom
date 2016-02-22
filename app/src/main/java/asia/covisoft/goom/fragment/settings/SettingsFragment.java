@@ -13,7 +13,7 @@ import asia.covisoft.goom.R;
 import asia.covisoft.goom.activity.settings.SettingsProfileActivity;
 import asia.covisoft.goom.activity.settings.SettingsSignupActivity;
 import asia.covisoft.goom.backpress.BackFragment;
-import asia.covisoft.goom.utils.Preferences;
+import asia.covisoft.goom.prefs.Preferences;
 
 
 public class SettingsFragment extends BackFragment {

@@ -13,9 +13,9 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 import asia.covisoft.goom.R;
-import asia.covisoft.goom.helper.Hex;
+import asia.covisoft.goom.utils.Hex;
 import asia.covisoft.goom.pojo.gson.LoadfoodingRoot.Loadfooding.Category;
-import asia.covisoft.goom.utils.Constant;
+import asia.covisoft.goom.prefs.Constant;
 
 public class FoodTypeListAdapter extends ArrayAdapter<Category> {
 

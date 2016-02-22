@@ -1,4 +1,4 @@
-package asia.covisoft.goom.helper;
+package asia.covisoft.goom.utils;
 
 import android.os.AsyncTask;
 import android.util.Log;

@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 
 import asia.covisoft.goom.adapter.page.ViewPagerAdapter;
 import asia.covisoft.goom.backpress.OnBackPressListener;
-import asia.covisoft.goom.utils.Constant;
+import asia.covisoft.goom.prefs.Constant;
 
 /**
  * A simple {@link Fragment} subclass.

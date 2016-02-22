@@ -11,7 +11,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import asia.covisoft.goom.R;
-import asia.covisoft.goom.helper.Hex;
+import asia.covisoft.goom.utils.Hex;
 import asia.covisoft.goom.pojo.HistoryItem;
 
 public class HistoryListAdapter extends ArrayAdapter<HistoryItem> {

@@ -24,9 +24,9 @@ import asia.covisoft.goom.eventbus.ActivityResultEvent;
 import asia.covisoft.goom.mvp.model.SettingsLoginModel;
 import asia.covisoft.goom.mvp.presenter.SettingsLoginPresenter;
 import asia.covisoft.goom.mvp.view.SettingsLoginView;
-import asia.covisoft.goom.utils.Constant;
-import asia.covisoft.goom.utils.Extras;
-import asia.covisoft.goom.utils.Preferences;
+import asia.covisoft.goom.prefs.Constant;
+import asia.covisoft.goom.prefs.Extras;
+import asia.covisoft.goom.prefs.Preferences;
 import de.greenrobot.event.EventBus;
 
 public class MainActivity extends AppCompatActivity implements OnMapReadyCallback, SettingsLoginView {
@@ -150,6 +150,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         progressDialog.dismiss();
     }
 
+    @SuppressWarnings("ResourceType")
     @Override
     public void onRequestPermissionsResult(int requestCode,
                                            @NonNull String permissions[], @NonNull int[] grantResults) {
@@ -191,7 +192,6 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             String username = loginPreferences.getString(Preferences.LOGIN_PREFERENCES_USERNAME, "");
             String password = loginPreferences.getString(Preferences.LOGIN_PREFERENCES_PASSWORD, "");
             if (!username.equals("") && !password.equals("")) {
-                progressDialog = ProgressDialog.show(MainActivity.this, "", getString(R.string.dialog_loading));
                 new SettingsLoginPresenter(this).login(username, password);
             }
         }
@@ -214,7 +214,6 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     @Override
     public void onLogin(SettingsLoginModel model) {
 
-        progressDialog.dismiss();
         String userToken = model.getToken();
         if (!userToken.equals("")) {
             loginPreferences.edit()

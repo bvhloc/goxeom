@@ -22,7 +22,7 @@ import asia.covisoft.goom.mvp.model.HistoryModel;
 import asia.covisoft.goom.mvp.presenter.HistoryPresenter;
 import asia.covisoft.goom.mvp.view.HistoryView;
 import asia.covisoft.goom.pojo.HistoryItem;
-import asia.covisoft.goom.utils.Extras;
+import asia.covisoft.goom.prefs.Extras;
 
 
 @SuppressWarnings("FieldCanBeLocal")

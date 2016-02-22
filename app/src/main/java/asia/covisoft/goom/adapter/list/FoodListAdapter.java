@@ -15,8 +15,8 @@ import com.bvhloc.numpicker.widget.NumberPicker;
 import java.util.List;
 
 import asia.covisoft.goom.R;
-import asia.covisoft.goom.helper.Hex;
-import asia.covisoft.goom.helper.TouchEffect;
+import asia.covisoft.goom.utils.Hex;
+import asia.covisoft.goom.utils.TouchEffect;
 import asia.covisoft.goom.pojo.gson.FoodlistRoot.Foodlist;
 
 public class FoodListAdapter extends ArrayAdapter<Foodlist> {

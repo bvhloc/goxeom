@@ -25,8 +25,8 @@ import asia.covisoft.goom.mvp.model.OrderFoodOrderedModel;
 import asia.covisoft.goom.mvp.model.OrderPresenter;
 import asia.covisoft.goom.mvp.view.OrderView;
 import asia.covisoft.goom.pojo.gson.FoodlistRoot.Foodlist;
-import asia.covisoft.goom.utils.Constant;
-import asia.covisoft.goom.utils.Extras;
+import asia.covisoft.goom.prefs.Constant;
+import asia.covisoft.goom.prefs.Extras;
 
 @SuppressLint("SetTextI18n")
 public class OrderFoodOrderedActivity extends BaseActivity implements OrderView, FoodListAdapter.OnQuantitiesChangedListener {

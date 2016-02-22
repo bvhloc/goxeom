@@ -9,11 +9,11 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 
-import asia.covisoft.goom.helper.SLog;
+import asia.covisoft.goom.utils.SLog;
 import asia.covisoft.goom.mvp.presenter.TipPresenter;
 import asia.covisoft.goom.mvp.view.TipView;
-import asia.covisoft.goom.utils.Constant;
-import asia.covisoft.goom.utils.Extras;
+import asia.covisoft.goom.prefs.Constant;
+import asia.covisoft.goom.prefs.Extras;
 
 public class CancelTipService extends Service implements TipView {
 

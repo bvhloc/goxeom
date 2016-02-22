@@ -1,4 +1,4 @@
-package asia.covisoft.goom.helper;
+package asia.covisoft.goom.utils;
 
 import android.graphics.Color;
 import android.os.AsyncTask;
@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import asia.covisoft.goom.utils.Constant;
+import asia.covisoft.goom.prefs.Constant;
 
 public class  PolylineDrawer {
 

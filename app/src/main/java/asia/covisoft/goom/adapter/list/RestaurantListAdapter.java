@@ -17,11 +17,11 @@ import java.util.List;
 
 import asia.covisoft.goom.R;
 import asia.covisoft.goom.activity.order.OrderFoodPickFoodActivity;
-import asia.covisoft.goom.helper.Hex;
+import asia.covisoft.goom.utils.Hex;
 import asia.covisoft.goom.pojo.gson.LoadfoodingRoot.Loadfooding.RestaurantList;
-import asia.covisoft.goom.utils.Constant;
-import asia.covisoft.goom.utils.Extras;
-import asia.covisoft.goom.utils.Preferences;
+import asia.covisoft.goom.prefs.Constant;
+import asia.covisoft.goom.prefs.Extras;
+import asia.covisoft.goom.prefs.Preferences;
 
 public class RestaurantListAdapter extends ArrayAdapter<RestaurantList> {
 

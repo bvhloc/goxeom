@@ -15,9 +15,9 @@ import java.io.IOException;
 import java.util.Calendar;
 
 import asia.covisoft.goom.R;
-import asia.covisoft.goom.helper.DatetimeHelper;
-import asia.covisoft.goom.helper.Hex;
-import asia.covisoft.goom.helper.NetworkClient;
+import asia.covisoft.goom.utils.DatetimeHelper;
+import asia.covisoft.goom.utils.Hex;
+import asia.covisoft.goom.utils.NetworkClient;
 import asia.covisoft.goom.mvp.model.OrderCourierModel;
 import asia.covisoft.goom.mvp.model.OrderFoodOrderedModel;
 import asia.covisoft.goom.mvp.model.OrderShoppingModel;
@@ -25,8 +25,8 @@ import asia.covisoft.goom.mvp.model.OrderTransportModel;
 import asia.covisoft.goom.mvp.view.OrderConfirmView;
 import asia.covisoft.goom.pojo.activeandroid.LocationHistory;
 import asia.covisoft.goom.pojo.gson.FoodlistRoot.Foodlist;
-import asia.covisoft.goom.utils.Constant;
-import asia.covisoft.goom.utils.DatetimeFormat;
+import asia.covisoft.goom.prefs.Constant;
+import asia.covisoft.goom.prefs.DatetimeFormat;
 
 public class OrderConfirmPresenter {
 
